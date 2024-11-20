@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: d4ec8b867abec304faa3f2aa5c9f11ad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4155871839130125163
+    second: lancer-Sheet_0
+  - first:
+      213: 902570140078534300
+    second: lancer-Sheet_1
+  - first:
+      213: 352892913977638648
+    second: lancer-Sheet_2
+  - first:
+      213: 269240738756980969
+    second: lancer-Sheet_3
+  - first:
+      213: 2066499383224004352
+    second: lancer-Sheet_4
+  - first:
+      213: -1390457579628656407
+    second: lancer-Sheet_5
+  - first:
+      213: 6537931458009863976
+    second: lancer-Sheet_6
+  - first:
+      213: 3208962351920288353
+    second: lancer-Sheet_7
+  - first:
+      213: 1150813449008962560
+    second: lancer-Sheet_8
+  - first:
+      213: 5192668983808161914
+    second: lancer-Sheet_9
+  - first:
+      213: 5525916120384293909
+    second: lancer-Sheet_10
+  - first:
+      213: -1482351969922032551
+    second: lancer-Sheet_11
+  - first:
+      213: 1052137288950213133
+    second: lancer-Sheet_12
+  - first:
+      213: 5392318181408115002
+    second: lancer-Sheet_13
+  - first:
+      213: -8454775045925234243
+    second: lancer-Sheet_14
+  - first:
+      213: -1931797467401903969
+    second: lancer-Sheet_15
+  - first:
+      213: 7689375760436723544
+    second: lancer-Sheet_16
+  - first:
+      213: -2929767344675177960
+    second: lancer-Sheet_17
+  - first:
+      213: -7415887925881857940
+    second: lancer-Sheet_18
+  - first:
+      213: 494958405348085941
+    second: lancer-Sheet_19
+  - first:
+      213: -4124981576865977400
+    second: lancer-Sheet_20
+  - first:
+      213: 7010319801998067838
+    second: lancer-Sheet_21
+  - first:
+      213: 7088868246570532714
+    second: lancer-Sheet_22
+  - first:
+      213: 4409532472578998347
+    second: lancer-Sheet_23
+  - first:
+      213: -3141910643230081980
+    second: lancer-Sheet_24
+  - first:
+      213: 4357713996117856269
+    second: lancer-Sheet_25
+  - first:
+      213: 1103992190301214354
+    second: lancer-Sheet_26
+  - first:
+      213: 1847897764974207245
+    second: lancer-Sheet_27
+  - first:
+      213: -3073374708355078146
+    second: lancer-Sheet_28
+  - first:
+      213: -2906133280372607437
+    second: lancer-Sheet_29
+  - first:
+      213: -5404630141931675807
+    second: lancer-Sheet_30
+  - first:
+      213: 2153138694802697301
+    second: lancer-Sheet_31
+  - first:
+      213: -7765628766908603858
+    second: lancer-Sheet_32
+  - first:
+      213: 9166385547230354493
+    second: lancer-Sheet_33
+  - first:
+      213: 4014489213599440194
+    second: lancer-Sheet_34
+  - first:
+      213: -6178213682067600143
+    second: lancer-Sheet_35
+  - first:
+      213: -4717912713735407608
+    second: lancer-Sheet_36
+  - first:
+      213: -6744566833912925241
+    second: lancer-Sheet_37
+  - first:
+      213: 5988256050854877991
+    second: lancer-Sheet_38
+  - first:
+      213: -5075446745990239244
+    second: lancer-Sheet_39
+  - first:
+      213: 3299011226646294491
+    second: lancer-Sheet_40
+  - first:
+      213: -4702803916099323981
+    second: lancer-Sheet_41
+  - first:
+      213: 4209478734276827155
+    second: lancer-Sheet_42
+  - first:
+      213: -186599563325419309
+    second: lancer-Sheet_43
+  - first:
+      213: -2185560646081045402
+    second: lancer-Sheet_44
+  - first:
+      213: -2708654599380072877
+    second: lancer-Sheet_45
+  - first:
+      213: 1607683898306756378
+    second: lancer-Sheet_46
+  - first:
+      213: 7501583497826806773
+    second: lancer-Sheet_47
+  - first:
+      213: -5110614255308993923
+    second: lancer-Sheet_48
+  - first:
+      213: -3145317794669348992
+    second: lancer-Sheet_49
+  - first:
+      213: 6437770643666993426
+    second: lancer-Sheet_50
+  - first:
+      213: 8063760501012231384
+    second: lancer-Sheet_51
+  - first:
+      213: -6795210658054591420
+    second: lancer-Sheet_52
+  - first:
+      213: 3195018623514182112
+    second: lancer-Sheet_53
+  - first:
+      213: 5444728693640001011
+    second: lancer-Sheet_54
+  - first:
+      213: -3528358263835329913
+    second: lancer-Sheet_55
+  - first:
+      213: 3753496503849168269
+    second: lancer-Sheet_56
+  - first:
+      213: 64157549871865091
+    second: lancer-Sheet_57
+  - first:
+      213: -575750186088417815
+    second: lancer-Sheet_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lancer-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59c7990c4906356c0800000000000000
+      internalID: -4155871839130125163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e6148a2c2968c00800000000000000
+      internalID: 902570140078534300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8feb36d4c3ab5e400800000000000000
+      internalID: 352892913977638648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e07ca086098cb300800000000000000
+      internalID: 269240738756980969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f61a18d3eadac10800000000000000
+      internalID: 2066499383224004352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e80cf2c23a14bce0800000000000000
+      internalID: -1390457579628656407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 827978885066bba50800000000000000
+      internalID: 6537931458009863976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1629fcbd146888c20800000000000000
+      internalID: 3208962351920288353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00cdbee0cb288ff00800000000000000
+      internalID: 1150813449008962560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a78f218cde0101840800000000000000
+      internalID: 5192668983808161914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c4c161f6fffac40800000000000000
+      internalID: 5525916120384293909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c52b8bcb0ad6be0800000000000000
+      internalID: -1482351969922032551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ae1d23a41f99e00800000000000000
+      internalID: 1052137288950213133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3906b6f0dc55da40800000000000000
+      internalID: 5392318181408115002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db91acb14ea9aaa80800000000000000
+      internalID: -8454775045925234243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f90a2814070e035e0800000000000000
+      internalID: -1931797467401903969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85f7459938626ba60800000000000000
+      internalID: 7689375760436723544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ab8126f106757d0800000000000000
+      internalID: -2929767344675177960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6814b3f839751990800000000000000
+      internalID: -7415887925881857940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b0dd591c027ed600800000000000000
+      internalID: 494958405348085941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb6fd56c1f11c6c0800000000000000
+      internalID: -4124981576865977400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e784bf7b7b8a94160800000000000000
+      internalID: 7010319801998067838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6ff160ac18b06260800000000000000
+      internalID: 7088868246570532714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b400f9dcb6ec13d30800000000000000
+      internalID: 4409532472578998347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c7042aae0b564d0800000000000000
+      internalID: -3141910643230081980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d005a539ac5b97c30800000000000000
+      internalID: 4357713996117856269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29695b14c0b225f00800000000000000
+      internalID: 1103992190301214354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01a6860a3d05a910800000000000000
+      internalID: 1847897764974207245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef763d67cfd2955d0800000000000000
+      internalID: -3073374708355078146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3363379cd275ba7d0800000000000000
+      internalID: -2906133280372607437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f1bc75585eef4b0800000000000000
+      internalID: -5404630141931675807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cecdf2c3c71ed10800000000000000
+      internalID: 2153138694802697301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e22abd2d7c1fa3490800000000000000
+      internalID: -7765628766908603858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c90f0f61b853f70800000000000000
+      internalID: 9166385547230354493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24d5b3b8ba456b730800000000000000
+      internalID: 4014489213599440194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fc07e5c363924aa0800000000000000
+      internalID: -6178213682067600143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8087088226b968eb0800000000000000
+      internalID: -4717912713735407608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c33db4e23c7662a0800000000000000
+      internalID: -6744566833912925241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72bd94fa62f8a1350800000000000000
+      internalID: 5988256050854877991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbe6dc43146099b0800000000000000
+      internalID: -5075446745990239244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf27425b3178cd20800000000000000
+      internalID: 3299011226646294491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b7759c31c84cbeb0800000000000000
+      internalID: -4702803916099323981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31891262b921b6a30800000000000000
+      internalID: 4209478734276827155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d0deb09fa0196df0800000000000000
+      internalID: -186599563325419309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66c14470c245ba1e0800000000000000
+      internalID: -2185560646081045402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lancer-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35609b03efce86ad0800000000000000
+      internalID: -2708654599380072877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 408451a4d9b597848b30bdce70d09cdc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      lancer-Sheet_0: -4155871839130125163
+      lancer-Sheet_1: 902570140078534300
+      lancer-Sheet_10: 5525916120384293909
+      lancer-Sheet_11: -1482351969922032551
+      lancer-Sheet_12: 1052137288950213133
+      lancer-Sheet_13: 5392318181408115002
+      lancer-Sheet_14: -8454775045925234243
+      lancer-Sheet_15: -1931797467401903969
+      lancer-Sheet_16: 7689375760436723544
+      lancer-Sheet_17: -2929767344675177960
+      lancer-Sheet_18: -7415887925881857940
+      lancer-Sheet_19: 494958405348085941
+      lancer-Sheet_2: 352892913977638648
+      lancer-Sheet_20: -4124981576865977400
+      lancer-Sheet_21: 7010319801998067838
+      lancer-Sheet_22: 7088868246570532714
+      lancer-Sheet_23: 4409532472578998347
+      lancer-Sheet_24: -3141910643230081980
+      lancer-Sheet_25: 4357713996117856269
+      lancer-Sheet_26: 1103992190301214354
+      lancer-Sheet_27: 1847897764974207245
+      lancer-Sheet_28: -3073374708355078146
+      lancer-Sheet_29: -2906133280372607437
+      lancer-Sheet_3: 269240738756980969
+      lancer-Sheet_30: -5404630141931675807
+      lancer-Sheet_31: 2153138694802697301
+      lancer-Sheet_32: -7765628766908603858
+      lancer-Sheet_33: 9166385547230354493
+      lancer-Sheet_34: 4014489213599440194
+      lancer-Sheet_35: -6178213682067600143
+      lancer-Sheet_36: -4717912713735407608
+      lancer-Sheet_37: -6744566833912925241
+      lancer-Sheet_38: 5988256050854877991
+      lancer-Sheet_39: -5075446745990239244
+      lancer-Sheet_4: 2066499383224004352
+      lancer-Sheet_40: 3299011226646294491
+      lancer-Sheet_41: -4702803916099323981
+      lancer-Sheet_42: 4209478734276827155
+      lancer-Sheet_43: -186599563325419309
+      lancer-Sheet_44: -2185560646081045402
+      lancer-Sheet_45: -2708654599380072877
+      lancer-Sheet_5: -1390457579628656407
+      lancer-Sheet_6: 6537931458009863976
+      lancer-Sheet_7: 3208962351920288353
+      lancer-Sheet_8: 1150813449008962560
+      lancer-Sheet_9: 5192668983808161914
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1836 @@
+fileFormatVersion: 2
+guid: 5bff72211b8d3b04eae845f74235e52b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7131195634755618847
+    second: nekomata-Sheet_0
+  - first:
+      213: 6260076750970618477
+    second: nekomata-Sheet_1
+  - first:
+      213: 4900157944223319648
+    second: nekomata-Sheet_2
+  - first:
+      213: -6024414918045242431
+    second: nekomata-Sheet_3
+  - first:
+      213: -4286492165781429879
+    second: nekomata-Sheet_4
+  - first:
+      213: -810945269214759783
+    second: nekomata-Sheet_5
+  - first:
+      213: 7125609913921148117
+    second: nekomata-Sheet_6
+  - first:
+      213: 347093187898485451
+    second: nekomata-Sheet_7
+  - first:
+      213: -765288960125619422
+    second: nekomata-Sheet_8
+  - first:
+      213: -8777468977876278381
+    second: nekomata-Sheet_9
+  - first:
+      213: -7671290687359635632
+    second: nekomata-Sheet_10
+  - first:
+      213: 6422091389377363278
+    second: nekomata-Sheet_11
+  - first:
+      213: -9160669728286391779
+    second: nekomata-Sheet_12
+  - first:
+      213: -6193553175381912806
+    second: nekomata-Sheet_13
+  - first:
+      213: 647187442011726031
+    second: nekomata-Sheet_14
+  - first:
+      213: 7141135740656497775
+    second: nekomata-Sheet_15
+  - first:
+      213: -5096251283018292633
+    second: nekomata-Sheet_16
+  - first:
+      213: 2041381532549015362
+    second: nekomata-Sheet_17
+  - first:
+      213: 1458535230817850781
+    second: nekomata-Sheet_18
+  - first:
+      213: 1779997691610501698
+    second: nekomata-Sheet_19
+  - first:
+      213: 6555784294559837151
+    second: nekomata-Sheet_20
+  - first:
+      213: -8989087900982808923
+    second: nekomata-Sheet_21
+  - first:
+      213: -2970415702245454241
+    second: nekomata-Sheet_22
+  - first:
+      213: -707212983029381538
+    second: nekomata-Sheet_23
+  - first:
+      213: 7540817612809051969
+    second: nekomata-Sheet_24
+  - first:
+      213: 3878556848558663610
+    second: nekomata-Sheet_25
+  - first:
+      213: 1429151217174076014
+    second: nekomata-Sheet_26
+  - first:
+      213: 5962402069566925893
+    second: nekomata-Sheet_27
+  - first:
+      213: 8441390410023336023
+    second: nekomata-Sheet_28
+  - first:
+      213: -5613561808335628176
+    second: nekomata-Sheet_29
+  - first:
+      213: 1678333282483645533
+    second: nekomata-Sheet_30
+  - first:
+      213: 5703758930697940374
+    second: nekomata-Sheet_31
+  - first:
+      213: -6350827164365725098
+    second: nekomata-Sheet_32
+  - first:
+      213: 5291787121131143058
+    second: nekomata-Sheet_33
+  - first:
+      213: -2275053177027527234
+    second: nekomata-Sheet_34
+  - first:
+      213: 6348397777563160461
+    second: nekomata-Sheet_35
+  - first:
+      213: 4103101537488648778
+    second: nekomata-Sheet_36
+  - first:
+      213: -6450438436553086904
+    second: nekomata-Sheet_37
+  - first:
+      213: -4755411281407040502
+    second: nekomata-Sheet_38
+  - first:
+      213: -8715191184284499149
+    second: nekomata-Sheet_39
+  - first:
+      213: 3858485018870630962
+    second: nekomata-Sheet_40
+  - first:
+      213: -756923549957065574
+    second: nekomata-Sheet_41
+  - first:
+      213: -6043706123279565346
+    second: nekomata-Sheet_42
+  - first:
+      213: -8486272356728024385
+    second: nekomata-Sheet_43
+  - first:
+      213: -5642131493218085764
+    second: nekomata-Sheet_44
+  - first:
+      213: 450966221856918375
+    second: nekomata-Sheet_45
+  - first:
+      213: -3932788956866674037
+    second: nekomata-Sheet_46
+  - first:
+      213: -4701386391721454749
+    second: nekomata-Sheet_47
+  - first:
+      213: 5516194852739830465
+    second: nekomata-Sheet_48
+  - first:
+      213: -1340532496014747419
+    second: nekomata-Sheet_49
+  - first:
+      213: -742331616213248759
+    second: nekomata-Sheet_50
+  - first:
+      213: 6705573253641876411
+    second: nekomata-Sheet_51
+  - first:
+      213: -1791320976435026708
+    second: nekomata-Sheet_52
+  - first:
+      213: 62168979391052476
+    second: nekomata-Sheet_53
+  - first:
+      213: 3289663737672766950
+    second: nekomata-Sheet_54
+  - first:
+      213: -6662890378756827366
+    second: nekomata-Sheet_55
+  - first:
+      213: 4387549404103638976
+    second: nekomata-Sheet_56
+  - first:
+      213: -6985347437304397719
+    second: nekomata-Sheet_57
+  - first:
+      213: 8452063503613030113
+    second: nekomata-Sheet_58
+  - first:
+      213: -1543671990509164989
+    second: nekomata-Sheet_59
+  - first:
+      213: -2395709727185184608
+    second: nekomata-Sheet_60
+  - first:
+      213: -5556029409178525124
+    second: nekomata-Sheet_61
+  - first:
+      213: 2494758818989983941
+    second: nekomata-Sheet_62
+  - first:
+      213: 8686845129992443706
+    second: nekomata-Sheet_63
+  - first:
+      213: 7053089504305590281
+    second: nekomata-Sheet_64
+  - first:
+      213: 4833592005011036584
+    second: nekomata-Sheet_65
+  - first:
+      213: -6117490437114789176
+    second: nekomata-Sheet_66
+  - first:
+      213: 1541172294142046951
+    second: nekomata-Sheet_67
+  - first:
+      213: -3034436487478319040
+    second: nekomata-Sheet_68
+  - first:
+      213: 2103780143201223108
+    second: nekomata-Sheet_69
+  - first:
+      213: 2377738493007204011
+    second: nekomata-Sheet_70
+  - first:
+      213: 3722493776243982912
+    second: nekomata-Sheet_71
+  - first:
+      213: 3646266374427795226
+    second: nekomata-Sheet_72
+  - first:
+      213: 6006446064686165144
+    second: nekomata-Sheet_73
+  - first:
+      213: -4852221477586939361
+    second: nekomata-Sheet_74
+  - first:
+      213: -2406874542350877278
+    second: nekomata-Sheet_75
+  - first:
+      213: -7740920050269359555
+    second: nekomata-Sheet_76
+  - first:
+      213: -3347813781744111160
+    second: nekomata-Sheet_77
+  - first:
+      213: -3000308795113274715
+    second: nekomata-Sheet_78
+  - first:
+      213: -4180260643462000842
+    second: nekomata-Sheet_79
+  - first:
+      213: -3416460641336326412
+    second: nekomata-Sheet_80
+  - first:
+      213: -5069722025476589115
+    second: nekomata-Sheet_81
+  - first:
+      213: -963671455745466774
+    second: nekomata-Sheet_82
+  - first:
+      213: -1743050222566870459
+    second: nekomata-Sheet_83
+  - first:
+      213: -9156452821712203006
+    second: nekomata-Sheet_84
+  - first:
+      213: 6839048100345779467
+    second: nekomata-Sheet_85
+  - first:
+      213: 3246535537376496841
+    second: nekomata-Sheet_86
+  - first:
+      213: 1673715262842339975
+    second: nekomata-Sheet_87
+  - first:
+      213: -8473440288747738414
+    second: nekomata-Sheet_88
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nekomata-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f18cc69a5a817f260800000000000000
+      internalID: 7131195634755618847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62094043a240e650800000000000000
+      internalID: 6260076750970618477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0664db820bbd00440800000000000000
+      internalID: 4900157944223319648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb695efc8af46ca0800000000000000
+      internalID: -6024414918045242431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9816a1606125384c0800000000000000
+      internalID: -4286492165781429879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994bb200391feb4f0800000000000000
+      internalID: -810945269214759783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4954fa67043e260800000000000000
+      internalID: 7125609913921148117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcaa5a85a6f11d400800000000000000
+      internalID: 347093187898485451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2233f25deb52165f0800000000000000
+      internalID: -765288960125619422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3936caa387a203680800000000000000
+      internalID: -8777468977876278381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05faa2b93c91a8590800000000000000
+      internalID: -7671290687359635632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4dbeeac71adf1950800000000000000
+      internalID: 6422091389377363278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d12c0dcda63ced080800000000000000
+      internalID: -9160669728286391779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a135edba3341c0aa0800000000000000
+      internalID: -6193553175381912806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc0e330bc854bf800800000000000000
+      internalID: 647187442011726031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f643daaee196a1360800000000000000
+      internalID: 7141135740656497775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 762e09d857a7649b0800000000000000
+      internalID: -5096251283018292633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24760aa20b1745c10800000000000000
+      internalID: 2041381532549015362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d955a459012cd3410800000000000000
+      internalID: 1458535230817850781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 242957d3872d3b810800000000000000
+      internalID: 1779997691610501698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdbe255f413dafa50800000000000000
+      internalID: 6555784294559837151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae68272e28504380800000000000000
+      internalID: -8989087900982808923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5eca6028a6f6c6d0800000000000000
+      internalID: -2970415702245454241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e564df5f9897f26f0800000000000000
+      internalID: -707212983029381538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f1e777aad56a860800000000000000
+      internalID: 7540817612809051969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab76f7f77e663d530800000000000000
+      internalID: 3878556848558663610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a5af5c57d55d310800000000000000
+      internalID: 1429151217174076014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c27949715beb250800000000000000
+      internalID: 5962402069566925893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75874df7ad7d52570800000000000000
+      internalID: 8441390410023336023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0789479f64f9812b0800000000000000
+      internalID: -5613561808335628176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c272d6a33aa4710800000000000000
+      internalID: 1678333282483645533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d66b41782d72f40800000000000000
+      internalID: 5703758930697940374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 652641697545dd7a0800000000000000
+      internalID: -6350827164365725098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f320e7954307940800000000000000
+      internalID: 5291787121131143058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd762270336d60e0800000000000000
+      internalID: -2275053177027527234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8f0888b42a0a1850800000000000000
+      internalID: 6348397777563160461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4abe53fb1521f830800000000000000
+      internalID: 4103101537488648778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8482ab7fa607b76a0800000000000000
+      internalID: -6450438436553086904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0429d282a2610eb0800000000000000
+      internalID: -4755411281407040502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3334b1ffacb6d0780800000000000000
+      internalID: -8715191184284499149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23a43f87ea71c8530800000000000000
+      internalID: 3858485018870630962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a947eaaaa0ede75f0800000000000000
+      internalID: -756923549957065574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd71134d41702ca0800000000000000
+      internalID: -6043706123279565346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb25206f044ba3a80800000000000000
+      internalID: -8486272356728024385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7411badc4f13b1b0800000000000000
+      internalID: -5642131493218085764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b4b73b367224600800000000000000
+      internalID: 450966221856918375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b820261d74deb69c0800000000000000
+      internalID: -3932788956866674037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36356995cf151ceb0800000000000000
+      internalID: -4701386391721454749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c255651ef57d8c40800000000000000
+      internalID: 5516194852739830465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e85c2d1cc8756de0800000000000000
+      internalID: -1340532496014747419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 905511ef355b2b5f0800000000000000
+      internalID: -742331616213248759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb33fa6b85bfe0d50800000000000000
+      internalID: 6705573253641876411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce462e01013f327e0800000000000000
+      internalID: -1791320976435026708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbaf6ac7b5edcd000800000000000000
+      internalID: 62168979391052476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e518727dbb37ad20800000000000000
+      internalID: 3289663737672766950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17d4d48088a883a0800000000000000
+      internalID: -6662890378756827366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cff212dfe4b3ec30800000000000000
+      internalID: 4387549404103638976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96049c6048f0f0f90800000000000000
+      internalID: -6985347437304397719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eee5efb9f2cb4570800000000000000
+      internalID: 8452063503613030113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3462bfbd086c39ae0800000000000000
+      internalID: -1543671990509164989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8dd2632bab0ced0800000000000000
+      internalID: -2395709727185184608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nekomata-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c326a4080b405e2b0800000000000000
+      internalID: -5556029409178525124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 12d541ff9f9b9ee4eb933c7ce6273abb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      nekomata-Sheet_0: 7131195634755618847
+      nekomata-Sheet_1: 6260076750970618477
+      nekomata-Sheet_10: -7671290687359635632
+      nekomata-Sheet_11: 6422091389377363278
+      nekomata-Sheet_12: -9160669728286391779
+      nekomata-Sheet_13: -6193553175381912806
+      nekomata-Sheet_14: 647187442011726031
+      nekomata-Sheet_15: 7141135740656497775
+      nekomata-Sheet_16: -5096251283018292633
+      nekomata-Sheet_17: 2041381532549015362
+      nekomata-Sheet_18: 1458535230817850781
+      nekomata-Sheet_19: 1779997691610501698
+      nekomata-Sheet_2: 4900157944223319648
+      nekomata-Sheet_20: 6555784294559837151
+      nekomata-Sheet_21: -8989087900982808923
+      nekomata-Sheet_22: -2970415702245454241
+      nekomata-Sheet_23: -707212983029381538
+      nekomata-Sheet_24: 7540817612809051969
+      nekomata-Sheet_25: 3878556848558663610
+      nekomata-Sheet_26: 1429151217174076014
+      nekomata-Sheet_27: 5962402069566925893
+      nekomata-Sheet_28: 8441390410023336023
+      nekomata-Sheet_29: -5613561808335628176
+      nekomata-Sheet_3: -6024414918045242431
+      nekomata-Sheet_30: 1678333282483645533
+      nekomata-Sheet_31: 5703758930697940374
+      nekomata-Sheet_32: -6350827164365725098
+      nekomata-Sheet_33: 5291787121131143058
+      nekomata-Sheet_34: -2275053177027527234
+      nekomata-Sheet_35: 6348397777563160461
+      nekomata-Sheet_36: 4103101537488648778
+      nekomata-Sheet_37: -6450438436553086904
+      nekomata-Sheet_38: -4755411281407040502
+      nekomata-Sheet_39: -8715191184284499149
+      nekomata-Sheet_4: -4286492165781429879
+      nekomata-Sheet_40: 3858485018870630962
+      nekomata-Sheet_41: -756923549957065574
+      nekomata-Sheet_42: -6043706123279565346
+      nekomata-Sheet_43: -8486272356728024385
+      nekomata-Sheet_44: -5642131493218085764
+      nekomata-Sheet_45: 450966221856918375
+      nekomata-Sheet_46: -3932788956866674037
+      nekomata-Sheet_47: -4701386391721454749
+      nekomata-Sheet_48: 5516194852739830465
+      nekomata-Sheet_49: -1340532496014747419
+      nekomata-Sheet_5: -810945269214759783
+      nekomata-Sheet_50: -742331616213248759
+      nekomata-Sheet_51: 6705573253641876411
+      nekomata-Sheet_52: -1791320976435026708
+      nekomata-Sheet_53: 62168979391052476
+      nekomata-Sheet_54: 3289663737672766950
+      nekomata-Sheet_55: -6662890378756827366
+      nekomata-Sheet_56: 4387549404103638976
+      nekomata-Sheet_57: -6985347437304397719
+      nekomata-Sheet_58: 8452063503613030113
+      nekomata-Sheet_59: -1543671990509164989
+      nekomata-Sheet_6: 7125609913921148117
+      nekomata-Sheet_60: -2395709727185184608
+      nekomata-Sheet_61: -5556029409178525124
+      nekomata-Sheet_7: 347093187898485451
+      nekomata-Sheet_8: -765288960125619422
+      nekomata-Sheet_9: -8777468977876278381
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
