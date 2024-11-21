@@ -42,6 +42,7 @@ public class Lancer : CharacterActions
     {
         base.SetActionDelegate();
         _inputReciever.NomalMove = NomoalMove;
+        _inputReciever.SpecialMove1 = SpecialMove1;
     }
 
     protected override void SetHitBox()
@@ -144,7 +145,7 @@ public class Lancer : CharacterActions
         CancellationToken token = _specialMove1CTS.Token;
 
         // アニメーション処理
-        SetLayerWeightByName("SpecialMove1Layer", 0);
+        SetLayerWeightByName("SpecialMove1Layer", 1);
         _animator.SetTrigger("SpecialMove1Trigger");
 
         //物理挙動
@@ -156,7 +157,7 @@ public class Lancer : CharacterActions
 
             //物理挙動
             float sm1DirectionX = _sm1Direction.x * (_characterState.IsLeftSide ? 1 : -1);
-            _rb.AddForce(new Vector2(sm1DirectionX, _sm1Direction.x), ForceMode2D.Impulse);
+            _rb.AddForce(new Vector2(sm1DirectionX, _sm1Direction.y), ForceMode2D.Impulse);
 
             await WaitForActiveFrame(_specialMove1HitBox, _specialMove1Info.ActiveFrame, token); // 持続を待つ
             await RecoveryFrame(_specialMove1Info.RecoveryFrame, token); // 硬直を待つ
@@ -168,8 +169,8 @@ public class Lancer : CharacterActions
         finally
         {
             // 攻撃処理が完了した後、トークンを解放
-            _jumpMoveCTS.Dispose();
-            _jumpMoveCTS = null;
+            _specialMove1CTS.Dispose();
+            _specialMove1CTS = null;
         }
 
         //layerを元に戻す

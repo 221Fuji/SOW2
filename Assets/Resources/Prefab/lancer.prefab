@@ -177,7 +177,7 @@ MonoBehaviour:
     HitFrame: 20
     MeterGain: 0
     HitBackDirection: {x: 5, y: 0}
-  _sm1Direction: {x: 20, y: 40}
+  _sm1Direction: {x: 10, y: 25}
   _specialMove1HitBox: {fileID: 7672007186967191172}
 --- !u!114 &8443885225981554902
 MonoBehaviour:

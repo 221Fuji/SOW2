@@ -45,7 +45,7 @@ public class FightingInputReceiver : MonoBehaviour
     }
 
     //ƒWƒƒƒ“ƒv
-    public void OnJump(InputValue value)
+    public void OnJump()
     {
         JumpDelegate?.Invoke();
     }
