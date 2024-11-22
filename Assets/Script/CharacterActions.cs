@@ -85,7 +85,7 @@ public class CharacterActions : MonoBehaviour
     protected virtual void DirectionReversal()
     {
         //Ú’n’†‚Ì‚Ý”½“]
-        if (!_characterState.OnGround) return;
+        if (!CanWalk && !_characterState.OnGround) return;
 
         if (transform.position.x > _enemyObject.transform.position.x)
         {
@@ -228,7 +228,7 @@ public class CharacterActions : MonoBehaviour
         _animator.SetTrigger("HitTrigger"); // ‹ò‚ç‚¢ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶
 
         //ƒqƒbƒgd’¼ˆ—
-        Debug.Log("ƒqƒbƒgd’¼ŠJŽn");
+        Debug.Log($"ƒqƒbƒgd’¼ŠJŽn:{attackInfo.HitFrame}");
         await HitStun(attackInfo.HitFrame, _characterState.CreateHitCT());
 
         SetLayerWeightByName("HitLayer", 0); // Animator‚ÌLayer‚ðHitLayer‚ðÅ—D“x‚ðŒ³‚É–ß‚·
@@ -241,6 +241,17 @@ public class CharacterActions : MonoBehaviour
     public virtual async UniTask HitStun(int recoveryFrame, CancellationToken token)
     {
         await UniTask.DelayFrame(recoveryFrame, cancellationToken: token);
+
+        if(token.IsCancellationRequested)
+        {
+            Debug.Log("ƒqƒbƒgd’¼‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½");
+            _characterState.CancelHitStun();
+            return;
+        }
+
+        //’…’n‚·‚é‚Ü‚Åƒqƒbƒgd’¼‚ª‘±‚­
+        await UniTask.WaitUntil(() => _characterState.OnGround);
+
         _characterState.CancelHitStun();
     }
 
