@@ -13,7 +13,7 @@ public class HitBoxManager : MonoBehaviour
     AttackInfo _attackInfo;
     public bool IsActive { get; private set; } = false;
 
-    public void InitializeHitBox(AttackInfo attackInfo, GameObject target)
+    public void InitializeHitBox(AttackInfo attackInfo)
     {
         _attackInfo = attackInfo;
     }
@@ -36,7 +36,7 @@ public class HitBoxManager : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             if (collider.transform.parent == transform.parent) continue;
-            Debug.Log("UŒ‚‚ªƒqƒbƒg");
+            Debug.Log($"UŒ‚‚ªƒqƒbƒg");
 
             // UŒ‚‚ª“–‚½‚Á‚½î•ñ‚ğ“G‚É‘—‚é
             collider.transform.parent.GetComponent<CharacterActions>()?.TakeAttack(_attackInfo);

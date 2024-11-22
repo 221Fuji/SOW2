@@ -172,12 +172,12 @@ MonoBehaviour:
   _specialMove1Info:
     Damage: 20
     StartupFrame: 10
-    ActiveFrame: 10
+    ActiveFrame: 15
     RecoveryFrame: 30
     HitFrame: 20
     MeterGain: 0
-    HitBackDirection: {x: 5, y: 0}
-  _sm1Direction: {x: 10, y: 25}
+    HitBackDirection: {x: 7.5, y: 15}
+  _sm1Direction: {x: 10, y: 20}
   _specialMove1HitBox: {fileID: 7672007186967191172}
 --- !u!114 &8443885225981554902
 MonoBehaviour:

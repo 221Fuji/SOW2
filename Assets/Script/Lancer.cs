@@ -47,8 +47,9 @@ public class Lancer : CharacterActions
 
     protected override void SetHitBox()
     {
-        _nomalMoveHitBox.InitializeHitBox(_nomalMoveInfo, _enemyObject);
-        _jumpMoveHitBox.InitializeHitBox(_jumpMoveInfo, _enemyObject);
+        _nomalMoveHitBox.InitializeHitBox(_nomalMoveInfo);
+        _jumpMoveHitBox.InitializeHitBox(_jumpMoveInfo);
+        _specialMove1HitBox.InitializeHitBox(_specialMove1Info);
     }
 
     public async UniTask NomoalMove()
@@ -132,10 +133,6 @@ public class Lancer : CharacterActions
 
     }
 
-    /// <summary>
-    /// ïKéEãZÇP
-    /// </summary>
-    /// <returns></returns>
     public async UniTask SpecialMove1()
     {
         if (!CanEveryAction) return;
@@ -149,7 +146,7 @@ public class Lancer : CharacterActions
         _animator.SetTrigger("SpecialMove1Trigger");
 
         //ï®óùãììÆ
-        _rb.velocity = new Vector2(0, _rb.velocity.y);
+        _rb.velocity = new Vector2(0, 0);
 
         try
         {
@@ -157,6 +154,7 @@ public class Lancer : CharacterActions
 
             //ï®óùãììÆ
             float sm1DirectionX = _sm1Direction.x * (_characterState.IsLeftSide ? 1 : -1);
+            _rb.velocity = new Vector2(0, 0);
             _rb.AddForce(new Vector2(sm1DirectionX, _sm1Direction.y), ForceMode2D.Impulse);
 
             await WaitForActiveFrame(_specialMove1HitBox, _specialMove1Info.ActiveFrame, token); // éùë±Çë“Ç¬
