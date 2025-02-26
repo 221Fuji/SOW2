@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: SuccubusData
+  m_EditorClassIdentifier: 
+  _characterName: Succubus
+  _characterPrefab: {fileID: 5056030989154322011, guid: b46d8ba432dd97e479f52b62ce03f88c, type: 3}

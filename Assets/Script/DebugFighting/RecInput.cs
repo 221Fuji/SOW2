@@ -134,7 +134,7 @@ namespace DebugFighting
         {
             string[] strings = _purePattern.Split(",");
             //ˆÚ“®‚Ìo—Í
-            _fir._WalkValue = int.Parse(strings[0]);
+            _fir.WalkValue = int.Parse(strings[0]);
             //ƒWƒƒƒ“ƒv
             if (strings[1] == "True")
             {
@@ -144,7 +144,7 @@ namespace DebugFighting
             //’ÊíUŒ‚
             if (strings[2] == "True")
             {
-                _fir.NomalMove?.Invoke();
+                _fir.NormalMove?.Invoke();
             }
         }
 
