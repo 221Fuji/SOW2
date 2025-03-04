@@ -1,6 +1,8 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,6 +25,8 @@ public class FightingRigidBody : MonoBehaviour
     private Vector2 _velocity;
     private Vector2 _currentPosition;
     private Vector2 _previousPosition;
+
+    private CancellationTokenSource _fightingUpdateCTS;
 
     /// <summary>
     /// 押し合い判定
@@ -74,6 +78,18 @@ public class FightingRigidBody : MonoBehaviour
         _isFixed = value;
     }
 
+    protected virtual void Awake()
+    {
+        _fightingUpdateCTS = new CancellationTokenSource();
+        StartFrameLoop(_fightingUpdateCTS.Token).Forget();
+
+        if (_fightingRigidBodies == null)
+        {
+            _fightingRigidBodies = new List<FightingRigidBody>();
+        }
+        _fightingRigidBodies.Add(this);
+    }
+
     protected virtual void Update()
     {
 
@@ -109,6 +125,28 @@ public class FightingRigidBody : MonoBehaviour
         {
             transform.position = _previousPosition;
         }
+    }
+
+    private async UniTaskVoid StartFrameLoop(CancellationToken token)
+    {
+        float frameTime = 1f / FightingPhysics.FightingFrameRate * FightingPhysics.FightingTimeScale; // 1フレームの時間（秒）
+
+        while (!token.IsCancellationRequested)
+        {
+            float startTime = Time.realtimeSinceStartup; // 経過時間（リアルタイム）
+
+            FightingUpdate();
+
+            // 次のフレームまで待機
+            float elapsedTime = Time.realtimeSinceStartup - startTime;
+            float waitTime = Mathf.Max(0, frameTime - elapsedTime);
+            await UniTask.Delay(TimeSpan.FromSeconds(waitTime), cancellationToken: token);
+        }
+    }
+
+    protected virtual void FightingUpdate()
+    {
+        //処理を記述
     }
 
     /// <summary>
@@ -274,15 +312,6 @@ public class FightingRigidBody : MonoBehaviour
         Vector2 rightEdge = new Vector2(StageParameter.StageLength / 2, StageParameter.GroundPosY);
         Vector2 leftEdge = new Vector2(-StageParameter.StageLength / 2, StageParameter.GroundPosY);
         Gizmos.DrawLine(rightEdge, leftEdge);
-    }
-
-    protected virtual void Awake()
-    {
-        if(_fightingRigidBodies == null)
-        {
-            _fightingRigidBodies = new List<FightingRigidBody>();
-        }
-        _fightingRigidBodies.Add(this);
     }
 
     private void OnDestroy()

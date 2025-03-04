@@ -1,13 +1,14 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 /// <summary>
 /// 対戦中の独自の物理挙動
 /// </summary>
 public static class FightingPhysics
 {
-    private static CancellationTokenSource _slowCTS;
 
     /// <summary>
     /// 重力加速度
@@ -24,6 +25,11 @@ public static class FightingPhysics
     /// 処理速度
     /// </summary>
     public static float FightingTimeScale { get; private set; } = 1;
+
+    /// <summary>
+    /// フレームレート
+    /// </summary>
+    public static int FightingFrameRate { get; private set; } = 60;
 
     /// <summary>
     /// 重力加速度の変更する
@@ -44,20 +50,17 @@ public static class FightingPhysics
     /// <summary>
     /// TimeScaleの影響を受けるUniTaskのDelayFrame
     /// </summary>
-    public static async UniTask DelayFrameWithTimeScale(int targetFrameCount, CancellationToken cancellationToken = default)
+    public static async UniTask DelayFrameWithTimeScale(int frames, CancellationToken cancellationToken = default)
     {
-        int frameCount = 0;
-        while (frameCount < targetFrameCount)
+        if (frames <= 0 || FightingFrameRate <= 0) return;
+
+        float frameTime = 1f / FightingFrameRate; // 1フレームの時間
+        float waitTime = frames * frameTime; // 待機する総時間
+
+        float startTime = Time.realtimeSinceStartup; // 開始時間（リアルタイム）
+        while (Time.realtimeSinceStartup - startTime < waitTime)
         {
-            if (Time.timeScale > 0)
-            {
-                frameCount++;
-            }
-
-            // キャンセルが要求された場合、処理を中断する
-            cancellationToken.ThrowIfCancellationRequested();
-
-            await UniTask.Yield(PlayerLoopTiming.Update);
+            await UniTask.Yield(cancellationToken); // 1フレームごとにチェック
         }
     }
 }

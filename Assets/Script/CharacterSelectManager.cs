@@ -6,15 +6,11 @@ using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-public class CharacterSelectManager : MonoBehaviour
+public class CharacterSelectManager : ModeManager
 {
 
     [SerializeField] private CharacterSelectController _csc1P;
     [SerializeField] private CharacterSelectController _csc2P;
-
-    [SerializeField] private GameObject _playerPrefab;
-    private PlayerInput _player1Input;
-    private PlayerInput _player2Input;
 
     private CancellationTokenSource _goFightingCTS;
 
@@ -22,11 +18,11 @@ public class CharacterSelectManager : MonoBehaviour
     [SerializeField] private CharacterData _lancer;
     [SerializeField] private CharacterData _succubus;
 
-    public void InitializeCSM(PlayerInput playerInput)
+    public override void Initialize(InputDevice device)
     {
-        //1Pの入力設定
-        _player1Input = playerInput;
-        SetDelegate(playerInput.GetComponent<OtherInputReceiver>(), _csc1P);
+        base.Initialize(device);
+
+        SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _csc1P);
 
         InputSystem.onEvent += OnInput2P;
 
@@ -42,12 +38,18 @@ public class CharacterSelectManager : MonoBehaviour
         if (_player1Input.devices.Contains(device)||
             _player2Input != null) return;
 
+        string scheme = GameManager.GetControlSchemeFromDevice(_playerInputPrefab, device);
+
         //2Pのデバイス登録
         _player2Input = PlayerInput.Instantiate(
-            prefab: _playerPrefab,
-            playerIndex: 1, 
+            prefab: _playerInputPrefab.gameObject,
+            playerIndex: 2,
+            controlScheme: scheme,
             pairWithDevice: device
             );
+
+        GameManager.Player2Device = device;
+
         Debug.Log("2P側のデバイスを登録" + _player2Input.devices);
         SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _csc2P);
     }
@@ -57,12 +59,6 @@ public class CharacterSelectManager : MonoBehaviour
     {
         oir.Accept = csc.Accept;
         oir.Cancel = csc.Cancel;
-    }
-
-    private void OnDestroy()
-    {
-        _player1Input.GetComponent<OtherInputReceiver>().RemoveDelegate();
-        _player2Input.GetComponent<OtherInputReceiver>().RemoveDelegate();
     }
 
     private async void GoFighting()
@@ -77,6 +73,6 @@ public class CharacterSelectManager : MonoBehaviour
 
         //FightingSceneに移行
         var fm = await GameManager.LoadAsync<FightingManager>("FightingScene");
-        fm.InitializeFM(_player1Input, _lancer, _player2Input, _succubus);
+        fm.InitializeFM(GameManager.Player1Device, _lancer, GameManager.Player2Device, _succubus);
     }
 }

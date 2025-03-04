@@ -169,7 +169,6 @@ public class Lancer : CharacterActions
             _jumpMoveCTS.Dispose();
             _jumpMoveCTS = null;
         }
-
     }
 
     /// <summary>
@@ -291,7 +290,7 @@ public class Lancer : CharacterActions
     public async UniTask Ultimate()
     {
 
-        if (!CanEveryAction && _characterState.CurrentUP >= 100) return;
+        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
 
         //UPÁ”ï
         _characterState.SetCurrentUP(-100);
@@ -307,6 +306,11 @@ public class Lancer : CharacterActions
         //•¨—‹““®
         Velocity = Vector2.zero;
         SetIsFixed(true);
+
+        //‰‰o
+        _performUltCTS = new CancellationTokenSource();
+        CancellationToken performUltToken = _performUltCTS.Token;
+        PerformUltimate?.Invoke(transform, 2, 120, performUltToken);
 
         await StartUpMove(_ultimateInfo.StartupFrame, token); // ”­¶‚ð‘Ò‚Â
         //”­¶•Ûá‚ ‚è

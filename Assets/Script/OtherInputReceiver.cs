@@ -11,6 +11,9 @@ public class OtherInputReceiver : MonoBehaviour
     private PlayerInput _playerInput;
     private InputUser _inputUser;
 
+    //デバイス切り替えデリゲート
+    public UnityAction<InputDevice> SwitchDevice { get; set; }
+
     //入力デリゲート
     public UnityAction Accept { get; set; }
     public UnityAction Cancel { get; set; }
@@ -19,7 +22,6 @@ public class OtherInputReceiver : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _inputUser = _playerInput.user;
-        DontDestroyOnLoad(gameObject);
 
         // 入力イベントを監視
         InputSystem.onEvent += OnInputEvent;
@@ -34,12 +36,7 @@ public class OtherInputReceiver : MonoBehaviour
 
     private void OnDestroy()
     {
-
-    }
-
-    private void OnApplicationQuit()
-    {
-        Destroy(gameObject);
+        RemoveDelegate();
     }
 
     private void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
@@ -69,6 +66,15 @@ public class OtherInputReceiver : MonoBehaviour
         _playerInput.SwitchCurrentControlScheme(device);
 
         Debug.Log($"デバイスを {device.displayName} に切り替えました");
+
+        if(_playerInput.playerIndex == 1)
+        {
+            GameManager.Player1Device = device;
+        }
+        else
+        {
+            GameManager.Player2Device = device;
+        }
     }
 
     public void OnAccept()

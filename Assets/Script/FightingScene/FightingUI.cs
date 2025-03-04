@@ -7,28 +7,41 @@ using System.Threading;
 public class FightingUI : MonoBehaviour
 {
     [Header("ゲージ")]
-    [SerializeField] Slider _hpSlider1P;
-    [SerializeField] Slider _hpSlider2P;
-    [SerializeField] Slider _redSlider1P;
-    [SerializeField] Slider _redSlider2P;
-    [SerializeField] Slider _spSlider1P;
-    [SerializeField] Slider _spSlider2P;
-    [SerializeField] Slider _upSlider1P;
-    [SerializeField] Slider _upSlider2P;
+    [SerializeField] private Slider _hpSlider1P;
+    [SerializeField] private Slider _hpSlider2P;
+    [SerializeField] private Slider _redSlider1P;
+    [SerializeField] private Slider _redSlider2P;
+    [SerializeField] private Slider _spSlider1P;
+    [SerializeField] private Slider _spSlider2P;
+    [SerializeField] private Slider _upSlider1P;
+    [SerializeField] private Slider _upSlider2P;
+    [Space]
+    [Header("Ultゲージ演出")]
+    [SerializeField] private Image _upFill1P;
+    [SerializeField] private Image _upFill2P;
+    [SerializeField] private Image _upElectricity1P;
+    [SerializeField] private Image _upElectricity2P;
+    [SerializeField] private Color _notMaxColor;
     [Space]
     [Header("コンボ演出")]
-    [SerializeField] TextMeshProUGUI _comboCounter1P;
-    [SerializeField] TextMeshProUGUI _comboCounter2P;
+    [SerializeField] private TextMeshProUGUI _comboCounter1P;
+    [SerializeField] private TextMeshProUGUI _comboCounter2P;
+    [Space]
+    [Header("残機ハート")]
+    [SerializeField] private Image _firstHeart1P;
+    [SerializeField] private Image _secondHeart1P;
+    [SerializeField] private Image _firstHeart2P;
+    [SerializeField] private Image _secondHeart2P;
 
     private CharacterState _characterState1P;
     private CharacterState _characterState2P;
 
     //1フレームで赤ゲージの減る量
-    float redBarSpeed = 0.0025f;
+    private float redBarSpeed = 0.0025f;
 
     //コンボ演出関連
-    int _conboCounterDisplayFrame = 90; //コンボ演出が消えるフレーム
-    CancellationTokenSource _comboCounterCTS;
+    private int _conboCounterDisplayFrame = 90; //コンボ演出が消えるフレーム
+    private CancellationTokenSource _comboCounterCTS;
 
     /// <summary>
     /// キャラクターをそれぞれ設定
@@ -47,6 +60,7 @@ public class FightingUI : MonoBehaviour
     {
         ApplyBar();
         SPcolorChange();
+        UltElectricity();
     }
 
     /// <summary>
@@ -55,27 +69,27 @@ public class FightingUI : MonoBehaviour
     private void ApplyBar()
     {
         //SPBer
-        if(_characterState1P != null && _spSlider1P != null)
+        if(_characterState1P != null)
         {
             _spSlider1P.value = _characterState1P.CurrentSP / _characterState1P.MaxSP;
         }
-        if (_characterState2P != null && _spSlider2P != null)
+        if (_characterState2P != null)
         {
             _spSlider2P.value = _characterState2P.CurrentSP / _characterState2P.MaxSP;
         }
 
         //HPBer      
-        if (_characterState1P != null && _hpSlider1P != null)
+        if (_characterState1P != null)
         {
             _hpSlider1P.value = _characterState1P.CurrentHP / _characterState1P.MaxHP;
         }
-        if (_characterState2P != null && _hpSlider2P != null)
+        if (_characterState2P != null)
         {
             _hpSlider2P.value = _characterState2P.CurrentHP / _characterState2P.MaxHP;
         }
 
         //RedBar
-        if(_characterState1P != null && _redSlider1P != null)
+        if(_characterState1P != null)
         {
             //コンボが終われば減り始める
             //if (_characterState1P.IsRecoveringHit) return;
@@ -89,7 +103,7 @@ public class FightingUI : MonoBehaviour
                 _redSlider1P.value = _hpSlider1P.value;
             }
         }
-        if (_characterState2P != null && _redSlider2P != null)
+        if (_characterState2P != null)
         {
             //コンボが終われば減り始める
             //if (_characterState2P.IsRecoveringHit) return;
@@ -105,11 +119,11 @@ public class FightingUI : MonoBehaviour
         }
 
         //UPBer
-        if (_characterState1P != null && _upSlider1P != null)
+        if (_characterState1P != null)
         {
             _upSlider1P.value = _characterState1P.CurrentUP / _characterState1P.MaxUP;
         }
-        if(_characterState2P != null && _upSlider2P != null)
+        if(_characterState2P != null)
         {
             _upSlider2P.value = _characterState2P.CurrentUP / _characterState2P.MaxUP;
         }
@@ -123,22 +137,94 @@ public class FightingUI : MonoBehaviour
         Image imageSP1P = _spSlider1P.GetComponentInChildren<Image>();
         Image imageSP2P = _spSlider2P.GetComponentInChildren<Image>();
 
-        if(_characterState1P.AnormalyStates.Contains(AnormalyState.Fatigue))
+        if(_characterState1P != null)
         {
-            imageSP1P.color = new Color(0.75f, 0.75f, 0.75f);
-        }
-        else
-        {
-            imageSP1P.color = new Color(1, _spSlider1P.value, 0);
+            if (_characterState1P.AnormalyStates.Contains(AnormalyState.Fatigue))
+            {
+                imageSP1P.color = new Color(0.75f, 0.75f, 0.75f);
+            }
+            else
+            {
+                imageSP1P.color = new Color(1, _spSlider1P.value, 0);
+            }
         }
 
-        if (_characterState2P.AnormalyStates.Contains(AnormalyState.Fatigue))
+        if(_characterState2P != null)
         {
-            imageSP2P.color = new Color(0.75f, 0.75f, 0.75f);
+            if (_characterState2P.AnormalyStates.Contains(AnormalyState.Fatigue))
+            {
+                imageSP2P.color = new Color(0.75f, 0.75f, 0.75f);
+            }
+            else
+            {
+                imageSP2P.color = new Color(1, _spSlider2P.value, 0);
+            }
         }
-        else
+    }
+
+    /// <summary>
+    /// UPBarが満タンのときの演出
+    /// </summary>
+    private void UltElectricity()
+    {
+        if(_characterState1P != null)
         {
-            imageSP2P.color = new Color(1, _spSlider2P.value, 0);
+            if(_characterState1P.CurrentUP >= 100)
+            {
+                _upElectricity1P.color = Color.white;
+                _upFill1P.color = Color.white;
+            }
+            else
+            {
+                _upElectricity1P.color = new Color(0, 0, 0, 0);
+                _upFill1P.color = _notMaxColor;
+            }
+        }
+
+        if (_characterState2P != null)
+        {
+            if (_characterState2P.CurrentUP >= 100)
+            {
+                _upElectricity2P.color = Color.white;
+                _upFill2P.color = Color.white;
+            }
+            else
+            {
+                _upElectricity2P.color = new Color(0, 0, 0, 0);
+                _upFill2P.color = _notMaxColor;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 残機ハートの表示（適当な実装）
+    /// </summary>
+    public void HeartLost(RoundData roundData)
+    {
+        Color invisible = new Color(0, 0, 0, 0);
+
+        if(_firstHeart1P != null && _secondHeart1P != null)
+        {
+            if (roundData.Heart1P <= 1)
+            {
+                _firstHeart1P.color = invisible;
+            }
+            if (roundData.Heart1P <= 0)
+            {
+                _secondHeart1P.color = invisible;
+            }
+        }
+
+        if(_firstHeart2P != null && _secondHeart2P != null)
+        {
+            if (roundData.Heart2P <= 1)
+            {
+                _firstHeart2P.color = invisible;
+            }
+            if (roundData.Heart2P <= 0)
+            {
+                _secondHeart2P.color = invisible;
+            }
         }
     }
 

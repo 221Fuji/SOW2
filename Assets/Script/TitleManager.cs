@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField] private InputAction _inputAction;
-    [SerializeField] private PlayerInput _playerPrefab = default;
     private bool _join = false;
 
     private void Awake()
@@ -26,15 +25,9 @@ public class TitleManager : MonoBehaviour
 
         _join = true;
 
-        PlayerInput character = PlayerInput.Instantiate(
-            prefab: _playerPrefab.gameObject,
-            playerIndex: 0,
-            pairWithDevice: context.control.device
-            );
-
         //ModeSelectScene‚ÉˆÚ“®
         ModeSelectManager modeSelectmanager =
             await GameManager.LoadAsync<ModeSelectManager>("ModeSelectScene");
-        modeSelectmanager.InitializeMSM(character);
+        modeSelectmanager.Initialize(context.control.device);
     }
 }

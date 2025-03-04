@@ -7,5 +7,5 @@ public class CharacterDataBase : ScriptableObject
 {
     [SerializeField] private List<CharacterData> _characterDataList;
 
-    public List<CharacterData> CharacterDataList {  get { return _characterDataList; } }
+    public List<CharacterData> CharacterDataList { get { return _characterDataList; } }
 }
