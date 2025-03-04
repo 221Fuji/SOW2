@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class FightingManager : MonoBehaviour
+public class FightingManager : ModeManager
 {
     [SerializeField] private float _startPosX1P;
     [SerializeField] private float _startPosX2P;
@@ -23,21 +23,18 @@ public class FightingManager : MonoBehaviour
         Application.targetFrameRate = 60; // デバッグ用
     }
 
-    public void InitializeFM(PlayerInput playerInput1P, CharacterData characterData1P,
-        PlayerInput playerInput2P, CharacterData characterData2P)
+    public void InitializeFM(InputDevice inputDevice1P, CharacterData characterData1P,
+        InputDevice inputDevice2P, CharacterData characterData2P)
     {
-        //座標はあとで
         PlayerInput player1 = PlayerInput.Instantiate(
             prefab: characterData1P.CharacterPrefab.gameObject,
-            playerIndex: 0,
-            controlScheme: playerInput1P.currentControlScheme,
-            pairWithDevice: playerInput1P.user.pairedDevices.FirstOrDefault()
+            playerIndex: 1,
+            pairWithDevice: inputDevice1P
             );
         PlayerInput player2 = PlayerInput.Instantiate(
             prefab: characterData2P.CharacterPrefab.gameObject,
-            playerIndex: 1,
-            controlScheme: playerInput2P.currentControlScheme,
-            pairWithDevice: playerInput2P.user.pairedDevices.FirstOrDefault()
+            playerIndex: 2,
+            pairWithDevice: inputDevice2P
             );
 
         //ラウンド１開始
@@ -64,6 +61,7 @@ public class FightingManager : MonoBehaviour
         _camera.GetComponent<FightingCameraManager>().InitializeCamera(_player1CA.transform, _player2CA.transform);
         //UI設定
         _fightingUI.SetPlayer(_player1CA.GetComponent<CharacterState>(), _player2CA.GetComponent<CharacterState>());
+        _fightingUI.HeartLost(_currentRoundData);
         _effectManager.InitializeFEM(_player1CA, _player2CA);
 
         //座標リセット
@@ -75,11 +73,11 @@ public class FightingManager : MonoBehaviour
 
 
     //ここを呼ぶ機構を作る
-    private async void GoNextRound(int winnerNum)
+    private async void GoNextRound(int loserNum)
     {
         _currentRoundData.RoundNum++;
 
-        if(winnerNum == 1)
+        if(loserNum == 2)
         {
             _currentRoundData.Heart2P--;
             if(_currentRoundData.Heart2P <= 0)
@@ -98,13 +96,13 @@ public class FightingManager : MonoBehaviour
             }
         }
 
-        Debug.Log("こうし");
         var nextRoundFM = await GameManager.LoadAsync<FightingManager>("FightingScene");
         nextRoundFM.StartRound(_currentRoundData, _player1CA, _player2CA);
     }
 
     private void GameSet(int winnerNum)
     {
+        _fightingUI.HeartLost(_currentRoundData);
         Debug.Log($"Player{winnerNum}の勝ち！");
     }
 }

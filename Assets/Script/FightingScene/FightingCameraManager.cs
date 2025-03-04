@@ -28,6 +28,10 @@ public class FightingCameraManager : MonoBehaviour
         float maxBackGroundPos = _stageBoundsMax.x - _maxCameraSize * _cam.aspect;
         float minBackGroundPos = _stageBoundsMin.x + _maxCameraSize * _cam.aspect;
         _backGroundManager.InitializeBackGround(transform, minBackGroundPos, maxBackGroundPos);
+
+        //デリゲート設定
+        _player1Pos.GetComponent<CharacterActions>().PerformUltimate = PerformUltimateEffect;
+        _player2Pos.GetComponent<CharacterActions>().PerformUltimate = PerformUltimateEffect;
     }
 
     private void Update()
@@ -65,5 +69,52 @@ public class FightingCameraManager : MonoBehaviour
 
         StageParameter.SetCurrentWallPos(_rightWall.position.x, _leftWall.position.x);
     }
+
+    public async UniTask PerformUltimateEffect(Transform specialMoveUser, float zoomAmount, int effectDurationFrame, CancellationToken token)
+    {
+        if (_cam == null) return;
+
+        //時間停止
+        Time.timeScale = 0;
+        FightingPhysics.SetFightTimeScale(0);
+
+        float originalSize = _cam.orthographicSize;
+        Vector3 originalPos = transform.position;
+
+        // カメラズーム
+        float targetSize = 3;
+        Vector3 targetPos = new Vector3(specialMoveUser.position.x, specialMoveUser.position.y, originalPos.z);
+
+        // カメラ移動とズームを補間
+        float elapsed = 0;
+        while (elapsed < effectDurationFrame)
+        {
+            if (token.IsCancellationRequested) return;
+
+            elapsed ++;
+            _cam.orthographicSize = Mathf.Lerp(originalSize, targetSize, elapsed / effectDurationFrame);
+            transform.position = Vector3.Lerp(originalPos, targetPos, elapsed / effectDurationFrame);
+            await UniTask.DelayFrame(1);
+        }
+
+        await UniTask.DelayFrame(effectDurationFrame, cancellationToken: token); // 少し演出時間を持たせる
+
+        //時間を進める
+        Time.timeScale = 1;
+        FightingPhysics.SetFightTimeScale(1);
+
+        // 演出終了（カメラを元に戻す）
+        elapsed = 0;
+        while (elapsed < effectDurationFrame)
+        {
+            if (token.IsCancellationRequested) return;
+
+            elapsed ++;
+            _cam.orthographicSize = Mathf.Lerp(targetSize, originalSize, elapsed / effectDurationFrame);
+            transform.position = Vector3.Lerp(targetPos, originalPos, elapsed / effectDurationFrame);
+            await UniTask.DelayFrame(1);
+        }
+    }
+
 }
 

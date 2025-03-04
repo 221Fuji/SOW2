@@ -636,7 +636,7 @@ public class Succubus : CharacterActions
     public async UniTask Ultimate()
     {
 
-        if (!CanEveryAction && _characterState.CurrentUP >= 100) return;
+        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
 
         //‹ó’†•s‰Â
         if (!OnGround) return;

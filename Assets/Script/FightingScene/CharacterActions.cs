@@ -24,7 +24,7 @@ public abstract class CharacterActions : FightingRigidBody
     //硬直等での行動制限プロパティ
     protected virtual bool CanEveryAction
     {
-        get 
+        get
         {
             return !_characterState.IsRecoveringHit
                 && !_characterState.IsRecoveringGuard
@@ -32,33 +32,33 @@ public abstract class CharacterActions : FightingRigidBody
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
         }
     }
-    protected virtual bool CanWalk 
+    protected virtual bool CanWalk
     {
-        get 
+        get
         {
             return CanEveryAction
                 && !_characterState.IsGuarding;
         }
     }
-    protected virtual bool CanJump 
-    { 
-        get 
-        { 
+    protected virtual bool CanJump
+    {
+        get
+        {
             return CanEveryAction
                 && !_characterState.IsGuarding;
-        } 
+        }
     }
-    protected virtual bool CanHit 
-    { 
-        get 
+    protected virtual bool CanHit
+    {
+        get
         {
             return _characterState.IsGuarding
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
-        } 
+        }
     }
-    protected virtual bool CanGuard 
-    { 
-        get 
+    protected virtual bool CanGuard
+    {
+        get
         {
             return CanEveryAction
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)
@@ -73,14 +73,18 @@ public abstract class CharacterActions : FightingRigidBody
     //エフェクト関連デリゲート
     public UnityAction<Vector2, FightingEffect> OnEffect { get; set; }
 
-    //死亡デリゲート
-    public UnityAction<int> OnDie { get; set; }
+    //超必殺技演出
+    public delegate UniTask PerformUltimateDelegate(
+        Transform specialMoveUser, float zoomAmount, int effectDurationFrame, CancellationToken token
+        );
+    public PerformUltimateDelegate PerformUltimate { get; set; }
+    protected CancellationTokenSource _performUltCTS;
 
+    //死亡
+    public UnityAction<int> OnDie { get; set; }
 
     protected override void Awake()
     {
-        base.Awake();
-
         tag = "Character";
 
         //csの初期化
@@ -98,6 +102,8 @@ public abstract class CharacterActions : FightingRigidBody
 
         //当たり判定の設定
         SetHitBox();
+
+        base.Awake();
     }
 
     /// <summary>
@@ -111,12 +117,14 @@ public abstract class CharacterActions : FightingRigidBody
     protected abstract void SetHitBox();
 
     /// <summary>
-    /// 敵情報を設定する
+    /// 状態の初期化
     /// </summary>
     public virtual void InitializeCA(int playerNum, CharacterActions enemyCA)
     {
         PlayerNum = playerNum;
         _enemyCA = enemyCA;
+
+        Velocity = Vector2.zero;
 
         //パラメータ初期化
         _characterState.ResetState();
@@ -135,9 +143,9 @@ public abstract class CharacterActions : FightingRigidBody
         CancelActionByHit();
     }
 
-    protected override void Update()
+    protected override void FightingUpdate()
     {
-        base.Update();
+        if (_characterState == null) return;
 
         //ガード中はSP回復なし
         if (!_characterState.IsGuarding)
