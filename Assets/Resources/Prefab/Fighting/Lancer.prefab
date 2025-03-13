@@ -105,8 +105,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2230411809739324347}
-  - component: {fileID: 8443885225981554902}
   - component: {fileID: 7323941387625665384}
+  - component: {fileID: 8443885225981554902}
   - component: {fileID: -4932156516839373394}
   - component: {fileID: 1341342010163228783}
   - component: {fileID: 9079692273766830}
@@ -138,25 +138,6 @@ Transform:
   - {fileID: 7800839898742723556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8443885225981554902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3957359516875974835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d18675f7b8dadb4e9ef2a59f7631d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _defaultMaxHP: 100
-  _defaultMaxSP: 100
-  _defaultMaxUP: 100
-  _upGainSpeed: 1
-  _defaultFrontSpeed: 10
-  _defaultBackSpeed: 5
-  _defaultJumpPower: 25
 --- !u!114 &7323941387625665384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +258,25 @@ MonoBehaviour:
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _ultBullet: {fileID: 698598772434941082, guid: a9dd241dbdaaa1845b37a084c4d298a5, type: 3}
+--- !u!114 &8443885225981554902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957359516875974835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d18675f7b8dadb4e9ef2a59f7631d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultMaxHP: 100
+  _defaultMaxSP: 100
+  _defaultMaxUP: 100
+  _upGainSpeed: 0.025
+  _defaultFrontSpeed: 10
+  _defaultBackSpeed: 5
+  _defaultJumpPower: 25
 --- !u!114 &-4932156516839373394
 MonoBehaviour:
   m_ObjectHideFlags: 0
