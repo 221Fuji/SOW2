@@ -175,3 +175,4 @@ MonoBehaviour:
   _isWall: 0
   _bound: 1
   _boundVelocity: {x: 2.5, y: 20}
+  _hitBox: {fileID: 4227404522878880443}
