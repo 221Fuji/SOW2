@@ -9,6 +9,14 @@ using UnityEngine;
 //MonoBehaviourè¡Ç∑ÅI
 public class UIMovingCtrl : MonoBehaviour
 {
+    [System.Serializable]
+    class Making
+    {
+        [SerializeField] List<UIPersonalAct> _inMap;
+    }
+
+    [SerializeField] List<Making> _outMap;
+
     UIPersonalAct[,] _map = new UIPersonalAct[,]{
         {new UIPersonalAct(),new UIPersonalAct(),new UIPersonalAct()},
         {new UIPersonalAct(),new UIPersonalAct(),new UIPersonalAct()}
