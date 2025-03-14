@@ -4,31 +4,103 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using System;
+using System.Xml;
 
 public class VersusManager : MonoBehaviour
 {
+    [Header("第一演出")]
+    [SerializeField] private Transform _firstParent;
     [SerializeField] private Image _panel;
+    [SerializeField] private TextMeshProUGUI _charaName1P;
+    [SerializeField] private TextMeshProUGUI _charaName2P;
+    [SerializeField] private Transform _eyeForcusMask1P;
+    [SerializeField] private Transform _eyeForcusMask2P;
 
-    [SerializeField] private TextMeshPro _charaName1P;
-    [SerializeField] private TextMeshPro _charaName2P;
-
-    [SerializeField] private GameObject _eyeForcus1P;
-    [SerializeField] private GameObject _eyeForcus2P;
-
-    [SerializeField] private Transform _allParent;
+    [Header("第ニ演出")]
+    [SerializeField] private Transform _secondParent;
+    [SerializeField] private Image _vsImage;
+    [SerializeField] private TextMeshProUGUI _versusText;
 
     private CancellationTokenSource _performanceCTS;
 
+    //Debug
+    [SerializeField] private CharacterDataBase _characterDataBase;
+    private void Awake()
+    {
+        CharacterData chara1p = _characterDataBase.GetCharacterDataByName("Lancer");
+        CharacterData chara2p = _characterDataBase.GetCharacterDataByName("Succubus");
+        VersusPerformance(chara1p, chara2p);
+    }
+
     public async void VersusPerformance(CharacterData chara1p, CharacterData chara2p)
     {
+        //第一演出開始
+        _firstParent.gameObject.SetActive(true);
+        _secondParent.gameObject.SetActive(false);
+
+        //eyeForcusImage生成
+        Image eyeForcus1P = Instantiate(chara1p.VersusEyeForcusImage);
+        eyeForcus1P.transform.SetParent(_eyeForcusMask1P, false);
+        Image eyeForcus2P = Instantiate(chara2p.VersusEyeForcusImage);
+        eyeForcus2P.transform.SetParent(_eyeForcusMask2P, false);
+
         _performanceCTS = new CancellationTokenSource();
         CancellationToken token = _performanceCTS.Token;
 
         //明転解除
-        await _panel.DOFade(0, 0.25f);
+        _panel.color = new Color(1, 1, 1, 1);
+        _panel.DOFade(0, 1f).ToUniTask(cancellationToken: token).Forget();
+
+        //ズームアウト
+        await ZoomOut(_firstParent, token);
+
+        //テキスト移動
+        _charaName1P.text = chara1p.CharacterNameE;
+        _charaName2P.text = chara2p.CharacterNameE;
+        _charaName1P.transform.localPosition = new Vector2(960, 135);
+        _charaName2P.transform.localPosition = new Vector2(-960, -135);
+        _charaName1P.transform.DOLocalMoveX(400, 3).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token).Forget();
+        await _charaName2P.transform.DOLocalMoveX(-400, 3).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token);
+        _charaName1P.transform.DOLocalMoveX(-400, 0.25f).SetEase(Ease.InExpo).ToUniTask(cancellationToken: token).Forget();
+        _charaName2P.transform.DOLocalMoveX(400, 0.25f).SetEase(Ease.InExpo).ToUniTask(cancellationToken: token).Forget();
+
+        //ズームイン
+        await _firstParent.DOScale(new Vector2(8f, 8f), 0.25f).SetEase(Ease.InOutExpo).ToUniTask(cancellationToken: token);
+
+
+        //第二演出開始
+        _firstParent.gameObject.SetActive(false);
+        _secondParent.gameObject.SetActive(true);
+        _vsImage.transform.localScale = new Vector2(8, 8);
+        _vsImage.color = new Color(1, 1, 1, 0);
+
+        //ズームアウト
+        await ZoomOut(_secondParent, token);
+
+        //VS演出
+        _vsImage.DOFade(1, 0.25f).ToUniTask(cancellationToken: token).Forget();
+        _vsImage.transform.DOScale(new Vector2(4, 4), 2f).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token).Forget();
+
+        //versus演出
+        // 文字間隔をDOTweenでアニメーション
+        await DOTween.To(
+            () => _versusText.characterSpacing,  // 現在の値
+            value => _versusText.characterSpacing = value, // 更新処理
+            100, 2.5f).SetEase(Ease.InOutQuad).ToUniTask(cancellationToken: token);
+
+        //ズームイン
+        _secondParent.DOScale(new Vector2(8f, 8f), 0.5f).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token).Forget();
 
         //暗転
-        _panel.color = Color.black;
+        _panel.color = new Color(0, 0, 0, 0);
         await _panel.DOFade(1, 0.25f).ToUniTask(cancellationToken: token);
+    }
+
+    private async UniTask ZoomOut(Transform parent, CancellationToken token)
+    {
+        parent.localScale = new Vector2(2f, 2f);
+        await parent.DOScale(new Vector2(1.05f, 1.05f), 0.25f).SetEase(Ease.Linear).ToUniTask(cancellationToken: token);
+        parent.DOScale(new Vector2(1f, 1f), 2f).SetEase(Ease.Linear).ToUniTask(cancellationToken: token).Forget();
     }
 }

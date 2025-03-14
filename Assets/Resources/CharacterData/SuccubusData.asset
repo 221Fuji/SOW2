@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
   m_Name: SuccubusData
   m_EditorClassIdentifier: 
-  _characterName: Succubus
+  _characterNameE: Succubus
+  _characterNameJ: "\u30B5\u30AD\u30E5\u30D0\u30B9"
   _characterPrefab: {fileID: 5056030989154322011, guid: b46d8ba432dd97e479f52b62ce03f88c, type: 3}
+  _versusEyeForcusImage: {fileID: 5022398441138178749, guid: 72b5f41f7b1874141adc0c3b5207318a, type: 3}
+  _versusStandingImage: {fileID: 0}
+  _fightingFaceUpImage: {fileID: 0}
+  _fightingStandingImage: {fileID: 0}
