@@ -15,6 +15,7 @@ public class CharacterData : ScriptableObject
     [Header("VersusScene‚Å‚ÌImage")]
     [SerializeField] private Image _versusEyeForcusImage;
     [SerializeField] private Image _versusStandingImage;
+    [SerializeField] private Image _versusGrayImage;
     [Header("FightingScene‚Å‚ÌImage")]
     [SerializeField] private Image _fightingFaceUpImage;
     [SerializeField] private Image _fightingStandingImage;
@@ -25,6 +26,7 @@ public class CharacterData : ScriptableObject
     public CharacterActions CharacterPrefab { get { return _characterPrefab; } }
     public Image VersusEyeForcusImage { get {  return _versusEyeForcusImage; } }
     public Image VersusStandingImage { get { return _versusStandingImage; } }
+    public Image VersusGrayImage { get { return _versusGrayImage; } }
     public Image FightingFaceUpImage { get { return _fightingFaceUpImage; } }
     public Image FightingStandingImage { get { return _fightingStandingImage; } }
 }

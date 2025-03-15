@@ -16,6 +16,7 @@ MonoBehaviour:
   _characterNameJ: "\u30B5\u30AD\u30E5\u30D0\u30B9"
   _characterPrefab: {fileID: 5056030989154322011, guid: b46d8ba432dd97e479f52b62ce03f88c, type: 3}
   _versusEyeForcusImage: {fileID: 5022398441138178749, guid: 72b5f41f7b1874141adc0c3b5207318a, type: 3}
-  _versusStandingImage: {fileID: 0}
+  _versusStandingImage: {fileID: 3293135759552213301, guid: 5e2a0432e1725f64281520b6f05f35ff, type: 3}
+  _versusGrayImage: {fileID: 355144528360286030, guid: c3885e72eacc7e34daa0d87639b69064, type: 3}
   _fightingFaceUpImage: {fileID: 0}
   _fightingStandingImage: {fileID: 0}
