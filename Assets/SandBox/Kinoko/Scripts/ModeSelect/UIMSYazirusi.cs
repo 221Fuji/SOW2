@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class UIMSYazirusi : MonoBehaviour
 {
     public void InstanceYazirusi(GameObject _ob)
     {
-        this.transform.position = new Vector2(_ob.transform.position.x + 211,_ob.transform.position.y+3);
+        GameObject parent = _ob.transform.parent.gameObject;
+        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(parent.GetComponent<RectTransform>().anchoredPosition.x + 211,parent.GetComponent<RectTransform>().anchoredPosition.y);
     }
 }
