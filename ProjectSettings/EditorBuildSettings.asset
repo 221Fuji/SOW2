@@ -15,8 +15,14 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelectScene.unity
     guid: 94a963a6c4672044f96f907fc0550cb1
   - enabled: 1
+    path: Assets/Scenes/VersusScene.unity
+    guid: 6389e1426d3495843880dbb2dd9f910a
+  - enabled: 1
     path: Assets/Scenes/FightingScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/ResultScene.unity
+    guid: da29afc986202614b9356c7bc5b7ce14
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 65163ae8e1b520642aa5fadb89dfb8ac, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 7e4d0944db31d73479c863387d4e65cb, type: 3}

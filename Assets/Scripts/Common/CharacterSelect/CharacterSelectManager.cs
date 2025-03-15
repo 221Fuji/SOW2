@@ -61,7 +61,7 @@ public class CharacterSelectManager : ModeManager
         }, cancellationToken : token);
 
         //FightingScene�Ɉڍs
-        var fm = await GameManager.LoadAsync<FightingManager>("FightingScene");
-        fm.InitializeFM(GameManager.Player1Device, _lancer, GameManager.Player2Device, _succubus);
+        var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
+        vm.VersusPerformance(_lancer, _succubus);
     }
 }

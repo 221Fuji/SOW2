@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using System;
-using System.Xml;
 
 public class VersusManager : MonoBehaviour
 {
@@ -21,17 +19,12 @@ public class VersusManager : MonoBehaviour
     [SerializeField] private Transform _secondParent;
     [SerializeField] private Image _vsImage;
     [SerializeField] private TextMeshProUGUI _versusText;
+    [SerializeField] private Transform _gray1P;
+    [SerializeField] private Transform _gray2P;
+    [SerializeField] private Transform _stand1P;
+    [SerializeField] private Transform _stand2P;
 
     private CancellationTokenSource _performanceCTS;
-
-    //Debug
-    [SerializeField] private CharacterDataBase _characterDataBase;
-    private void Awake()
-    {
-        CharacterData chara1p = _characterDataBase.GetCharacterDataByName("Lancer");
-        CharacterData chara2p = _characterDataBase.GetCharacterDataByName("Succubus");
-        VersusPerformance(chara1p, chara2p);
-    }
 
     public async void VersusPerformance(CharacterData chara1p, CharacterData chara2p)
     {
@@ -44,6 +37,7 @@ public class VersusManager : MonoBehaviour
         eyeForcus1P.transform.SetParent(_eyeForcusMask1P, false);
         Image eyeForcus2P = Instantiate(chara2p.VersusEyeForcusImage);
         eyeForcus2P.transform.SetParent(_eyeForcusMask2P, false);
+        eyeForcus2P.transform.localPosition *= new Vector2(-1, 1);
 
         _performanceCTS = new CancellationTokenSource();
         CancellationToken token = _performanceCTS.Token;
@@ -75,6 +69,18 @@ public class VersusManager : MonoBehaviour
         _vsImage.transform.localScale = new Vector2(8, 8);
         _vsImage.color = new Color(1, 1, 1, 0);
 
+        //óßÇøäGê∂ê¨
+        Image stand1P = Instantiate(chara1p.VersusStandingImage);
+        stand1P.transform.SetParent(_stand1P, false);
+        Image stand2P = Instantiate(chara2p.VersusStandingImage);
+        stand2P.transform.SetParent(_stand2P, false);
+
+        //îíçïîwåiê∂ê¨
+        Image gray1P = Instantiate(chara1p.VersusGrayImage);
+        gray1P.transform.SetParent(_gray1P, false);
+        Image gray2P = Instantiate(chara2p.VersusGrayImage);
+        gray2P.transform.SetParent(_gray2P, false);
+
         //ÉYÅ[ÉÄÉAÉEÉg
         await ZoomOut(_secondParent, token);
 
@@ -102,5 +108,11 @@ public class VersusManager : MonoBehaviour
         parent.localScale = new Vector2(2f, 2f);
         await parent.DOScale(new Vector2(1.05f, 1.05f), 0.25f).SetEase(Ease.Linear).ToUniTask(cancellationToken: token);
         parent.DOScale(new Vector2(1f, 1f), 2f).SetEase(Ease.Linear).ToUniTask(cancellationToken: token).Forget();
+    }
+
+    private void OnDestroy()
+    {
+        _performanceCTS.Cancel();
+        _performanceCTS = null;
     }
 }
