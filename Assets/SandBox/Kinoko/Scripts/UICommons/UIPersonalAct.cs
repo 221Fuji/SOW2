@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 /// <summary>
@@ -29,6 +28,11 @@ public abstract class UIPersonalAct : MonoBehaviour
 
     }
     public virtual async void ClickedAction()
+    {
+
+    }
+
+    public virtual void InstanceObject(GameObject _ob)
     {
 
     }
