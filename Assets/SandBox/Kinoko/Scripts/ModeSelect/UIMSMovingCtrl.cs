@@ -9,6 +9,7 @@ public class UIMSMovingCtrl : UIMovingCtrl
     [SerializeField] UIMSYazirusi _yazirusi;
     [SerializeField] UIMSFloorTop _floorTop;
     [SerializeField] UIMSFloorUnder _floorUnder;
+    [SerializeField] UIMSKettei _kettei;
 
     public override void ForcusUp()
     {
@@ -42,5 +43,10 @@ public class UIMSMovingCtrl : UIMovingCtrl
     public UIMSDiscriptionTx ReturnDiscriptionTx()
     {
         return _discriptionTx;
+    }
+
+    public UIMSKettei ReturnKettei()
+    {
+        return _kettei;
     }
 }

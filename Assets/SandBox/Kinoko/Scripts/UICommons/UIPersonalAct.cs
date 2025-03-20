@@ -27,7 +27,7 @@ public abstract class UIPersonalAct : MonoBehaviour
     {
 
     }
-    public virtual async void ClickedAction()
+    public virtual async void ClickedAction(GameObject _ob)
     {
 
     }
