@@ -85,6 +85,7 @@ public class UIMovingCtrl : MonoBehaviour
         }
 
         _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
+        Debug.Log("à»â∫èàóù");
 
         _forcus = _search;
         _search = new Vector2(-1,-1);

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIMSMovingCtrl : UIMovingCtrl
 {
-    [SerializeField] GameObject _modeNameMainTx;
+    [SerializeField] UIMSModeNameTx _modeNameMainTx;
+    [SerializeField] UIMSDiscriptionTx _discriptionTx;
     [SerializeField] UIMSYazirusi _yazirusi;
     [SerializeField] UIMSFloorTop _floorTop;
     [SerializeField] UIMSFloorUnder _floorUnder;
@@ -33,8 +34,13 @@ public class UIMSMovingCtrl : UIMovingCtrl
         return _floorUnder;
     }
 
-    public GameObject ReturnModeNameMainTx()
+    public UIMSModeNameTx ReturnModeNameMainTx()
     {
         return _modeNameMainTx;
+    }
+
+    public UIMSDiscriptionTx ReturnDiscriptionTx()
+    {
+        return _discriptionTx;
     }
 }
