@@ -12,11 +12,9 @@ public class CharacterSelectManager : ModeManager
     [SerializeField] private CharacterSelectController _csc1P;
     [SerializeField] private CharacterSelectController _csc2P;
 
-    private CancellationTokenSource _goFightingCTS;
+    [SerializeField] private CharacterDataBase _characterDataBase;
 
-    //デバッグ
-    [SerializeField] private CharacterData _lancer;
-    [SerializeField] private CharacterData _succubus;
+    private CancellationTokenSource _goFightingCTS;
 
     public override void Initialize(InputDevice device)
     {
@@ -60,8 +58,20 @@ public class CharacterSelectManager : ModeManager
             return _csc1P.Selected && _csc2P.Selected;
         }, cancellationToken : token);
 
+        //
+        //以下デバッグ用処理
+        //
+
+        CharacterData chara1P = _characterDataBase.GetCharacterDataByName("Cloud");
+        CharacterData chara2P = _characterDataBase.GetCharacterDataByName("Lancer");
+
         //FightingSceneに移行
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
-        vm.VersusPerformance(_lancer, _succubus);
+        vm.VersusPerformance(chara1P, chara2P);
+    }
+
+    private void OnDestroy()
+    {
+        InputSystem.onEvent -= OnInput2P;
     }
 }

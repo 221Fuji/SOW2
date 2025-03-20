@@ -32,6 +32,7 @@ public class OtherInputReceiver : MonoBehaviour
         InputSystem.onEvent -= OnInputEvent;
         Accept = null;
         Cancel = null;
+        Debug.Log("イベント消した");
     }
 
     private void OnDestroy()
@@ -43,7 +44,8 @@ public class OtherInputReceiver : MonoBehaviour
     {
         // キャラセレと対戦中はデバイスの切り替え不可
         if (SceneManager.GetActiveScene().name == "CharacterSelectScene" ||
-           SceneManager.GetActiveScene().name == "FightingScene")
+           SceneManager.GetActiveScene().name == "FightingScene" ||
+           SceneManager.GetActiveScene().name == "VersusScene")
         {
             return;
         }
@@ -79,13 +81,11 @@ public class OtherInputReceiver : MonoBehaviour
 
     public void OnAccept()
     {
-        Debug.Log("Accept");
         Accept?.Invoke();
     }
 
     public void OnCancel()
     {
-        Debug.Log("Cancel");
         Cancel?.Invoke();
     }
 }

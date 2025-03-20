@@ -7,7 +7,7 @@ using UnityEngine;
 public struct AttackInfo
 {
     public string Name; //技名 
-    public int Damage; // ダメージ
+    public float Damage; // ダメージ
     public int StartupFrame; // 発生フレーム
     public int ActiveFrame; // 持続フレーム
     public int RecoveryFrame; // 硬直フレーム

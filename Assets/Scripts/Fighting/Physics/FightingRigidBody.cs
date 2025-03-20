@@ -78,6 +78,11 @@ public class FightingRigidBody : MonoBehaviour
         _isFixed = value;
     }
 
+    public void SetGravityScale(float value)
+    {
+        _gravityScale = value;
+    }
+
     protected virtual void Awake()
     {
         _fightingUpdateCTS = new CancellationTokenSource();
@@ -275,7 +280,7 @@ public class FightingRigidBody : MonoBehaviour
     /// </summary>
     private void Friction()
     {
-        if (!OnGround || Velocity.x == 0) return;
+        if (!OnGround || Velocity.x == 0 || _gravityScale <= 0) return;
 
         if(Mathf.Abs(Velocity.x) <= FightingPhysics.FrictionCoefficient)
         {
@@ -313,11 +318,16 @@ public class FightingRigidBody : MonoBehaviour
         Gizmos.DrawLine(rightEdge, leftEdge);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if(_fightingRigidBodies.Contains(this))
         {
             _fightingRigidBodies.Remove(this);
+        }
+
+        if (_fightingUpdateCTS != null)
+        {
+            _fightingUpdateCTS.Cancel();
         }
     }
 }
