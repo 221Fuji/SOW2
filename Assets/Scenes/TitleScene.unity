@@ -471,6 +471,8 @@ MonoBehaviour:
       m_Action: Input
       m_Flags: 0
     m_Flags: 0
+  _soloPlayerDebug: 0
+  _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
 --- !u!1 &1892420417
 GameObject:
   m_ObjectHideFlags: 0

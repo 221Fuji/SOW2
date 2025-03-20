@@ -368,6 +368,7 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.2, y: 1.375}
   _isFixed: 0
   _isWall: 0
+  _characterData: {fileID: 11400000, guid: fb37e58a6609a7f4f81955760d47dd92, type: 2}
   _hurtBox: {fileID: 2979863537057560798}
   _normalMoveInfo:
     Name: NormalMove
@@ -438,7 +439,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _sm1BulletPrefab: {fileID: 8943706938813224397, guid: e0059dad0cfc26d43b55abbf02e5c550, type: 3}
+  _sm1BulletPrefab: {fileID: 621395004832537837, guid: e0059dad0cfc26d43b55abbf02e5c550, type: 3}
   _sm1BulletVelocity: 5
   _specialMove2Info:
     Name: SpecialMove2
@@ -490,7 +491,7 @@ MonoBehaviour:
     HitBackDirection: {x: 2.5, y: 20}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _ultBulletPrefab: {fileID: 4812519676341439858, guid: f47f9e89a382a2447a664ca2d5167419, type: 3}
+  _ultBulletPrefab: {fileID: 5721343256160288778, guid: f47f9e89a382a2447a664ca2d5167419, type: 3}
   _ultBulletVelocity: {x: 2.5, y: 15}
 --- !u!1 &8140592575651213041
 GameObject:

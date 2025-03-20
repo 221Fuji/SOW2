@@ -8,12 +8,13 @@ public class Bullet : FightingRigidBody
     [Header("地面バウンドするか")]
     [SerializeField] private bool _bound;
     [SerializeField] private Vector2 _boundVelocity;
+    [Space]
     [SerializeField] private HitBoxManager _hitBox;
 
     public HitBoxManager HitBox { get => _hitBox; }
 
     //弾削除デリゲート
-    public UnityAction<GameObject> DestroyBullet { get; private set; }
+    public UnityAction<Bullet> DestroyBullet { get; set; }
 
     public Vector2 BoundVelocity
     {
@@ -37,7 +38,7 @@ public class Bullet : FightingRigidBody
         if(transform.position.x > 5 + StageParameter.StageLength / 2
             || transform.position.x < -5 - StageParameter.StageLength / 2)
         {
-            DestroyBullet?.Invoke(gameObject);
+            DestroyBullet?.Invoke(this);
         }
     }
 

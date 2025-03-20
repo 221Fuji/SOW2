@@ -7,6 +7,9 @@ using System.Linq;
 
 public abstract class CharacterActions : FightingRigidBody
 {
+    [Space]
+    [Header("キャラクターの設定")]
+    [SerializeField] private CharacterData _characterData;
     [SerializeField] private GameObject _hurtBox;
 
     //基本情報
@@ -17,9 +20,10 @@ public abstract class CharacterActions : FightingRigidBody
     protected CharacterState _characterState { get; private set; }
     protected Animator _animator { get; private set; }
 
-    //共通変数
+    //その他プロパティ
     protected CharacterActions _enemyCA { get; private set; }
     public int PlayerNum { get; private set; } = 0;
+    public CharacterData CharacterData { get { return _characterData; } }
 
     //硬直等での行動制限プロパティ
     protected virtual bool CanEveryAction
@@ -184,10 +188,12 @@ public abstract class CharacterActions : FightingRigidBody
             GuardRelease();
         }
 
-        if (_enemyCA == null) return;
+        if (_enemyCA != null)
+        {
+            //キャラを向かい合わせる
+            DirectionReversal();
+        }
 
-        //キャラを向かい合わせる
-        DirectionReversal();
     }
 
     /// <summary>
@@ -460,7 +466,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// <summary>
     /// 攻撃を受けたことによる各アクションのキャンセル
     /// </summary>
-    protected abstract void CancelActionByHit();
+    public abstract void CancelActionByHit();
 
     /// <summary>
     /// ヒット硬直の処理
