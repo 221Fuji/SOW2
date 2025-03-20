@@ -22,7 +22,7 @@ public class Succubus : CharacterActions
     [SerializeField] private Vector2 _jmDirection;
     [Header("•KŽE‹Z‚P")]
     [SerializeField] private AttackInfo _specialMove1Info;
-    [SerializeField] private GameObject _sm1BulletPrefab;
+    [SerializeField] private Bullet _sm1BulletPrefab;
     [SerializeField] private float _sm1BulletVelocity;
     [Header("•KŽE‹Z2")]
     [SerializeField] private AttackInfo _specialMove2Info;
@@ -31,7 +31,7 @@ public class Succubus : CharacterActions
     [SerializeField] private HitBoxManager _sm2DerivationHitBox;
     [Header("’´•KŽE‹Z")]
     [SerializeField] private AttackInfo _ultimateInfo;
-    [SerializeField] private GameObject _ultBulletPrefab;
+    [SerializeField] private Bullet _ultBulletPrefab;
     [SerializeField] private Vector2 _ultBulletVelocity;
 
     private int _jumpMoveCount = 0; //‚P‰ñ‚ÌƒWƒƒƒ“ƒv‚Ås‚Á‚½ƒWƒƒƒ“ƒvUŒ‚‚Ì‰ñ”
@@ -424,6 +424,7 @@ public class Succubus : CharacterActions
             //ƒ|[ƒ^ƒ‹‚ªˆê’UŠJ‚­‚Ü‚Å‘Ò‚Â
             await UniTask.WaitUntil(() =>
             {
+                if (startAnimator == null) return true;
                 var startStateInfo = startAnimator.GetCurrentAnimatorStateInfo(0);
                 return !startStateInfo.IsName("Open");
             }, cancellationToken: _destroyPortalCTS.Token);
@@ -434,6 +435,7 @@ public class Succubus : CharacterActions
             //ƒ|[ƒ^ƒ‹‚ª•Â‚¶‚é‚Ü‚Å‘Ò‚Â
             await UniTask.WaitUntil(() =>
             {
+                if (startAnimator == null) return true;
                 var startStateInfo = startAnimator.GetCurrentAnimatorStateInfo(0);
                 return startStateInfo.IsName("Close") && startStateInfo.normalizedTime >= 1f;
             }, cancellationToken: _destroyPortalCTS.Token);
@@ -513,7 +515,7 @@ public class Succubus : CharacterActions
             bulletPosOffset *= new Vector2(-1, 1);
         }
         Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
-        Bullet bullet = Instantiate(_sm1BulletPrefab, bulletPos, Quaternion.identity).GetComponent<Bullet>();
+        Bullet bullet = Instantiate(_sm1BulletPrefab, bulletPos, Quaternion.identity);
         _sm1Bullet.Add(bullet);
         bullet.Velocity = bulletVelocity;
 
@@ -704,7 +706,7 @@ public class Succubus : CharacterActions
         Vector2 bulletPosOffset = new Vector2(0, 1.5f);
 
         Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
-        Bullet ultBullet = Instantiate(_ultBulletPrefab, bulletPos, Quaternion.identity).GetComponent<Bullet>();
+        Bullet ultBullet = Instantiate(_ultBulletPrefab, bulletPos, Quaternion.identity);
         _ultBullet.Add(ultBullet);
         if (!_characterState.IsLeftSide)
         {
@@ -773,7 +775,7 @@ public class Succubus : CharacterActions
         await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
-    protected override void CancelActionByHit()
+    public override void CancelActionByHit()
     {
         _normalMoveCTS?.Cancel();
         _normalMoveBehindCTS?.Cancel();

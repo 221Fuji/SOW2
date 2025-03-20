@@ -9,8 +9,8 @@ public class HitBoxManager : MonoBehaviour
     [SerializeField] private LayerMask _hurtBoxLayer;
     [SerializeField] private bool _sceneCheckMode;
 
-    AttackInfo _attackInfo;
-    GameObject _self;
+    private AttackInfo _attackInfo;
+    private GameObject _self;
 
     /// <summary>
     /// “–‚½‚è”»’è‚Ì—LŒøó‘Ô
@@ -35,7 +35,7 @@ public class HitBoxManager : MonoBehaviour
     private void Update()
     {
         // ‘±’†‚©‚Ç‚¤‚©
-        if(!IsActive) return;
+        if(!IsActive || FightingPhysics.FightingTimeScale <= 0) return;
 
         //“–‚½‚è”»’è‚É–ÊÏ‚ª‚È‚¢ê‡–³Œø‚É‚·‚é
         if (transform.lossyScale.x == 0 || transform.lossyScale.y == 0) return;

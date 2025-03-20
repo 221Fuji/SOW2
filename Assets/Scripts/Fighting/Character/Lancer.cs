@@ -434,13 +434,12 @@ public class Lancer : CharacterActions
         await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
-    protected override void CancelActionByHit()
+    public override void CancelActionByHit()
     {
         _normalMoveCTS?.Cancel();
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
-
         //Ultî≠ìÆíÜÇÃå≈íËâªâèú
         SetIsFixed(false);
     }
