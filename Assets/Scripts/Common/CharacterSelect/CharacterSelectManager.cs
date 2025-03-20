@@ -62,7 +62,7 @@ public class CharacterSelectManager : ModeManager
         //以下デバッグ用処理
         //
 
-        CharacterData chara1P = _characterDataBase.GetCharacterDataByName("Cloud");
+        CharacterData chara1P = _characterDataBase.GetCharacterDataByName("Succubus");
         CharacterData chara2P = _characterDataBase.GetCharacterDataByName("Lancer");
 
         //FightingSceneに移行

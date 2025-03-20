@@ -15,8 +15,8 @@ MonoBehaviour:
   _characterNameE: Cloud
   _characterNameJ: "\u30AF\u30E9\u30A6\u30C9"
   _characterPrefab: {fileID: 3157979180698024397, guid: be0eb5616dfd2cf42a594f1d74c60ad5, type: 3}
-  _versusEyeForcusImage: {fileID: 973210332414741000, guid: 9959ab1547f49844f810e7fdf90affcc, type: 3}
-  _versusStandingImage: {fileID: 7370351794931346394, guid: bfb4b49b31818ce41baa836b4789385b, type: 3}
-  _versusGrayImage: {fileID: 4041914751486318154, guid: 2a82d29b45ac0cd4d8c04e8c0a24eacc, type: 3}
-  _fightingFaceUpImage: {fileID: 8314745217440064886, guid: 81df4b578d4ce5441a64d6b91c3a00b9, type: 3}
+  _versusEyeForcusImage: {fileID: 6747729270971665375, guid: 52e14f992812490469f576624932fe99, type: 3}
+  _versusStandingImage: {fileID: 2802262618212291688, guid: 64ebec53046764a45837a0f533c56890, type: 3}
+  _versusGrayImage: {fileID: 3521021897029906315, guid: be6c5b04dd6de6d4781bfeadbf1fdbb8, type: 3}
+  _fightingFaceUpImage: {fileID: 5007381580474031200, guid: ced227efb9f97194da258ac5acff127f, type: 3}
   _fightingStandingImage: {fileID: 0}
