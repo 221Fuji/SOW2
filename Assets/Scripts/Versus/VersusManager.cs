@@ -38,6 +38,7 @@ public class VersusManager : MonoBehaviour
         Image eyeForcus2P = Instantiate(chara2p.VersusEyeForcusImage);
         eyeForcus2P.transform.SetParent(_eyeForcusMask2P, false);
         eyeForcus2P.transform.localPosition *= new Vector2(-1, 1);
+        eyeForcus2P.transform.localScale *= new Vector2(-1, 1);
 
         _performanceCTS = new CancellationTokenSource();
         CancellationToken token = _performanceCTS.Token;
