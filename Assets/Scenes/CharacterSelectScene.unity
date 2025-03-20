@@ -155,8 +155,7 @@ MonoBehaviour:
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
   _csc1P: {fileID: 1873933416}
   _csc2P: {fileID: 917192335}
-  _lancer: {fileID: 11400000, guid: ef8a944741b45714598b02ce6d77c204, type: 2}
-  _succubus: {fileID: 11400000, guid: fb37e58a6609a7f4f81955760d47dd92, type: 2}
+  _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
 --- !u!4 &223010792
 Transform:
   m_ObjectHideFlags: 0

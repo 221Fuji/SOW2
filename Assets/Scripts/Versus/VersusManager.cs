@@ -89,7 +89,6 @@ public class VersusManager : MonoBehaviour
         _vsImage.transform.DOScale(new Vector2(4, 4), 2f).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token).Forget();
 
         //versus演出
-        // 文字間隔をDOTweenでアニメーション
         await DOTween.To(
             () => _versusText.characterSpacing,  // 現在の値
             value => _versusText.characterSpacing = value, // 更新処理
@@ -101,6 +100,10 @@ public class VersusManager : MonoBehaviour
         //暗転
         _panel.color = new Color(0, 0, 0, 0);
         await _panel.DOFade(1, 0.25f).ToUniTask(cancellationToken: token);
+
+        //シーン移動
+        var fm = await GameManager.LoadAsync<FightingManager>("FightingScene");
+        fm.InitializeFM(GameManager.Player1Device, chara1p, GameManager.Player2Device, chara2p);
     }
 
     private async UniTask ZoomOut(Transform parent, CancellationToken token)
@@ -112,6 +115,7 @@ public class VersusManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(_performanceCTS == null) return;
         _performanceCTS.Cancel();
         _performanceCTS = null;
     }

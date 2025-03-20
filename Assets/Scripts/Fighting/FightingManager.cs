@@ -7,18 +7,22 @@ using UnityEngine.InputSystem;
 
 public class FightingManager : ModeManager
 {
+    [SerializeField] private int _timeLimit;
+
     [SerializeField] private float _startPosX1P;
     [SerializeField] private float _startPosX2P;
 
     [SerializeField] private GameObject _camera;
     [SerializeField] private FightingUI _fightingUI;
     [SerializeField] private FightingEffectManager _effectManager;
+    [Space]
 
     private CharacterActions _player1CA;
     private CharacterActions _player2CA;
     private CharacterState _player1CS;
     private CharacterState _player2CS;
     private RoundData _currentRoundData;
+    private CancellationTokenSource _timeLimitCTS;
 
     public RoundData CurrentRoundData { get => _currentRoundData; }
 
@@ -68,6 +72,7 @@ public class FightingManager : ModeManager
         //UI設定
         _fightingUI.SetPlayer(_player1CS, _player2CS);
         _fightingUI.HeartLost(_currentRoundData);
+        _fightingUI.SetTimeLimitText(_timeLimit.ToString("D2"));
         _effectManager.InitializeFEM(_player1CA, _player2CA);
         //ラウンドコール
         _player1CS.SetAcceptOperations(false);
@@ -85,7 +90,32 @@ public class FightingManager : ModeManager
     {
         await _fightingUI.RoundCall(CurrentRoundData.RoundNum);
         _player1CS.SetAcceptOperations(true);
-        _player2CS.SetAcceptOperations(true);
+        if(!TitleManager.SoloPlayDebug)
+        {
+            _player2CS.SetAcceptOperations(true);
+        }
+        CountdownAsync().Forget();
+    }
+
+    private async UniTaskVoid CountdownAsync()
+    {
+        _timeLimitCTS = new CancellationTokenSource();
+
+        int time = _timeLimit;
+
+        while (time >= 0)
+        {
+            _fightingUI.SetTimeLimitText(time.ToString("D2")); // 2桁表示
+
+            await FightingPhysics.DelayFrameWithTimeScale(
+                FightingPhysics.FightingFrameRate,
+                cancellationToken: _timeLimitCTS.Token
+                );
+
+            time--;
+        }
+
+        Debug.Log("カウントダウン終了");
     }
 
     //ここを呼ぶ機構を作る
@@ -124,6 +154,9 @@ public class FightingManager : ModeManager
         _player1CS.SetAcceptOperations(true);
         _player2CS.SetAcceptOperations(true);
 
+        _player1CA.CancelActionByHit();
+        _player2CA.CancelActionByHit();
+
         var nextRoundFM = await GameManager.LoadAsync<FightingManager>("FightingScene");
         nextRoundFM.StartRound(_currentRoundData, _player1CA, _player2CA);
     }
@@ -146,6 +179,14 @@ public class FightingManager : ModeManager
         ResultManager resultManager =
             await GameManager.LoadAsync<ResultManager>("ResultScene");
         resultManager.InitializeRM(winnerNum);
+    }
+
+    private void OnDestroy()
+    {
+        if(_timeLimitCTS != null)
+        {
+            _timeLimitCTS.Cancel();
+        }
     }
 }
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   _characterDataList:
   - {fileID: 11400000, guid: ef8a944741b45714598b02ce6d77c204, type: 2}
   - {fileID: 11400000, guid: fb37e58a6609a7f4f81955760d47dd92, type: 2}
+  - {fileID: 11400000, guid: 806214408ae6eab4f9039abd6902e126, type: 2}

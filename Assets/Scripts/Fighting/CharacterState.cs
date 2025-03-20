@@ -107,7 +107,7 @@ public class CharacterState : MonoBehaviour
         IsGuarding = value;
     }
 
-    public void TakeDamage(int damageValue)
+    public void TakeDamage(float damageValue)
     {
         CurrentHP -= damageValue;
 

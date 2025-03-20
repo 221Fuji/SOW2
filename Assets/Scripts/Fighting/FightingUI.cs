@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using DG.Tweening;
-using System.ComponentModel;
-using static UnityEngine.Rendering.DebugUI;
 
 public class FightingUI : MonoBehaviour
 {
@@ -26,6 +24,13 @@ public class FightingUI : MonoBehaviour
     [SerializeField] private Image _upElectricity2P;
     [SerializeField] private Color _notMaxColor;
     [Space]
+    [Header("制限時間")]
+    [SerializeField] private TextMeshProUGUI _timeLimitText;
+    [Space]
+    [Header("キャラの顔")]
+    [SerializeField] private Transform _faceUp1P;
+    [SerializeField] private Transform _faceUp2P;
+    [Space]
     [Header("コンボ演出")]
     [SerializeField] private TextMeshProUGUI _comboCounter1P;
     [SerializeField] private TextMeshProUGUI _comboCounter2P;
@@ -42,9 +47,17 @@ public class FightingUI : MonoBehaviour
     [Space]
     [Header("暗転用パネル")]
     [SerializeField] private Image _panel;
+    [Space]
+    [Header("固有リソース")]
+    [SerializeField] private Transform _hudCanvas;
+    [SerializeField] private Slider _fogMeter;
+    private Slider _fogMeterPos1P = null;
+    private Slider _fogMeterPos2P = null;
 
-    private CharacterState _characterState1P;
-    private CharacterState _characterState2P;
+    private CharacterState _cs1P;
+    private CharacterState _cs2P;
+    private CharacterActions _ca1P;
+    private CharacterActions _ca2P;
 
     //1フレームで赤ゲージの減る量
     private float redBarSpeed = 0.0025f;
@@ -62,14 +75,53 @@ public class FightingUI : MonoBehaviour
     /// <summary>
     /// キャラクターをそれぞれ設定
     /// </summary>
-    public void SetPlayer(CharacterState cs1p, CharacterState cs2p)
+    public void SetPlayer(CharacterState cs1P, CharacterState cs2P)
     {
-        _characterState1P = cs1p;
-        _characterState2P = cs2p;
+        _cs1P = cs1P;
+        _cs2P = cs2P;
+
+        _ca1P = cs1P.GetComponent<CharacterActions>();
+        _ca2P = cs2P.GetComponent<CharacterActions>();
 
         //デリゲートの登録
-        cs1p.GetComponent<CharacterActions>().ComboCount = ComboCount;
-        cs2p.GetComponent<CharacterActions>().ComboCount = ComboCount;
+        _ca1P.ComboCount = ComboCount;
+        _ca2P.ComboCount = ComboCount;
+
+        //固有リソースの設定
+        InitializeUniqueResource(_ca1P);
+        InitializeUniqueResource(_ca2P);
+
+        //顔
+        InstantiateFaceUpImage(_ca1P.CharacterData, 1);
+        InstantiateFaceUpImage(_ca2P.CharacterData, 2);
+    }
+
+    private void InstantiateFaceUpImage(CharacterData charaData, int playerNum)
+    {
+        if(playerNum == 1)
+        {
+            Transform face1P = Instantiate(charaData.FightingFaceUpImage.transform);
+            face1P.SetParent(_faceUp1P, false);
+        }
+        else
+        {
+            Transform face2P = Instantiate(charaData.FightingFaceUpImage.transform);
+            face2P.SetParent(_faceUp2P, false);
+            face2P.localPosition *= new Vector2(-1, 1);
+            face2P.localScale *= new Vector2(-1, 1);
+        }
+    }
+
+    /// <summary>
+    /// 固有ゲージの設定
+    /// </summary>
+    public void InitializeUniqueResource(CharacterActions ca)
+    {
+        //クラウドの固有リソース設定
+        if(ca is ViolaCloud)
+        {
+            InstantiateFogMeter(ca.PlayerNum);
+        }
     }
 
     private void Update()
@@ -77,6 +129,7 @@ public class FightingUI : MonoBehaviour
         ApplyBar();
         SPcolorChange();
         UltElectricity();
+        UpDateUniqueResource();
     }
 
     /// <summary>
@@ -85,27 +138,27 @@ public class FightingUI : MonoBehaviour
     private void ApplyBar()
     {
         //SPBer
-        if(_characterState1P != null)
+        if(_cs1P != null)
         {
-            _spSlider1P.value = _characterState1P.CurrentSP / _characterState1P.MaxSP;
+            _spSlider1P.value = _cs1P.CurrentSP / _cs1P.MaxSP;
         }
-        if (_characterState2P != null)
+        if (_cs2P != null)
         {
-            _spSlider2P.value = _characterState2P.CurrentSP / _characterState2P.MaxSP;
+            _spSlider2P.value = _cs2P.CurrentSP / _cs2P.MaxSP;
         }
 
         //HPBer      
-        if (_characterState1P != null)
+        if (_cs1P != null)
         {
-            _hpSlider1P.value = _characterState1P.CurrentHP / _characterState1P.MaxHP;
+            _hpSlider1P.value = _cs1P.CurrentHP / _cs1P.MaxHP;
         }
-        if (_characterState2P != null)
+        if (_cs2P != null)
         {
-            _hpSlider2P.value = _characterState2P.CurrentHP / _characterState2P.MaxHP;
+            _hpSlider2P.value = _cs2P.CurrentHP / _cs2P.MaxHP;
         }
 
         //RedBar
-        if(_characterState1P != null)
+        if(_cs1P != null)
         {
             //コンボが終われば減り始める
             //if (_characterState1P.IsRecoveringHit) return;
@@ -119,7 +172,7 @@ public class FightingUI : MonoBehaviour
                 _redSlider1P.value = _hpSlider1P.value;
             }
         }
-        if (_characterState2P != null)
+        if (_cs2P != null)
         {
             //コンボが終われば減り始める
             //if (_characterState2P.IsRecoveringHit) return;
@@ -135,13 +188,13 @@ public class FightingUI : MonoBehaviour
         }
 
         //UPBer
-        if (_characterState1P != null)
+        if (_cs1P != null)
         {
-            _upSlider1P.value = _characterState1P.CurrentUP / _characterState1P.MaxUP;
+            _upSlider1P.value = _cs1P.CurrentUP / _cs1P.MaxUP;
         }
-        if(_characterState2P != null)
+        if(_cs2P != null)
         {
-            _upSlider2P.value = _characterState2P.CurrentUP / _characterState2P.MaxUP;
+            _upSlider2P.value = _cs2P.CurrentUP / _cs2P.MaxUP;
         }
     }
 
@@ -153,9 +206,9 @@ public class FightingUI : MonoBehaviour
         Image imageSP1P = _spSlider1P.GetComponentInChildren<Image>();
         Image imageSP2P = _spSlider2P.GetComponentInChildren<Image>();
 
-        if(_characterState1P != null)
+        if(_cs1P != null)
         {
-            if (_characterState1P.AnormalyStates.Contains(AnormalyState.Fatigue))
+            if (_cs1P.AnormalyStates.Contains(AnormalyState.Fatigue))
             {
                 imageSP1P.color = new Color(0.75f, 0.75f, 0.75f);
             }
@@ -165,9 +218,9 @@ public class FightingUI : MonoBehaviour
             }
         }
 
-        if(_characterState2P != null)
+        if(_cs2P != null)
         {
-            if (_characterState2P.AnormalyStates.Contains(AnormalyState.Fatigue))
+            if (_cs2P.AnormalyStates.Contains(AnormalyState.Fatigue))
             {
                 imageSP2P.color = new Color(0.75f, 0.75f, 0.75f);
             }
@@ -183,9 +236,9 @@ public class FightingUI : MonoBehaviour
     /// </summary>
     private void UltElectricity()
     {
-        if(_characterState1P != null)
+        if(_cs1P != null)
         {
-            if(_characterState1P.CurrentUP >= 100)
+            if(_cs1P.CurrentUP >= 100)
             {
                 _upElectricity1P.color = Color.white;
                 _upFill1P.color = Color.white;
@@ -197,9 +250,9 @@ public class FightingUI : MonoBehaviour
             }
         }
 
-        if (_characterState2P != null)
+        if (_cs2P != null)
         {
-            if (_characterState2P.CurrentUP >= 100)
+            if (_cs2P.CurrentUP >= 100)
             {
                 _upElectricity2P.color = Color.white;
                 _upFill2P.color = Color.white;
@@ -213,7 +266,47 @@ public class FightingUI : MonoBehaviour
     }
 
     /// <summary>
-    /// 残機ハートの表示（適当な実装）
+    /// 固有リソースのUI更新
+    /// </summary>
+    private void UpDateUniqueResource()
+    {
+        if(_ca1P is ViolaCloud cloud1P)
+        {
+            _fogMeterPos1P.value = cloud1P.CurrentFogResource / cloud1P.FogMaxResource;
+        }
+        if(_ca2P is ViolaCloud cloud2P)
+        {
+            _fogMeterPos2P.value = cloud2P.CurrentFogResource / cloud2P.FogMaxResource;
+        }
+
+        //追加の固有リソースUI処理
+    }
+
+    private void InstantiateFogMeter(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            _fogMeterPos1P = Instantiate(_fogMeter);
+            _fogMeterPos1P.transform.SetParent(_hudCanvas, false);
+            _fogMeterPos1P.value = 1;
+        }
+        else
+        {
+            _fogMeterPos2P = Instantiate(_fogMeter);
+            _fogMeterPos2P.transform.SetParent(_hudCanvas, false);
+            _fogMeterPos2P.GetComponent<RectTransform>().anchoredPosition *= new Vector2(-1, 1);
+            _fogMeterPos2P.transform.localScale *= new Vector2(-1, 1);
+            _fogMeterPos2P.value = 1;
+        }
+    }
+
+    public void SetTimeLimitText(string timeString)
+    {
+        _timeLimitText.text = timeString;
+    }
+
+    /// <summary>
+    /// 残機ハートの表示
     /// </summary>
     public void HeartLost(RoundData roundData)
     {
@@ -285,7 +378,7 @@ public class FightingUI : MonoBehaviour
             return AnimatorByLayerName.GetCurrentAnimationProgress(_gameSet, "Base Layer") >= 1f;
         }, cancellationToken: token);
 
-        await _panel.DOFade(1f, 0.5f).ToUniTask(cancellationToken: token);
+        await _panel.DOFade(1f, 1f).ToUniTask(cancellationToken: token);
 
         GameSetCancel();
     }
