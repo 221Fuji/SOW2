@@ -428,11 +428,13 @@ MonoBehaviour:
     - {fileID: 1772975325}
     - {fileID: 1566159735}
     - {fileID: 182566763}
+  _startPos: {x: 0, y: 1}
   _modeNameMainTx: {fileID: 1003970188}
   _discriptionTx: {fileID: 1409250077}
   _yazirusi: {fileID: 1635447193}
   _floorTop: {fileID: 1129161425}
   _floorUnder: {fileID: 1114373532}
+  _kettei: {fileID: 1203393045}
 --- !u!1 &165987132
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OFF LINE
+  m_text: OFFLINE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
   m_sharedMaterial: {fileID: -8634252361603073925, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
@@ -2839,6 +2841,7 @@ GameObject:
   - component: {fileID: 1203393042}
   - component: {fileID: 1203393044}
   - component: {fileID: 1203393043}
+  - component: {fileID: 1203393045}
   m_Layer: 5
   m_Name: Kettei
   m_TagString: Untagged
@@ -2904,6 +2907,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203393041}
   m_CullTransparentMesh: 1
+--- !u!114 &1203393045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203393041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e07604dd77522147ad37a70ccb98b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lineFlame: {fileID: 1519019448}
 --- !u!1 &1230182061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,8 +3559,9 @@ GameObject:
   - component: {fileID: 1519019449}
   - component: {fileID: 1519019451}
   - component: {fileID: 1519019450}
+  - component: {fileID: 1519019452}
   m_Layer: 5
-  m_Name: Image
+  m_Name: KetteILine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3589,7 +3606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8824370782355394633, guid: 35ef79c8a4cdad7449c6e66332246074, type: 3}
+  m_Sprite: {fileID: 684066584549048983, guid: 35ef79c8a4cdad7449c6e66332246074, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3607,6 +3624,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519019448}
   m_CullTransparentMesh: 1
+--- !u!95 &1519019452
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519019448}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 926284ae2533d314899d074428641df0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1546321291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,7 +4499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ON LINE
+  m_text: ONLINE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
   m_sharedMaterial: {fileID: -8634252361603073925, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
