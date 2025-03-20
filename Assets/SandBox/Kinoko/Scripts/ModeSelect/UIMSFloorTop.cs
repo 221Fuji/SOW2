@@ -8,8 +8,8 @@ public class UIMSFloorTop : UIMSFloor
     public Sequence Moving()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(GetComponent<RectTransform>().DOAnchorPosY(GetComponent<RectTransform>().anchoredPosition.y-5,_moveSpeed).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.OutSine))
-        .Join(transform.DOScale(new Vector3(transform.localScale.x * 0.95f,transform.localScale.y * 0.95f,transform.localScale.z * 0.95f), _moveSpeed).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.OutSine));
+        sequence.Append(GetComponent<RectTransform>().DOAnchorPosY(GetComponent<RectTransform>().anchoredPosition.y-5,_moveSpeed).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.InQuad))
+        .Join(transform.DOScale(new Vector3(transform.localScale.x * 0.95f,transform.localScale.y * 0.95f,transform.localScale.z * 0.95f), _moveSpeed).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.InQuad));
         return sequence;
     }
 

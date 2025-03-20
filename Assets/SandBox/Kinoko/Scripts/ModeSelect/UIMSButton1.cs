@@ -6,10 +6,12 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class UIMSButton1 : UIPersonalAct
 {
     [SerializeField] private string _modeName = "";
+    [SerializeField] private string _discription = "";
     private CancellationTokenSource _cts = new CancellationTokenSource();
     private List<Tween> _tweens = new List<Tween>();
     
@@ -26,18 +28,41 @@ public class UIMSButton1 : UIPersonalAct
         var yazirusi = movingCtrlClass?.ReturnYazirusiOb();
         var floorTop = movingCtrlClass?.ReturnFloorTop();
         var floorUnder = movingCtrlClass?.ReturnFloorUnder();
+        var modeNameTxt = movingCtrlClass?.ReturnModeNameMainTx();
+        var descriptionTx = movingCtrlClass?.ReturnDiscriptionTx();
         GameObject yazirusiOb = yazirusi?.transform.gameObject;
         GameObject floorTopOb = floorTop?.transform.gameObject;
         GameObject floorUnderOb = floorUnder?.transform.gameObject;
 
         yazirusiOb.SetActive(true);
 
+
+        modeNameTxt.StringToText(_modeName);
+        descriptionTx.StringToText(_discription);
         yazirusi?.InstanceObject(transform.gameObject);
         floorTop?.InstanceObject(transform.gameObject);
         floorUnder?.InstanceObject(transform.gameObject);
 
         _cts = new CancellationTokenSource();
         CancellationToken token = _cts.Token;
+
+        modeNameTxt.ResetPosition();
+        var titleSequence = DOTween.Sequence();
+        _tweens.Add(titleSequence);
+        await titleSequence.Append(modeNameTxt.MovingDirection()).ToUniTask(cancellationToken: token);
+        await modeNameTxt.FlashText(_modeName,token);
+        try
+        {
+            await UniTask.WaitForSeconds(0.3f,cancellationToken: token);
+        }
+        catch{}
+        var childTitleSequence = DOTween.Sequence();
+        _tweens.Add(childTitleSequence);
+        try
+        {
+            await childTitleSequence.Append(modeNameTxt.MovingDirectionChild()).ToUniTask(cancellationToken: token);
+        }
+        catch{}
 
         try
         {
@@ -49,21 +74,17 @@ public class UIMSButton1 : UIPersonalAct
             await sequence.Append(floorTop.FadeIn())
             .Join(floorUnder.FadeIn())
             .Join(floorTop.Moving())
-            .Join(floorUnder.Moving());   
+            .Join(floorUnder.Moving()).ToUniTask(cancellationToken: token);   
         }
         catch(System.Exception e)
         {
-            Debug.Log("Tween‚ª’âŽ~‚³‚ê‚Ü‚µ‚½>>" + e);
+            
         }
 
     }
     public override void SeparateAction(GameObject _ob)
     {
         _cts.Cancel();
-        foreach(Tween tween in _tweens)
-        {
-            tween.Kill();
-        }
         _ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
 
 
