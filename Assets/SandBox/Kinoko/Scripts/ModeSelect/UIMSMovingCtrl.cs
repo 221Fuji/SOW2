@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UIMSMovingCtrl : UIMovingCtrl
 {
-    [SerializeField] UIMSModeNameTx _modeNameMainTx;
-    [SerializeField] UIMSDiscriptionTx _discriptionTx;
-    [SerializeField] UIMSYazirusi _yazirusi;
-    [SerializeField] UIMSFloorTop _floorTop;
-    [SerializeField] UIMSFloorUnder _floorUnder;
-    [SerializeField] UIMSKettei _kettei;
+    [SerializeField] private UIMSModeNameTx _modeNameMainTx;
+    [SerializeField] private UIMSDiscriptionTx _discriptionTx;
+    [SerializeField] private UIMSYazirusi _yazirusi;
+    [SerializeField] private UIMSFloorTop _floorTop;
+    [SerializeField] private UIMSFloorUnder _floorUnder;
+    [SerializeField] private UIMSKettei _kettei;
 
     public override void ForcusUp()
     {
