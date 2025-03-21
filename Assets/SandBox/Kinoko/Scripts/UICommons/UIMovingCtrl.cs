@@ -7,11 +7,10 @@ using UnityEngine;
 /// 入力に応じて対象のボタン等を移動させていくクラス(※これが一番上になるように設計)
 /// </summary>
 
-//MonoBehaviour消す！
 public class UIMovingCtrl : MonoBehaviour
 {
     [System.Serializable]
-    protected class Making
+    public class Making
     {
         [SerializeField] protected List<UIPersonalAct> _inMap;
         public int ReturnLength(){
@@ -22,17 +21,16 @@ public class UIMovingCtrl : MonoBehaviour
         }
     }
     [SerializeField] protected List<Making> _outMap;
-    [SerializeField] protected Vector2 _startPos = new Vector2(0,0);
+    [SerializeField] protected Vector2 _startPos = new Vector2(0, 0);
 
-
-    public Vector2 _forcus{get; protected set;} = new Vector2(0,1);
-    public Vector2 _search{get; protected set;} = new Vector2(-1,-1);
+    public List<Making> OutMap { get { return _outMap; } }
+    public Vector2 Forcus { get; protected set; } = new Vector2(0, 1);
+    public Vector2 Search { get; protected set; } = new Vector2(-1, -1);
     //例外処理によってスキップされた際のみ、本来フォーカスされた座標が入る
-    public Vector2 _casted{get; protected set;} = new Vector2(-1,-1);
+    public Vector2 Casted { get; protected set; } = new Vector2(-1, -1);
 
     void Awake()
-    {
-        
+    {       
         DesignatedForcus(_startPos);
     }
 
@@ -41,14 +39,14 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void DesignatedForcus(Vector2 arrayPos)
     {
-        if(_forcus.x == -1 && _forcus.y == -1)
+        if(Forcus.x == -1 && Forcus.y == -1)
         {
-            _forcus = _startPos;
+            Forcus = _startPos;
         }
 
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
-        _forcus = arrayPos;
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].FocusedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
+        Forcus = arrayPos;
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }
 
     //y軸方向の要素数を返すメソッド
@@ -61,123 +59,123 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void ForcusUp()
     {
-        if(_search.x == -1 && _search.y == -1) _search = new Vector2(_forcus.x,_forcus.y - 1);
-        if(_search.y < 0)
+        if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y - 1);
+        if(Search.y < 0)
         {
-            _search = new Vector2(_search.x,_outMap[(int)_search.x].ReturnLength() - 1);
+            Search = new Vector2(Search.x,_outMap[(int)Search.x].ReturnLength() - 1);
             this.ForcusUp();
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this))
+        if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(this))
         {
-            _casted = _search;
-            _search = new Vector2(_search.x,_search.y - 1);
+            Casted = Search;
+            Search = new Vector2(Search.x,Search.y - 1);
             this.ForcusUp();
             return;
         }
 
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
 
-        _forcus = _search;
-        _search = new Vector2(-1,-1);
-        _casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + _forcus);
+        Forcus = Search;
+        Search = new Vector2(-1,-1);
+        Casted = new Vector2(-1,-1);
+        Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].FocusedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }
 
     /// <summary>
     /// 下入力
     /// </summary>
     public virtual void ForcusDown(){
-        if(_search.x == -1 && _search.y == -1) _search = new Vector2(_forcus.x,_forcus.y + 1);
-        if(_search.y > _outMap[(int)_search.x].ReturnLength() - 1){
-            _search = new Vector2(_search.x,0);
+        if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y + 1);
+        if(Search.y > _outMap[(int)Search.x].ReturnLength() - 1){
+            Search = new Vector2(Search.x,0);
             this.ForcusDown();
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
-            _casted = _search;
-            _search = new Vector2(_search.x,_search.y + 1);
+        if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(this)){
+            Casted = Search;
+            Search = new Vector2(Search.x,Search.y + 1);
             this.ForcusDown();
             return;
         }
 
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
         Debug.Log("以下処理");
 
-        _forcus = _search;
-        _search = new Vector2(-1,-1);
-        _casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + _forcus);
+        Forcus = Search;
+        Search = new Vector2(-1,-1);
+        Casted = new Vector2(-1,-1);
+        Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].FocusedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }
 
     /// <summary>
     /// 左入力
     /// </summary>
     public virtual void ForcusLeft(){
-        if(_search.x == -1 && _search.y == -1) _search = new Vector2(_forcus.x - 1,_forcus.y);
-        if(_search.x < 0){
-            _search = new Vector2(_outMap.Count - 1, _search.y);
+        if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x - 1,Forcus.y);
+        if(Search.x < 0){
+            Search = new Vector2(_outMap.Count - 1, Search.y);
             this.ForcusLeft();
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
-            _casted = _search;
-            _search = new Vector2(_search.x - 1,_search.y);
+        if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(this)){
+            Casted = Search;
+            Search = new Vector2(Search.x - 1,Search.y);
             this.ForcusLeft();
             return;
         }
 
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
 
-        _forcus = _search;
-        _search = new Vector2(-1,-1);
-        _casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + _forcus);
+        Forcus = Search;
+        Search = new Vector2(-1,-1);
+        Casted = new Vector2(-1,-1);
+        Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].FocusedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }
 
     /// <summary>
     /// 右入力
     /// </summary>
     public virtual void ForcusRight(){
-        if(_search.x == -1 && _search.y == -1) _search = new Vector2(_forcus.x + 1,_forcus.y);
-        if(_search.x > _outMap.Count - 1){
-            _search = new Vector2(0,_search.y);
+        if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x + 1,Forcus.y);
+        if(Search.x > _outMap.Count - 1){
+            Search = new Vector2(0,Search.y);
             this.ForcusRight();
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
-            _casted = _search;
-            _search = new Vector2(_search.x + 1,_search.y);
+        if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(this)){
+            Casted = Search;
+            Search = new Vector2(Search.x + 1,Search.y);
             this.ForcusRight();
             return;
         }
 
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
 
-        _forcus = _search;
-        _search = new Vector2(-1,-1);
-        _casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + _forcus);
+        Forcus = Search;
+        Search = new Vector2(-1,-1);
+        Casted = new Vector2(-1,-1);
+        Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].FocusedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }
 
     /// <summary>
@@ -185,6 +183,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void OnClick()
     {
-        _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].ClickedAction(this.transform.gameObject);
+        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ClickedAction(this.transform.gameObject);
     }
 }

@@ -8,12 +8,12 @@ public class UIMSReturnBack : UIPersonalAct
     public override bool MovingException(UIMovingCtrl _ctrl)
     {
         Vector2 checkPos = new Vector2(-1,-1);
-        if(_ctrl._casted.x == -1 && _ctrl._casted.y == -1){
-            checkPos = _ctrl._forcus;
+        if(_ctrl.Casted.x == -1 && _ctrl.Casted.y == -1){
+            checkPos = _ctrl.Forcus;
         }
         else
         {
-            checkPos = _ctrl._casted;
+            checkPos = _ctrl.Casted;
         }
 
         if((int)checkPos.y == _ctrl.ReturnArrayLength() - 1)

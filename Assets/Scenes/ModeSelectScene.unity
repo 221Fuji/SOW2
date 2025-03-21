@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
+  _uimsMovigCtrl: {fileID: 141796684}
 --- !u!1 &141796682
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 182566759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fa794465b79394c99d8a1d2902e89e, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: TEST
@@ -1235,7 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 613691197}
   m_Layer: 5
-  m_Name: Button4
+  m_Name: ButtonTEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2611,7 +2612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025399708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938119c6b33d2094caeccc55ca167f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: OFFLINE
@@ -2626,7 +2627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066924891}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: ButtonOFFLINE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3218,7 +3219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1374626292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3520,7 +3521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514415417}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: ButtonTRAINIG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3820,7 +3821,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566159731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e03c60acd4f494eac231a016715989, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: TRAINING
@@ -4229,7 +4230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1772975321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3853b1ef82c7a42a56f30909792735, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: ONLINE
@@ -4654,7 +4655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2046787765}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: ButtonONLINE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
