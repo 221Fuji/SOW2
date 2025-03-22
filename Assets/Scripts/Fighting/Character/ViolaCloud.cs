@@ -3,6 +3,8 @@ using System;
 using System.Threading;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Playables;
+using UnityEngine.Animations;
 
 public class ViolaCloud : CharacterActions
 {
@@ -396,7 +398,17 @@ public class ViolaCloud : CharacterActions
 
         // アニメーション処理
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 1);
-        _animator.SetTrigger("SpecialMove2Trigger");
+        List<Fog> fogIsSelfList = FogInSelfList();
+        bool isFogInSelf = fogIsSelfList.Count > 0;
+        if(isFogInSelf)
+        {
+            _animator.SetTrigger("SpecialMove2InSideTrigger");
+        }
+        else
+        {
+            _animator.SetTrigger("SpecialMove2OutSideTrigger");
+        }
+        
 
         //物理挙動
         Velocity = Vector2.zero;
@@ -410,7 +422,7 @@ public class ViolaCloud : CharacterActions
         try
         {
             await StartUpMove(_specialMove2Info.StartupFrame, token); // 発生を待つ
-            CreateSm2Bullet(token); //弾の生成
+            CreateSm2Bullet(fogIsSelfList, token); //弾の生成
             await RecoveryFrame(_specialMove2Info.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
@@ -428,7 +440,7 @@ public class ViolaCloud : CharacterActions
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 0);
     }
 
-    private async void CreateSm2Bullet(CancellationToken token)
+    private async void CreateSm2Bullet(List<Fog> fogList, CancellationToken token)
     {
         //弾の座標と速度設定
         Vector2 bulletPosOffset = new Vector2(1.5f, 1);
@@ -440,10 +452,9 @@ public class ViolaCloud : CharacterActions
         GameObject bullet = Instantiate(_sm2BulletPrefab, bulletPos, Quaternion.identity);
 
         //煙霧内かどうか
-        List<Fog> fogIsSelfList = FogInSelfList();
-        if (fogIsSelfList.Count > 0)
+        if (fogList.Count > 0)
         {
-            DestoryAllFogInList(fogIsSelfList);
+            DestoryAllFogInList(fogList);
             _collectEffectAnimator.SetTrigger("CollectFogTrigger");
 
             //アニメーション
@@ -459,7 +470,12 @@ public class ViolaCloud : CharacterActions
         HitBoxManager hbm = bullet.GetComponentInChildren<HitBoxManager>();
         hbm?.InitializeHitBox(_specialMove2Info, gameObject);
 
-        await WaitForActiveFrame(hbm, _specialMove2Info.ActiveFrame, token);
+        try
+        {
+            await StartUpMove(_specialMove2Info.StartupFrame, token); // 発生を待つ
+            await WaitForActiveFrame(hbm, _specialMove2Info.ActiveFrame, token);
+        }
+        catch { }      
 
         await FightingPhysics.DelayFrameWithTimeScale(60);
         if(bullet != null)
@@ -494,24 +510,43 @@ public class ViolaCloud : CharacterActions
         // アニメーション処理
         AnimatorByLayerName.SetLayerWeightByName(_animator, "UltLayer", 1);
         _animator.SetTrigger("UltOutSideTrigger");
+        _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        //演出
+        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 45);
 
         //物理挙動
         Velocity = Vector2.zero;
 
-        //演出
-        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
-
         try
         {
-            await StartUpMove(_ultOutSideInfo.StartupFrame, token); // 発生を待つ
+            await FightingPhysics.DelayFrameWithTimeScale(1, token);
 
-            for(int i = 0; i < 3 ;i++)
+            float speed = 15;
+            if (!_characterState.IsLeftSide)
+            {
+                speed *= -1;
+            }
+            Velocity = new Vector2(speed, Velocity.y);
+
+            _animator.updateMode = AnimatorUpdateMode.Normal;
+            await StartUpMove(_ultOutSideInfo.StartupFrame - 1, token); // 発生を待つ
+
+            for (int i = 0; i < 3 ;i++)
             {
                 CreateUltBullet();
                 await FightingPhysics.DelayFrameWithTimeScale(15, token);
             }
 
+            Velocity = Vector2.zero;
+
             await RecoveryFrame(_ultOutSideInfo.RecoveryFrame, token); // 硬直を待つ
+        }
+        catch(OperationCanceledException)
+        {
+            //アニメーション
+            _animator.updateMode = AnimatorUpdateMode.Normal;
+            Velocity = Vector2.zero;
         }
         finally
         {
@@ -545,16 +580,17 @@ public class ViolaCloud : CharacterActions
         //UltBulletの生成
         Bullet bullet = Instantiate(_ultBullet, generatePos, bulletQuaternion);
         bullet.HitBox.InitializeHitBox(_ultOutSideInfo, gameObject);
+        bullet.HitBox.SetIsActive(true);
         bullet.DestroyBullet = DestroyUltBullet;
 
-        bullet.Velocity = new Vector2(generatePosOffsetX * 4f, 0);
+        bullet.Velocity = new Vector2(generatePosOffsetX * 7.5f, 0);
     }
 
     private void DestroyUltBullet(Bullet bullet)
     {
         if(bullet != null)
         {
-            Destroy(bullet);
+            Destroy(bullet.gameObject);
         }
     }
 

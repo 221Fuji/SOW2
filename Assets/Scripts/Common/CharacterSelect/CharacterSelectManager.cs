@@ -63,7 +63,7 @@ public class CharacterSelectManager : ModeManager
         //
 
         CharacterData chara1P = _characterDataBase.GetCharacterDataByName("Succubus");
-        CharacterData chara2P = _characterDataBase.GetCharacterDataByName("Lancer");
+        CharacterData chara2P = _characterDataBase.GetCharacterDataByName("Cloud");
 
         //FightingScene�Ɉڍs
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
