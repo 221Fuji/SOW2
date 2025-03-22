@@ -627,27 +627,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 446448403}
+      objectReference: {fileID: 527798210}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetCharacterData
+      value: OnClick
       objectReference: {fileID: 0}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UICSCharaWindow, Assembly-CSharp
+      value: UICSMovingCtrl, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 527798209}
+      objectReference: {fileID: 0}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1267,8 +1267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
-  _csc1P: {fileID: 0}
-  _csc2P: {fileID: 0}
+  _csc1P: {fileID: 527798210}
+  _csc2P: {fileID: 1993230042}
   _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
 --- !u!4 &223010792
 Transform:
@@ -2425,7 +2425,7 @@ PrefabInstance:
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 527798210}
+      objectReference: {fileID: 1993230042}
     - target: {fileID: 8753820645089386960, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
