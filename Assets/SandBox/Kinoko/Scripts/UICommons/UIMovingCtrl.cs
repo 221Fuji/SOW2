@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 /// <summary>
@@ -25,12 +26,12 @@ public class UIMovingCtrl : MonoBehaviour
     [SerializeField] protected Vector2 _startPos = new Vector2(0,0);
 
 
-    public Vector2 _forcus{get; protected set;} = new Vector2(0,1);
+    public Vector2 _forcus{get; protected set;} = new Vector2(0,0);
     public Vector2 _search{get; protected set;} = new Vector2(-1,-1);
     //例外処理によってスキップされた際のみ、本来フォーカスされた座標が入る
     public Vector2 _casted{get; protected set;} = new Vector2(-1,-1);
 
-    void Awake()
+    protected virtual void Awake()
     {
         
         DesignatedForcus(_startPos);
@@ -69,7 +70,7 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this))
+        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this.transform.gameObject))
         {
             _casted = _search;
             _search = new Vector2(_search.x,_search.y - 1);
@@ -77,6 +78,11 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
 
+        if(_forcus == _search)
+        {
+            //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
+            return;
+        }
         _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
 
         _forcus = _search;
@@ -100,10 +106,16 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
+        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this.transform.gameObject)){
             _casted = _search;
             _search = new Vector2(_search.x,_search.y + 1);
             this.ForcusDown();
+            return;
+        }
+        
+        if(_forcus == _search)
+        {
+            //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
 
@@ -131,10 +143,16 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
+        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this.transform.gameObject)){
             _casted = _search;
             _search = new Vector2(_search.x - 1,_search.y);
             this.ForcusLeft();
+            return;
+        }
+
+        if(_forcus == _search)
+        {
+            //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
 
@@ -160,14 +178,21 @@ public class UIMovingCtrl : MonoBehaviour
             this.ForcusRight();
             return;
         }
+        Debug.Log(_search);
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this)){
+        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(this.transform.gameObject)){
             _casted = _search;
             _search = new Vector2(_search.x + 1,_search.y);
             this.ForcusRight();
             return;
         }
 
+        if(_forcus == _search)
+        {
+            //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
+            return;
+        }
+        
         _outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y].SeparateAction(this.transform.gameObject);
 
         _forcus = _search;

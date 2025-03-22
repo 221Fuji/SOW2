@@ -5,18 +5,19 @@ using UnityEngine;
 public class UIMSReturnBack : UIPersonalAct
 {
     [SerializeField] private GameObject _flame;
-    public override bool MovingException(UIMovingCtrl _ctrl)
+    public override bool MovingException(GameObject ob)
     {
+        UIMSMovingCtrl ctrl = ob.GetComponent<UIMSMovingCtrl>();
         Vector2 checkPos = new Vector2(-1,-1);
-        if(_ctrl._casted.x == -1 && _ctrl._casted.y == -1){
-            checkPos = _ctrl._forcus;
+        if(ctrl._casted.x == -1 && ctrl._casted.y == -1){
+            checkPos = ctrl._forcus;
         }
         else
         {
-            checkPos = _ctrl._casted;
+            checkPos = ctrl._casted;
         }
 
-        if((int)checkPos.y == _ctrl.ReturnArrayLength() - 1)
+        if((int)checkPos.y == ctrl.ReturnArrayLength() - 1)
         {
             return true;
         }

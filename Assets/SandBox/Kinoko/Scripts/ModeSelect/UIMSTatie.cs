@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMSTatie : MonoBehaviour
+public class UIMSTatie : UIPersonalAct
 {
     
 }
