@@ -70,7 +70,7 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
 
-        if(_outMap[(int)_search.x].ReturnList()[(int)_search.y].MovingException(gameObject))
+        if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(gameObject))
         {
             Casted = Search;
             Search = new Vector2(Search.x,Search.y - 1);
@@ -113,7 +113,7 @@ public class UIMovingCtrl : MonoBehaviour
             return;
         }
         
-        if(_forcus == _search)
+        if(Forcus == Search)
         {
             //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
@@ -178,7 +178,7 @@ public class UIMovingCtrl : MonoBehaviour
             this.ForcusRight();
             return;
         }
-        Debug.Log(_search);
+        Debug.Log(Search);
 
         if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(gameObject)){
             Casted = Search;

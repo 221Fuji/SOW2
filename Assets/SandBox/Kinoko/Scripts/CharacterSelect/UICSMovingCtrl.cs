@@ -48,7 +48,7 @@ public class UICSMovingCtrl : UIMovingCtrl
     public override void OnClick()
     {
         base.OnClick();
-        if(_outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y] is UICSCharaWindow window)
+        if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
         {
             if(!CharacterData)
             {
