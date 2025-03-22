@@ -20,3 +20,4 @@ MonoBehaviour:
   _versusGrayImage: {fileID: 3521021897029906315, guid: be6c5b04dd6de6d4781bfeadbf1fdbb8, type: 3}
   _fightingFaceUpImage: {fileID: 5007381580474031200, guid: ced227efb9f97194da258ac5acff127f, type: 3}
   _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 8597069032382918126, guid: 24abd7d917a5e084797ae9c28de1d7af, type: 3}

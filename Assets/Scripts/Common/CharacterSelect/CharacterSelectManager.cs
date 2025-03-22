@@ -9,8 +9,8 @@ using System.Threading;
 public class CharacterSelectManager : ModeManager
 {
 
-    [SerializeField] private CharacterSelectController _csc1P;
-    [SerializeField] private CharacterSelectController _csc2P;
+    [SerializeField] private UICSMovingCtrl _csc1P;
+    [SerializeField] private UICSMovingCtrl _csc2P;
 
     [SerializeField] private CharacterDataBase _characterDataBase;
 
@@ -42,10 +42,11 @@ public class CharacterSelectManager : ModeManager
     }
 
     //PlayerInputのデリゲート設定
-    private void SetDelegate(OtherInputReceiver oir, CharacterSelectController csc)
+    private void SetDelegate(OtherInputReceiver oir, UICSMovingCtrl csc)
     {
-        oir.Accept = csc.Accept;
-        oir.Cancel = csc.Cancel;
+        //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
+        oir.Accept = csc.OnClick;
+        oir.Cancel = csc.Cancell;
     }
 
     private async void GoFighting()
@@ -62,8 +63,8 @@ public class CharacterSelectManager : ModeManager
         //以下デバッグ用処理
         //
 
-        CharacterData chara1P = _characterDataBase.GetCharacterDataByName("Succubus");
-        CharacterData chara2P = _characterDataBase.GetCharacterDataByName("Lancer");
+        CharacterData chara1P = _csc1P.CharacterData;
+        CharacterData chara2P = _csc2P.CharacterData;
 
         //FightingSceneに移行
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");

@@ -13,7 +13,7 @@ public abstract class UIPersonalAct : MonoBehaviour
     /// UI移動において例外的な動きをさせたい際のオプション(侵入方向を左からに限定など)
     /// </summary>
     /// <returns></returns>
-    public virtual bool MovingException(UIMovingCtrl _ctrl)
+    public virtual bool MovingException(GameObject ob)
     {
         return false;
     }

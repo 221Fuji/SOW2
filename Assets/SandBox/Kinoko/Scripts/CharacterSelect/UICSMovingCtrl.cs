@@ -1,0 +1,94 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
+
+public class UICSMovingCtrl : UIMovingCtrl
+{
+    [SerializeField] private CharacterDataBase _database;
+    [SerializeField] private TextMeshProUGUI _characterNameJField;
+    [SerializeField] private TextMeshProUGUI _characterNameEField;
+    [SerializeField] private GameObject _1PFrameTop;
+    [SerializeField] private GameObject _2PFrameTop;
+    [SerializeField] private GameObject _MixFrameTop;
+    [SerializeField] private GameObject _1PFrameFloor;
+    [SerializeField] private GameObject _2PFrameFloor;
+    [SerializeField] private GameObject _MixFrameFloor;
+    [SerializeField] private int _playerNum = 0;
+
+    public int PlayerNum{get {return _playerNum;}}
+    public CharacterDataBase DataBase{get {return _database;}}
+    public TextMeshProUGUI CharacterNameJField{get {return _characterNameJField;}}
+    public TextMeshProUGUI CharacterNameEField{get {return _characterNameEField;}}
+
+    public bool Selected {get; private set;}
+    public CharacterData CharacterData{get; private set;}
+
+    protected override void  Awake()
+    {
+        foreach(Making make in _outMap)
+        {
+            foreach(UIPersonalAct target in make.ReturnList())
+            {
+                try
+                {
+                    if(target is UICSCharaWindow window) window.SetCharacterData(this.transform.gameObject); 
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
+        base.Awake();
+    }
+
+    public override void OnClick()
+    {
+        base.OnClick();
+        if(_outMap[(int)_forcus.x].ReturnList()[(int)_forcus.y] is UICSCharaWindow window)
+        {
+            if(!CharacterData)
+            {
+                throw new Exception("キャラクターが選択されていません");
+            }
+            Debug.Log("Click");
+            CharacterData = window.Characterdata;
+            Selected = true;
+        }
+    }
+
+    public void Cancell()
+    {
+        Selected = false;
+    }
+
+    public CharacterOutFrames ReturnCharacterOutFrames()
+    {
+        return new CharacterOutFrames(new GameObject[]
+        {_1PFrameTop,_2PFrameTop,_MixFrameTop,_1PFrameFloor,_2PFrameFloor,_MixFrameFloor});
+    }
+
+    public struct CharacterOutFrames
+    {
+        public GameObject _1PFrameTop{get; private set;}
+        public GameObject _2PFrameTop{get; private set;}
+        public GameObject _MixFrameTop{get; private set;}
+        public GameObject _1PFrameFloor{get; private set;}
+        public GameObject _2PFrameFloor{get; private set;}
+        public GameObject _MixFrameFloor{get; private set;}
+        public CharacterOutFrames(GameObject[] objects)
+        {
+            _1PFrameTop = objects[0];
+            _2PFrameTop = objects[1];
+            _MixFrameTop = objects[2];
+            _1PFrameFloor = objects[3];
+            _2PFrameFloor = objects[4];
+            _MixFrameFloor = objects[5];
+        }
+    }
+
+
+}
