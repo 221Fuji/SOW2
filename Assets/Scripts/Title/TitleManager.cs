@@ -52,7 +52,7 @@ public class TitleManager : MonoBehaviour
 
             versusManager.VersusPerformance(
                 _characterDataBase.GetCharacterDataByName("Cloud"),
-                _characterDataBase.GetCharacterDataByName("Lancer")
+                _characterDataBase.GetCharacterDataByName("Cloud")
                 );
         }
 

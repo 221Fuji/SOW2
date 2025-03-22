@@ -9,12 +9,12 @@ public class UIMSReturnBack : UIPersonalAct
     {
         UIMSMovingCtrl ctrl = ob.GetComponent<UIMSMovingCtrl>();
         Vector2 checkPos = new Vector2(-1,-1);
-        if(ctrl._casted.x == -1 && ctrl._casted.y == -1){
-            checkPos = ctrl._forcus;
+        if(_ctrl.Casted.x == -1 && _ctrl.Casted.y == -1){
+            checkPos = _ctrl.Forcus;
         }
         else
         {
-            checkPos = ctrl._casted;
+            checkPos = _ctrl.Casted;
         }
 
         if((int)checkPos.y == ctrl.ReturnArrayLength() - 1)

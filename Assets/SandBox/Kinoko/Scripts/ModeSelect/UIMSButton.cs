@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIMSButton : UIPersonalAct
 {
@@ -11,10 +12,13 @@ public class UIMSButton : UIPersonalAct
     [SerializeField] private string _discription = "";
     protected CancellationTokenSource _cts = new CancellationTokenSource();
     private List<Tween> _tweens = new List<Tween>();
-    
-    public override async void FocusedAction(GameObject _ob)
+
+    //å≈óLèàóù
+    public UnityAction<GameObject> ClickedActionEvent { get; set; }
+
+    public override async void FocusedAction(GameObject ob)
     {
-        _ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
+        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
 
         var yazirusi = movingCtrlClass?.ReturnYazirusiOb();
         var floorTop = movingCtrlClass?.ReturnFloorTop();
@@ -67,16 +71,13 @@ public class UIMSButton : UIPersonalAct
             .Join(floorTop.Moving())
             .Join(floorUnder.Moving()).ToUniTask(cancellationToken: token);   
         }
-        catch(System.Exception e)
-        {
-            
-        }
-
+        catch
+        {}
     }
-    public override void SeparateAction(GameObject _ob)
+    public override void SeparateAction(GameObject ob)
     {
         _cts.Cancel();
-        _ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
+        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
         movingCtrlClass?.ReturnKettei().ResetAnim();
 
         GameObject yazirusiOb = movingCtrlClass?.ReturnYazirusiOb().transform.gameObject;
@@ -88,5 +89,10 @@ public class UIMSButton : UIPersonalAct
         yazirusiOb.transform.gameObject.SetActive(false);
         floorTopOb.transform.gameObject.SetActive(false);
         floorUnderOb.transform.gameObject.SetActive(false);
+    }
+
+    public override void ClickedAction(GameObject ob)
+    {
+        ClickedActionEvent?.Invoke(ob);
     }
 }

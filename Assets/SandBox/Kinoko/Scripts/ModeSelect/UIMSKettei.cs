@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIMSKettei : MonoBehaviour
 {
-    [SerializeField] GameObject _lineFlame;
+    [SerializeField] private GameObject _lineFlame;
 
     public void StartAnim()
     {
