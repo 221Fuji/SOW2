@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &400224020802236126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8494410206914517586}
-  - component: {fileID: 431754996231237790}
-  m_Layer: 6
-  m_Name: SpecialMove1HitBox
-  m_TagString: HitBox
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8494410206914517586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400224020802236126}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1897304236677928335}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &431754996231237790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400224020802236126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c7e54f1dab04a48a62dd4ee932a16e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hurtBoxLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _sceneCheckMode: 1
 --- !u!1 &1452751380827476405
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +47,7 @@ MonoBehaviour:
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _sceneCheckMode: 0
+  _sceneCheckMode: 1
 --- !u!1 &2656746568345335168
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +241,6 @@ Transform:
   - {fileID: 6998314882076585284}
   - {fileID: 5365951724644365835}
   - {fileID: 1593113975771887608}
-  - {fileID: 8494410206914517586}
   - {fileID: 8161757955945379112}
   - {fileID: 7236659082467258060}
   m_Father: {fileID: 0}
@@ -362,7 +313,7 @@ MonoBehaviour:
     ConsumptionSP: 20
     DrainSP: 20
     IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
+    HitBackDirection: {x: 5, y: 17.5}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _jumpMoveHitBox: {fileID: 5317712556509025971}
@@ -390,7 +341,7 @@ MonoBehaviour:
     Name: SpecialMove2
     Damage: 10
     StartupFrame: 10
-    ActiveFrame: 60
+    ActiveFrame: 10
     RecoveryFrame: 30
     HitFrame: 10
     GuardFrame: 10
@@ -399,25 +350,25 @@ MonoBehaviour:
     ConsumptionSP: 15
     DrainSP: 20
     IsHeavy: 0
-    HitBackDirection: {x: 20, y: 5}
+    HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
   _sm2BulletPrefab: {fileID: 3516300217080383402, guid: b591e10d1234ac344a6bd31afa288cc6, type: 3}
   _ultOutSideInfo:
-    Name: 
-    Damage: 20
-    StartupFrame: 40
+    Name: UltOutSide
+    Damage: 13
+    StartupFrame: 10
     ActiveFrame: 0
     RecoveryFrame: 30
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
+    HitFrame: 30
+    GuardFrame: 30
+    HitStopFrame: 15
     MeterGain: 0
-    ConsumptionSP: 0
-    DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
+    ConsumptionSP: 10
+    DrainSP: 10
+    IsHeavy: 1
+    HitBackDirection: {x: 5, y: 20}
+    GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _ultBullet: {fileID: 6141347537850126186, guid: 66b87fee1895955419644a1d0645b17e, type: 3}
   _ultInSideInfo:

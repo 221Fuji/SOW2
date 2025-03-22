@@ -469,7 +469,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "FourDirection",
+                    "name": "FourDirections",
                     "type": "Value",
                     "id": "cbb8f186-c055-4ae0-a2b5-7b3f2f9a1ab4",
                     "expectedControlType": "Vector2",
@@ -574,7 +574,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -585,7 +585,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -596,7 +596,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -607,7 +607,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -618,7 +618,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -629,7 +629,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -640,7 +640,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FourDirection",
+                    "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

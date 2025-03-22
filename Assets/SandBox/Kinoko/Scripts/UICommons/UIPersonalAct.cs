@@ -6,9 +6,8 @@ using UnityEngine;
 /// <summary>
 /// ボタン等のUIそれぞれに存在するクラスの継承元
 /// </summary>
-public abstract class UIPersonalAct : MonoBehaviour
+public class UIPersonalAct : MonoBehaviour
 {
-
     /// <summary>
     /// UI移動において例外的な動きをさせたい際のオプション(侵入方向を左からに限定など)
     /// </summary>
@@ -18,21 +17,21 @@ public abstract class UIPersonalAct : MonoBehaviour
         return false;
     }
 
-    public virtual void FocusedAction(GameObject _ob)
+    public virtual void FocusedAction(GameObject ob)
     {
         
     }
 
-    public virtual void SeparateAction(GameObject _ob)
+    public virtual void SeparateAction(GameObject ob)
     {
 
     }
-    public virtual async void ClickedAction(GameObject _ob)
+    public virtual void ClickedAction(GameObject ob)
     {
 
     }
 
-    public virtual void InstanceObject(GameObject _ob)
+    public virtual void InstanceObject(GameObject ob)
     {
 
     }

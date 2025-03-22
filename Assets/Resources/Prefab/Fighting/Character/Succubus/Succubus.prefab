@@ -434,7 +434,7 @@ MonoBehaviour:
     HitStopFrame: 5
     MeterGain: 2.5
     ConsumptionSP: 25
-    DrainSP: 0
+    DrainSP: 10
     IsHeavy: 0
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 10, y: 0}
