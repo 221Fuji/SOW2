@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
+  _uimsMovigCtrl: {fileID: 141796684}
 --- !u!1 &141796682
 GameObject:
   m_ObjectHideFlags: 0

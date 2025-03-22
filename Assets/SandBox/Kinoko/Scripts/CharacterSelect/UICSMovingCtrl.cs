@@ -34,7 +34,10 @@ public class UICSMovingCtrl : UIMovingCtrl
             {
                 try
                 {
-                    if(target is UICSCharaWindow window) window.SetCharacterData(this.transform.gameObject); 
+                    if(target is UICSCharaWindow window)
+                    {
+                        if(!window.Characterdata)    window.SetCharacterData(this.transform.gameObject);    
+                    }
                 }
                 catch
                 {
@@ -50,12 +53,13 @@ public class UICSMovingCtrl : UIMovingCtrl
         base.OnClick();
         if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
         {
+
+            CharacterData = window.Characterdata;
+            Debug.Log(CharacterData.CharacterNameJ);
             if(!CharacterData)
             {
                 throw new Exception("キャラクターが選択されていません");
             }
-            Debug.Log("Click");
-            CharacterData = window.Characterdata;
             Selected = true;
         }
     }
