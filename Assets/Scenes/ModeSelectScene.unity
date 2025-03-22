@@ -655,11 +655,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 182566759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fa794465b79394c99d8a1d2902e89e, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: TEST
-  _discription: "\u30C6\u30B9\u30C8\u30C6\u30B9\u30C8\u30C6\u30B9\u30C8"
+  _discription: "\u30C6\u30B9\u30C8\u30C6\u30B9\u30C8"
 --- !u!1 &215962907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025399708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938119c6b33d2094caeccc55ca167f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: OFFLINE
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566159731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e03c60acd4f494eac231a016715989, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: TRAINING
@@ -3692,7 +3692,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1772975321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3853b1ef82c7a42a56f30909792735, type: 3}
+  m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: ONLINE
