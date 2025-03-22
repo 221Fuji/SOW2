@@ -33,7 +33,6 @@ public class UIMovingCtrl : MonoBehaviour
 
     protected virtual void Awake()
     {
-        
         DesignatedForcus(_startPos);
     }
 
