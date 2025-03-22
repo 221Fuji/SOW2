@@ -8,9 +8,8 @@ using System.Threading;
 
 public class CharacterSelectManager : ModeManager
 {
-
-    [SerializeField] private UICSMovingCtrl _csc1P;
-    [SerializeField] private UICSMovingCtrl _csc2P;
+    [SerializeField] private UICSMovingCtrl _csMovingCtrl1P;
+    [SerializeField] private UICSMovingCtrl _csMovingCtrl2P;
 
     [SerializeField] private CharacterDataBase _characterDataBase;
 
@@ -20,7 +19,7 @@ public class CharacterSelectManager : ModeManager
     {
         base.Initialize(device);
 
-        SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _csc1P);
+        SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _csMovingCtrl1P);
 
         InputSystem.onEvent += OnInput2P;
 
@@ -38,15 +37,19 @@ public class CharacterSelectManager : ModeManager
 
         InstantiatePlayer2Input(device);
         Debug.Log("2P側のデバイスを登録" + _player2Input.devices);
-        SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _csc2P);
+        SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _csMovingCtrl2P);
     }
 
     //PlayerInputのデリゲート設定
-    private void SetDelegate(OtherInputReceiver oir, UICSMovingCtrl csc)
+    private void SetDelegate(OtherInputReceiver oir, UICSMovingCtrl csMovingCtrl)
     {
         //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
-        oir.Accept = csc.OnClick;
-        oir.Cancel = csc.Cancell;
+        oir.Accept = csMovingCtrl.OnClick;
+        oir.Cancel = csMovingCtrl.Cancell;
+        oir.Up = csMovingCtrl.ForcusUp;
+        oir.Down = csMovingCtrl.ForcusDown;
+        oir.Left = csMovingCtrl.ForcusLeft;
+        oir.Right = csMovingCtrl.ForcusRight;
     }
 
     private async void GoFighting()
@@ -56,15 +59,15 @@ public class CharacterSelectManager : ModeManager
 
         await UniTask.WaitUntil(() =>
         {
-            return _csc1P.Selected && _csc2P.Selected;
+            return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
         }, cancellationToken : token);
 
         //
         //以下デバッグ用処理
         //
 
-        CharacterData chara1P = _csc1P.CharacterData;
-        CharacterData chara2P = _csc2P.CharacterData;
+        CharacterData chara1P = _csMovingCtrl1P.CharacterData;
+        CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
         //FightingSceneに移行
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");

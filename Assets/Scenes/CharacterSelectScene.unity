@@ -613,6 +613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VirtualCntroller
       objectReference: {fileID: 0}
+    - target: {fileID: 4707306682734377136, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5146871857428812176, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1267,8 +1271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
-  _csc1P: {fileID: 527798210}
-  _csc2P: {fileID: 1993230042}
+  _csMovingCtrl1P: {fileID: 527798210}
+  _csMovingCtrl2P: {fileID: 1993230042}
   _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
 --- !u!4 &223010792
 Transform:
@@ -2405,6 +2409,10 @@ PrefabInstance:
     - target: {fileID: 4707306682734377136, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_Name
       value: VirtualCntroller (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707306682734377136, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146871857428812176, guid: be8c60b2a1cc5c443a6c86bfb760ede4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
