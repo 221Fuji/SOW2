@@ -870,7 +870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LocalMath
+  m_text: LocalMatch
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064eaab985d5c4e41b8d2468dd30fcef, type: 2}
   m_sharedMaterial: {fileID: -8634252361603073925, guid: 064eaab985d5c4e41b8d2468dd30fcef, type: 2}

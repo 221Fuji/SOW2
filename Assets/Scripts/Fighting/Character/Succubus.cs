@@ -378,6 +378,7 @@ public class Succubus : CharacterActions
     /// </summary>
     private void EndPullChain()
     {
+        if (_animator == null) return;
         _animator.SetTrigger("ChainCancelTrigger");
         AnimatorByLayerName.SetLayerWeightByName(_animator, "NormalMoveLayer", 0);
         DestoryPortal();

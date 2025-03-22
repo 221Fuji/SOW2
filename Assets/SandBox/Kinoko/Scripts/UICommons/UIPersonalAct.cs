@@ -12,26 +12,26 @@ public class UIPersonalAct : MonoBehaviour
     /// UI移動において例外的な動きをさせたい際のオプション(侵入方向を左からに限定など)
     /// </summary>
     /// <returns></returns>
-    public virtual bool MovingException(UIMovingCtrl _ctrl)
+    public virtual bool MovingException(UIMovingCtrl ctrl)
     {
         return false;
     }
 
-    public virtual void FocusedAction(GameObject _ob)
+    public virtual void FocusedAction(GameObject ob)
     {
         
     }
 
-    public virtual void SeparateAction(GameObject _ob)
+    public virtual void SeparateAction(GameObject ob)
     {
 
     }
-    public virtual void ClickedAction(GameObject _ob)
+    public virtual void ClickedAction(GameObject ob)
     {
 
     }
 
-    public virtual void InstanceObject(GameObject _ob)
+    public virtual void InstanceObject(GameObject ob)
     {
 
     }

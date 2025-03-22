@@ -176,8 +176,8 @@ TextureImporter:
       name: ViolaCloud-NormalMove_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 110
+        x: 630
+        y: 220
         width: 210
         height: 110
       alignment: 9
@@ -197,7 +197,7 @@ TextureImporter:
       name: ViolaCloud-NormalMove_4
       rect:
         serializedVersion: 2
-        x: 210
+        x: 0
         y: 110
         width: 210
         height: 110
@@ -218,7 +218,7 @@ TextureImporter:
       name: ViolaCloud-NormalMove_5
       rect:
         serializedVersion: 2
-        x: 420
+        x: 210
         y: 110
         width: 210
         height: 110
@@ -239,8 +239,8 @@ TextureImporter:
       name: ViolaCloud-NormalMove_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 420
+        y: 110
         width: 210
         height: 110
       alignment: 9
@@ -260,8 +260,8 @@ TextureImporter:
       name: ViolaCloud-NormalMove_7
       rect:
         serializedVersion: 2
-        x: 210
-        y: 0
+        x: 630
+        y: 110
         width: 210
         height: 110
       alignment: 9
@@ -281,7 +281,7 @@ TextureImporter:
       name: ViolaCloud-NormalMove_8
       rect:
         serializedVersion: 2
-        x: 420
+        x: 0
         y: 0
         width: 210
         height: 110
@@ -294,6 +294,69 @@ TextureImporter:
       bones: []
       spriteID: 38251c73294d55180800000000000000
       internalID: -9127155345330711933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ViolaCloud-NormalMove_9
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ViolaCloud-NormalMove_10
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ViolaCloud-NormalMove_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
@@ -311,6 +374,8 @@ TextureImporter:
     nameFileIdTable:
       ViolaCloud-NormalMove_0: 7420047503487062621
       ViolaCloud-NormalMove_1: 6968817525786225908
+      ViolaCloud-NormalMove_10: 0
+      ViolaCloud-NormalMove_11: 0
       ViolaCloud-NormalMove_2: 4020581588531355629
       ViolaCloud-NormalMove_3: -4817502270935927411
       ViolaCloud-NormalMove_4: 3285497856803206566
@@ -318,6 +383,7 @@ TextureImporter:
       ViolaCloud-NormalMove_6: -7449210810956687704
       ViolaCloud-NormalMove_7: 2590641218858403523
       ViolaCloud-NormalMove_8: -9127155345330711933
+      ViolaCloud-NormalMove_9: 0
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

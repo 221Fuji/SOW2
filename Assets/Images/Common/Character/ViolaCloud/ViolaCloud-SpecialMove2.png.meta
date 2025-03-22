@@ -155,8 +155,8 @@ TextureImporter:
       name: ViolaCloud-SpecialMove2_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 420
+        y: 110
         width: 210
         height: 110
       alignment: 9
@@ -176,7 +176,7 @@ TextureImporter:
       name: ViolaCloud-SpecialMove2_3
       rect:
         serializedVersion: 2
-        x: 210
+        x: 0
         y: 0
         width: 210
         height: 110
@@ -189,6 +189,48 @@ TextureImporter:
       bones: []
       spriteID: 27f51615a48170500800000000000000
       internalID: 362285002498596722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ViolaCloud-SpecialMove2_4
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ViolaCloud-SpecialMove2_5
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 110
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
@@ -208,6 +250,8 @@ TextureImporter:
       ViolaCloud-SpecialMove2_1: -1547802845566607872
       ViolaCloud-SpecialMove2_2: 3132200123778110463
       ViolaCloud-SpecialMove2_3: 362285002498596722
+      ViolaCloud-SpecialMove2_4: 0
+      ViolaCloud-SpecialMove2_5: 0
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

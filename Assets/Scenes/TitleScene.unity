@@ -317,10 +317,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soul Of Wisteria II
+  m_text: 'Soul Of Wisteria II
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
+  m_sharedMaterial: {fileID: -8634252361603073925, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -471,7 +473,7 @@ MonoBehaviour:
       m_Action: Input
       m_Flags: 0
     m_Flags: 0
-  _soloPlayerDebug: 0
+  _soloPlayerDebug: 1
   _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
 --- !u!1 &1892420417
 GameObject:
