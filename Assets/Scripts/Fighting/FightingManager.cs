@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using System.Linq;
+using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -65,8 +65,8 @@ public class FightingManager : ModeManager
         _player1CA.InitializeCA(1, _player2CA);
         _player2CA.InitializeCA(2, _player1CA);
         //死亡デリゲート
-        _player1CA.OnDie = GoNextRound;
-        _player2CA.OnDie = GoNextRound;
+        _player1CA.OnDie = KO;
+        _player2CA.OnDie = KO;
         //カメラ設定
         _camera.GetComponent<FightingCameraManager>().InitializeCamera(_player1CA.transform, _player2CA.transform);
         //UI設定
@@ -100,28 +100,73 @@ public class FightingManager : ModeManager
     private async UniTaskVoid CountdownAsync()
     {
         _timeLimitCTS = new CancellationTokenSource();
+        CancellationToken token = _timeLimitCTS.Token;
 
         int time = _timeLimit;
 
-        while (time >= 0)
+        try
         {
-            _fightingUI.SetTimeLimitText(time.ToString("D2")); // 2桁表示
+            while (time >= 0)
+            {
+                _fightingUI.SetTimeLimitText(time.ToString("D2")); // 2桁表示
 
-            await FightingPhysics.DelayFrameWithTimeScale(
-                FightingPhysics.FightingFrameRate,
-                cancellationToken: _timeLimitCTS.Token
-                );
+                await FightingPhysics.DelayFrameWithTimeScale(
+                    FightingPhysics.FightingFrameRate,
+                    cancellationToken: token
+                    );
 
-            time--;
+                time--;
+            }
+
+            await RoundSetPerformance(_fightingUI.TimeOver);
+
+            if (_player1CS.CurrentHP > _player2CS.CurrentHP)
+            {
+                GoNextRound(2);
+            }
+            else if (_player1CS.CurrentHP < _player2CS.CurrentHP)
+            {
+                GoNextRound(1);
+            }
+            else
+            {
+                GoNextRound(0);
+            }
         }
-
-        Debug.Log("カウントダウン終了");
+        catch(OperationCanceledException)
+        {
+            //カウントダウン停止
+        }
     }
 
-    //ここを呼ぶ機構を作る
+    private async UniTask RoundSetPerformance(Func<UniTask> performance)
+    {
+        FightingPhysics.SetFightTimeScale(0.5f);
+        Time.timeScale = 0.5f;
+        _player1CS.SetAcceptOperations(false);
+        _player2CS.SetAcceptOperations(false);
+
+        await performance.Invoke();
+
+        FightingPhysics.SetFightTimeScale(1);
+        Time.timeScale = 1;
+        _player1CS.SetAcceptOperations(true);
+        _player2CS.SetAcceptOperations(true);
+    }
+
+    private async void KO(int loserNum)
+    {
+        _timeLimitCTS?.Cancel();
+        await RoundSetPerformance(_fightingUI.KO);
+        GoNextRound(loserNum);
+    }
+
     private async void GoNextRound(int loserNum)
     {
-        _currentRoundData.RoundNum++;
+        if(loserNum != 0)
+        {
+            _currentRoundData.RoundNum++;
+        }    
 
         if(loserNum == 2)
         {
@@ -132,7 +177,7 @@ public class FightingManager : ModeManager
                 return;
             }
         }
-        else 
+        else if(loserNum == 1)
         {
             _currentRoundData.Heart1P--;
             if (_currentRoundData.Heart1P <= 0)
@@ -142,23 +187,9 @@ public class FightingManager : ModeManager
             }
         }
 
-        FightingPhysics.SetFightTimeScale(0.5f);
-        Time.timeScale = 0.5f;
-        _player1CS.SetAcceptOperations(false);
-        _player2CS.SetAcceptOperations(false);
-
-        await _fightingUI.KO();
-
-        FightingPhysics.SetFightTimeScale(1);
-        Time.timeScale = 1;
-        _player1CS.SetAcceptOperations(true);
-        _player2CS.SetAcceptOperations(true);
-
-        _player1CA.CancelActionByHit();
-        _player2CA.CancelActionByHit();
-
-        var nextRoundFM = await GameManager.LoadAsync<FightingManager>("FightingScene");
-        nextRoundFM.StartRound(_currentRoundData, _player1CA, _player2CA);
+        FightingManager fightingManager =
+            await GameManager.LoadAsync<FightingManager>("FightingScene");
+        fightingManager.StartRound(CurrentRoundData, _player1CA, _player2CA);
     }
 
     private async void GameSet(int winnerNum)

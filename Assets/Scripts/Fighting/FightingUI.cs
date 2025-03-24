@@ -44,6 +44,7 @@ public class FightingUI : MonoBehaviour
     [Header("ラウンドコール")]
     [SerializeField] private Animator _round;
     [SerializeField] private Animator _gameSet;
+    [SerializeField] private Animator _timeOver;
     [Space]
     [Header("暗転用パネル")]
     [SerializeField] private Image _panel;
@@ -376,6 +377,25 @@ public class FightingUI : MonoBehaviour
         await UniTask.WaitUntil(() =>
         {
             return AnimatorByLayerName.GetCurrentAnimationProgress(_gameSet, "Base Layer") >= 1f;
+        }, cancellationToken: token);
+
+        await _panel.DOFade(1f, 1f).ToUniTask(cancellationToken: token);
+
+        GameSetCancel();
+    }
+
+    public async UniTask TimeOver()
+    {
+        _timeOver.SetTrigger("TimeOverTrigger");
+
+        _gameSetCTS = new CancellationTokenSource();
+        CancellationToken token = _gameSetCTS.Token;
+
+        if (_timeOver == null) return;
+
+        await UniTask.WaitUntil(() =>
+        {
+            return AnimatorByLayerName.GetCurrentAnimationProgress(_timeOver, "Base Layer") >= 1f;
         }, cancellationToken: token);
 
         await _panel.DOFade(1f, 1f).ToUniTask(cancellationToken: token);
