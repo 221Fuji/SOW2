@@ -75,3 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb8d6d5423ff574dbc2da6ba966b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _acceptSwitchingDeviceScene:
+  - TitleScene
+  - ModeSelectScene
+  - ResultScene

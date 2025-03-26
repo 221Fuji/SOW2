@@ -76,13 +76,13 @@ public class FightingUI : MonoBehaviour
     /// <summary>
     /// キャラクターをそれぞれ設定
     /// </summary>
-    public void SetPlayer(CharacterState cs1P, CharacterState cs2P)
+    public void SetPlayer(PlayerData pd1, PlayerData pd2)
     {
-        _cs1P = cs1P;
-        _cs2P = cs2P;
+        _cs1P = pd1.CharacterState;
+        _cs2P = pd2.CharacterState;
 
-        _ca1P = cs1P.GetComponent<CharacterActions>();
-        _ca2P = cs2P.GetComponent<CharacterActions>();
+        _ca1P = pd1.CharacterActions;
+        _ca2P = pd2.CharacterActions;
 
         //デリゲートの登録
         _ca1P.ComboCount = ComboCount;
@@ -93,20 +93,20 @@ public class FightingUI : MonoBehaviour
         InitializeUniqueResource(_ca2P);
 
         //顔
-        InstantiateFaceUpImage(_ca1P.CharacterData, 1);
-        InstantiateFaceUpImage(_ca2P.CharacterData, 2);
+        InstantiateFaceUpImage(pd1);
+        InstantiateFaceUpImage(pd2);
     }
 
-    private void InstantiateFaceUpImage(CharacterData charaData, int playerNum)
+    private void InstantiateFaceUpImage(PlayerData playerData)
     {
-        if(playerNum == 1)
+        if(playerData.PlayerNum == 1)
         {
-            Transform face1P = Instantiate(charaData.FightingFaceUpImage.transform);
+            Transform face1P = Instantiate(playerData.CharacterData.FightingFaceUpImage.transform);
             face1P.SetParent(_faceUp1P, false);
         }
         else
         {
-            Transform face2P = Instantiate(charaData.FightingFaceUpImage.transform);
+            Transform face2P = Instantiate(playerData.CharacterData.FightingFaceUpImage.transform);
             face2P.SetParent(_faceUp2P, false);
             face2P.localPosition *= new Vector2(-1, 1);
             face2P.localScale *= new Vector2(-1, 1);

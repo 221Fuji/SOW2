@@ -104,7 +104,7 @@ public class VersusManager : MonoBehaviour
 
         //ƒV[ƒ“ˆÚ“®
         var fm = await GameManager.LoadAsync<FightingManager>("FightingScene");
-        fm.InitializeFM(GameManager.Player1Device, chara1p, GameManager.Player2Device, chara2p);
+        fm.InitializeFM(chara1p, chara2p);
     }
 
     private async UniTask ZoomOut(Transform parent, CancellationToken token)

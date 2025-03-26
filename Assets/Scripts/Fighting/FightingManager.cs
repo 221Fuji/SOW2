@@ -17,10 +17,9 @@ public class FightingManager : ModeManager
     [SerializeField] private FightingEffectManager _effectManager;
     [Space]
 
-    private CharacterActions _player1CA;
-    private CharacterActions _player2CA;
-    private CharacterState _player1CS;
-    private CharacterState _player2CS;
+    private PlayerData _playerData1P;
+    private PlayerData _playerData2P;
+
     private RoundData _currentRoundData;
     private CancellationTokenSource _timeLimitCTS;
 
@@ -31,68 +30,81 @@ public class FightingManager : ModeManager
         Application.targetFrameRate = 60; // デバッグ用
     }
 
-    public void InitializeFM(InputDevice inputDevice1P, CharacterData characterData1P,
-        InputDevice inputDevice2P, CharacterData characterData2P)
+    public void InitializeFM(CharacterData characterData1P, CharacterData characterData2P)
     {
         PlayerInput player1 = PlayerInput.Instantiate(
             prefab: characterData1P.CharacterPrefab.gameObject,
             playerIndex: 1,
-            pairWithDevice: inputDevice1P
+            pairWithDevice: GameManager.Player1Device
             );
         PlayerInput player2 = PlayerInput.Instantiate(
             prefab: characterData2P.CharacterPrefab.gameObject,
             playerIndex: 2,
-            pairWithDevice: inputDevice2P
+            pairWithDevice: GameManager.Player2Device
             );
 
         //ラウンド１開始
         RoundData firstRound = new RoundData(2, 2, 1);
-        CharacterActions player1CA = player1.GetComponent<CharacterActions>();
-        CharacterActions player2CA = player2.GetComponent<CharacterActions>();
-        StartRound(firstRound, player1CA, player2CA);
+        PlayerData playerData1P = new PlayerData(
+            characterData1P, 
+            player1.GetComponent<CharacterActions>(),
+            player1.GetComponent<CharacterState>(),
+            1
+            );
+        PlayerData playerData2P = new PlayerData(
+            characterData2P,
+            player2.GetComponent<CharacterActions>(),
+            player2.GetComponent<CharacterState>(),
+            1
+            );
+        StartRound(firstRound, playerData1P, playerData2P);
     }
 
-    private void StartRound(RoundData roundData, CharacterActions player1CA, CharacterActions player2CA)
+    private void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)
     {
         Debug.Log("ラウンド開始！");
         _currentRoundData = roundData;
-        _player1CA = player1CA;
-        _player2CA = player2CA;
-        _player1CS = player1CA.GetComponent<CharacterState>();
-        _player2CS = player2CA.GetComponent<CharacterState>();
+        _playerData1P = playerData1P;
+        _playerData2P = playerData2P;
+
+        CharacterActions ca1P = _playerData1P.CharacterActions;
+        CharacterActions ca2P = _playerData2P.CharacterActions;
+
+        CharacterState cs1P = _playerData1P.CharacterState;
+        CharacterState cs2P = _playerData2P.CharacterState;
 
         //敵設定
-        _player1CA.InitializeCA(1, _player2CA);
-        _player2CA.InitializeCA(2, _player1CA);
+        ca1P.InitializeCA(1, ca2P);
+        ca2P.InitializeCA(2, ca1P);
         //死亡デリゲート
-        _player1CA.OnDie = KO;
-        _player2CA.OnDie = KO;
+        ca1P.OnDie = KO;
+        ca2P.OnDie = KO;
         //カメラ設定
-        _camera.GetComponent<FightingCameraManager>().InitializeCamera(_player1CA.transform, _player2CA.transform);
+        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform);
         //UI設定
-        _fightingUI.SetPlayer(_player1CS, _player2CS);
+        _fightingUI.SetPlayer(playerData1P, playerData2P);
         _fightingUI.HeartLost(_currentRoundData);
         _fightingUI.SetTimeLimitText(_timeLimit.ToString("D2"));
-        _effectManager.InitializeFEM(_player1CA, _player2CA);
+        _effectManager.InitializeFEM(ca1P, ca2P);
         //ラウンドコール
-        _player1CS.SetAcceptOperations(false);
-        _player2CS.SetAcceptOperations(false);
+        cs1P.SetAcceptOperations(false);
+        cs2P.SetAcceptOperations(false);
         RoundCall();
 
         //座標リセット
-        _player1CA.transform.position = new Vector2(_startPosX1P, StageParameter.GroundPosY);
-        _player1CA.transform.position += new Vector3(_player1CA.PushBackBoxOffset.x, 0);
-        _player2CA.transform.position = new Vector2(_startPosX2P, StageParameter.GroundPosY);
-        _player2CA.transform.position -= new Vector3(_player2CA.PushBackBoxOffset.x, 0);
+        ca1P.transform.position = new Vector2(_startPosX1P, StageParameter.GroundPosY);
+        ca1P.transform.position += new Vector3(ca1P.PushBackBoxOffset.x, 0);
+        ca2P.transform.position = new Vector2(_startPosX2P, StageParameter.GroundPosY);
+        ca2P.transform.position -= new Vector3(ca2P.PushBackBoxOffset.x, 0);
     }
 
     private async void RoundCall()
     {
         await _fightingUI.RoundCall(CurrentRoundData.RoundNum);
-        _player1CS.SetAcceptOperations(true);
+        _playerData1P.CharacterState.SetAcceptOperations(true);
         if(!TitleManager.SoloPlayDebug)
         {
-            _player2CS.SetAcceptOperations(true);
+            _playerData2P.CharacterState.SetAcceptOperations(true);
         }
         CountdownAsync().Forget();
     }
@@ -120,11 +132,11 @@ public class FightingManager : ModeManager
 
             await RoundSetPerformance(_fightingUI.TimeOver);
 
-            if (_player1CS.CurrentHP > _player2CS.CurrentHP)
+            if (_playerData1P.CharacterState.CurrentHP > _playerData2P.CharacterState.CurrentHP)
             {
                 GoNextRound(2);
             }
-            else if (_player1CS.CurrentHP < _player2CS.CurrentHP)
+            else if (_playerData1P.CharacterState.CurrentHP < _playerData2P.CharacterState.CurrentHP)
             {
                 GoNextRound(1);
             }
@@ -143,15 +155,15 @@ public class FightingManager : ModeManager
     {
         FightingPhysics.SetFightTimeScale(0.5f);
         Time.timeScale = 0.5f;
-        _player1CS.SetAcceptOperations(false);
-        _player2CS.SetAcceptOperations(false);
+        _playerData1P.CharacterState.SetAcceptOperations(false);
+        _playerData2P.CharacterState.SetAcceptOperations(false);
 
         await performance.Invoke();
 
         FightingPhysics.SetFightTimeScale(1);
         Time.timeScale = 1;
-        _player1CS.SetAcceptOperations(true);
-        _player2CS.SetAcceptOperations(true);
+        _playerData1P.CharacterState.SetAcceptOperations(true);
+        _playerData2P.CharacterState.SetAcceptOperations(true);
     }
 
     private async void KO(int loserNum)
@@ -189,27 +201,33 @@ public class FightingManager : ModeManager
 
         FightingManager fightingManager =
             await GameManager.LoadAsync<FightingManager>("FightingScene");
-        fightingManager.StartRound(CurrentRoundData, _player1CA, _player2CA);
+        fightingManager.StartRound(CurrentRoundData, _playerData1P, _playerData2P);
     }
 
     private async void GameSet(int winnerNum)
     {
         _fightingUI.HeartLost(_currentRoundData);
 
-        _player1CS.SetAcceptOperations(false);
-        _player2CS.SetAcceptOperations(false);
+        _playerData1P.CharacterState.SetAcceptOperations(false);
+        _playerData2P.CharacterState.SetAcceptOperations(false);
 
         await _fightingUI.KO();
 
-        _player1CS.SetAcceptOperations(true);
-        _player2CS.SetAcceptOperations(true);
+        if(_playerData1P.CharacterActions.gameObject != null)
+        {
+            Destroy(_playerData1P.CharacterActions.gameObject);
+        }
+        if (_playerData2P.CharacterActions.gameObject != null)
+        {
+            Destroy(_playerData2P.CharacterActions.gameObject);
+        }
 
         Debug.Log($"Player{winnerNum}の勝ち！");
 
-        //ModeSelectSceneに移動
+        //ResultSelectSceneに移動
         ResultManager resultManager =
             await GameManager.LoadAsync<ResultManager>("ResultScene");
-        resultManager.InitializeRM(winnerNum);
+        resultManager.InitializeRM(winnerNum, _playerData1P, _playerData2P);
     }
 
     private void OnDestroy()
@@ -218,6 +236,22 @@ public class FightingManager : ModeManager
         {
             _timeLimitCTS.Cancel();
         }
+    }
+}
+
+public struct PlayerData
+{
+    public CharacterData CharacterData { get; private set; }
+    public CharacterActions CharacterActions { get; private set; }
+    public CharacterState CharacterState { get; private set; }
+    public int PlayerNum { get; private set; }
+
+    public PlayerData(CharacterData cd, CharacterActions ca, CharacterState cs, int pn)
+    {
+        CharacterData = cd;
+        CharacterActions = ca;
+        CharacterState = cs;
+        PlayerNum = pn;
     }
 }
 
