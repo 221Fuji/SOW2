@@ -21,6 +21,9 @@ public class CharacterData : ScriptableObject
     [SerializeField] private Image _fightingStandingImage;
     [Header("CharacterSelect‚Å‚ÌPrefab")]
     [SerializeField] private GameObject _windowFace;
+    [Header("ResultScene‚Å‚ÌImage")]
+    [SerializeField] private Image _resultWhiteStandImage;
+    [SerializeField] private Image _resultStandImage;
 
 
     public string CharacterNameE { get { return _characterNameE; } }
@@ -31,5 +34,7 @@ public class CharacterData : ScriptableObject
     public Image VersusGrayImage { get { return _versusGrayImage; } }
     public Image FightingFaceUpImage { get { return _fightingFaceUpImage; } }
     public Image FightingStandingImage { get { return _fightingStandingImage; } }
-    public GameObject WindowFace {get {return _windowFace;}}
+    public GameObject WindowFace { get { return _windowFace; } }
+    public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
+    public Image ResultStandImage { get { return _resultWhiteStandImage; } }
 }

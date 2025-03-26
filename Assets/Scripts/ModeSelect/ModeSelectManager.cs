@@ -26,18 +26,14 @@ public class ModeSelectManager : ModeManager
     {
         //入力の設定
         oir.Accept = _uimsMovigCtrl.OnClick;
-        oir.Cancel = GoTitle;
         oir.Up = _uimsMovigCtrl.ForcusUp;
         oir.Down = _uimsMovigCtrl.ForcusDown;
 
         //セレクトモードボタンの設定
+        UIMSButton goBack = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
+        goBack.ClickedActionEvent = GoTitle;
         UIMSButton offline = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
         offline.ClickedActionEvent = GoCharacterSelect;
-    }
-
-    private async void GoTitle()
-    {
-        await GameManager.LoadAsync<TitleManager>("TitleScene");
     }
 
     private async UniTask WaitForFade(Color startPanelColor, float endValue)
@@ -65,9 +61,27 @@ public class ModeSelectManager : ModeManager
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
 
+            GameManager.Player2Device = null;
             var characterSelectManager =
                 await GameManager.LoadAsync<CharacterSelectManager>("CharacterSelectScene");
             characterSelectManager.Initialize(GameManager.Player1Device);
+        }
+        catch
+        {
+            return;
+        }
+    }
+
+    private async void GoTitle(GameObject ob)
+    {
+        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
+        var kettei = movingCtrlClass?.ReturnKettei();
+        kettei.StartAnim();
+
+        try
+        {
+            await WaitForFade(new Color(1, 1, 1, 0), 1);
+            await GameManager.LoadAsync<TitleManager>("TitleScene");
         }
         catch
         {

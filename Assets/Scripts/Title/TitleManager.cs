@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +19,8 @@ public class TitleManager : MonoBehaviour
         }
 
         Application.targetFrameRate = 60;
+        GameManager.Player1Device = null;
+        GameManager.Player2Device = null;
         _inputAction.Enable();
         _inputAction.performed += OnJoin;
     }
@@ -51,7 +52,7 @@ public class TitleManager : MonoBehaviour
                 await GameManager.LoadAsync<VersusManager>("VersusScene");
 
             versusManager.VersusPerformance(
-                _characterDataBase.GetCharacterDataByName("Cloud"),
+                _characterDataBase.GetCharacterDataByName("Lancer"),
                 _characterDataBase.GetCharacterDataByName("Cloud")
                 );
         }

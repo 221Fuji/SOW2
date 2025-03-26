@@ -9,7 +9,6 @@ public abstract class CharacterActions : FightingRigidBody
 {
     [Space]
     [Header("キャラクターの設定")]
-    [SerializeField] private CharacterData _characterData;
     [SerializeField] private GameObject _hurtBox;
 
     //基本情報
@@ -23,7 +22,6 @@ public abstract class CharacterActions : FightingRigidBody
     //その他プロパティ
     protected CharacterActions _enemyCA { get; private set; }
     public int PlayerNum { get; private set; } = 0;
-    public CharacterData CharacterData { get { return _characterData; } }
 
     //硬直等での行動制限プロパティ
     protected virtual bool CanEveryAction

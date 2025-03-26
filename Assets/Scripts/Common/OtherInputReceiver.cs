@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,9 +6,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class OtherInputReceiver : MonoBehaviour
 {
+    [SerializeField] private List<string> _acceptSwitchingDeviceScene;
     private PlayerInput _playerInput;
     private InputUser _inputUser;
 
@@ -64,16 +65,19 @@ public class OtherInputReceiver : MonoBehaviour
 
     private void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
     {
-        // キャラセレと対戦中はデバイスの切り替え不可
-        if (SceneManager.GetActiveScene().name == "CharacterSelectScene" ||
-           SceneManager.GetActiveScene().name == "FightingScene" ||
-           SceneManager.GetActiveScene().name == "VersusScene")
+        // デバイスの切り替え不可シーン
+        if (!_acceptSwitchingDeviceScene.Contains(SceneManager.GetActiveScene().name))
         {
             return;
         }
 
         // すでに登録されているデバイスなら何もしない
-        if (_inputUser.pairedDevices.Contains(device)) return;
+        if (device != GameManager.Player1Device || device != GameManager.Player2Device)
+        {
+            return;
+        }
+
+
 
         // キーボードとパッドだけ
         if (!(device is Keyboard) && !(device is Gamepad)) return;
