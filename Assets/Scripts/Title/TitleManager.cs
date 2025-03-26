@@ -7,7 +7,7 @@ public class TitleManager : MonoBehaviour
     private bool _join = false;
 
     [SerializeField] private bool _soloPlayerDebug;
-    [SerializeField] CharacterDataBase _characterDataBase;
+    [SerializeField] private CharacterDataBase _characterDataBase;
 
     public static bool SoloPlayDebug { get; private set; } = false;
 
