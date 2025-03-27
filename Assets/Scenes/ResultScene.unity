@@ -458,11 +458,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
+  _firstPerformance: {fileID: 1322054799}
   _standImagePos: {fileID: 839912091}
   _topImage: {fileID: 484891340}
   _bottomImage: {fileID: 576471406}
   _winnerText: {fileID: 233460277}
-  _playerNumText: {fileID: 397271084}
+  _secondPerformance: {fileID: 237662593}
   _charaNameText1: {fileID: 746419526}
   _charaNameText2: {fileID: 177142030}
   _debugCD: {fileID: 11400000, guid: ef8a944741b45714598b02ce6d77c204, type: 2}
@@ -1076,7 +1077,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.38679248, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
