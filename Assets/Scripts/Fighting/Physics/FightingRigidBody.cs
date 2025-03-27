@@ -74,6 +74,11 @@ public class FightingRigidBody : MonoBehaviour
         _isFixed = value;
     }
 
+    public void SetIsWall(bool value)
+    {
+        _isWall = value;
+    }
+    
     public void SetGravityScale(float value)
     {
         _gravityScale = value;
