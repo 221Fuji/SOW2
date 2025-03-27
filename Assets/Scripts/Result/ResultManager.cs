@@ -54,7 +54,9 @@ public class ResultManager : ModeManager
         //第一演出
         _playerNumText.gameObject.SetActive(true);
         _winnerText.gameObject.SetActive(true);
-        
+        _charaNameText1.gameObject.SetActive(false);
+        _charaNameText2.gameObject.SetActive(false);
+
 
         //WinnerTextの文字間隔アニメーション
         DOTween.To(() => _winnerText.characterSpacing, x => _winnerText.characterSpacing = x, 30, 5)
@@ -68,8 +70,11 @@ public class ResultManager : ModeManager
 
 
         //第二演出
-        //_firstPerformance.SetActive(false);
-        //_secondPerformance.SetActive(true);
+        _playerNumText.gameObject.SetActive(false);
+        _winnerText.gameObject.SetActive(false);
+        _charaNameText1.gameObject.SetActive(true);
+        _charaNameText2.gameObject.SetActive(true);
+        _standImagePos.gameObject.SetActive(false);
 
         for (int i = 0; i < _winnerCharacterData.CharacterNameE.Length; i++)
         {
@@ -86,10 +91,10 @@ public class ResultManager : ModeManager
         _topImage.localPosition = new Vector2(0, 135);
         _bottomImage.localPosition = new Vector2(0, -135);
         _topImage.DOLocalMoveY(350f, 0.75f).SetEase(Ease.OutExpo).ToUniTask().Forget();
-        await _bottomImage.DOLocalMoveY(-350f, 0.75f).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token);
+        await _bottomImage.DOLocalMoveY(-350f, 1f).SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token);
 
-        _topImage.DOLocalMoveY(405f, 0.25f).SetEase(Ease.InOutExpo).ToUniTask().Forget();
-        await _bottomImage.DOLocalMoveY(-405f, 0.25f).SetEase(Ease.InOutExpo).ToUniTask(cancellationToken: token);
+        //_topImage.DOLocalMoveY(405f, 0.25f).SetEase(Ease.InOutExpo).ToUniTask().Forget();
+        //await _bottomImage.DOLocalMoveY(-405f, 0.25f).SetEase(Ease.InOutExpo).ToUniTask(cancellationToken: token);
     }
 
     private async UniTask StandImagePerformance(CancellationToken token)
