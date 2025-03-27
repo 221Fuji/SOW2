@@ -16,6 +16,9 @@ public class UIMSButton : UIPersonalAct
     //å≈óLèàóù
     public UnityAction<GameObject> ClickedActionEvent { get; set; }
 
+    private Vector2 _defaultRect;
+
+
     public override async void FocusedAction(GameObject ob)
     {
         ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
@@ -40,6 +43,10 @@ public class UIMSButton : UIPersonalAct
 
         _cts = new CancellationTokenSource();
         CancellationToken token = _cts.Token;
+
+        _defaultRect = transform.parent.GetComponent<RectTransform>().localScale;
+        transform.parent.GetComponent<RectTransform>().DOScale(new Vector2(1.1f,1.1f),0.5f).SetEase(Ease.OutBack).ToUniTask(cancellationToken:token).Forget();
+
 
         modeNameTxt.ResetPosition();
         var titleSequence = DOTween.Sequence();
@@ -76,6 +83,7 @@ public class UIMSButton : UIPersonalAct
     }
     public override void SeparateAction(GameObject ob)
     {
+        transform.parent.GetComponent<RectTransform>().localScale = _defaultRect;
         _cts.Cancel();
         ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
         movingCtrlClass?.ReturnKettei().ResetAnim();
