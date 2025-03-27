@@ -23,6 +23,9 @@ public class CharacterData : ScriptableObject
     [SerializeField] private GameObject _windowFace;
     [SerializeField] private GameObject _csFigure;
     [SerializeField] private GameObject _csDot;
+    [Header("ResultScene‚Å‚ÌImage")]
+    [SerializeField] private Image _resultWhiteStandImage;
+    [SerializeField] private Image _resultStandImage;
 
 
     public string CharacterNameE { get { return _characterNameE; } }
@@ -36,4 +39,7 @@ public class CharacterData : ScriptableObject
     public GameObject WindowFace {get {return _windowFace;}}
     public GameObject CSFigure {get {return _csFigure;}}
     public GameObject CSDot{get {return _csDot;}}
+    public GameObject WindowFace { get { return _windowFace; } }
+    public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
+    public Image ResultStandImage { get { return _resultWhiteStandImage; } }
 }
