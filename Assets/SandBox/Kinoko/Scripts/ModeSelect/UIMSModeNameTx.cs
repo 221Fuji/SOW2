@@ -51,7 +51,7 @@ public class UIMSModeNameTx : UIMSText
         return sequence;
     }
 
-    public async Task FlashText(string str,CancellationToken token)
+    public async UniTask FlashText(string str,CancellationToken token)
     {
         List<GameObject> objs = new List<GameObject>(){_childObject1,_childObject2,_childObject3};
         char[] chars = str.ToCharArray();

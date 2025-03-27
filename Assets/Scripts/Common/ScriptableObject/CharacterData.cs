@@ -21,6 +21,8 @@ public class CharacterData : ScriptableObject
     [SerializeField] private Image _fightingStandingImage;
     [Header("CharacterSelect‚Å‚ÌPrefab")]
     [SerializeField] private GameObject _windowFace;
+    [SerializeField] private GameObject _csFigure;
+    [SerializeField] private GameObject _csDot;
 
 
     public string CharacterNameE { get { return _characterNameE; } }
@@ -32,4 +34,6 @@ public class CharacterData : ScriptableObject
     public Image FightingFaceUpImage { get { return _fightingFaceUpImage; } }
     public Image FightingStandingImage { get { return _fightingStandingImage; } }
     public GameObject WindowFace {get {return _windowFace;}}
+    public GameObject CSFigure {get {return _csFigure;}}
+    public GameObject CSDot{get {return _csDot;}}
 }

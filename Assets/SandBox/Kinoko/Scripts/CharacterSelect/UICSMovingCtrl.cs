@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using System.Threading;
 
 public class UICSMovingCtrl : UIMovingCtrl
 {
@@ -16,12 +17,21 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private GameObject _1PFrameFloor;
     [SerializeField] private GameObject _2PFrameFloor;
     [SerializeField] private GameObject _MixFrameFloor;
+    [SerializeField] private UICSDotObjectField _dotObjectField;
+    [SerializeField] private UICSFigureBox _figureBox;
+    [SerializeField] private UICSStreamText _streamTxtLarge;
+    [SerializeField] private UICSStreamText _streamTxtMedium;
+    [SerializeField] private UICSStreamText _streamTxtSmall;
+    [SerializeField] private UICSReadyTxt _readyTxt;
     [SerializeField] private int _playerNum = 0;
 
     public int PlayerNum{get {return _playerNum;}}
     public CharacterDataBase DataBase{get {return _database;}}
     public TextMeshProUGUI CharacterNameJField{get {return _characterNameJField;}}
     public TextMeshProUGUI CharacterNameEField{get {return _characterNameEField;}}
+    public UICSFigureBox FigureBox{get {return _figureBox;}}
+    public UICSDotObjectField DotObjectField{get {return _dotObjectField;}}
+    public UICSReadyTxt ReadyTxt{get {return _readyTxt;}}
 
     public bool Selected {get; private set;}
     public CharacterData CharacterData{get; private set;}
@@ -46,6 +56,12 @@ public class UICSMovingCtrl : UIMovingCtrl
             }
         }
         base.Awake();
+        
+        if(PlayerNum == 2) return;
+        CancellationTokenSource cts = new CancellationTokenSource();
+        _streamTxtLarge.StreamingText(cts.Token);
+        _streamTxtMedium.StreamingText(cts.Token);
+        _streamTxtSmall.StreamingText(cts.Token);
     }
 
     public override void OnClick()

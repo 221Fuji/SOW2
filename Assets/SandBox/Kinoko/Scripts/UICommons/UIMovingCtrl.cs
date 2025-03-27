@@ -79,6 +79,7 @@ public class UIMovingCtrl : MonoBehaviour
 
         if(Forcus == Search)
         {
+            Search = new Vector2(-1,-1);            
             //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
@@ -99,7 +100,10 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void ForcusDown(){
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y + 1);
+        Debug.Log("こうしくん");
         if(Search.y > _outMap[(int)Search.x].ReturnLength() - 1){
+            Debug.Log("Length>>" + (_outMap[(int)Search.x].ReturnLength() - 1));
+            Debug.Log("Search"+Search.y);
             Search = new Vector2(Search.x,0);
             this.ForcusDown();
             return;
@@ -114,6 +118,7 @@ public class UIMovingCtrl : MonoBehaviour
         
         if(Forcus == Search)
         {
+            Search = new Vector2(-1,-1);
             //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
@@ -151,6 +156,7 @@ public class UIMovingCtrl : MonoBehaviour
 
         if(Forcus == Search)
         {
+            Search = new Vector2(-1,-1);            
             //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
@@ -188,6 +194,7 @@ public class UIMovingCtrl : MonoBehaviour
 
         if(Forcus == Search)
         {
+            Search = new Vector2(-1,-1);
             //もし最終的なフォーカスが今のフォーカスと同じ際の演出を書くならここに！(ボタンがブブッって感じで震えたり..)
             return;
         }
