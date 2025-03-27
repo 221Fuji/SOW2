@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -11,9 +13,13 @@ public class UICSCharaWindow : UIPersonalAct
     [SerializeField] private int _windowTurn = -1;
     [SerializeField] private GameObject _backPanel;
     public CharacterData Characterdata {get; private set;}
-    private bool _movingExceptionFlag;
+    [SerializeField] private bool _movingExceptionFlag;
     private int _selectedPlayer = 0;
     private GameObject _instancedLine = null;
+
+    private CancellationTokenSource _1PTokenSource = new CancellationTokenSource();
+    private CancellationTokenSource _2PTokenSource = new CancellationTokenSource();
+
     //以下このウィンドウに何が割り当てられるのかを指定して表示する用の要素を準備するメソッド
 
     public void SetCharacterData(GameObject ob)
@@ -35,7 +41,6 @@ public class UICSCharaWindow : UIPersonalAct
                                                 new Vector2(backPos.x + windowFace.GetComponent<RectTransform>().anchoredPosition.x
                                                             ,backPos.y + windowFace.GetComponent<RectTransform>().anchoredPosition.y),Quaternion.identity);
         InstantiatedFase.transform.SetParent(_backPanel.transform,false);
-        
     }
 
     public override bool MovingException(GameObject ob)
@@ -43,7 +48,7 @@ public class UICSCharaWindow : UIPersonalAct
         return _movingExceptionFlag;
     }
 
-    public override void FocusedAction(GameObject ob)
+    public override async void FocusedAction(GameObject ob)
     {
         ob.TryGetComponent<UICSMovingCtrl>(out var movingctrlClass);
         //1が1Pで2が2P
@@ -60,17 +65,10 @@ public class UICSCharaWindow : UIPersonalAct
         CharacterDataBase characterDatabase = movingctrlClass.DataBase;
         TextMeshProUGUI jpTxt = movingctrlClass?.CharacterNameJField;
         TextMeshProUGUI enTxt = movingctrlClass?.CharacterNameEField;
+        UICSFigureBox figureBox = movingctrlClass?.FigureBox;
+        UICSDotObjectField dotObject = movingctrlClass?.DotObjectField;
         
 
-
-        if(characterDatabase.CharacterDataList.Count < _windowTurn)
-        {
-            _movingExceptionFlag = true;
-            return;
-        }
-
-        jpTxt.text = characterDatabase.CharacterDataList[_windowTurn - 1].CharacterNameJ;
-        enTxt.text = characterDatabase.CharacterDataList[_windowTurn - 1].CharacterNameE;
 
         _selectedPlayer += playernum;
         if(_selectedPlayer == 0 || _selectedPlayer > 3)
@@ -99,16 +97,44 @@ public class UICSCharaWindow : UIPersonalAct
                 instanceLine = movingctrlClass.ReturnCharacterOutFrames()._MixFrameTop;
                 break;
         }
-        //Debug.Log("selectedPlayer>>" + _selectedPlayer + "このオブジェクト"+ _windowTurn);
 
         Vector2 instanceLineRect = instanceLine.GetComponent<RectTransform>().anchoredPosition;
         _instancedLine = Instantiate(instanceLine,new Vector2(instanceLineRect.x
                                                             ,instanceLineRect.y),Quaternion.identity);
         _instancedLine.transform.SetParent(transform,false);
+
+        //もし対応するキャラクターデータがなかったらここで中断(デバッグ用の処理、起こらないようにする)
+        if(characterDatabase.CharacterDataList.Count < _windowTurn)
+        {
+            Debug.Log("対応するキャラクターがいません。操作が正常か確認してください。windowTurn>>" + _windowTurn + "キャラクター数>>" + characterDatabase.CharacterDataList.Count);
+            return;   
+        }
+
+
+        CancellationToken ct = new CancellationToken();
+        if(playernum == 1)
+        {
+            _1PTokenSource = new CancellationTokenSource();
+            ct = _1PTokenSource.Token;
+        }
+        else if(playernum == 2)
+        {
+            _2PTokenSource = new CancellationTokenSource();
+            ct = _2PTokenSource.Token;
+        }
+
+        CharacterData characterData = characterDatabase.CharacterDataList[_windowTurn - 1];
+        jpTxt.text = characterData.CharacterNameJ;
+        enTxt.text = characterData.CharacterNameE;
+        figureBox.InstanceFigure(playernum,characterData.CSFigure,ct).Forget();
+        dotObject.InstanceDot(characterData.CSDot);
     }
+
+
 
     public override void SeparateAction(GameObject ob)
     {
+
         ob.TryGetComponent<UICSMovingCtrl>(out var movingCtrlClass);
         int playerNum = 0;
         try
@@ -151,5 +177,25 @@ public class UICSCharaWindow : UIPersonalAct
         }
 
 
+        if(playerNum == 1)
+        {
+            _1PTokenSource.Cancel();
+        }
+        else if(playerNum == 2)
+        {
+            _2PTokenSource.Cancel();
+        }
+
+    }
+    public override void ClickedAction(GameObject ob)
+    {
+        
+        CancellationTokenSource cts = new CancellationTokenSource();        
+        ob.TryGetComponent<UICSMovingCtrl>(out var movingctrlClass);
+        int playerNum = movingctrlClass.PlayerNum;
+        if(playerNum == 1) _1PTokenSource = cts;
+        else if(playerNum == 2) _2PTokenSource = cts;
+
+        movingctrlClass?.ReadyTxt.ReadyDirection(cts.Token);
     }
 }

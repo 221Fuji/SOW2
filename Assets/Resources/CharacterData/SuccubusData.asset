@@ -21,3 +21,5 @@ MonoBehaviour:
   _fightingFaceUpImage: {fileID: 1948139175533801005, guid: d1713d4c91815ae41808b5f9a5b332d3, type: 3}
   _fightingStandingImage: {fileID: 1300105598206248976, guid: c23937bc79768784ebeaecd9daf6ac12, type: 3}
   _windowFace: {fileID: 2507779514458795130, guid: c23937bc79768784ebeaecd9daf6ac12, type: 3}
+  _csFigure: {fileID: 613454130493294281, guid: 92e6c75c50b830543b5c4e8b602f23ab, type: 3}
+  _csDot: {fileID: 6159304237300955741, guid: ced4f3d96002bb141ba2d4a4e04c8dbb, type: 3}
