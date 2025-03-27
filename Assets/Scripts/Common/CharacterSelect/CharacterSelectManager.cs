@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine.Rendering;
 
 public class CharacterSelectManager : ModeManager
 {
@@ -67,13 +68,15 @@ public class CharacterSelectManager : ModeManager
             return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
         }, cancellationToken : token);
 
+        
         //
-        //以下デバッグ用処理
+        //以下デバッグ用処理-->実際に組み込んでます(byきのこ)
         //
 
         CharacterData chara1P = _csMovingCtrl1P.CharacterData;
         CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
+        await UniTask.WaitForSeconds(0.8f,cancellationToken: token);
         //FightingSceneに移行
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
         vm.VersusPerformance(chara1P, chara2P);
