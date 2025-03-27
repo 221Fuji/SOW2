@@ -11,14 +11,9 @@ public class UIMSMovingCtrl : UIMovingCtrl
     [SerializeField] private UIMSFloorUnder _floorUnder;
     [SerializeField] private UIMSKettei _kettei;
 
-    public override void ForcusUp()
+    public void Cancell()
     {
-        base.ForcusUp();
-    }
-
-    public override void ForcusDown()
-    {
-        base.ForcusDown();
+        if(_lockPushed) return;
     }
 
     public UIMSYazirusi ReturnYazirusiOb()
