@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 public class UICSMovingCtrl : UIMovingCtrl
 {
@@ -97,6 +98,15 @@ public class UICSMovingCtrl : UIMovingCtrl
 
     public override void OnClick()
     {
+        
+        //コントローラーの取得
+        //自分のデバイスを取得
+        InputDevice player1Device = GameManager.Player1Device;
+        //デバイスが何か？
+        if(player1Device is Keyboard)
+        if(player1Device is Gamepad)
+        if(player1Device is Joystick)
+
         if(CheckAvailable()) return;
 
         base.OnClick();
@@ -118,7 +128,7 @@ public class UICSMovingCtrl : UIMovingCtrl
         if(CheckAvailable() && _rivalMovingCtrl.Selected) return;
         Selected = false;
         //キャラ確定後にもとに戻したい処理があったらここに書く！(※両者選択後は呼ばれない)
-        _readyTxt.ResetUI();
+        //readyTxt.ResetUI();
     }
 
 
