@@ -26,7 +26,6 @@ public class ModeSelectManager : ModeManager
     {
         //ì¸óÕÇÃê›íË
         oir.Accept += _uimsMovigCtrl.OnClick;
-        oir.Accept += DoNotaAcceptOperations;
         oir.Cancel += GoTitle;
         oir.Cancel += DoNotaAcceptOperations; 
         oir.Up = _uimsMovigCtrl.ForcusUp;
@@ -61,6 +60,7 @@ public class ModeSelectManager : ModeManager
 
     private async void GoCharacterSelect()
     {
+        DoNotaAcceptOperations();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -72,12 +72,14 @@ public class ModeSelectManager : ModeManager
         }
         catch
         {
+            _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
             return;
         }
     }
 
     private async void GoTitle()
     {
+        DoNotaAcceptOperations();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -85,6 +87,7 @@ public class ModeSelectManager : ModeManager
         }
         catch
         {
+            _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
             return;
         }
     }
