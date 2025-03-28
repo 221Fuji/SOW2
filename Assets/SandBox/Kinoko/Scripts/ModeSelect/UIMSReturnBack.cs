@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIMSReturnBack : UIPersonalAct
 {
     [SerializeField] private GameObject _flame;
+    public UnityAction ClickedActionEvent{get; set;}
     public override bool MovingException(GameObject ob)
     {
         UIMSMovingCtrl ctrl = ob.GetComponent<UIMSMovingCtrl>();
@@ -33,5 +35,10 @@ public class UIMSReturnBack : UIPersonalAct
     public override void SeparateAction(GameObject _ob)
     {
         _flame.SetActive(false);
+    }
+    
+    public override void ClickedAction(GameObject ob)
+    {
+        ClickedActionEvent?.Invoke();
     }
 }

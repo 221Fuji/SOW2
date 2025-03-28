@@ -42,7 +42,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void DesignatedForcus(Vector2 arrayPos)
     {
-        if(_lockPushed) return;
         if(Forcus.x == -1 && Forcus.y == -1)
         {
             Forcus = _startPos;
@@ -63,7 +62,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void ForcusUp()
     {
-        if(_lockPushed) return;
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y - 1);
         if(Search.y < 0)
         {
@@ -91,7 +89,6 @@ public class UIMovingCtrl : MonoBehaviour
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -102,12 +99,8 @@ public class UIMovingCtrl : MonoBehaviour
     /// 下入力
     /// </summary>
     public virtual void ForcusDown(){
-        if(_lockPushed) return;
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y + 1);
-        //Debug.Log("こうしくん");
         if(Search.y > _outMap[(int)Search.x].ReturnLength() - 1){
-            Debug.Log("Length>>" + (_outMap[(int)Search.x].ReturnLength() - 1));
-            Debug.Log("Search"+Search.y);
             Search = new Vector2(Search.x,0);
             this.ForcusDown();
             return;
@@ -128,12 +121,10 @@ public class UIMovingCtrl : MonoBehaviour
         }
 
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
-        //Debug.Log("以下処理");
 
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -144,7 +135,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// 左入力
     /// </summary>
     public virtual void ForcusLeft(){
-        if(_lockPushed) return;
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x - 1,Forcus.y);
         if(Search.x < 0){
             Search = new Vector2(_outMap.Count - 1, Search.y);
@@ -182,7 +172,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// 右入力
     /// </summary>
     public virtual void ForcusRight(){
-        if(_lockPushed) return;
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x + 1,Forcus.y);
         if(Search.x > _outMap.Count - 1){
             Search = new Vector2(0,Search.y);
@@ -210,7 +199,6 @@ public class UIMovingCtrl : MonoBehaviour
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -222,7 +210,6 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void OnClick()
     {
-        if(_lockPushed) return;
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ClickedAction(this.transform.gameObject);
     }
 }

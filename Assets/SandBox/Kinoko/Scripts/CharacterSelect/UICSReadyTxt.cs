@@ -40,9 +40,16 @@ public class UICSReadyTxt : UIPersonalAct
 
     public void ResetUI()
     {
-        GetComponent<RectTransform>().localScale = _sizeBody.localScale;
-        ReadyFlame.GetComponent<RectTransform>().localScale = _sizeFlame.localScale;
-        GetComponent<TextMeshProUGUI>().color = _colorBody;
-        ReadyFlame.GetComponent<TextMeshProUGUI>().color = _colorFlame;
+        try
+        {
+            GetComponent<RectTransform>().localScale = _sizeBody.localScale;
+            ReadyFlame.GetComponent<RectTransform>().localScale = _sizeFlame.localScale;
+            GetComponent<TextMeshProUGUI>().color = _colorBody;
+            ReadyFlame.GetComponent<TextMeshProUGUI>().color = _colorFlame;
+        }
+        catch
+        {
+
+        }
     }
 }

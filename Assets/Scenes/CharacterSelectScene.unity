@@ -1548,7 +1548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &380524254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1918,15 +1918,19 @@ MonoBehaviour:
   - _inMap:
     - {fileID: 354943605}
     - {fileID: 446448403}
+    - {fileID: 1015844863}
   - _inMap:
     - {fileID: 354943605}
     - {fileID: 1046840640}
+    - {fileID: 323456796}
   - _inMap:
     - {fileID: 354943605}
     - {fileID: 1766712071}
+    - {fileID: 1379120948}
   - _inMap:
     - {fileID: 354943605}
     - {fileID: 2126141008}
+    - {fileID: 990615534}
   _startPos: {x: 0, y: 1}
   _database: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}
   _characterNameJField: {fileID: 87644776}
@@ -5711,7 +5715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1903365303
 RectTransform:
   m_ObjectHideFlags: 0

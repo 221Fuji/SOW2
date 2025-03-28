@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Rendering;
+using System;
 
 public class CharacterSelectManager : ModeManager
 {
@@ -55,6 +56,8 @@ public class CharacterSelectManager : ModeManager
         oir.Down = csMovingCtrl.ForcusDown;
         oir.Left = csMovingCtrl.ForcusLeft;
         oir.Right = csMovingCtrl.ForcusRight;
+        UICSReturnBack goBack = csMovingCtrl.OutMap[0].ReturnList()[0] as UICSReturnBack;
+        goBack.ClickedActionEvent += GoTitle;
     }
 
     private async void GoFighting()
@@ -79,6 +82,19 @@ public class CharacterSelectManager : ModeManager
         //FightingScene�Ɉڍs
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
         vm.VersusPerformance(chara1P, chara2P);
+    }
+
+    private async void GoTitle()
+    {
+        try
+        {
+            await GameManager.LoadAsync<TitleManager>("TitleScene");
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e);
+            return;
+        }
     }
 
     private void OnDestroy()
