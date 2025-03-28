@@ -40,5 +40,5 @@ public class CharacterData : ScriptableObject
     public GameObject CSFigure {get {return _csFigure;}}
     public GameObject CSDot{get {return _csDot;}}
     public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
-    public Image ResultStandImage { get { return _resultWhiteStandImage; } }
+    public Image ResultStandImage { get { return _resultStandImage; } }
 }

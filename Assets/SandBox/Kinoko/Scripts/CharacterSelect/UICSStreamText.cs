@@ -16,7 +16,7 @@ public class UICSStreamText : MonoBehaviour
         await GetComponent<RectTransform>().DOAnchorPosX(_endPosition,_takeTime).SetEase(Ease.Linear).ToUniTask(cancellationToken: token);
         GameObject obj = Instantiate(gameObject,firstPos,Quaternion.identity);
         obj.transform.SetParent(transform.parent,false);
-        obj.GetComponent<UICSStreamText>().StreamingText(token);
+        obj.GetComponent<UICSStreamText>().StreamingText(token).Forget();
         Destroy(gameObject);
     }
 }

@@ -14,7 +14,7 @@ public class UIMSButton : UIPersonalAct
     private List<Tween> _tweens = new List<Tween>();
 
     //å≈óLèàóù
-    public UnityAction<GameObject> ClickedActionEvent { get; set; }
+    public UnityAction ClickedActionEvent { get; set; }
 
     private Vector2 _defaultRect;
 
@@ -101,6 +101,9 @@ public class UIMSButton : UIPersonalAct
 
     public override void ClickedAction(GameObject ob)
     {
-        ClickedActionEvent?.Invoke(ob);
+        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
+        var kettei = movingCtrlClass?.ReturnKettei();
+        kettei.StartAnim();
+        ClickedActionEvent?.Invoke();
     }
 }

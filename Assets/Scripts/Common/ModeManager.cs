@@ -30,9 +30,11 @@ public class ModeManager : MonoBehaviour
     {
         string scheme = GameManager.GetControlSchemeFromDevice(_playerInputPrefab, device);
 
+        Debug.Log(scheme);
+
         _player2Input = PlayerInput.Instantiate(
             prefab: _playerInputPrefab.gameObject,
-            playerIndex: 1,
+            playerIndex: 2,
             controlScheme: scheme,
             pairWithDevice: device
             );
