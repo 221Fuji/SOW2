@@ -25,6 +25,14 @@ public class OtherInputReceiver : MonoBehaviour
     public UnityAction Left { get; set; }
     public UnityAction Right { get; set; }
 
+    //操作許可
+    private bool _acceptOpelation = true;
+
+    public void SetAcceptOpelation(bool value)
+    {
+        _acceptOpelation = value;
+    }
+
     //長押し関連
     private CancellationTokenSource _crossButtonCTS;
     private int _deleyFrameValue = 1; 
@@ -53,7 +61,7 @@ public class OtherInputReceiver : MonoBehaviour
         Debug.Log("イベント消した");
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         if(_crossButtonCTS != null)
         {
@@ -77,10 +85,10 @@ public class OtherInputReceiver : MonoBehaviour
             return;
         }
 
-
+        Debug.Log("ccc");
 
         // キーボードとパッドだけ
-        if (!(device is Keyboard) && !(device is Gamepad)) return;
+        if (!(device is Keyboard) && !(device is Gamepad) && !(device is Joystick)) return;
 
         Debug.Log($"新しいデバイスの入力検知: {device.displayName}");
 
@@ -107,11 +115,13 @@ public class OtherInputReceiver : MonoBehaviour
 
     public void OnAccept()
     {
+        if (!_acceptOpelation) return;
         Accept?.Invoke();
     }
 
     public void OnCancel()
     {
+        if (!_acceptOpelation) return;
         Cancel?.Invoke();
     }
 
@@ -138,6 +148,8 @@ public class OtherInputReceiver : MonoBehaviour
 
     private void OnCrossButton(Vector2 direction)
     {
+        if (!_acceptOpelation) return;
+
         int newDeleyFrame = 10;
 
         if(direction == Vector2.zero)

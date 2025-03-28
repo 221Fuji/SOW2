@@ -48,7 +48,7 @@ public class UICSCharaWindow : UIPersonalAct
         return _movingExceptionFlag;
     }
 
-    public override async void FocusedAction(GameObject ob)
+    public override void FocusedAction(GameObject ob)
     {
         ob.TryGetComponent<UICSMovingCtrl>(out var movingctrlClass);
         //1‚ª1P‚Å2‚ª2P
