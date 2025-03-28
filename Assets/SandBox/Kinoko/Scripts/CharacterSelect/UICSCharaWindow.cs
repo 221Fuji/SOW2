@@ -22,6 +22,12 @@ public class UICSCharaWindow : UIPersonalAct
 
     //以下このウィンドウに何が割り当てられるのかを指定して表示する用の要素を準備するメソッド
 
+    private void OnDestroy()
+    {
+        _1PTokenSource.Cancel();
+        _2PTokenSource.Cancel();
+    }
+
     public void SetCharacterData(GameObject ob)
     {
         ob.TryGetComponent<UICSMovingCtrl>(out var movingCtrlClass);

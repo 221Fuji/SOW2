@@ -106,4 +106,8 @@ public class UIMSButton : UIPersonalAct
         kettei.StartAnim();
         ClickedActionEvent?.Invoke();
     }
+    void OnDestroy()
+    {
+        _cts.Cancel();
+    }
 }

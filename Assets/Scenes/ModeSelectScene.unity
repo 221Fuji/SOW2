@@ -1194,9 +1194,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1412290600}
     m_Modifications:
+    - target: {fileID: 1330981912111098305, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141796684}
+    - target: {fileID: 1330981912111098305, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForcusRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619560430496821684, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141796684}
+    - target: {fileID: 3619560430496821684, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForcusUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942626420868174264, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141796684}
+    - target: {fileID: 3942626420868174264, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForcusDown
+      objectReference: {fileID: 0}
     - target: {fileID: 4270391686108063690, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
       propertyPath: m_Name
       value: VirtualCntroller
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196255063291522740, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141796684}
+    - target: {fileID: 6196255063291522740, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForcusLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033671479319126098, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 141796684}
+    - target: {fileID: 7033671479319126098, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033671479319126098, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIMovingCtrl, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7050312508601917534, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
       propertyPath: m_Pivot.x

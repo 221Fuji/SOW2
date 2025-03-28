@@ -33,8 +33,9 @@ public class ModeSelectManager : ModeManager
         oir.Down = _uimsMovigCtrl.ForcusDown;
 
         //セレクトモードボタンの設定
-        UIMSButton goBack = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
-        goBack.ClickedActionEvent = GoTitle;
+        UIMSReturnBack goBack = _uimsMovigCtrl.OutMap[0].ReturnList()[0] as UIMSReturnBack;
+        goBack.ClickedActionEvent += GoTitle;
+        goBack.ClickedActionEvent += DoNotaAcceptOperations;
         UIMSButton offline = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
         offline.ClickedActionEvent = GoCharacterSelect;
     }
