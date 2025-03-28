@@ -55,7 +55,7 @@ public class FightingManager : ModeManager
             characterData2P,
             player2.GetComponent<CharacterActions>(),
             player2.GetComponent<CharacterState>(),
-            1
+            2
             );
         StartRound(firstRound, playerData1P, playerData2P);
     }
