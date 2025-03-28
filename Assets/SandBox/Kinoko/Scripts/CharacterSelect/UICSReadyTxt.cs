@@ -15,7 +15,7 @@ public class UICSReadyTxt : UIPersonalAct
     private RectTransform _sizeBody;
     private RectTransform _sizeFlame;
     [SerializeField] GameObject ReadyFlame;
-    public async UniTask ReadyDirection(CancellationToken token)
+    public void ReadyDirection(CancellationToken token)
     {
         _colorBody = GetComponent<TextMeshProUGUI>().color;
         _colorFlame = ReadyFlame.GetComponent<TextMeshProUGUI>().color;
@@ -23,16 +23,19 @@ public class UICSReadyTxt : UIPersonalAct
         _sizeFlame = ReadyFlame.GetComponent<RectTransform>();
 
         var sequence = DOTween.Sequence();
-        sequence.Append(ReadyFlame.GetComponent<TextMeshProUGUI>().DOFade(1,0.05f).SetEase(Ease.InCubic))
-                    .Append(GetComponent<TextMeshProUGUI>().DOFade(1,0.05f).SetEase(Ease.InCubic));
+        sequence.Append(ReadyFlame.GetComponent<TextMeshProUGUI>().DOFade(1, 0.05f).SetEase(Ease.InCubic))
+                    .Append(GetComponent<TextMeshProUGUI>().DOFade(1, 0.05f).SetEase(Ease.InCubic))
+                    .ToUniTask(cancellationToken: token).Forget();
 
-        GetComponent<RectTransform>().DOScale(new Vector2(0.9f,0.9f),0.1f).SetEase(Ease.Linear).ToUniTask(cancellationToken: token);
+        GetComponent<RectTransform>().DOScale(new Vector2(0.9f,0.9f),0.1f).SetEase(Ease.Linear)
+            .ToUniTask(cancellationToken: token).Forget();
 
         
         var sequence2 = DOTween.Sequence();
-        sequence2.Append(GetComponent<RectTransform>().DOScale(new Vector2(1.1f,1.1f),0.1f))
-                .Append(ReadyFlame.GetComponent<RectTransform>().DOScale(new Vector2(1.2f,1.2f),0.1f))
-                .Join(ReadyFlame.GetComponent<TextMeshProUGUI>().DOFade(0,0.1f)).ToUniTask(cancellationToken: token);
+        sequence2.Append(GetComponent<RectTransform>().DOScale(new Vector2(1.1f, 1.1f), 0.1f))
+                .Append(ReadyFlame.GetComponent<RectTransform>().DOScale(new Vector2(1.2f, 1.2f), 0.1f))
+                .Join(ReadyFlame.GetComponent<TextMeshProUGUI>().DOFade(0, 0.1f))
+                .ToUniTask(cancellationToken: token).Forget();
     }
 
     public void ResetUI()

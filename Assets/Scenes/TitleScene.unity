@@ -472,6 +472,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Input
       m_Flags: 0
+    - m_Name: 
+      m_Id: e150d7c9-7d69-4d40-98b9-1902a3a7d189
+      m_Path: <HID::HORI CO.,LTD. HORIPAD 4 >/button2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 0
     m_Flags: 0
   _soloPlayerDebug: 0
   _characterDataBase: {fileID: 11400000, guid: 4ea27d7418baffe44b104692bddbcaae, type: 2}

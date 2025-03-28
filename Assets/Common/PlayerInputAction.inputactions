@@ -481,99 +481,11 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "118520ac-78cd-462b-8ed0-04ace8b04441",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accept",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4fbe955f-dbba-45f3-8955-a78cbe2c3e6b",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accept",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e6fc2b72-b66d-4e76-9a29-465c894ae11b",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accept",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c8ad55c-f387-4e5e-89f7-9d3c3cade46b",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accept",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ea12022-6723-476b-ad84-5609504e817e",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e103e0d-a34a-4d97-8294-62074d9d276f",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3c5939b9-3d83-467b-85d3-d6657034e343",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "343d286e-0e89-4184-8e61-8cb9dd929cd2",
-                    "path": "<XInputController>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d35ab960-da06-4a30-8f84-3345047ba47e",
-                    "path": "<Gamepad>/dpad",
+                    "path": "<HID::HORI CO.,LTD. HORIPAD 4 >/hat",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";HoriPadScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -581,17 +493,39 @@
                 {
                     "name": "",
                     "id": "7b9f6c7a-86fa-4c55-819e-663e094081db",
+                    "path": "<HID::HORI CO.,LTD. HORIPAD 4 >/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HoriPadScheme",
+                    "action": "FourDirections",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4404fed3-fc7b-4fd8-be12-f2abf22776b3",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";GamepadScheme",
+                    "action": "FourDirections",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39b356a5-8f93-49d9-9956-d2a5488d73c4",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";GamepadScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "2D Vector",
-                    "id": "e310dfec-ff8c-45ca-9d3e-a00b286ddfc7",
+                    "id": "631a498e-e32e-447d-be69-8e516e0ca432",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -602,47 +536,113 @@
                 },
                 {
                     "name": "up",
-                    "id": "5117be00-df1e-4ba1-b0d4-c1529c1fff07",
+                    "id": "27231493-f426-44df-b6b8-77785cc09488",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";KeyboardScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "da906fc2-7e1a-4d52-88b7-fefabe995493",
+                    "id": "2a84e99b-2154-4748-a3f2-be8a5bf44c59",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";KeyboardScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "eb25b0d8-9187-4f9b-8d84-b7115407bc40",
+                    "id": "13e1892f-bf01-46d7-bbd4-c3ba94128b09",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";KeyboardScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "9f983616-ffd9-4b22-b970-04fe79defeb9",
+                    "id": "03d0ad55-7c33-4b54-8e4b-dafe2fe94094",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";KeyboardScheme",
                     "action": "FourDirections",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c827deae-9cb4-435b-8044-655510c61b79",
+                    "path": "<HID::HORI CO.,LTD. HORIPAD 4 >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HoriPadScheme",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d71d7d2d-480b-41ba-b749-e086b77baef7",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardScheme",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "119e2255-bd25-4422-a6b3-dfc01f511c92",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";GamepadScheme",
+                    "action": "Accept",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e03e2bd9-290b-429d-82fa-3ccc808517b3",
+                    "path": "<HID::HORI CO.,LTD. HORIPAD 4 >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HoriPadScheme",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3446ce2-ab6e-49f1-812b-67f0b044d19f",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardScheme",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b347af7-b60b-4d01-8b62-75501197d34d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";GamepadScheme",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -665,6 +665,17 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "HoriPadScheme",
+            "bindingGroup": "HoriPadScheme",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
                     "isOptional": false,
                     "isOR": false
                 }

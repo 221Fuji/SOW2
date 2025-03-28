@@ -61,9 +61,9 @@ public class UICSMovingCtrl : UIMovingCtrl
         
         if(PlayerNum == 2) return;
         CancellationTokenSource cts = new CancellationTokenSource();
-        _streamTxtLarge.StreamingText(cts.Token);
-        _streamTxtMedium.StreamingText(cts.Token);
-        _streamTxtSmall.StreamingText(cts.Token);
+        _streamTxtLarge.StreamingText(cts.Token).Forget();
+        _streamTxtMedium.StreamingText(cts.Token).Forget();
+        _streamTxtSmall.StreamingText(cts.Token).Forget();
     }
 
     public override void DesignatedForcus(Vector2 arrayPos)

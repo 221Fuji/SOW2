@@ -36,10 +36,9 @@ public class CharacterSelectManager : ModeManager
     private void OnInput2P(InputEventPtr eventPtr, InputDevice device)
     {
         // キーボードとパッドだけ
-        if (!(device is Keyboard) && !(device is Gamepad)) return;
+        if (!(device is Keyboard) && !(device is Gamepad) && !(device is Joystick)) return;
 
-        if (_player1Input.devices.Contains(device)||
-            _player2Input != null) return;
+        if (GameManager.Player1Device == device || _player2Input != null) return;
 
         InstantiatePlayer2Input(device);
         Debug.Log("2P側のデバイスを登録" + _player2Input.devices);
