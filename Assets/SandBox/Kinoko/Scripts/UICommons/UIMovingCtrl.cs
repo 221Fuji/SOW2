@@ -91,7 +91,7 @@ public class UIMovingCtrl : MonoBehaviour
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + Forcus);
+        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -104,7 +104,7 @@ public class UIMovingCtrl : MonoBehaviour
     public virtual void ForcusDown(){
         if(_lockPushed) return;
         if(Search.x == -1 && Search.y == -1) Search = new Vector2(Forcus.x,Forcus.y + 1);
-        Debug.Log("こうしくん");
+        //Debug.Log("こうしくん");
         if(Search.y > _outMap[(int)Search.x].ReturnLength() - 1){
             Debug.Log("Length>>" + (_outMap[(int)Search.x].ReturnLength() - 1));
             Debug.Log("Search"+Search.y);
@@ -128,12 +128,12 @@ public class UIMovingCtrl : MonoBehaviour
         }
 
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
-        Debug.Log("以下処理");
+        //Debug.Log("以下処理");
 
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + Forcus);
+        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -171,7 +171,7 @@ public class UIMovingCtrl : MonoBehaviour
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + Forcus);
+        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
@@ -189,7 +189,7 @@ public class UIMovingCtrl : MonoBehaviour
             this.ForcusRight();
             return;
         }
-        Debug.Log(Search);
+        //Debug.Log(Search);
 
         if(_outMap[(int)Search.x].ReturnList()[(int)Search.y].MovingException(gameObject)){
             Casted = Search;
@@ -210,7 +210,7 @@ public class UIMovingCtrl : MonoBehaviour
         Forcus = Search;
         Search = new Vector2(-1,-1);
         Casted = new Vector2(-1,-1);
-        Debug.Log("forcus>>" + Forcus);
+        //Debug.Log("forcus>>" + Forcus);
         
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);

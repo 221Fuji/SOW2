@@ -25,7 +25,10 @@ public class ModeSelectManager : ModeManager
     private void SetDelegate(OtherInputReceiver oir)
     {
         //ì¸óÕÇÃê›íË
-        oir.Accept = _uimsMovigCtrl.OnClick;
+        oir.Accept += _uimsMovigCtrl.OnClick;
+        oir.Accept += DoNotaAcceptOperations;
+        oir.Cancel += GoTitle;
+        oir.Cancel += DoNotaAcceptOperations; 
         oir.Up = _uimsMovigCtrl.ForcusUp;
         oir.Down = _uimsMovigCtrl.ForcusDown;
 
@@ -34,6 +37,11 @@ public class ModeSelectManager : ModeManager
         goBack.ClickedActionEvent = GoTitle;
         UIMSButton offline = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
         offline.ClickedActionEvent = GoCharacterSelect;
+    }
+
+    private void DoNotaAcceptOperations()
+    {
+        _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(false);
     }
 
     private async UniTask WaitForFade(Color startPanelColor, float endValue)
@@ -51,12 +59,8 @@ public class ModeSelectManager : ModeManager
         }
     }
 
-    private async void GoCharacterSelect(GameObject ob)
+    private async void GoCharacterSelect()
     {
-        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
-        var kettei = movingCtrlClass?.ReturnKettei();
-        kettei.StartAnim();
-
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -72,12 +76,8 @@ public class ModeSelectManager : ModeManager
         }
     }
 
-    private async void GoTitle(GameObject ob)
+    private async void GoTitle()
     {
-        ob.TryGetComponent<UIMSMovingCtrl>(out var movingCtrlClass);
-        var kettei = movingCtrlClass?.ReturnKettei();
-        kettei.StartAnim();
-
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
