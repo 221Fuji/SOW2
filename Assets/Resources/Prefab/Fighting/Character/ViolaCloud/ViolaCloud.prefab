@@ -260,7 +260,7 @@ MonoBehaviour:
   _defaultMaxHP: 100
   _defaultMaxSP: 100
   _defaultMaxUP: 100
-  _upGainSpeed: 1
+  _upGainSpeed: 0.05
   _defaultFrontSpeed: 7
   _defaultBackSpeed: 7
   _defaultJumpPower: 25
@@ -332,7 +332,6 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _sm1Direction: {x: 0, y: 0}
   _fogPrefab: {fileID: 4315926309681932266, guid: f48997aabcef1e445966146509ac6fc3, type: 3}
   _collectEffectAnimator: {fileID: 6528662044006476091}
   _gainValue: 0.3

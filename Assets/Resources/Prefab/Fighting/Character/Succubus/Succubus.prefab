@@ -231,9 +231,9 @@ MonoBehaviour:
   _defaultMaxHP: 100
   _defaultMaxSP: 100
   _defaultMaxUP: 100
-  _upGainSpeed: 1
+  _upGainSpeed: 0.05
   _defaultFrontSpeed: 6
-  _defaultBackSpeed: 3
+  _defaultBackSpeed: 3.5
   _defaultJumpPower: 25
 --- !u!114 &6320595080205572131
 MonoBehaviour:
