@@ -32,7 +32,7 @@ public class UIRButton : UIPersonalAct
         //優先度0は無条件でシーン遷移
 
         //優先度1は他プレイヤーが選択していた場合、何を選択していてもシーンが遷移する
-        else if(_priority == 1)
+        if(_priority == 1)
         {
             if (!(bool)movingCtrlClass?.RivalSelected) throw new Exception("Didn't pass >> !RivalSelected");
         }
