@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ff0d5d671d974d8dff982ae0b44b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
 --- !u!1 &484891339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VirtualCntroller (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4270391686108063690, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6196255063291522740, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2300,6 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ff0d5d671d974d8dff982ae0b44b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
 --- !u!1 &1845141014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2430,9 @@ MonoBehaviour:
     - {fileID: 1796331263}
     - {fileID: 477955878}
   _startPos: {x: 0, y: 0}
+  _rivalMCtrl: {fileID: 1931589336}
   _arawSymbol: {fileID: 968528305}
+  _playerNum: 2
 --- !u!4 &1924968255
 Transform:
   m_ObjectHideFlags: 0
@@ -2475,7 +2483,9 @@ MonoBehaviour:
     - {fileID: 1796331263}
     - {fileID: 477955878}
   _startPos: {x: 0, y: 0}
+  _rivalMCtrl: {fileID: 1924968254}
   _arawSymbol: {fileID: 1845141018}
+  _playerNum: 1
 --- !u!4 &1931589337
 Transform:
   m_ObjectHideFlags: 0
@@ -2526,6 +2536,10 @@ PrefabInstance:
     - target: {fileID: 4270391686108063690, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
       propertyPath: m_Name
       value: VirtualCntroller
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270391686108063690, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6196255063291522740, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2784,6 +2798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ff0d5d671d974d8dff982ae0b44b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
