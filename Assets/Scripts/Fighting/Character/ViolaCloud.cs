@@ -16,7 +16,6 @@ public class ViolaCloud : CharacterActions
     [SerializeField] private HitBoxManager _jumpMoveHitBox;
     [Header("•KŽE‹Z‚P")]
     [SerializeField] private AttackInfo _specialMove1Info;
-    [SerializeField] private Vector2 _sm1Direction;
     [SerializeField] private Fog _fogPrefab;
     [SerializeField] private Animator _collectEffectAnimator;
     [SerializeField] private float _gainValue;
