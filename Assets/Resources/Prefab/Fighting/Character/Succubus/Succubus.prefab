@@ -368,16 +368,15 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.2, y: 1.375}
   _isFixed: 0
   _isWall: 0
-  _characterData: {fileID: 11400000, guid: fb37e58a6609a7f4f81955760d47dd92, type: 2}
   _hurtBox: {fileID: 2979863537057560798}
   _normalMoveInfo:
     Name: NormalMove
     Damage: 29
-    StartupFrame: 20
+    StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
-    HitFrame: 15
-    GuardFrame: 20
+    HitFrame: 30
+    GuardFrame: 21
     HitStopFrame: 7
     MeterGain: 10
     ConsumptionSP: 30
@@ -393,8 +392,8 @@ MonoBehaviour:
     StartupFrame: 20
     ActiveFrame: 50
     RecoveryFrame: 20
-    HitFrame: 20
-    GuardFrame: 50
+    HitFrame: 30
+    GuardFrame: 55
     HitStopFrame: 10
     MeterGain: 10
     ConsumptionSP: 20
@@ -411,8 +410,8 @@ MonoBehaviour:
     StartupFrame: 5
     ActiveFrame: 20
     RecoveryFrame: 5
-    HitFrame: 10
-    GuardFrame: 15
+    HitFrame: 15
+    GuardFrame: 25
     HitStopFrame: 5
     MeterGain: 5
     ConsumptionSP: 20
@@ -426,7 +425,7 @@ MonoBehaviour:
   _specialMove1Info:
     Name: SpecialMove1
     Damage: 20
-    StartupFrame: 40
+    StartupFrame: 35
     ActiveFrame: 0
     RecoveryFrame: 20
     HitFrame: 15
@@ -465,7 +464,7 @@ MonoBehaviour:
     ActiveFrame: 10
     RecoveryFrame: 20
     HitFrame: 25
-    GuardFrame: 5
+    GuardFrame: 10
     HitStopFrame: 15
     MeterGain: 5
     ConsumptionSP: 25
