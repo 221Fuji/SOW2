@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIRMovingCtrl : UIMovingCtrl
@@ -8,6 +9,7 @@ public class UIRMovingCtrl : UIMovingCtrl
     [SerializeField] private UIRMovingCtrl _rivalMCtrl;
     [SerializeField] private UIRAraw _arawSymbol;
     [SerializeField] private int _playerNum;
+    [SerializeField] private TextMeshProUGUI _selectedModeTx;
     public UIRAraw ArawSymbol { get { return _arawSymbol; }}
     public bool Selected { get; private set; }
     public GameObject SelectedButton { get; private set; }
@@ -59,6 +61,7 @@ public class UIRMovingCtrl : UIMovingCtrl
 
         }
         SelectedButton = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject;
+        _selectedModeTx.text = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject.GetComponent<TextMeshProUGUI>().text;
     }
 
     public void Cancell()
@@ -66,5 +69,6 @@ public class UIRMovingCtrl : UIMovingCtrl
         if (RivalSelected && Selected) return;
         Selected = false;
         if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UIRButton button) button.CancelledAction(gameObject);
+        _selectedModeTx.text = "";
     }
 }
