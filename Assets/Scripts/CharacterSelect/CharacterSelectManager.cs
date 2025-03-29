@@ -66,19 +66,24 @@ public class CharacterSelectManager : ModeManager
         _goFightingCTS = new CancellationTokenSource();
         CancellationToken token = _goFightingCTS.Token;
 
-        await UniTask.WaitUntil(() =>
+        try
         {
-            return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
-        }, cancellationToken : token);
 
-        CharacterData chara1P = _csMovingCtrl1P.CharacterData;
-        CharacterData chara2P = _csMovingCtrl2P.CharacterData;
+            await UniTask.WaitUntil(() =>
+            {
+                return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
+            }, cancellationToken: token);
 
-        await UniTask.WaitForSeconds(0.8f,cancellationToken: token);
+            CharacterData chara1P = _csMovingCtrl1P.CharacterData;
+            CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
-        //FightingScene�Ɉڍs
-        var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
-        vm.VersusPerformance(chara1P, chara2P);
+            await UniTask.WaitForSeconds(0.8f, cancellationToken: token);
+
+            //FightingScene�Ɉڍs
+            var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
+            vm.VersusPerformance(chara1P, chara2P);
+        }
+        catch { }
     }
 
     private async void GoTitle()

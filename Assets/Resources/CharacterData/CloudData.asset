@@ -23,3 +23,5 @@ MonoBehaviour:
   _windowFace: {fileID: 8597069032382918126, guid: 24abd7d917a5e084797ae9c28de1d7af, type: 3}
   _csFigure: {fileID: 7318120820445498219, guid: 36dfeb335fb389847951d0520e3d8efa, type: 3}
   _csDot: {fileID: 3226385007445449621, guid: 1daafb0f9c2b6614a8e896abb193fddd, type: 3}
+  _resultWhiteStandImage: {fileID: 6351220725641305874, guid: 96b80028b3d8e8c4ea05e8e1f4e06f8d, type: 3}
+  _resultStandImage: {fileID: 425741389602740652, guid: 03ec5365fd14ab04da22b328ff05adf3, type: 3}
