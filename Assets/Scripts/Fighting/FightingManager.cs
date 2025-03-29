@@ -222,8 +222,6 @@ public class FightingManager : ModeManager
             Destroy(_playerData2P.CharacterActions.gameObject);
         }
 
-        Debug.Log($"Player{winnerNum}‚ÌŸ‚¿I");
-
         //ResultSelectScene‚ÉˆÚ“®
         ResultManager resultManager =
             await GameManager.LoadAsync<ResultManager>("ResultScene");

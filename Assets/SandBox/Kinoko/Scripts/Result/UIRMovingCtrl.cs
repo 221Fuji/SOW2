@@ -48,7 +48,12 @@ public class UIRMovingCtrl : UIMovingCtrl
     {
         if (Selected) return;
         Selected = true;
-        base.OnClick();
+        try
+        {
+            base.OnClick();
+        }
+        catch
+        {}
     }
 
     public void Cancell()
