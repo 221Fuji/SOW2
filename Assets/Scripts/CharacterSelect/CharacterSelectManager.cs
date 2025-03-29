@@ -24,6 +24,7 @@ public class CharacterSelectManager : ModeManager
         if(GameManager.Player2Device != null)
         {
             InstantiatePlayer2Input(GameManager.Player2Device);
+            SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _csMovingCtrl2P);
         }
 
         SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _csMovingCtrl1P);

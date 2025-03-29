@@ -22,7 +22,7 @@ public class UIRButton : UIPersonalAct
 
     public override void SeparateAction(GameObject ob)
     {
-        _cts.Cancel();
+        _cts?.Cancel();
         _cts = new CancellationTokenSource();
     }
 
@@ -43,7 +43,7 @@ public class UIRButton : UIPersonalAct
             if (_selectedPlayer != 3) throw new Exception("Didn't pass >> _selectedPlayer != 3");
         }
 
-        ClickedActionEvent.Invoke();
+        ClickedActionEvent?.Invoke();
     }
 
     public void CancelledAction(GameObject ob) 
@@ -54,7 +54,7 @@ public class UIRButton : UIPersonalAct
 
     private void OnDestroy()
     {
-        _cts.Cancel();
+        _cts?.Cancel();
     }
 
     
