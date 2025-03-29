@@ -19,6 +19,7 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private GameObject _1PFrameFloor;
     [SerializeField] private GameObject _2PFrameFloor;
     [SerializeField] private GameObject _MixFrameFloor;
+    [SerializeField] private GameObject _guideField;
     [SerializeField] private UICSDotObjectField _dotObjectField;
     [SerializeField] private UICSFigureBox _figureBox;
     [SerializeField] private UICSStreamText _streamTxtLarge;
@@ -27,6 +28,10 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private UICSReadyTxt _readyTxt;
     [SerializeField] private UICSMovingCtrl _rivalMovingCtrl;
     [SerializeField] private int _playerNum = 0;
+
+    [SerializeField] private GameObject _controllerGuide;
+    [SerializeField] private GameObject _keyBoardGuide;
+
 
     public int PlayerNum{get {return _playerNum;}}
     public CharacterDataBase DataBase{get {return _database;}}
@@ -45,17 +50,34 @@ public class UICSMovingCtrl : UIMovingCtrl
 
         base.Awake();
 
+        if(PlayerNum == 1)
+        {
+            InputDevice player1Device = GameManager.Player1Device;
+            if(player1Device is Keyboard)
+            {
+                GameObject instantiated = Instantiate(_keyBoardGuide, new Vector2(0, 0), Quaternion.identity);
+                instantiated.transform.SetParent(_guideField.transform, false);
+            }
+            else
+            {
+                GameObject instantiated = Instantiate(_controllerGuide, new Vector2(0, 0), Quaternion.identity);
+                instantiated.transform.SetParent(_guideField.transform, false);
+            }
+        }
+
+
+
         //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)結構良くないかも。修正？
         if(PlayerNum != 1) return;
-        foreach(Making make in _outMap)
+        foreach (Making make in _outMap)
         {
-            foreach(UIPersonalAct target in make.ReturnList())
+            foreach (UIPersonalAct target in make.ReturnList())
             {
                 try
                 {
-                    if(target is UICSCharaWindow window)
+                    if (target is UICSCharaWindow window)
                     {
-                        if(!window.Characterdata)    window.SetCharacterData(this.transform.gameObject);    
+                        if (!window.Characterdata) window.SetCharacterData(this.transform.gameObject);
                     }
                 }
                 catch
@@ -64,7 +86,7 @@ public class UICSMovingCtrl : UIMovingCtrl
                 }
             }
         }
-        
+
         _cts = new CancellationTokenSource();
         _streamTxtLarge.StreamingText(_cts.Token).Forget();
         _streamTxtMedium.StreamingText(_cts.Token).Forget();
