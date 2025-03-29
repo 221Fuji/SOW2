@@ -2476,7 +2476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modeName: OFFLINE
-  _discription: "\uFF11\u53F0\u306E\u30D1\u30BD\u30B3\u30F3\u3067\u4E8C\u4EBA\u3067\u5BFE\u6226\u3067\u304D\u307E\u3059"
+  _discription: "\u4E00\u53F0\u306E\u30D1\u30BD\u30B3\u30F3\u3067\u4E8C\u4EBA\u3067\u5BFE\u6226\u3067\u304D\u307E\u3059"
 --- !u!1 &1066924890
 GameObject:
   m_ObjectHideFlags: 0

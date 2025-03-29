@@ -47,18 +47,21 @@ public class UIRMovingCtrl : UIMovingCtrl
     public override void OnClick()
     {
         if (Selected) return;
-        Selected = true;
         try
         {
             base.OnClick();
         }
         catch
-        {}
+        {
+            if (RivalSelected) return;
+        }
+        Selected = true;
     }
 
     public void Cancell()
     {
         if (RivalSelected && Selected) return;
+        Selected = false;
         if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UIRButton button) button.CancelledAction(gameObject);
     }
 }
