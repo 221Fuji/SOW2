@@ -233,6 +233,12 @@ public class ViolaCloud : CharacterActions
         //UP回収
         UPgain(_normalMoveInfo.MeterGain);
 
+        //強化処理
+        AttackInfo enhanced = _normalMoveInfo;
+        enhanced.Damage += 5;
+        enhanced.RecoveryFrame -= 5;
+        _normalMoveHitBox.InitializeHitBox(enhanced, gameObject);
+
         try
         {
             await StartUpMove(_normalMoveInfo.StartupFrame, token); // 発生を待つ
@@ -244,6 +250,7 @@ public class ViolaCloud : CharacterActions
             DestoryAllFogInList(fogList);
             _collectEffectAnimator.SetTrigger("CollectFogTrigger");
             Velocity = new Vector2(speed, Velocity.y);
+
             await WaitForActiveFrame(_normalMoveHitBox, _normalMoveInfo.ActiveFrame, token); // 持続を待つ
             await RecoveryFrame(_normalMoveInfo.RecoveryFrame, token); // 硬直を待つ
         }
@@ -260,6 +267,9 @@ public class ViolaCloud : CharacterActions
 
             //layerを元に戻す
             AnimatorByLayerName.SetLayerWeightByName(_animator, "NormalMoveLayer", 0);
+
+            //AttackInfo元に戻す
+            _normalMoveHitBox.InitializeHitBox(_normalMoveInfo, gameObject);
         }
     }
 
@@ -450,6 +460,7 @@ public class ViolaCloud : CharacterActions
         Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
         GameObject bullet = Instantiate(_sm2BulletPrefab, bulletPos, Quaternion.identity);
 
+        AttackInfo sm2AttackInfo = _specialMove2Info;
         //煙霧内かどうか
         if (fogList.Count > 0)
         {
@@ -458,6 +469,10 @@ public class ViolaCloud : CharacterActions
 
             //アニメーション
             bullet.GetComponent<Animator>().SetTrigger("InSideTrigger");
+
+            //強化処理
+            sm2AttackInfo.Damage += 5;
+            sm2AttackInfo.RecoveryFrame -= 5;
         }
         else
         {
@@ -467,7 +482,7 @@ public class ViolaCloud : CharacterActions
 
         //弾の当たり判定設定
         HitBoxManager hbm = bullet.GetComponentInChildren<HitBoxManager>();
-        hbm?.InitializeHitBox(_specialMove2Info, gameObject);
+        hbm?.InitializeHitBox(sm2AttackInfo, gameObject);
 
         try
         {

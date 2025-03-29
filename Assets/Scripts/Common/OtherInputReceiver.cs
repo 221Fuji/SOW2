@@ -80,12 +80,10 @@ public class OtherInputReceiver : MonoBehaviour
         }
 
         // すでに登録されているデバイスなら何もしない
-        if (device != GameManager.Player1Device || device != GameManager.Player2Device)
+        if (device == GameManager.Player1Device)
         {
             return;
         }
-
-        Debug.Log("ccc");
 
         // キーボードとパッドだけ
         if (!(device is Keyboard) && !(device is Gamepad) && !(device is Joystick)) return;

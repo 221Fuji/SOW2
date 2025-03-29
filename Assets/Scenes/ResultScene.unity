@@ -468,6 +468,7 @@ MonoBehaviour:
   _charaNameText2: {fileID: 177142030}
   _thirdPerformance: {fileID: 732102126}
   _finalCharaNameText: {fileID: 1373319031}
+  _finalPlayerNumText: {fileID: 1699816034}
   _finalStandImagePos: {fileID: 1179094731}
 --- !u!4 &354195366
 Transform:
