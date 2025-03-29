@@ -73,7 +73,7 @@ public class UICSMovingCtrl : UIMovingCtrl
 
     private void OnDestroy()
     {
-        _cts.Cancel();
+        _cts?.Cancel();
     }
 
     public override void DesignatedForcus(Vector2 arrayPos)
