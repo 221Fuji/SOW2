@@ -41,7 +41,7 @@ public class ModeSelectManager : ModeManager
 
     private void DoNotaAcceptOperations()
     {
-        _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(false);
+        _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(false);
     }
 
     private async UniTask WaitForFade(Color startPanelColor, float endValue)
@@ -73,7 +73,7 @@ public class ModeSelectManager : ModeManager
         }
         catch
         {
-            _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
             return;
         }
     }
@@ -88,7 +88,7 @@ public class ModeSelectManager : ModeManager
         }
         catch
         {
-            _player1Input.gameObject.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
             return;
         }
     }
