@@ -40,12 +40,22 @@ public class UIRButton : UIPersonalAct
         else if(_priority == 2)
         {
             _selectedPlayer += (int)movingCtrlClass?.PlayerNum;
+            if(movingCtrlClass?.RivalSelevtedButton.GetComponent<UIRButton>()._priority == 1)
+            {
+                movingCtrlClass?.RivalSelevtedButton.GetComponent<UIRButton>().DoClickedActionEvent();
+                throw new Exception("DoAction");
+            }
+
             if (_selectedPlayer != 3) throw new Exception("Didn't pass >> _selectedPlayer != 3");
         }
 
         ClickedActionEvent?.Invoke();
     }
 
+    public void DoClickedActionEvent()
+    {
+        ClickedActionEvent?.Invoke();
+    }
     public void CancelledAction(GameObject ob) 
     {
         if (!ob.TryGetComponent<UIRMovingCtrl>(out var movingCtrlClass)) return;
