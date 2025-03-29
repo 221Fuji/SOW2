@@ -70,15 +70,11 @@ public class CharacterSelectManager : ModeManager
             return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
         }, cancellationToken : token);
 
-        
-        //
-        //以下デバッグ用処理-->実際に組み込んでます(byきのこ)
-        //
-
         CharacterData chara1P = _csMovingCtrl1P.CharacterData;
         CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
         await UniTask.WaitForSeconds(0.8f,cancellationToken: token);
+
         //FightingSceneに移行
         var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
         vm.VersusPerformance(chara1P, chara2P);
@@ -86,19 +82,16 @@ public class CharacterSelectManager : ModeManager
 
     private async void GoTitle()
     {
-        try
-        {
-            await GameManager.LoadAsync<TitleManager>("TitleScene");
-        }
-        catch(Exception e)
-        {
-            Debug.Log(e);
-            return;
-        }
+        _goFightingCTS?.Cancel();
+        var modeSelectManager = await GameManager.LoadAsync<ModeSelectManager>("ModeSelectScene");
+        modeSelectManager.Initialize(GameManager.Player1Device);
+        //デバイスの管理追加処理書く
+        GameManager.Player2Device = null;
     }
 
     private void OnDestroy()
     {
         InputSystem.onEvent -= OnInput2P;
+        _goFightingCTS?.Cancel();
     }
 }

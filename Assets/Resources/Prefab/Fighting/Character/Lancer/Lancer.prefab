@@ -174,7 +174,6 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.15, y: 1.46}
   _isFixed: 0
   _isWall: 0
-  _characterData: {fileID: 11400000, guid: ef8a944741b45714598b02ce6d77c204, type: 2}
   _hurtBox: {fileID: 6316118700418779845}
   _normalMoveInfo:
     Name: NormalMove
@@ -182,7 +181,7 @@ MonoBehaviour:
     StartupFrame: 10
     ActiveFrame: 3
     RecoveryFrame: 20
-    HitFrame: 20
+    HitFrame: 25
     GuardFrame: 15
     HitStopFrame: 10
     MeterGain: 5
@@ -197,7 +196,7 @@ MonoBehaviour:
     Name: JumpMove
     Damage: 20
     StartupFrame: 10
-    ActiveFrame: 10
+    ActiveFrame: 5
     RecoveryFrame: 20
     HitFrame: 30
     GuardFrame: 20
@@ -216,8 +215,8 @@ MonoBehaviour:
     StartupFrame: 10
     ActiveFrame: 15
     RecoveryFrame: 30
-    HitFrame: 20
-    GuardFrame: 30
+    HitFrame: 30
+    GuardFrame: 10
     HitStopFrame: 15
     MeterGain: 5
     ConsumptionSP: 30
@@ -235,7 +234,7 @@ MonoBehaviour:
     ActiveFrame: 5
     RecoveryFrame: 10
     HitFrame: 20
-    GuardFrame: 10
+    GuardFrame: 20
     HitStopFrame: 7
     MeterGain: 5
     ConsumptionSP: 30
@@ -250,7 +249,7 @@ MonoBehaviour:
     Damage: 0
     StartupFrame: 0
     ActiveFrame: 0
-    RecoveryFrame: 33
+    RecoveryFrame: 35
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0

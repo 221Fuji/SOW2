@@ -281,7 +281,6 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.81, y: 2}
   _isFixed: 0
   _isWall: 0
-  _characterData: {fileID: 11400000, guid: 806214408ae6eab4f9039abd6902e126, type: 2}
   _hurtBox: {fileID: 6417209724744269654}
   _normalMoveInfo:
     Name: NormalMove
@@ -289,8 +288,8 @@ MonoBehaviour:
     StartupFrame: 15
     ActiveFrame: 15
     RecoveryFrame: 20
-    HitFrame: 10
-    GuardFrame: 10
+    HitFrame: 20
+    GuardFrame: 20
     HitStopFrame: 10
     MeterGain: 7
     ConsumptionSP: 20
@@ -307,13 +306,13 @@ MonoBehaviour:
     ActiveFrame: 10
     RecoveryFrame: 25
     HitFrame: 30
-    GuardFrame: 20
+    GuardFrame: 30
     HitStopFrame: 10
     MeterGain: 5
     ConsumptionSP: 20
     DrainSP: 20
     IsHeavy: 0
-    HitBackDirection: {x: 5, y: 17.5}
+    HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _jumpMoveHitBox: {fileID: 5317712556509025971}
@@ -343,14 +342,14 @@ MonoBehaviour:
     StartupFrame: 10
     ActiveFrame: 10
     RecoveryFrame: 30
-    HitFrame: 10
-    GuardFrame: 10
+    HitFrame: 30
+    GuardFrame: 20
     HitStopFrame: 10
     MeterGain: 5
     ConsumptionSP: 15
     DrainSP: 20
     IsHeavy: 0
-    HitBackDirection: {x: 5, y: 20}
+    HitBackDirection: {x: 5, y: 22.5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
   _sm2BulletPrefab: {fileID: 3516300217080383402, guid: b591e10d1234ac344a6bd31afa288cc6, type: 3}
