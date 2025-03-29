@@ -21,6 +21,7 @@ public class ResultPerformance : MonoBehaviour
     [Header("第三演出")]
     [SerializeField] private GameObject _thirdPerformance;
     [SerializeField] private TextMeshProUGUI _finalCharaNameText;
+    [SerializeField] private TextMeshProUGUI _finalPlayerNumText;
     [SerializeField] private RectTransform _finalStandImagePos;
 
     private PlayerData _winnerData;
@@ -91,6 +92,9 @@ public class ResultPerformance : MonoBehaviour
     {
         _secondPerformance.SetActive(false);
         _thirdPerformance.SetActive(true);
+        //テキスト
+        _finalPlayerNumText.text = "Winner Player" + _winnerData.PlayerNum.ToString();
+        _finalCharaNameText.text = _winnerData.CharacterData.CharacterNameE;
         //立ち絵
         Image standImage = Instantiate(_winnerData.CharacterData.ResultStandImage);
         standImage.transform.SetParent(_finalStandImagePos, false);

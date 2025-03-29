@@ -55,8 +55,8 @@ public abstract class CharacterActions : FightingRigidBody
     {
         get
         {
-            return _characterState.IsGuarding
-                && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
+            return !_characterState.AnormalyStates.Contains(AnormalyState.Dead)
+                && _characterState.AcceptOperations;
         }
     }
     protected virtual bool CanGuard
@@ -412,11 +412,15 @@ public abstract class CharacterActions : FightingRigidBody
         }
 
         //ダメージ処理
-        _characterState.TakeDamage(attackInfo.Damage);
-        if(_characterState.CurrentHP <= 0)
+        if(CanHit)
         {
-            Die();
-            return;
+            _characterState.TakeDamage(attackInfo.Damage);
+            Debug.Log($"Player{PlayerNum}は{attackInfo.Damage}ダメージ受けた");
+            if (_characterState.CurrentHP <= 0)
+            {
+                Die();
+                return;
+            }
         }
 
         //アニメーション処理
@@ -428,7 +432,6 @@ public abstract class CharacterActions : FightingRigidBody
 
         //ヒットストップ処理
         await HitStop(attackInfo.HitStopFrame);
-        Debug.Log($"ヒットストップ{attackInfo.HitStopFrame}");
 
         //ヒットバック処理(Bind状態ではヒットバックしない)
         if(!_characterState.AnormalyStates.Contains(AnormalyState.Bind))
@@ -455,7 +458,6 @@ public abstract class CharacterActions : FightingRigidBody
         }
 
         //ヒット硬直処理
-        Debug.Log($"ヒット硬直開始:{attackInfo.HitFrame}");
         await HitStun(attackInfo.HitFrame, _characterState.CreateHitCT());
 
         AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 0); // AnimatorのLayerをHitLayerを最優度を元に戻す
@@ -472,7 +474,6 @@ public abstract class CharacterActions : FightingRigidBody
     /// <param name="recoveryFrame">硬直時間(フレーム)</param>
     private async UniTask HitStun(int recoveryFrame, CancellationToken token)
     {
-        Debug.Log(recoveryFrame);
         await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
 
         //バインド状態ではヒット硬直から回復しない
