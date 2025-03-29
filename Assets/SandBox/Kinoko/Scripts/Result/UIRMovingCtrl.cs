@@ -10,7 +10,9 @@ public class UIRMovingCtrl : UIMovingCtrl
     [SerializeField] private int _playerNum;
     public UIRAraw ArawSymbol { get { return _arawSymbol; }}
     public bool Selected { get; private set; }
+    public GameObject SelectedButton { get; private set; }
     public bool RivalSelected { get { return (bool)_rivalMCtrl?.Selected; } }
+    public GameObject RivalSelevtedButton { get { return _rivalMCtrl?.SelectedButton; } }
     public int PlayerNum { get { return _playerNum;} }
 
 
@@ -47,15 +49,16 @@ public class UIRMovingCtrl : UIMovingCtrl
     public override void OnClick()
     {
         if (Selected) return;
+        Selected = true;
         try
         {
             base.OnClick();
         }
-        catch
+        catch(Exception e)
         {
-            if (RivalSelected) return;
+
         }
-        Selected = true;
+        SelectedButton = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject;
     }
 
     public void Cancell()
