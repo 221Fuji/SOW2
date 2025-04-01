@@ -20,6 +20,7 @@ public class ResultManager : ModeManager
         await UniTask.WaitUntil(() => { return _resultPerformance.IsCompletedPerformance; });
 
         Initialize(GameManager.Player1Device);
+        if (GameManager.Player2Device == null) Debug.Log("‚±‚¤‚µ[ƒ‰ƒ“ƒhŠJ‰€");
         InstantiatePlayer2Input(GameManager.Player2Device);
 
         SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl1P);
