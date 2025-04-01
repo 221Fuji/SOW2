@@ -59,6 +59,7 @@ public class UIRButton : UIPersonalAct
     public void CancelledAction(GameObject ob) 
     {
         if (!ob.TryGetComponent<UIRMovingCtrl>(out var movingCtrlClass)) return;
+        if (!movingCtrlClass.Selected) return;
         if(_selectedPlayer <= 0) _selectedPlayer -= movingCtrlClass.PlayerNum;
     }
 
