@@ -1,4 +1,5 @@
 
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using System;
 using System.Collections;
@@ -10,6 +11,8 @@ using UnityEngine.Events;
 public class UIRButton : UIPersonalAct 
 {
     [SerializeField] private int _priority;
+    [SerializeField] private GameObject _back;
+
     private CancellationTokenSource _cts = new CancellationTokenSource();
     private int _selectedPlayer = 0;
     public UnityAction ClickedActionEvent { get; set; }
@@ -32,6 +35,10 @@ public class UIRButton : UIPersonalAct
         if (!ob.TryGetComponent<UIRMovingCtrl>(out var movingCtrlClass)) return;
         //優先度0は無条件でシーン遷移
 
+        UIRBackMeter backmeter = movingCtrlClass.BackMeter;
+        backmeter.InstantiateObj(_back);
+
+
         //優先度1は他プレイヤーが選択していた場合、何を選択していてもシーンが遷移する
         if(_priority == 1)
         {
@@ -44,13 +51,13 @@ public class UIRButton : UIPersonalAct
             if(movingCtrlClass?.RivalSelevtedButton.GetComponent<UIRButton>()._priority == 1)
             {
                 movingCtrlClass?.RivalSelevtedButton.GetComponent<UIRButton>().DoClickedActionEvent();
-                throw new Exception("DoAction");
             }
 
             if (_selectedPlayer != 3) throw new Exception("Didn't pass >> _selectedPlayer != 3");
         }
 
-        ClickedActionEvent?.Invoke();
+
+        DoClickedActionEvent();
     }
 
     public void DoClickedActionEvent()
@@ -61,7 +68,8 @@ public class UIRButton : UIPersonalAct
     {
         if (!ob.TryGetComponent<UIRMovingCtrl>(out var movingCtrlClass)) return;
         if (!movingCtrlClass.Selected) return;
-        if(_selectedPlayer <= 0) _selectedPlayer -= movingCtrlClass.PlayerNum;
+        movingCtrlClass.BackMeter.ReturnObj();
+        if(_selectedPlayer >= 0) _selectedPlayer -= movingCtrlClass.PlayerNum;
     }
 
     private void OnDestroy()
@@ -69,5 +77,9 @@ public class UIRButton : UIPersonalAct
         _cts?.Cancel();
     }
 
+    private void ClickedAnim()
+    {
+
+    }
     
 }
