@@ -9,13 +9,14 @@ public class UIRMovingCtrl : UIMovingCtrl
     [SerializeField] private UIRMovingCtrl _rivalMCtrl;
     [SerializeField] private UIRAraw _arawSymbol;
     [SerializeField] private int _playerNum;
-    [SerializeField] private TextMeshProUGUI _selectedModeTx;
+    [SerializeField] private UIRBackMeter _backMeter;
     public UIRAraw ArawSymbol { get { return _arawSymbol; }}
     public bool Selected { get; private set; }
     public GameObject SelectedButton { get; private set; }
     public bool RivalSelected { get { return (bool)_rivalMCtrl?.Selected; } }
     public GameObject RivalSelevtedButton { get { return _rivalMCtrl?.SelectedButton; } }
     public int PlayerNum { get { return _playerNum;} }
+    public UIRBackMeter BackMeter { get { return _backMeter; }}
 
 
     public override void DesignatedForcus(Vector2 arrayPos)
@@ -61,14 +62,12 @@ public class UIRMovingCtrl : UIMovingCtrl
 
         }
         SelectedButton = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject;
-        _selectedModeTx.text = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject.GetComponent<TextMeshProUGUI>().text;
     }
 
     public void Cancell()
     {
         if (RivalSelected && Selected) return;
-        Selected = false;
         if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UIRButton button) button.CancelledAction(gameObject);
-        _selectedModeTx.text = "";
+        Selected = false;
     }
 }
