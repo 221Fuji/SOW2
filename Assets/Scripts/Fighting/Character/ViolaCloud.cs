@@ -237,6 +237,7 @@ public class ViolaCloud : CharacterActions
         AttackInfo enhanced = _normalMoveInfo;
         enhanced.Damage += 5;
         enhanced.RecoveryFrame -= 5;
+        enhanced.DrainSP += 5;
         _normalMoveHitBox.InitializeHitBox(enhanced, gameObject);
 
         try
@@ -471,7 +472,7 @@ public class ViolaCloud : CharacterActions
             bullet.GetComponent<Animator>().SetTrigger("InSideTrigger");
 
             //ã≠âªèàóù
-            sm2AttackInfo.Damage += 5;
+            sm2AttackInfo.Damage += 10;
             sm2AttackInfo.RecoveryFrame -= 5;
         }
         else

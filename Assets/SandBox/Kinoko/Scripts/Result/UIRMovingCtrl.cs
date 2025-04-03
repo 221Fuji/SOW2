@@ -56,10 +56,8 @@ public class UIRMovingCtrl : UIMovingCtrl
         {
             base.OnClick();
         }
-        catch(Exception e)
-        {
-
-        }
+        catch
+        { }
         SelectedButton = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject;
         _selectedModeTx.text = _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].gameObject.GetComponent<TextMeshProUGUI>().text;
     }

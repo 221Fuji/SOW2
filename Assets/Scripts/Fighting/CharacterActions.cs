@@ -161,7 +161,13 @@ public abstract class CharacterActions : FightingRigidBody
         //ガード中はSP回復なし
         if (!_characterState.IsGuarding)
         {
-            _characterState.SetCurrentSP(_spGainSpeed);
+            float spGainValue = _spGainSpeed;
+            //Break状態は二倍の速度で回復する
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue))
+            {
+                spGainValue *= 2;
+            }
+            _characterState.SetCurrentSP(spGainValue);
         }
 
         //UPゲージ自然増加
@@ -490,7 +496,6 @@ public abstract class CharacterActions : FightingRigidBody
         }
         else
         {
-            Debug.Log("コンボ登録リセット");
             _characterState.ClearNameOfGivenAttack();
         }
 
