@@ -25,18 +25,16 @@ public class ResultPerformance : MonoBehaviour
     [SerializeField] private RectTransform _finalStandImagePos;
 
     private PlayerData _winnerData;
-    private CancellationTokenSource _resultPerformanceCTS;
+    private CancellationTokenSource _resultPerformanceCTS = new CancellationTokenSource();
 
     public bool IsCompletedPerformance
     {
-        get { return _resultPerformanceCTS != null; }
+        get { return _resultPerformanceCTS == null; }
     }
 
     public async void WinPerformance(PlayerData winnerData)
     {
         _winnerData = winnerData;
-
-        _resultPerformanceCTS = new CancellationTokenSource();
         CancellationToken token = _resultPerformanceCTS.Token;
 
         try

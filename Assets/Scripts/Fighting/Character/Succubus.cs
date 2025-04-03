@@ -313,13 +313,23 @@ public class Succubus : CharacterActions
     /// <summary>
     /// å„ÇÎí èÌçUåÇÇ™ìñÇΩÇÈÇ∆åƒÇŒÇÍÇÈ
     /// </summary>
-    public void HitChain()
+    public async void HitChain()
     {
+        _normalMoveBehindCTS.Cancel();
+
         _pullChainCTS = new CancellationTokenSource();
         CancellationToken token = _pullChainCTS.Token;
-        PullChain(token).Forget();
 
-        _normalMoveBehindCTS.Cancel();
+        try
+        {
+            await PullChain(token);
+        }
+        catch(OperationCanceledException)
+        {
+            _enemyCA.GetComponent<CharacterState>().RecoverAnormalyState(AnormalyState.Bind);
+            _enemyCA.Velocity = Vector2.zero;
+            EndPullChain();
+        }
     }
 
     public async UniTask PullChain(CancellationToken token)
@@ -356,20 +366,12 @@ public class Succubus : CharacterActions
             _enemyCA.transform.position = _normalMoveBehindHitBox.transform.position + offset;
 
             await FightingPhysics.DelayFrameWithTimeScale(1, token);
-
-            //ÉLÉÉÉìÉZÉãéûÇÃãììÆ
-            if(token.IsCancellationRequested)
-            {
-                _enemyCA.Velocity = Vector2.zero;
-                EndPullChain();
-                return;
-            }
         }
 
         FishingEnemy();
 
-        //à¯Ç¡í£ÇËå„ÇÃçdíº
-        await RecoveryFrame(25, token);
+        await RecoveryFrame(25, token); //à¯Ç¡í£ÇËå„ÇÃçdíº
+
         EndPullChain();
     }
 
@@ -527,6 +529,7 @@ public class Succubus : CharacterActions
         bullet.HitBox.InitializeHitBox(_specialMove1Info, gameObject);
         bullet.HitBox.HitBullet = Sm1BulletHit;
         bullet.HitBox.GuardBullet = Sm1BulletHit;
+        bullet.DestroyBullet = Sm1BulletHit;
         WaitForActiveFrame(bullet.HitBox, 0, token).Forget();
     }
 

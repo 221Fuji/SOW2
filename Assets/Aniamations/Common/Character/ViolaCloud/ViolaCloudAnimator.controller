@@ -999,8 +999,8 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: NormalMoveLayer
-    m_StateMachine: {fileID: -2213384888886257445}
+    m_Name: AirLayer
+    m_StateMachine: {fileID: 8480724274689426724}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -1011,8 +1011,20 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: AirLayer
-    m_StateMachine: {fileID: 8480724274689426724}
+    m_Name: GuardLayer
+    m_StateMachine: {fileID: 1531125161247333241}
+    m_Mask: {fileID: 0}
+    m_Motions: []
+    m_Behaviours: []
+    m_BlendingMode: 0
+    m_SyncedLayerIndex: -1
+    m_DefaultWeight: 0
+    m_IKPass: 0
+    m_SyncedLayerAffectsTiming: 0
+    m_Controller: {fileID: 9100000}
+  - serializedVersion: 5
+    m_Name: NormalMoveLayer
+    m_StateMachine: {fileID: -2213384888886257445}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -1049,18 +1061,6 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: UltLayer
     m_StateMachine: {fileID: -4720970605801556665}
-    m_Mask: {fileID: 0}
-    m_Motions: []
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
-    m_DefaultWeight: 0
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
-    m_Name: GuardLayer
-    m_StateMachine: {fileID: 1531125161247333241}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []

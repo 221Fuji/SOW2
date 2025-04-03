@@ -284,7 +284,7 @@ MonoBehaviour:
   _hurtBox: {fileID: 6417209724744269654}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 15
+    Damage: 20
     StartupFrame: 15
     ActiveFrame: 15
     RecoveryFrame: 20
@@ -293,7 +293,7 @@ MonoBehaviour:
     HitStopFrame: 10
     MeterGain: 7
     ConsumptionSP: 20
-    DrainSP: 10
+    DrainSP: 20
     IsHeavy: 0
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 10, y: 0}
@@ -337,7 +337,7 @@ MonoBehaviour:
   _gainValue: 0.3
   _specialMove2Info:
     Name: SpecialMove2
-    Damage: 10
+    Damage: 25
     StartupFrame: 10
     ActiveFrame: 10
     RecoveryFrame: 30
@@ -374,7 +374,7 @@ MonoBehaviour:
     Damage: 0
     StartupFrame: 10
     ActiveFrame: 15
-    RecoveryFrame: 65
+    RecoveryFrame: 60
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _healValue: 25
+  _healValue: 30
 --- !u!114 &3738147699315124744
 MonoBehaviour:
   m_ObjectHideFlags: 0

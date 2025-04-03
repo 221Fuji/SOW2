@@ -155,7 +155,7 @@ MonoBehaviour:
   _defaultMaxUP: 100
   _upGainSpeed: 0.05
   _defaultFrontSpeed: 9
-  _defaultBackSpeed: 5
+  _defaultBackSpeed: 4.5
   _defaultJumpPower: 25
 --- !u!114 &7323941387625665384
 MonoBehaviour:
@@ -178,10 +178,10 @@ MonoBehaviour:
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
-    StartupFrame: 10
+    StartupFrame: 12
     ActiveFrame: 3
-    RecoveryFrame: 20
-    HitFrame: 25
+    RecoveryFrame: 22
+    HitFrame: 27
     GuardFrame: 15
     HitStopFrame: 10
     MeterGain: 5

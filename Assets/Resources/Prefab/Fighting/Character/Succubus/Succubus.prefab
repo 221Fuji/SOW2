@@ -371,7 +371,7 @@ MonoBehaviour:
   _hurtBox: {fileID: 2979863537057560798}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 29
+    Damage: 20
     StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -379,7 +379,7 @@ MonoBehaviour:
     GuardFrame: 21
     HitStopFrame: 7
     MeterGain: 10
-    ConsumptionSP: 30
+    ConsumptionSP: 20
     DrainSP: 20
     IsHeavy: 0
     HitBackDirection: {x: 10, y: 7.5}
@@ -442,7 +442,7 @@ MonoBehaviour:
   _sm1BulletVelocity: 5
   _specialMove2Info:
     Name: SpecialMove2
-    Damage: 20
+    Damage: 15
     StartupFrame: 5
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -450,7 +450,7 @@ MonoBehaviour:
     GuardFrame: 20
     HitStopFrame: 5
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 15
     DrainSP: 15
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 12.5}
@@ -459,7 +459,7 @@ MonoBehaviour:
   _specialMove2HitBox: {fileID: 5276346807129386541}
   _sm2DerivationInfo:
     Name: SmDerivation
-    Damage: 20
+    Damage: 15
     StartupFrame: 5
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -467,7 +467,7 @@ MonoBehaviour:
     GuardFrame: 10
     HitStopFrame: 15
     MeterGain: 5
-    ConsumptionSP: 25
+    ConsumptionSP: 20
     DrainSP: 20
     IsHeavy: 1
     HitBackDirection: {x: 15, y: 15}
