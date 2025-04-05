@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,18 @@ public class ResultManager : ModeManager
 
         SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl1P);
         SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl2P);
+
+        try
+        {
+            Debug.Log("read");
+            int num = new StatisticsLogs().ArrangeResult(winnerNum == 1 ? pd1.CharacterData : pd2.CharacterData, winnerNum == 2 ? pd1.CharacterData : pd2.CharacterData);
+            new StatisticsLogs().WritingTxt(num);
+        }
+        catch(Exception e)
+        {
+            Debug.Log("error");
+            Debug.Log(e);
+        }
     }
 
     //PlayerInputÇÃÉfÉäÉQÅ[Égê›íË
