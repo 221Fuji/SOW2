@@ -138,7 +138,6 @@ namespace DebugFighting
             //ƒWƒƒƒ“ƒv
             if (strings[1] == "True")
             {
-                Debug.Log("‚±‚¤‚µ");
                 _fir.JumpDelegate?.Invoke();
             }
             //’ÊíUŒ‚

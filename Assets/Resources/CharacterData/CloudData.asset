@@ -25,3 +25,4 @@ MonoBehaviour:
   _csDot: {fileID: 3226385007445449621, guid: 1daafb0f9c2b6614a8e896abb193fddd, type: 3}
   _resultWhiteStandImage: {fileID: 6351220725641305874, guid: 96b80028b3d8e8c4ea05e8e1f4e06f8d, type: 3}
   _resultStandImage: {fileID: 425741389602740652, guid: 03ec5365fd14ab04da22b328ff05adf3, type: 3}
+  _myNumber: 100

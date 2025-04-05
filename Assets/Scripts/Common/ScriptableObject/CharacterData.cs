@@ -26,6 +26,8 @@ public class CharacterData : ScriptableObject
     [Header("ResultScene‚Å‚ÌImage")]
     [SerializeField] private Image _resultWhiteStandImage;
     [SerializeField] private Image _resultStandImage;
+    [Header("ƒƒOæ‚é—p‚ÌŒÂ‘Ì’l")]
+    [SerializeField] private int _myNumber;
 
 
     public string CharacterNameE { get { return _characterNameE; } }
@@ -41,4 +43,5 @@ public class CharacterData : ScriptableObject
     public GameObject CSDot{get {return _csDot;}}
     public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
     public Image ResultStandImage { get { return _resultStandImage; } }
+    public int MyNumber { get { return _myNumber; } }
 }
