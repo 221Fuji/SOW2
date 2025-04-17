@@ -13,7 +13,7 @@ namespace DebugFighting
 
         //同じ入力状態が継続しているフレーム数,1or0or-1,jump,通常攻撃　例:右に進みながらジャンプ入力した場合 "0,1,true,false"
         List<string> _recInputArray = new List<string>();
-        bool _recFrag = false;
+        [SerializeField]private bool _recFrag = false;
         bool _startFrag = false;
         int _playIndex = 0;
         int _playFrame = 0;

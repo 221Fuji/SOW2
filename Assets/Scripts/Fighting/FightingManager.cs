@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
+using NUnit.Framework;
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,8 +24,11 @@ public class FightingManager : ModeManager
 
     private RoundData _currentRoundData;
     private CancellationTokenSource _timeLimitCTS;
+    //kinoko加筆
+    private BattleInfoLog _battleInfoLog;
 
     public RoundData CurrentRoundData { get => _currentRoundData; }
+
 
     private void Awake()
     {
@@ -96,6 +101,8 @@ public class FightingManager : ModeManager
         ca1P.transform.position += new Vector3(ca1P.PushBackBoxOffset.x, 0);
         ca2P.transform.position = new Vector2(_startPosX2P, StageParameter.GroundPosY);
         ca2P.transform.position -= new Vector3(ca2P.PushBackBoxOffset.x, 0);
+
+        KinokoLogger();
     }
 
     private async void RoundCall()
@@ -206,6 +213,7 @@ public class FightingManager : ModeManager
 
     private async void GameSet(int winnerNum)
     {
+        KinokoLoggerEnd();
         _fightingUI.HeartLost(_currentRoundData);
 
         _playerData1P.CharacterState.SetAcceptOperations(false);
@@ -230,10 +238,32 @@ public class FightingManager : ModeManager
 
     private void OnDestroy()
     {
-        if(_timeLimitCTS != null)
+        if (_timeLimitCTS != null)
         {
             _timeLimitCTS.Cancel();
         }
+    }
+
+    /// <summary>
+    /// きのこの行動ログ用メソッドです。仮置き
+    /// </summary>
+    public void KinokoLogger()
+    {
+        MovingLog _moving1 = _playerData1P.CharacterActions.gameObject.GetComponent<MovingLog>();
+        MovingLog _moving2 = _playerData2P.CharacterActions.gameObject.GetComponent<MovingLog>();
+        BattleInfoLog infoLog = new BattleInfoLog();
+        _battleInfoLog = infoLog;
+        _moving1?.SetBattleInfoLog(infoLog);
+        _moving2?.SetBattleInfoLog(infoLog);
+    }
+
+    public void KinokoLoggerEnd()
+    {
+        MovingLog _moving1 = _playerData1P.CharacterActions.gameObject.GetComponent<MovingLog>();
+        MovingLog _moving2 = _playerData2P.CharacterActions.gameObject.GetComponent<MovingLog>();
+        _moving1.RegisterLogs();
+        _moving2.RegisterLogs();
+        _battleInfoLog.ArrangeForFile();
     }
 }
 
@@ -266,3 +296,4 @@ public struct RoundData
         RoundNum = roundNum;
     }
 }
+
