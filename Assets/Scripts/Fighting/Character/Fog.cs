@@ -20,6 +20,10 @@ public class Fog : FightingRigidBody
     private CancellationTokenSource _destroyCTS;
 
     public bool IsActive { get; private set; }
+    public int PlayerNum 
+    {
+        get { return _self.GetComponent<CharacterActions>().PlayerNum; }
+    }
 
     public void InitializeFog(bool isLeftSide, GameObject self)
     {

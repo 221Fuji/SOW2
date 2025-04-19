@@ -16,7 +16,7 @@ public class FightingRigidBody : MonoBehaviour
     [Header("カベか")]
     [SerializeField] private bool _isWall;
 
-    private static List<FightingRigidBody> _fightingRigidBodies;
+    public static List<FightingRigidBody> FightingRigidBodies { get; private set; }
 
     private Vector2 _velocity;
     private Vector2 _currentPosition;
@@ -89,11 +89,11 @@ public class FightingRigidBody : MonoBehaviour
         _fightingUpdateCTS = new CancellationTokenSource();
         StartFrameLoop(_fightingUpdateCTS.Token).Forget();
 
-        if (_fightingRigidBodies == null)
+        if (FightingRigidBodies == null)
         {
-            _fightingRigidBodies = new List<FightingRigidBody>();
+            FightingRigidBodies = new List<FightingRigidBody>();
         }
-        _fightingRigidBodies.Add(this);
+        FightingRigidBodies.Add(this);
     }
 
     protected virtual void Update()
@@ -160,7 +160,7 @@ public class FightingRigidBody : MonoBehaviour
         //一時的なフラグ
         bool onGround = false;
 
-        foreach (var other in _fightingRigidBodies)
+        foreach (var other in FightingRigidBodies)
         {
             if (other == this) continue; // 自分自身を除外
 
@@ -178,6 +178,18 @@ public class FightingRigidBody : MonoBehaviour
         {
             LandGround();
             onGround = true;
+        }
+
+        //着地
+        if(!OnGround && onGround)
+        {
+            OnLand();
+        }
+
+        //離陸
+        if(OnGround && !onGround)
+        {
+            LeaveGround();
         }
 
         SetGround(onGround);
@@ -230,7 +242,7 @@ public class FightingRigidBody : MonoBehaviour
     /// <summary>
     /// 接地処理
     /// </summary>
-    protected virtual async void LandGround()
+    protected virtual void LandGround()
     {
         float thisBottomPos = GetPushBackBox().yMin;
         float overlapLength = StageParameter.GroundPosY - thisBottomPos;
@@ -238,13 +250,22 @@ public class FightingRigidBody : MonoBehaviour
         //若干めり込ませた位置に補正
         transform.position += new Vector3(0, overlapLength, 0);
         _velocity = new Vector2(_velocity.x, 0);
+    }
 
-        if(!OnGround)
-        {
-            await UniTask.Yield();
-        }
+    /// <summary>
+    /// 着地時に呼ばれる
+    /// </summary>
+    protected virtual void OnLand()
+    {
 
-        OnGround = true;
+    }
+
+    /// <summary>
+    /// 地面から離れた時に呼ばれる
+    /// </summary>
+    protected virtual void LeaveGround()
+    {
+
     }
 
     /// <summary>
@@ -321,9 +342,12 @@ public class FightingRigidBody : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        if(_fightingRigidBodies.Contains(this))
+        if(FightingRigidBodies != null)
         {
-            _fightingRigidBodies.Remove(this);
+            if (FightingRigidBodies.Contains(this))
+            {
+                FightingRigidBodies.Remove(this);
+            }
         }
 
         if (_fightingUpdateCTS != null)
