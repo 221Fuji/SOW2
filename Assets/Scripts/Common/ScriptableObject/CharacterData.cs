@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class CharacterData : ScriptableObject
 {
+    [Header("ƒLƒƒƒ‰¯•Ê”Ô†")]
+    [SerializeField] private int _characterNum;
     [Header("‰pŒê–¼")]
     [SerializeField] private string _characterNameE;
     [Header("“ú–{–¼")]
@@ -30,6 +32,7 @@ public class CharacterData : ScriptableObject
     [SerializeField] private int _myNumber;
 
 
+    public int CharacterNum { get { return _characterNum; } }
     public string CharacterNameE { get { return _characterNameE; } }
     public string CharacterNameJ { get { return _characterNameJ; } }
     public CharacterActions CharacterPrefab { get { return _characterPrefab; } }

@@ -3,8 +3,6 @@ using System;
 using System.Threading;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Playables;
-using UnityEngine.Animations;
 
 public class ViolaCloud : CharacterActions
 {
@@ -58,6 +56,7 @@ public class ViolaCloud : CharacterActions
     {
         base.InitializeCA(playerNum, enemyCA);
         CurrentFogResource = FogMaxResource;
+        _fogList.Clear();
     }
 
     protected override void SetActionDelegate()
@@ -692,6 +691,7 @@ public class ViolaCloud : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
+        _ultCTS?.Cancel();
         //Ultî≠ìÆíÜÇÃå≈íËâªâèú
         SetIsFixed(false);
     }

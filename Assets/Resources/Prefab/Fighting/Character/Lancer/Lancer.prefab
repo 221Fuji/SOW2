@@ -179,11 +179,11 @@ MonoBehaviour:
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
-    StartupFrame: 12
+    StartupFrame: 14
     ActiveFrame: 3
     RecoveryFrame: 22
     HitFrame: 27
-    GuardFrame: 15
+    GuardFrame: 13
     HitStopFrame: 10
     MeterGain: 5
     ConsumptionSP: 20

@@ -289,7 +289,7 @@ MonoBehaviour:
     ActiveFrame: 15
     RecoveryFrame: 20
     HitFrame: 20
-    GuardFrame: 20
+    GuardFrame: 25
     HitStopFrame: 10
     MeterGain: 7
     ConsumptionSP: 20
@@ -385,7 +385,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _healValue: 30
+  _healValue: 40
 --- !u!114 &3738147699315124744
 MonoBehaviour:
   m_ObjectHideFlags: 0

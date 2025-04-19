@@ -326,8 +326,8 @@ public class Succubus : CharacterActions
         }
         catch(OperationCanceledException)
         {
-            _enemyCA.GetComponent<CharacterState>().RecoverAnormalyState(AnormalyState.Bind);
-            _enemyCA.Velocity = Vector2.zero;
+            EnemyCA.GetComponent<CharacterState>().RecoverAnormalyState(AnormalyState.Bind);
+            EnemyCA.Velocity = Vector2.zero;
             EndPullChain();
         }
     }
@@ -335,7 +335,7 @@ public class Succubus : CharacterActions
     public async UniTask PullChain(CancellationToken token)
     {
         //バインド付与
-        _enemyCA.GetComponent<CharacterState>().AnormalyStates.Add(AnormalyState.Bind);
+        EnemyCA.GetComponent<CharacterState>().AnormalyStates.Add(AnormalyState.Bind);
 
         //アニメーション処理
         Animator chainAnimator = _chain.GetComponent<Animator>();
@@ -354,16 +354,16 @@ public class Succubus : CharacterActions
         {
             if(_characterState.IsLeftSide)
             {
-                completePull = _endPortal?.transform.position.x < _enemyCA.GetPushBackBox().xMax;
+                completePull = _endPortal?.transform.position.x < EnemyCA.GetPushBackBox().xMax;
             }
             else
             {
-                completePull = _endPortal?.transform.position.x > _enemyCA.GetPushBackBox().xMin;
+                completePull = _endPortal?.transform.position.x > EnemyCA.GetPushBackBox().xMin;
             }
 
             //敵の座標を鎖の先端に更新
-            Vector3 offset = _enemyCA.transform.position - (Vector3)_enemyCA.GetPushBackBox().center;
-            _enemyCA.transform.position = _normalMoveBehindHitBox.transform.position + offset;
+            Vector3 offset = EnemyCA.transform.position - (Vector3)EnemyCA.GetPushBackBox().center;
+            EnemyCA.transform.position = _normalMoveBehindHitBox.transform.position + offset;
 
             await FightingPhysics.DelayFrameWithTimeScale(1, token);
         }
@@ -393,17 +393,17 @@ public class Succubus : CharacterActions
     {
         AnimatorByLayerName.PlayAnimationOnLayer(_animator, "Pull", "NormalMoveLayer", 0.5f);
 
-        _enemyCA.GetComponent<CharacterState>().RecoverAnormalyState(AnormalyState.Bind);
+        EnemyCA.GetComponent<CharacterState>().RecoverAnormalyState(AnormalyState.Bind);
 
         //物理挙動
-        _enemyCA.transform.position = _startPortal.transform.position;
+        EnemyCA.transform.position = _startPortal.transform.position;
         Vector2 fishingPower = new Vector2(5, 25);
         if(!_characterState.IsLeftSide)
         {
             fishingPower *= new Vector2(-1, 1);
         }
-        _enemyCA.Velocity = Vector2.zero;
-        _enemyCA.AddForce(fishingPower);
+        EnemyCA.Velocity = Vector2.zero;
+        EnemyCA.AddForce(fishingPower);
     }
 
     private async void DestoryPortal()

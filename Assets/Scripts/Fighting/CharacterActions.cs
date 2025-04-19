@@ -20,7 +20,7 @@ public abstract class CharacterActions : FightingRigidBody
     protected Animator _animator { get; private set; }
 
     //その他プロパティ
-    protected CharacterActions _enemyCA { get; private set; }
+    public CharacterActions EnemyCA { get; private set; }
     public int PlayerNum { get; private set; } = 0;
 
     //硬直等での行動制限プロパティ
@@ -31,6 +31,7 @@ public abstract class CharacterActions : FightingRigidBody
             return _characterState.AcceptOperations
                 && !_characterState.IsRecoveringHit
                 && !_characterState.IsRecoveringGuard
+                && _IsCompleteLandStun
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Bind)
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
         }
@@ -69,6 +70,9 @@ public abstract class CharacterActions : FightingRigidBody
         }
     }
 
+    //ジャンプ硬直
+    private bool _IsCompleteLandStun = true;
+
     //UI関連デリゲート
     public delegate UniTask ComboCountDelegate(int playerNum, int comboNum);
     public ComboCountDelegate ComboCount { get; set; }
@@ -82,16 +86,24 @@ public abstract class CharacterActions : FightingRigidBody
     //死亡
     public UnityAction<int> OnDie { get; set; }
 
+    //AI学習用デリゲート
+    public UnityAction OnHurtAI { get; set; }
+    public UnityAction OnDieAI { get; set; }
+    public UnityAction OnGuardAI { get; set; } 
+    public UnityAction OnBreakAI { get; set; }
+    public UnityAction OnComboAI { get; set; }
+
+
     protected override void Awake()
     {
         tag = "Character";
 
         //csの初期化
-        _characterState = GetComponent<CharacterState>();
+        if (_characterState == null) _characterState = GetComponent<CharacterState>();
         _characterState.Break = Break;
         _characterState.RecoverBreak = RecoverBreak;
 
-        _animator = GetComponent<Animator>();
+        if (_animator == null) _animator = GetComponent<Animator>();
 
         //入力デリゲートの設定
         if (_inputReciever = GetComponent<FightingInputReceiver>())
@@ -121,11 +133,13 @@ public abstract class CharacterActions : FightingRigidBody
     public virtual void InitializeCA(int playerNum, CharacterActions enemyCA)
     {
         PlayerNum = playerNum;
-        _enemyCA = enemyCA;
+        EnemyCA = enemyCA;
+        Debug.Log($"プレイヤー番号{PlayerNum}");
 
         Velocity = Vector2.zero;
 
         //パラメータ初期化
+        if (_characterState == null) _characterState = GetComponent<CharacterState>();
         _characterState.ResetState();
 
         //色を元に戻す
@@ -149,6 +163,7 @@ public abstract class CharacterActions : FightingRigidBody
         CancelActionByHit();
 
         //Animator初期化
+        if (_animator == null) _animator = GetComponent<Animator>();
         RuntimeAnimatorController controller = _animator.runtimeAnimatorController;
         _animator.runtimeAnimatorController = null;
         _animator.runtimeAnimatorController = controller;
@@ -192,12 +207,17 @@ public abstract class CharacterActions : FightingRigidBody
             GuardRelease();
         }
 
-        if (_enemyCA != null)
+        //ガード状態で空中にいるときはガードを解く
+        if(!OnGround && _characterState.IsGuarding)
+        {
+            GuardRelease();
+        }
+
+        if (EnemyCA != null)
         {
             //キャラを向かい合わせる
             DirectionReversal();
         }
-
     }
 
     /// <summary>
@@ -212,7 +232,7 @@ public abstract class CharacterActions : FightingRigidBody
             if (!CanWalk || !OnGround) return;
         }
 
-        if (GetPushBackBox().center.x > _enemyCA.GetPushBackBox().center.x)
+        if (GetPushBackBox().center.x > EnemyCA.GetPushBackBox().center.x)
         {
             transform.rotation = new Quaternion(0, 180, 0, 0);
             _characterState.SetIsLeft(false);
@@ -361,12 +381,12 @@ public abstract class CharacterActions : FightingRigidBody
         }
     }
 
-    /// <summary>
-    /// 接地時の処理をFightingRigidBodyから受け取る
-    /// </summary>
-    protected override void LandGround()
+    protected override async void OnLand()
     {
-        base.LandGround();
+        Velocity = Vector2.zero;
+        _IsCompleteLandStun = false;
+        await FightingPhysics.DelayFrameWithTimeScale(1);
+        _IsCompleteLandStun = true;
         Land();
     }
 
@@ -388,11 +408,15 @@ public abstract class CharacterActions : FightingRigidBody
         //各種行動キャンセル
         CancelActionByHit();
 
+        //AI学習
+        OnHurtAI?.Invoke();
+
         //コンボ処理
         if (_characterState.IsRecoveringHit)
         {
             _characterState.CancelHitStun();
             _characterState.SetComboCount(_characterState.ConboCount + 1);
+            OnComboAI?.Invoke();
             Debug.Log($"{_characterState.ConboCount}コンボ");
 
             //演出反映
@@ -418,7 +442,7 @@ public abstract class CharacterActions : FightingRigidBody
         }
 
         //ダメージ処理
-        if(CanHit)
+        if (CanHit)
         {
             _characterState.TakeDamage(attackInfo.Damage);
             Debug.Log($"Player{PlayerNum}は{attackInfo.Damage}ダメージ受けた");
@@ -444,7 +468,7 @@ public abstract class CharacterActions : FightingRigidBody
         {
             Velocity = Vector2.zero;
             Vector2 hitBackVector = attackInfo.HitBackDirection;
-            if (_enemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
+            if (EnemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
             {
                 hitBackVector = attackInfo.HitBackDirection * new Vector2(-1, 1);
             }
@@ -555,17 +579,20 @@ public abstract class CharacterActions : FightingRigidBody
     /// <param name="attackInfo">受けた攻撃の情報</param>
     public virtual async UniTask Guard(AttackInfo attackInfo)
     {
+        //AI学習
+        OnGuardAI?.Invoke();
+
         //ガードバック処理
         Velocity = Vector2.zero;
         Vector2 guardBackVector = attackInfo.GuardBackDirection;
-        if (_enemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
+        if (EnemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
         {
             guardBackVector *= new Vector2(-1, 1);
         }
         AddForce(guardBackVector);
 
         //相手ののけぞり
-        _enemyCA.GuardedBack(attackInfo);
+        EnemyCA.GuardedBack(attackInfo);
 
         //エフェクト発生
         Vector2 hurtBoxPos = transform.TransformPoint(_hurtBox.GetComponent<BoxCollider2D>().offset);
@@ -604,7 +631,7 @@ public abstract class CharacterActions : FightingRigidBody
     private void GuardedBack(AttackInfo attackInfo)
     {
         Vector2 guardedBackVector = attackInfo.GuardedBackDirection;
-        if (_enemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
+        if (EnemyCA.GetPushBackBox().x > GetPushBackBox().center.x)
         {
             guardedBackVector *= new Vector2(-1, 1);
         }
@@ -619,6 +646,7 @@ public abstract class CharacterActions : FightingRigidBody
         _characterState.TakeAnormalyState(AnormalyState.Fatigue);
         OnEffect?.Invoke(GetPushBackBox().center, FightingEffect.Break);
         GetComponent<SpriteRenderer>().color -= new Color(0.3f, 0.3f, 0, 0);
+        OnBreakAI?.Invoke();
     }
 
     /// <summary>
@@ -649,6 +677,7 @@ public abstract class CharacterActions : FightingRigidBody
         AnimatorByLayerName.SetLayerWeightByName(_animator, "DieLayer", 1);
         _animator.SetBool("DieBool", true);
         OnDie?.Invoke(PlayerNum);
+        OnDieAI?.Invoke();
     }
 
     /// <summary>
@@ -659,7 +688,7 @@ public abstract class CharacterActions : FightingRigidBody
     {
         int direction;
 
-        if(GetPushBackBox().center.x <= _enemyCA.GetPushBackBox().center.x)
+        if(GetPushBackBox().center.x <= EnemyCA.GetPushBackBox().center.x)
         {
             direction = (int)_inputReciever.WalkValue;
         }
