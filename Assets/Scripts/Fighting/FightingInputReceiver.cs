@@ -48,6 +48,22 @@ public class FightingInputReceiver : MonoBehaviour
         }
     }
 
+    public void SetWalkDirectionFromAI(float x)
+    {
+        if (x > 0)
+        {
+            WalkValue = 1;
+        }   
+        else if (x < 0)
+        {
+            WalkValue = -1;
+        } 
+        else
+        {
+            WalkValue = 0f;
+        }         
+    }
+
     // ジャンプ
     public void OnJump()
     {
@@ -120,6 +136,21 @@ public class FightingInputReceiver : MonoBehaviour
             // ボタンが離された時の処理
             IsInputingGuard = false;
             GuardDelegate?.Invoke(false);
+            ResetInputProcessing();
+        }
+    }
+
+    public void SetGuardFromAI(bool isGuarding)
+    {
+        IsInputingGuard = isGuarding;
+        GuardDelegate?.Invoke(isGuarding);
+
+        if(isGuarding)
+        {
+            isProcessingInput = true;
+        }
+        else
+        {
             ResetInputProcessing();
         }
     }

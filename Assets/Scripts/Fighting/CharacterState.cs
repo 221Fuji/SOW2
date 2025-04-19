@@ -49,9 +49,9 @@ public class CharacterState : MonoBehaviour
     /// ÉKÅ[ÉhçdíºíÜÇ»ÇÁtrue
     /// </summary>
     public bool IsRecoveringGuard { get { return _guardCTS != null; } }
-    public List<AnormalyState> AnormalyStates { get; private set; }
+    public List<AnormalyState> AnormalyStates { get; private set; } = new List<AnormalyState>();
     public int ConboCount { get; private set; }
-    public List<string> NameOfGivenAttack { get; private set; }
+    public List<string> NameOfGivenAttack { get; private set; } = new List<string>();
 
     //ÉfÉäÉQÅ[Ég
     public UnityAction Break { get; set; }
@@ -76,13 +76,12 @@ public class CharacterState : MonoBehaviour
         CurrentFrontSpeed = _defaultFrontSpeed;
         CurrentBackSpeed = _defaultBackSpeed;
         CurrentJumpPower = _defaultJumpPower;
-        AnormalyStates = new List<AnormalyState>();
-        NameOfGivenAttack = new List<string>();
         ConboCount = 0;
     }
 
     public void SetAcceptOperations(bool value)
     {
+        Debug.Log($"AccceptOperation:{value}");
         AcceptOperations = value;
     }
 

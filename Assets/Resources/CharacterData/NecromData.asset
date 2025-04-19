@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: NecromData
+  m_EditorClassIdentifier: 
+  _characterNum: 3
+  _characterNameE: Necrom
+  _characterNameJ: "\u30CD\u30AF\u30ED\u30E0"
+  _characterPrefab: {fileID: 1226024703428429536, guid: 0e86518024917c442b400900a255ea9c, type: 3}
+  _versusEyeForcusImage: {fileID: 7622384381238403184, guid: cdc39e3643f0f7d4fbcc8cb2e97822b2, type: 3}
+  _versusStandingImage: {fileID: 3033722100950508152, guid: 4f62810db19b96e4bacff56b60102b40, type: 3}
+  _versusGrayImage: {fileID: 5414376732073549376, guid: 23dc8660f8ece4640a44df3ec7652e1a, type: 3}
+  _fightingFaceUpImage: {fileID: 0}
+  _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 0}
+  _csFigure: {fileID: 0}
+  _csDot: {fileID: 0}
+  _resultWhiteStandImage: {fileID: 0}
+  _resultStandImage: {fileID: 0}

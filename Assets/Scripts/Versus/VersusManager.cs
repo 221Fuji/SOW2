@@ -103,7 +103,8 @@ public class VersusManager : MonoBehaviour
         await _panel.DOFade(1, 0.25f).ToUniTask(cancellationToken: token);
 
         //ƒV[ƒ“ˆÚ“®
-        var fm = await GameManager.LoadAsync<FightingManager>("FightingScene");
+        //‘‚«’¼‚·
+        var fm = await GameManager.LoadAsync<LocalMatchManager>("FightingScene");
         fm.InitializeFM(chara1p, chara2p);
     }
 

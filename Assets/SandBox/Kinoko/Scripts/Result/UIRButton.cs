@@ -36,7 +36,7 @@ public class UIRButton : UIPersonalAct
         //優先度0は無条件でシーン遷移
 
         UIRBackMeter backmeter = movingCtrlClass.BackMeter;
-        backmeter.InstantiateObj(_back);
+        backmeter.InstantiateObj(_back).Forget();
 
 
         //優先度1は他プレイヤーが選択していた場合、何を選択していてもシーンが遷移する
@@ -68,7 +68,7 @@ public class UIRButton : UIPersonalAct
     {
         if (!ob.TryGetComponent<UIRMovingCtrl>(out var movingCtrlClass)) return;
         if (!movingCtrlClass.Selected) return;
-        movingCtrlClass.BackMeter.ReturnObj();
+        movingCtrlClass.BackMeter.ReturnObj().Forget();
         if(_selectedPlayer >= 0) _selectedPlayer -= movingCtrlClass.PlayerNum;
     }
 

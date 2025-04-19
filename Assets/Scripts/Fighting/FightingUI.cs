@@ -347,20 +347,24 @@ public class FightingUI : MonoBehaviour
 
         if (_round == null) return;
 
-        await UniTask.WaitUntil(() =>
+        try
         {
-            return AnimatorByLayerName.GetCurrentAnimationProgress(_round, "Base Layer") >= 1f;
-        }, cancellationToken: token);
+            await UniTask.WaitUntil(() =>
+            {
+                return AnimatorByLayerName.GetCurrentAnimationProgress(_round, "Base Layer") >= 1f;
+            }, cancellationToken: token);
 
-        await UniTask.DelayFrame(30);
+            await UniTask.DelayFrame(30);
 
-        //Fight開始
-        _round.SetTrigger("FightTrigger");
+            //Fight開始
+            _round.SetTrigger("FightTrigger");
 
-        await UniTask.WaitUntil(() =>
-        {
-            return AnimatorByLayerName.GetCurrentAnimationProgress(_round, "Base Layer") >= 1f;
-        }, cancellationToken: token);
+            await UniTask.WaitUntil(() =>
+            {
+                return AnimatorByLayerName.GetCurrentAnimationProgress(_round, "Base Layer") >= 1f;
+            }, cancellationToken: token);
+        }
+        catch { }
 
         RoundCallCancel();
     }
