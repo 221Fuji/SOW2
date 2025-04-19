@@ -76,7 +76,6 @@ public class ResultPerformance : MonoBehaviour
         //名前切り替わり
         for (int i = 0; i < _winnerData.CharacterData.CharacterNameE.Length; i++)
         {
-            Debug.Log(_winnerData.CharacterData.CharacterNameE[i].ToString());
             _charaNameText1.text = _winnerData.CharacterData.CharacterNameE[i].ToString(); // 1文字のみ表示
             _charaNameText2.text = _winnerData.CharacterData.CharacterNameE[i].ToString(); // 2文字のみ表示
             int interval = 500 / _winnerData.CharacterData.CharacterNameE.Length; // 次の文字へ (ループする)

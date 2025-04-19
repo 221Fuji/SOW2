@@ -358,12 +358,12 @@ public class Lancer : CharacterActions
             attackInfo.HitBackDirection *= new Vector2(-1, 1);
             attackInfo.GuardBackDirection *= new Vector2(-1, 1);
         }
-        if (transform.position.x > _enemyCA.transform.position.x)
+        if (transform.position.x > EnemyCA.transform.position.x)
         {
             generatePosOffsetX *= -1;
         }
-        float generatePosX = _enemyCA.transform.position.x + generatePosOffsetX;
-        float generatePosY = _enemyCA.transform.position.y + generatePosOffsetY;
+        float generatePosX = EnemyCA.transform.position.x + generatePosOffsetX;
+        float generatePosY = EnemyCA.transform.position.y + generatePosOffsetY;
         Vector2 generatePos = new Vector2(generatePosX, generatePosY);
 
         //UltBullet‚ÌŒü‚«

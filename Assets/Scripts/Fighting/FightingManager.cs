@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class FightingManager : ModeManager
+public abstract class FightingManager : ModeManager
 {
     [SerializeField] private int _timeLimit;
 
@@ -17,8 +17,8 @@ public class FightingManager : ModeManager
     [SerializeField] private FightingEffectManager _effectManager;
     [Space]
 
-    private PlayerData _playerData1P;
-    private PlayerData _playerData2P;
+    protected PlayerData _playerData1P;
+    protected PlayerData _playerData2P;
 
     private RoundData _currentRoundData;
     private CancellationTokenSource _timeLimitCTS;
@@ -60,7 +60,7 @@ public class FightingManager : ModeManager
         StartRound(firstRound, playerData1P, playerData2P);
     }
 
-    private void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)
+    protected virtual void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)
     {
         Debug.Log("ラウンド開始！");
         _currentRoundData = roundData;
@@ -102,10 +102,7 @@ public class FightingManager : ModeManager
     {
         await _fightingUI.RoundCall(CurrentRoundData.RoundNum);
         _playerData1P.CharacterState.SetAcceptOperations(true);
-        if(!TitleManager.SoloPlayDebug)
-        {
-            _playerData2P.CharacterState.SetAcceptOperations(true);
-        }
+        _playerData2P.CharacterState.SetAcceptOperations(true);
         CountdownAsync().Forget();
     }
 
@@ -158,6 +155,8 @@ public class FightingManager : ModeManager
         _playerData1P.CharacterState.SetAcceptOperations(false);
         _playerData2P.CharacterState.SetAcceptOperations(false);
 
+        Debug.Log("スロー演出");
+
         await performance.Invoke();
 
         FightingPhysics.SetFightTimeScale(1);
@@ -173,7 +172,7 @@ public class FightingManager : ModeManager
         GoNextRound(loserNum);
     }
 
-    private async void GoNextRound(int loserNum)
+    private void GoNextRound(int loserNum)
     {
         if(loserNum != 0)
         {
@@ -198,13 +197,12 @@ public class FightingManager : ModeManager
                 return;
             }
         }
-
-        FightingManager fightingManager =
-            await GameManager.LoadAsync<FightingManager>("FightingScene");
-        fightingManager.StartRound(CurrentRoundData, _playerData1P, _playerData2P);
+        GoFighting();
     }
 
-    private async void GameSet(int winnerNum)
+    protected abstract void GoFighting();
+
+    protected virtual async void GameSet(int winnerNum)
     {
         _fightingUI.HeartLost(_currentRoundData);
 
@@ -222,6 +220,12 @@ public class FightingManager : ModeManager
             Destroy(_playerData2P.CharacterActions.gameObject);
         }
 
+        //ResultSelectSceneに移動
+        GoResult(winnerNum);
+    }
+
+    private async void GoResult(int winnerNum)
+    {
         //ResultSelectSceneに移動
         ResultManager resultManager =
             await GameManager.LoadAsync<ResultManager>("ResultScene");

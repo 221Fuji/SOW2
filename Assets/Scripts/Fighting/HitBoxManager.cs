@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 /// <summary>
 /// UŒ‚‚Ì“–‚½‚è”»’è‚ğŠÇ—‚·‚éƒNƒ‰ƒX
@@ -16,15 +17,34 @@ public class HitBoxManager : MonoBehaviour
     /// “–‚½‚è”»’è‚Ì—LŒøó‘Ô
     /// </summary>
     public bool IsActive { get; private set; }
+    public int PlayerNum 
+    {
+        get { return _self.GetComponent<CharacterActions>().PlayerNum; }
+    }
     public UnityAction Hit { get; set; }
     public UnityAction<Bullet> HitBullet { get; set; }
     public UnityAction Guard { get; set; }
     public UnityAction<Bullet> GuardBullet { get; set; }
 
+    public static List<HitBoxManager> HitBoxes { get; private set; }
+
     public void InitializeHitBox(AttackInfo attackInfo, GameObject self)
     {
         _attackInfo = attackInfo;
         _self = self;
+
+        if(HitBoxes == null)
+        {
+            HitBoxes = new List<HitBoxManager>();
+        }
+        
+        if(HitBoxes != null)
+        {
+            if(!HitBoxes.Contains(this))
+            {
+                HitBoxes.Add(this);
+            }
+        }
     }
 
     public void SetIsActive(bool value)
@@ -75,6 +95,17 @@ public class HitBoxManager : MonoBehaviour
                 }
             }
             SetIsActive(false);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(HitBoxes != null)
+        {
+            if(HitBoxes.Contains(this))
+            {
+                HitBoxes.Remove(this);
+            }
         }
     }
 

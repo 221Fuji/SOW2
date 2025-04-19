@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
   m_Name: CloudData
   m_EditorClassIdentifier: 
+  _characterNum: 2
   _characterNameE: Cloud
   _characterNameJ: "\u30AF\u30E9\u30A6\u30C9"
   _characterPrefab: {fileID: 3157979180698024397, guid: be0eb5616dfd2cf42a594f1d74c60ad5, type: 3}
