@@ -7,8 +7,9 @@ public class RunLogs : MonoBehaviour
 {
     [SerializeField] private TextAsset _txtFileP1 = null;
     [SerializeField] private TextAsset _txtFileP2 = null;
-    
+
     private bool _isRunning = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -18,6 +19,7 @@ public class RunLogs : MonoBehaviour
     {
         if (!_isRunning) return;
         
+
     }
 
     public void SwitchFlag()

@@ -1345,6 +1345,7 @@ MonoBehaviour:
   _camera: {fileID: 519420028}
   _fightingUI: {fileID: 522004978}
   _effectManager: {fileID: 1113974581}
+  _runLogs: {fileID: 0}
 --- !u!4 &611920460
 Transform:
   m_ObjectHideFlags: 0
