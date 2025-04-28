@@ -159,9 +159,9 @@ GameObject:
   - component: {fileID: 4265102530087079737}
   - component: {fileID: 2478044922306694011}
   - component: {fileID: 9043855482182446635}
-  - component: {fileID: 4282378330521670306}
+  - component: {fileID: 3877879125745214146}
   m_Layer: 3
-  m_Name: Lancer
+  m_Name: Lancer-Easy
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.15, y: 1.46}
   _isFixed: 0
   _isWall: 0
-  _hurtBox: {fileID: 6500637455230243969}
+  _hurtBox: {fileID: 1845389986946828380}
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
@@ -425,25 +425,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 11
+    VectorObservationSize: 14
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 09000000
-    VectorActionSize: 09000000
+      BranchSizes: 0a000000
+    VectorActionSize: 0a000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 0f69337fa9e766446b9731440ae08c01, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: Lancer_Easy
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
---- !u!114 &4282378330521670306
+--- !u!114 &3877879125745214146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,13 +452,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4766604040428822055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2c9c8dd5c8e9e4298a640371cc15fc, type: 3}
+  m_Script: {fileID: 11500000, guid: e62205e89485e3d4aa68f0beeadff221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 1000000
+  _numActions: 10
 --- !u!1 &6500637455230243969
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419537509044429921}
   - component: {fileID: 436499764275045221}
+  - component: {fileID: 1845389986946828380}
   m_Layer: 7
   m_Name: HurtBox
   m_TagString: HurtBox
@@ -536,6 +538,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.28}
   m_EdgeRadius: 0
+--- !u!114 &1845389986946828380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500637455230243969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cb5a20462a3444eb8948abda752f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8946494149843696095
 GameObject:
   m_ObjectHideFlags: 0

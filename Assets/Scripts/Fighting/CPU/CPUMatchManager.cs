@@ -38,38 +38,24 @@ public class CPUMatchManager : FightingManager
     {
         GameObject prefab;
 
-        if (chara.Level == 0)
+        //レベルごとにインスタンスするプレハブを変える
+        //修正追加予定
+        switch(chara.Level)
         {
-            PlayerInput player1 = PlayerInput.Instantiate(
-            prefab: chara.CharacterData.CharacterPrefab.gameObject,
-            playerIndex: 1,
-            pairWithDevice: GameManager.Player1Device
-            );
-            prefab = player1.gameObject;
-        }
-        else
-        {
-            prefab = Instantiate(chara.CharacterData.CharacterPrefab.gameObject);
-            prefab.AddComponent<CPUAgent>();
-            var behaviorParameters = prefab.GetComponent<BehaviorParameters>();
-            behaviorParameters.BehaviorName = $"{chara.CharacterData.CharacterNameE}_{chara.Level}";
-
-            if(IsLearningMode)
-            {
-                behaviorParameters.BehaviorType = BehaviorType.Default;
-                behaviorParameters.Model = null;
-            }
-            else
-            {
-                behaviorParameters.BehaviorType = BehaviorType.InferenceOnly;
-
-                //ここにモデルを読み込む処理を書く
-            }
-
-            if (prefab.TryGetComponent<PlayerInput>(out var pi))
-            {
-                Destroy(pi);
-            }
+            case CPUCharacter.CPULevel.Player:
+                PlayerInput player1 = PlayerInput.Instantiate(
+                    prefab: chara.CharacterData.CharacterPrefab.gameObject,
+                    playerIndex: 1,
+                    pairWithDevice: GameManager.Player1Device
+                );
+                prefab = player1.gameObject;
+                break;
+            case CPUCharacter.CPULevel.Easy:
+                prefab = Instantiate(chara.CharacterData.CPUEasy.gameObject);
+                break;
+            default:
+                prefab = Instantiate(chara.CharacterData.CharacterPrefab.gameObject);
+                break;
         }
 
         return prefab;
@@ -126,20 +112,6 @@ public class CPUMatchManager : FightingManager
             base.GameSet(winnerNum);
             return;
         }
-
-        /*
-        //学習用の処理
-        if(winnerNum == 1)
-        {
-            _playerData1P.CharacterActions.GetComponent<CPUAgent>().OnGameSet(true);
-            _playerData2P.CharacterActions.GetComponent<CPUAgent>().OnGameSet(false);
-        }
-        else
-        {
-            _playerData1P.CharacterActions.GetComponent<CPUAgent>().OnGameSet(false);
-            _playerData2P.CharacterActions.GetComponent<CPUAgent>().OnGameSet(true);
-        }
-        */
 
         //学習再開
         RoundData firstRound = new RoundData(2, 2, 1);
