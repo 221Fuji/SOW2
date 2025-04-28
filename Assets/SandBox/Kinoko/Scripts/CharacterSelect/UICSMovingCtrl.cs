@@ -53,16 +53,7 @@ public class UICSMovingCtrl : UIMovingCtrl
         if(PlayerNum == 1)
         {
             InputDevice player1Device = GameManager.Player1Device;
-            if(player1Device is Keyboard)
-            {
-                GameObject instantiated = Instantiate(_keyBoardGuide, new Vector2(0, 0), Quaternion.identity);
-                instantiated.transform.SetParent(_guideField.transform, false);
-            }
-            else
-            {
-                GameObject instantiated = Instantiate(_controllerGuide, new Vector2(0, 0), Quaternion.identity);
-                instantiated.transform.SetParent(_guideField.transform, false);
-            }
+            ChangedIcon(player1Device);
         }
 
 
@@ -91,6 +82,32 @@ public class UICSMovingCtrl : UIMovingCtrl
         _streamTxtLarge.StreamingText(_cts.Token).Forget();
         _streamTxtMedium.StreamingText(_cts.Token).Forget();
         _streamTxtSmall.StreamingText(_cts.Token).Forget();
+    }
+
+    public void ChangedIcon(InputDevice device)
+    {
+        GameObject childObject = null;
+        try
+        {
+            childObject = _guideField.gameObject.transform.GetChild(0).gameObject;
+        }
+        catch { }
+
+        if (childObject != null) 
+        {
+            Destroy(childObject);
+        }
+
+        if(device is Keyboard)
+        {
+            GameObject instantiated = Instantiate(_keyBoardGuide, new Vector2(0, 0), Quaternion.identity);
+            instantiated.transform.SetParent(_guideField.transform, false);
+        }
+        else
+        {
+            GameObject instantiated = Instantiate(_controllerGuide, new Vector2(0, 0), Quaternion.identity);
+            instantiated.transform.SetParent(_guideField.transform, false);
+        }
     }
 
     private void OnDestroy()

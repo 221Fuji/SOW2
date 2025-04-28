@@ -44,6 +44,7 @@ public class CharacterSelectManager : ModeManager
 
         InstantiatePlayer2Input(device);
         Debug.Log("2P側のデバイスを登録" + _player2Input.devices);
+        _csMovingCtrl2P.ChangedIcon(GameManager.Player2Device);
         SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _csMovingCtrl2P);
     }
 
