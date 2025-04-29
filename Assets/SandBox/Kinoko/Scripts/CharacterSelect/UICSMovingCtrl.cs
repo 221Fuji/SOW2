@@ -32,7 +32,6 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private GameObject _controllerGuide;
     [SerializeField] private GameObject _keyBoardGuide;
 
-
     public int PlayerNum{get {return _playerNum;}}
     public CharacterDataBase DataBase{get {return _database;}}
     public TextMeshProUGUI CharacterNameJField{get {return _characterNameJField;}}
@@ -49,12 +48,6 @@ public class UICSMovingCtrl : UIMovingCtrl
     {
 
         base.Awake();
-
-        if(PlayerNum == 1)
-        {
-            InputDevice player1Device = GameManager.Player1Device;
-            ChangedIcon(player1Device);
-        }
 
 
 
@@ -78,36 +71,12 @@ public class UICSMovingCtrl : UIMovingCtrl
             }
         }
 
+
+
         _cts = new CancellationTokenSource();
         _streamTxtLarge.StreamingText(_cts.Token).Forget();
         _streamTxtMedium.StreamingText(_cts.Token).Forget();
         _streamTxtSmall.StreamingText(_cts.Token).Forget();
-    }
-
-    public void ChangedIcon(InputDevice device)
-    {
-        GameObject childObject = null;
-        try
-        {
-            childObject = _guideField.gameObject.transform.GetChild(0).gameObject;
-        }
-        catch { }
-
-        if (childObject != null) 
-        {
-            Destroy(childObject);
-        }
-
-        if(device is Keyboard)
-        {
-            GameObject instantiated = Instantiate(_keyBoardGuide, new Vector2(0, 0), Quaternion.identity);
-            instantiated.transform.SetParent(_guideField.transform, false);
-        }
-        else
-        {
-            GameObject instantiated = Instantiate(_controllerGuide, new Vector2(0, 0), Quaternion.identity);
-            instantiated.transform.SetParent(_guideField.transform, false);
-        }
     }
 
     private void OnDestroy()
