@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 入力に応じて対象のボタン等を移動させていくクラス(※これが一番上になるように設計)
@@ -23,7 +24,9 @@ public class UIMovingCtrl : MonoBehaviour
     }
     [SerializeField] protected List<Making> _outMap;
     [SerializeField] protected Vector2 _startPos = new Vector2(0, 0);
+    [SerializeField] protected List<UIField> _uiFields;
 
+    public UnityAction UiChanging { get; set; }
 
     public List<Making> OutMap { get { return _outMap; } }
     public Vector2 Forcus { get; protected set; } = new Vector2(0, 0);
@@ -35,6 +38,10 @@ public class UIMovingCtrl : MonoBehaviour
     protected virtual void Awake()
     {
         DesignatedForcus(_startPos);
+        foreach (UIField i in _uiFields)
+        {
+            UiChanging += i.ChangedIcon;
+        }
     }
 
     /// <summary>
