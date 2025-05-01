@@ -104,7 +104,6 @@ public class VersusManager : MonoBehaviour
 
         //ƒV[ƒ“ˆÚ“®
         //‘‚«’¼‚·
-<<<<<<< HEAD
         /*
         var fm = await GameManager.LoadAsync<CPUMatchManager>("FightingScene");
         CPUMatchManager.CPUCharacter cpu1 = new CPUMatchManager.CPUCharacter(chara1p, CPUMatchManager.CPUCharacter.CPULevel.Player);
@@ -112,8 +111,6 @@ public class VersusManager : MonoBehaviour
         fm.InitializeCPUMatch(cpu1, cpu2);
         */
 
-=======
->>>>>>> 5120a4b11980d8433d5ee9514b5d1bf021675f04
         var fm = await GameManager.LoadAsync<LocalMatchManager>("FightingScene");
         fm.InitializeFM(chara1p, chara2p);
     }

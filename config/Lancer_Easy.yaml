@@ -1,28 +1,29 @@
 behaviors:
-  Lancer_Easy:                     
-    trainer_type: ppo            
+  Lancer_Easy:
+    trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
+      batch_size: 2048
+      buffer_size: 81920
       learning_rate: 3.0e-4
       beta: 5.0e-4
       epsilon: 0.3
       lambd: 0.95
-      num_epoch: 3
-      learning_rate_schedule: constant
+      num_epoch: 5
+      learning_rate_schedule: linear
     network_settings:
-      normalize: false
-      hidden_units: 128          
+      normalize: true
+      hidden_units: 256
       num_layers: 2
+      vis_encode_type: simple
     reward_signals:
-<<<<<<< HEAD
       extrinsic:
         gamma: 0.75
-=======
-      extrinsic:                 
-        gamma: 0.99
->>>>>>> 5120a4b11980d8433d5ee9514b5d1bf021675f04
         strength: 1.0
-    max_steps: 1000000            
+    max_steps: 20_000_000
     time_horizon: 64
     summary_freq: 10000
+    self_play:
+      save_steps: 50000
+      team_change: 20000
+      swap_steps: 2000
+      window: 10

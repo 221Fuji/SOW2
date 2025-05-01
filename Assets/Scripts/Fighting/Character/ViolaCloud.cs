@@ -567,9 +567,6 @@ public class ViolaCloud : CharacterActions
             // 攻撃処理が完了した後、トークンを解放
             _ultCTS.Dispose();
             _ultCTS = null;
-
-            //物理挙動
-            SetIsFixed(false);
         }
 
         //layerを元に戻す
@@ -666,23 +663,6 @@ public class ViolaCloud : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
-    }
-
-    private async UniTask StartUpMove(int startUpFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
-    }
-
-    private async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
-    {
-        hitBox?.SetIsActive(true);
-        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
-        hitBox?.SetIsActive(false);
-    }
-
-    private async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
     public override void CancelActionByHit()

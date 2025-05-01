@@ -164,7 +164,11 @@ public abstract class FightingManager : ModeManager
 
         Debug.Log("ÉXÉçÅ[ââèo");
 
-        await performance.Invoke();
+        try
+        {
+            await performance.Invoke();
+        }
+        catch{ }
 
         FightingPhysics.SetFightTimeScale(1);
         Time.timeScale = 1;
@@ -211,7 +215,6 @@ public abstract class FightingManager : ModeManager
 
     protected virtual async void GameSet(int winnerNum)
     {
-        KinokoLoggerEnd();
         _fightingUI.HeartLost(_currentRoundData);
 
         _playerData1P.CharacterState.SetAcceptOperations(false);

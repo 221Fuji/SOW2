@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents.Policies;
 using UnityEngine;
 
 /// <summary>
@@ -28,6 +29,10 @@ public class CPULearningManager : MonoBehaviour
             GameObject chara1P = Instantiate(_prefab1P);
             GameObject chara2P = Instantiate(_prefab2P);
             _startedLearning = true;
+
+            chara1P.GetComponent<BehaviorParameters>().TeamId = 0;
+            chara2P.GetComponent<BehaviorParameters>().TeamId = 1;
+
             _cpuMatchManager.StartLearnig(chara1P, _characterData1P, chara2P, _characterData2P);
         }
     }
