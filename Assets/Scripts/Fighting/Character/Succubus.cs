@@ -530,7 +530,7 @@ public class Succubus : CharacterActions
         bullet.HitBox.HitBullet = Sm1BulletHit;
         bullet.HitBox.GuardBullet = Sm1BulletHit;
         bullet.DestroyBullet = Sm1BulletHit;
-        bullet.HitBox.SetIsActive(true);
+        WaitForActiveFrame(bullet.HitBox, 0, token).Forget();
     }
 
     private async void Sm1BulletHit(Bullet bullet)
@@ -608,6 +608,7 @@ public class Succubus : CharacterActions
                 AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 0);
             }
         }
+
     }
 
     private async UniTask Sm2Derivation()
@@ -728,11 +729,12 @@ public class Succubus : CharacterActions
         ultBullet.SetIsFixed(false);
         ultBullet.Velocity = bulletVelocity;
 
+
         //íeÇÃìñÇΩÇËîªíËê›íË
         ultBullet.HitBox.InitializeHitBox(_ultimateInfo, gameObject);
         ultBullet.HitBox.HitBullet = UltBulletHit;
         ultBullet.HitBox.GuardBullet = UltBulletHit;
-        ultBullet.HitBox.SetIsActive(true);
+        WaitForActiveFrame(ultBullet.HitBox, 0, token).Forget();
     }
 
     private async void UltBulletHit(Bullet bullet)
@@ -757,6 +759,24 @@ public class Succubus : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
+    }
+
+    private async UniTask StartUpMove(int startUpFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
+    }
+
+    private async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
+    {
+        hitBox?.SetIsActive(true);
+        if (activeFrame <= 0) return;
+        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
+        hitBox?.SetIsActive(false);
+    }
+
+    private async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
     public override void CancelActionByHit()

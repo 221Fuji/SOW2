@@ -77,7 +77,6 @@ public class CharacterState : MonoBehaviour
         CurrentBackSpeed = _defaultBackSpeed;
         CurrentJumpPower = _defaultJumpPower;
         ConboCount = 0;
-        AnormalyStates.Clear();
     }
 
     public void SetAcceptOperations(bool value)

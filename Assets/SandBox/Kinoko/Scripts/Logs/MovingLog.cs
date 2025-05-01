@@ -128,6 +128,19 @@ public class MovingLog : MonoBehaviour
         }
 
         return toString;
+        string motherName = gameObject.name;
+
+        /*
+        //テキストデータとして出力
+        try
+        {
+            using (var fs = new StreamWriter(motherName + ".txt", false, System.Text.Encoding.GetEncoding("UTF-8")))
+            {
+                fs.Write(toString);
+            }
+        }
+        catch { }
+        */
     }
 
     public void OnFourDirections(InputValue value)

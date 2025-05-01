@@ -48,59 +48,6 @@ public class Lancer : CharacterActions
                 && _ultCTS == null;
         }
     }
-    public bool CanNormalMove
-    {
-        get 
-        {
-            if (!CanEveryAction) return false;
-            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
-
-            return true;
-        }
-    }
-    public bool CanJumpMove
-    {
-        get
-        {
-            if (!CanNormalMove) return false;
-            if (_jumpMoveCount != 0) return false;
-            return true;
-        }
-    }
-    public bool CanSpecialMove1
-    {
-        get 
-        {
-            if (!CanEveryAction) return false;
-            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
-            if (!OnGround)
-            {
-                if(_sm1Count != 0) return false; //‹ó’†‚Å‚Í‚P‰ñ‚Ì‚İ
-            }        
-
-            return true;
-        }
-    }
-    public bool CanSpecialMove2
-    {
-        get
-        {
-            if (!CanEveryAction) return false;
-            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
-            if (!OnGround) return false; //‹ó’†•s‰Â
-
-            return true;
-        }
-    }
-    public bool CanUltimate
-    {
-        get
-        {
-            if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
-
-            return true;
-        }
-    }
 
     protected override void SetActionDelegate()
     {
@@ -126,7 +73,11 @@ public class Lancer : CharacterActions
     /// </summary>
     public async UniTask NormalMove()
     {
-        if(!CanNormalMove) return;
+        //UŒ‚’†‚Ìê‡
+        if(!CanEveryAction) return;
+
+        //”æ˜Jó‘Ô
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
 
         //ƒWƒƒƒ“ƒv’†‚È‚çƒWƒƒƒ“ƒvUŒ‚‚Ìˆ—‚ğs‚¤
         if (!OnGround)
@@ -180,8 +131,11 @@ public class Lancer : CharacterActions
     /// </summary>
     public async UniTask JumpMove()
     {
+        //”æ˜Jó‘Ô
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
+
         //ƒWƒƒƒ“ƒvUŒ‚‚Í‹ó’†‚Åˆê‰ñ‚Ì‚İ
-        if (!CanJumpMove) return;
+        if (_jumpMoveCount != 0) return;
 
         //ƒWƒƒƒ“ƒvUŒ‚‚µ‚½‚Ì‰ñ”‚ğ‹L˜^
         _jumpMoveCount++;
@@ -223,11 +177,15 @@ public class Lancer : CharacterActions
     /// </summary>
     public async UniTask SpecialMove1()
     {
-        if (!CanSpecialMove1) return;
+        if (!CanEveryAction) return;
+
+        //”æ˜Jó‘Ô
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
 
         //‹ó’†‚Å‚Í‚P‰ñ‚Ì‚İ
         if(!OnGround)
         {
+            if (_sm1Count != 0) return;
             _sm1Count++;
         }
 
@@ -288,7 +246,13 @@ public class Lancer : CharacterActions
     /// </summary>
     public async UniTask SpecialMove2()
     {
-        if (!CanSpecialMove2) return;
+        if (!CanEveryAction) return;
+
+        //”æ˜Jó‘Ô
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
+
+        //‹ó’†•s‰Â
+        if (!OnGround) return;
 
         // V‚µ‚¢CTS‚ğ¶¬
         _specialMove2CTS = new CancellationTokenSource();
@@ -334,7 +298,7 @@ public class Lancer : CharacterActions
     public async UniTask Ultimate()
     {
 
-        if (!CanUltimate) return;
+        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
 
         //UPÁ”ï
         _characterState.SetCurrentUP(-100);
@@ -451,6 +415,23 @@ public class Lancer : CharacterActions
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
         _sm1Count = 0;
+    }
+
+    private async UniTask StartUpMove(int startUpFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
+    }
+
+    private async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
+    {
+        hitBox?.SetIsActive(true);
+        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
+        hitBox?.SetIsActive(false);
+    }
+
+    private async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
     public override void CancelActionByHit()

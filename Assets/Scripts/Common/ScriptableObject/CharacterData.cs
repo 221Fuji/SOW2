@@ -14,7 +14,6 @@ public class CharacterData : ScriptableObject
     [SerializeField] private string _characterNameJ;
     [Header("ƒLƒƒƒ‰‚ÌPrefab")]
     [SerializeField] private CharacterActions _characterPrefab;
-    [SerializeField] private CPUAgent _cpuEasy;
     [Header("VersusScene‚Å‚ÌImage")]
     [SerializeField] private Image _versusEyeForcusImage;
     [SerializeField] private Image _versusStandingImage;
@@ -37,7 +36,6 @@ public class CharacterData : ScriptableObject
     public string CharacterNameE { get { return _characterNameE; } }
     public string CharacterNameJ { get { return _characterNameJ; } }
     public CharacterActions CharacterPrefab { get { return _characterPrefab; } }
-    public CPUAgent CPUEasy { get { return _cpuEasy; } } 
     public Image VersusEyeForcusImage { get {  return _versusEyeForcusImage; } }
     public Image VersusStandingImage { get { return _versusStandingImage; } }
     public Image VersusGrayImage { get { return _versusGrayImage; } }

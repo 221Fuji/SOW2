@@ -106,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6659231403681725220}
   - component: {fileID: 640916176895002263}
-  - component: {fileID: 8732595425185400993}
   m_Layer: 7
   m_Name: HurtBox
   m_TagString: HurtBox
@@ -174,18 +173,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.28}
   m_EdgeRadius: 0
---- !u!114 &8732595425185400993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2979863537057560798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1cb5a20462a3444eb8948abda752f5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3452795880976618590
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +368,7 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.2, y: 1.375}
   _isFixed: 0
   _isWall: 0
-  _hurtBox: {fileID: 8732595425185400993}
+  _hurtBox: {fileID: 2979863537057560798}
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
@@ -392,10 +379,10 @@ MonoBehaviour:
     GuardFrame: 21
     HitStopFrame: 7
     MeterGain: 10
-    ConsumptionSP: 15
+    ConsumptionSP: 20
     DrainSP: 20
     IsHeavy: 0
-    HitBackDirection: {x: 12.5, y: 7.5}
+    HitBackDirection: {x: 10, y: 7.5}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
   _normalMoveHitBox: {fileID: 3442098594451931043}

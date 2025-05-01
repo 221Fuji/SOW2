@@ -74,15 +74,8 @@ public class Fog : FightingRigidBody
             //自身には当たらない
             if (collider.transform.parent == _self.transform) continue;
 
-            HurtBoxManager hurtBox = collider.GetComponent<HurtBoxManager>();
-            //自身のオブジェクトには当たらない
-            if (hurtBox.PlayerNum == PlayerNum) continue;
-
-            // 攻撃が当たった情報を敵に送る
             GameObject enemy = collider.transform.parent.gameObject;
             CharacterState enemyCS = enemy.GetComponent<CharacterState>();
-
-            if(enemyCS == null) continue;
 
             if (enemyCS.CurrentHP - _damage > 2)
             {
