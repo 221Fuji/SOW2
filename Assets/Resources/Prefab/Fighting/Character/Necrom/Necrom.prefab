@@ -363,25 +363,25 @@ MonoBehaviour:
   _hurtBox: {fileID: 1156001438082662969}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 20
+    Damage: 15
     StartupFrame: 17
     ActiveFrame: 30
     RecoveryFrame: 20
     HitFrame: 20
     GuardFrame: 15
     HitStopFrame: 10
-    MeterGain: 5
-    ConsumptionSP: 20
+    MeterGain: 2.5
+    ConsumptionSP: 25
     DrainSP: 20
     IsHeavy: 0
     HitBackDirection: {x: 10, y: 10}
-    GuardBackDirection: {x: 7.5, y: 0}
+    GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _nmBulletPrefab: {fileID: 4800561461241285632, guid: a877e5e2e17f2c6438eaa555eddc6914, type: 3}
   _nmBulletVelocity: 10
   _jumpMoveInfo:
     Name: JumpMove
-    Damage: 20
+    Damage: 15
     StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -389,7 +389,7 @@ MonoBehaviour:
     GuardFrame: 20
     HitStopFrame: 10
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 25
     DrainSP: 20
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 20}
@@ -415,7 +415,7 @@ MonoBehaviour:
   _trapPrefab: {fileID: 690384246872513028, guid: f632cfa2eb2ddd84cb07860c06d57e81, type: 3}
   _specialMove2Info:
     Name: SpecialMove2
-    Damage: 15
+    Damage: 20
     StartupFrame: 10
     ActiveFrame: 5
     RecoveryFrame: 20

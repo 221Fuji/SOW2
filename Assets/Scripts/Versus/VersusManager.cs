@@ -104,10 +104,15 @@ public class VersusManager : MonoBehaviour
 
         //ƒV[ƒ“ˆÚ“®
         //‘‚«’¼‚·
+        /*
         var fm = await GameManager.LoadAsync<CPUMatchManager>("FightingScene");
         CPUMatchManager.CPUCharacter cpu1 = new CPUMatchManager.CPUCharacter(chara1p, CPUMatchManager.CPUCharacter.CPULevel.Player);
         CPUMatchManager.CPUCharacter cpu2 = new CPUMatchManager.CPUCharacter(chara1p, CPUMatchManager.CPUCharacter.CPULevel.Easy);
         fm.InitializeCPUMatch(cpu1, cpu2);
+        */
+
+        var fm = await GameManager.LoadAsync<LocalMatchManager>("FightingScene");
+        fm.InitializeFM(chara1p, chara2p);
     }
 
     private async UniTask ZoomOut(Transform parent, CancellationToken token)

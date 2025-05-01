@@ -90,9 +90,9 @@ public abstract class CharacterActions : FightingRigidBody
     public UnityAction<int> OnDie { get; set; }
 
     //AI学習用デリゲート
-    public UnityAction OnHurtAI { get; set; }
+    public UnityAction<AttackInfo> OnHurtAI { get; set; }
     public UnityAction OnDieAI { get; set; }
-    public UnityAction OnGuardAI { get; set; }
+    public UnityAction<AttackInfo> OnGuardAI { get; set; }
     public UnityAction OnBreakAI { get; set; }
     public UnityAction OnComboAI { get; set; }
     public UnityAction OnMissAI { get; set; }
@@ -429,7 +429,7 @@ public abstract class CharacterActions : FightingRigidBody
         CancelActionByHit();
 
         //AI学習
-        OnHurtAI?.Invoke();
+        OnHurtAI?.Invoke(attackInfo);
 
         //コンボ処理
         if (_characterState.IsRecoveringHit)
@@ -600,7 +600,7 @@ public abstract class CharacterActions : FightingRigidBody
     public virtual async UniTask Guard(AttackInfo attackInfo)
     {
         //AI学習
-        OnGuardAI?.Invoke();
+        OnGuardAI?.Invoke(attackInfo);
 
         //ガードバック処理
         Velocity = Vector2.zero;
@@ -663,6 +663,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     protected virtual void Break()
     {
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
         _characterState.TakeAnormalyState(AnormalyState.Fatigue);
         OnEffect?.Invoke(GetPushBackBox().center, FightingEffect.Break);
         GetComponent<SpriteRenderer>().color -= new Color(0.3f, 0.3f, 0, 0);
@@ -674,9 +675,10 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     protected virtual void RecoverBreak()
     {
+        if (!_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
         _characterState.RecoverAnormalyState(AnormalyState.Fatigue);
         OnEffect?.Invoke(GetPushBackBox().center, FightingEffect.RecoverBreak);
-        GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color += new Color(0.3f, 0.3f, 0, 0);
     }
 
     /// <summary>

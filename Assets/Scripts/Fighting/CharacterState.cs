@@ -128,7 +128,6 @@ public class CharacterState : MonoBehaviour
         if (CurrentSP <= 0)
         {
             CurrentSP = 0;
-            TakeAnormalyState(AnormalyState.Fatigue);
             Break?.Invoke();
         }
 
@@ -139,7 +138,6 @@ public class CharacterState : MonoBehaviour
             if(AnormalyStates.Contains(AnormalyState.Fatigue))
             {
                 //”æ˜Jó‘Ô‰ñ•œ
-                RecoverAnormalyState(AnormalyState.Fatigue);
                 RecoverBreak?.Invoke();
             }           
         }

@@ -20,7 +20,9 @@ public abstract class CPUAgent : Agent
     private int _leftFrameSinceHit = 0; // 攻撃を当てて（ガードさせて）からの時間
     private readonly int _assertiveness = 120; // 攻撃を当てようとする積極性(小さい方が高い)
     private int _leftFrameSinceChangeVector; // 歩く向きを変えてからの時間
-    private readonly int _frequencyWalkChange = 30; //歩く向きの切り替え頻度
+    private readonly int _frequencyWalkChange = 30; // 歩く向きの切り替え頻度
+    private int _leftFrameSinceGuard = 0; // ガード中のフレーム
+    private readonly int _frequencyGuardChange = 30; // ガード切り替え頻度
 
     public virtual void SetCAandCS()
     {
@@ -37,6 +39,7 @@ public abstract class CPUAgent : Agent
     {
         // デリゲートの設定
         SelfCA.OnHurtAI += OnHurt;
+        SelfCA.OnGuardAI += OnGuard;
         SelfCA.OnComboAI += OnCombo;
         SelfCA.OnDieAI += OnDie;
         SelfCA.OnBreakAI += OnBreak;
@@ -45,6 +48,7 @@ public abstract class CPUAgent : Agent
         EnemyCA.OnHurtAI += OnHit;
         EnemyCA.OnGuardAI += OnGuarded;
         EnemyCA.OnDieAI += OnKill;
+        EnemyCA.OnMissAI = OnAvert;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -62,8 +66,13 @@ public abstract class CPUAgent : Agent
         sensor.AddObservation(EnemyCA.HurtBox.transform.position);
         sensor.AddObservation(EnemyCS.CurrentHP / EnemyCS.MaxHP);
         sensor.AddObservation(EnemyCS.CurrentSP / EnemyCS.MaxSP);
+        sensor.AddObservation(EnemyCS.CurrentUP / SelfCS.MaxUP);
         bool isEnemyBroken = EnemyCS.AnormalyStates.Contains(AnormalyState.Fatigue);
         sensor.AddObservation(isEnemyBroken ? 1 : 0);
+
+        //相対情報
+        Vector2 distance = SelfCA.GetPushBackBox().center - (Vector2)EnemyCA.HurtBox.transform.position;
+        sensor.AddObservation(distance);
     }
 
     private void Update()
@@ -150,8 +159,25 @@ public abstract class CPUAgent : Agent
             if (_leftFrameSinceChangeVector < _frequencyWalkChange)
             {
                 AddReward(-0.01f);
-                _leftFrameSinceChangeVector = 0;
             }
+            _leftFrameSinceChangeVector = 0;
+        }
+
+        //ガード切り替え連打をしないようにするため
+        if (currentMoveNum == 9)
+        {
+            if (_leftFrameSinceGuard < _frequencyGuardChange)
+            {
+                AddReward(-0.05f);
+            }
+        }
+        if (SelfCS.IsGuarding)
+        {
+            _leftFrameSinceGuard++;
+        }
+        else
+        {
+            _leftFrameSinceGuard = 0;
         }
 
         //積極的に攻撃するように
@@ -164,30 +190,43 @@ public abstract class CPUAgent : Agent
     }
 
     //攻撃を喰らったとき
-    protected virtual void OnHurt()
+    protected virtual void OnHurt(AttackInfo attackInfo)
     {
-        AddReward(-0.75f);
+        AddReward(CalRewardByDamage(-1f, attackInfo.Damage));
     }
 
     //攻撃がヒットしたとき
-    protected virtual void OnHit()
+    protected virtual void OnHit(AttackInfo attackInfo)
     {
-        AddReward(1f);
+        AddReward(CalRewardByDamage(1.25f, attackInfo.Damage));
         _leftFrameSinceHit = 0;
     }
 
-    //攻撃をガードさせたとき
-    protected virtual void OnGuarded()
+    //攻撃をガードしたとき
+    protected virtual void OnGuard(AttackInfo attackInfo)
     {
-        AddReward(1f);
+        AddReward(CalRewardByDrainSP(0.1f, attackInfo.DrainSP));
+        //攻撃ガード成功後すぐにガードを解除してもOK
+        _leftFrameSinceGuard = _frequencyGuardChange;
+    }
+
+    //攻撃をガードさせたとき
+    protected virtual void OnGuarded(AttackInfo attackInfo)
+    {
+        AddReward(CalRewardByDrainSP(1, attackInfo.DrainSP));
         _leftFrameSinceHit = 0;
     }
 
     //攻撃を空振りしたとき
     protected virtual void OnMiss()
     {
-        AddReward(-0.75f);
-        Debug.Log("CPU空振り");
+        AddReward(-0.5f);
+    }
+
+    //攻撃を避けた時
+    protected virtual void OnAvert()
+    {
+        AddReward(0.25f);
     }
 
     //コンボしたとき
@@ -199,7 +238,7 @@ public abstract class CPUAgent : Agent
     //自身がBreak状態になったとき
     protected virtual void OnBreak()
     {
-        AddReward(-1.5f);
+        AddReward(-1f);
     }
 
     //倒したとき
@@ -240,5 +279,15 @@ public abstract class CPUAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         // 開発用にテスト操作を記述
+    }
+
+    protected float CalRewardByDamage(float baseReward, float damage)
+    {       
+        return baseReward * (damage / 20);
+    }
+
+    protected float CalRewardByDrainSP(float baseReward, float drainSP)
+    {
+        return baseReward * (drainSP / 20);
     }
 }
