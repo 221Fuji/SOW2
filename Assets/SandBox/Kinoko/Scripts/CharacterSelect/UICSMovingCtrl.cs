@@ -115,9 +115,6 @@ public class UICSMovingCtrl : UIMovingCtrl
 
     public override void OnClick()
     {
-        
-
-
         if(CheckAvailable()) return;
 
         base.OnClick();
@@ -141,8 +138,6 @@ public class UICSMovingCtrl : UIMovingCtrl
         //キャラ確定後にもとに戻したい処理があったらここに書く！(※両者選択後は呼ばれない)
         _readyTxt.ResetUI();
     }
-
-
 
     public CharacterOutFrames ReturnCharacterOutFrames()
     {

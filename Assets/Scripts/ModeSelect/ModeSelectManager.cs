@@ -36,7 +36,10 @@ public class ModeSelectManager : ModeManager
         goBack.ClickedActionEvent += GoTitle;
         goBack.ClickedActionEvent += DoNotaAcceptOperations;
         UIMSButton offline = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
+        UIMSButton cpu = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
         offline.ClickedActionEvent = GoCharacterSelect;
+        //‚±‚±‚ªcpu‘JˆÚ‚ÌƒfƒŠƒQ[ƒgİ’è
+        cpu.ClickedActionEvent = GoCharacterSelect;
     }
 
     private void DoNotaAcceptOperations()
