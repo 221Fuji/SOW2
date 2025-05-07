@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 using UnityEngine.InputSystem.HID;
 
 public class UIField : MonoBehaviour
 {
-    [SerializeField] private Func _funcType;
+    [SerializeField] private UIActionList _funcType;
     [Header("何Pの情報を表示するか")]
     [SerializeField] private PlayerNum _playerNum;
     private GameObject _uiObj = null;
     private string _deviceStr = "";
-
-    private enum Func : byte
-    {
-        Accept, Cancell
-    }
+    private string[] _otherTypes = new string[3]{ "Accept", "Cancell", "Detail" };
     private enum PlayerNum
     {
         OneP,
@@ -23,7 +20,7 @@ public class UIField : MonoBehaviour
     }
 
     private Dictionary<string, GameObject> _uIIconPacks = new Dictionary<string, GameObject> 
-        { {"buttonSouth",null}, {"buttonEast",null}, {"Keyboardj",null} };
+        { {"buttonSouth",null}, {"buttonEast",null},{"buttonNorth",null},{"buttonWest",null},{"Keyboardj",null},{"Keyboardf",null},{"Keyboardk",null},{ "Keyboardu",null},{"Keyboardl",null} };
 
     private void Awake()
     {
@@ -40,10 +37,20 @@ public class UIField : MonoBehaviour
         if (device is null) return;
         _deviceStr = DeviceToString(device);
 
+        _uiObj = null;
         foreach (var actionMap in input.actions.actionMaps)
         {
             //なんのストリームか
-            if (actionMap.name != "Other") continue;
+            if (_otherTypes.Contains(_funcType.ToString()))
+            {
+                if (actionMap.name != "Other") continue;
+            }
+            else
+            {
+                //Debug.Log("kousii>>" + _funcType.ToString());
+                if (actionMap.name != "Fighting") continue;
+            }
+            Debug.Log("kousii>>" + _funcType.ToString() + "、" + actionMap.name);
             foreach (var action in actionMap.actions)
             {
                 //なんのアクションか
@@ -51,12 +58,13 @@ public class UIField : MonoBehaviour
 
                 foreach (var binding in action.bindings)
                 {
-                    //Debug.Log($"    Binding: {binding.path} ({binding.effectivePath})");
+                    //Debug.Log($"Action{action.name}    Binding: {binding.path} ({binding.effectivePath})");
                     if (!(binding.path).Contains(_deviceStr)) continue;
+
                     //pathの整形,strs[1]になんのボタンかが入る
                     string[] strs = binding.path.Split("/");
-                    Debug.Log(strs[1]);
                     GameObject obj = AccessIconPack(strs[1]);
+
                     if (obj == null)
                     {
                         Debug.Log("一致するボタンのUIがありません");
@@ -68,8 +76,15 @@ public class UIField : MonoBehaviour
             }
         }
         if (_uiObj == null) return;
+        //フィールド内にあるボタンガイドを全削除する
+        ClearField();
         GameObject instantiated = Instantiate(_uiObj, new Vector2(0, 0), Quaternion.identity);
         instantiated.transform.SetParent(transform, false);
+    }
+
+    public void ChangeActionType(UIActionList action)
+    {
+        _funcType = action;
     }
 
     private GameObject AccessIconPack(string str)
@@ -95,4 +110,22 @@ public class UIField : MonoBehaviour
         else if (device is Gamepad) return "Gamepad";
         return "";
     }
+
+    private void ClearField()
+    {
+        Transform children = GetComponentInChildren<Transform>();
+        if (children.childCount == 0)
+        {
+            return;
+        }
+        foreach(Transform ob in children)
+        {
+            Destroy(ob.gameObject);
+        }
+    }
+}
+
+public enum UIActionList : byte
+{
+    Accept, Cancell, Detail, NormalMove, SpecialMove1, SpecialMove2, Ultimate,
 }

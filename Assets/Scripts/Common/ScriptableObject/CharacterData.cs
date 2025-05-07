@@ -30,6 +30,8 @@ public class CharacterData : ScriptableObject
     [SerializeField] private Image _resultStandImage;
     [Header("ログ取る用の個体値")]
     [SerializeField] private int _myNumber;
+    [Header("コマンドリスト用の要素リスト(1つの技につき1つ,0から表示)")]
+    [SerializeField] private List<CmdListBox> _cmdListBoxs;
 
 
     public int CharacterNum { get { return _characterNum; } }
@@ -47,4 +49,5 @@ public class CharacterData : ScriptableObject
     public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
     public Image ResultStandImage { get { return _resultStandImage; } }
     public int MyNumber { get { return _myNumber; } }
+    public List<CmdListBox> CmdListBoxs { get { return _cmdListBoxs; } }
 }
