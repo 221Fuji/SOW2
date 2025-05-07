@@ -68,19 +68,26 @@ public class HitBoxManager : MonoBehaviour
             //自身には当たらない
             if (collider.transform.parent == _self.transform) continue;
 
+            HurtBoxManager hurtBox = collider.GetComponent<HurtBoxManager>();
+            //自身のオブジェクトには当たらない
+            if (hurtBox.PlayerNum == PlayerNum) continue;
+
             // 攻撃が当たった情報を敵に送る
             GameObject enemy = collider.transform.parent.gameObject;
             CharacterState enemyCS = enemy.GetComponent<CharacterState>();
-            if(!enemyCS.IsGuarding)
+            bool IsEnemyGuarding = enemyCS ? enemyCS.IsGuarding : false;
+
+
+            if (!IsEnemyGuarding)
             {
+                if (!hurtBox.IsActive) continue;
+
                 //ヒット
                 Debug.Log($"攻撃がヒット");
-                if(!enemyCS.AnormalyStates.Contains(AnormalyState.Dead))
-                {
-                    enemy.GetComponent<CharacterActions>()?.TakeAttack(_attackInfo);
-                    Hit?.Invoke();
-                    HitBullet?.Invoke(transform.parent.GetComponent<Bullet>());
-                }
+
+                collider.GetComponent<HurtBoxManager>().TakeAttack(_attackInfo);
+                Hit?.Invoke();
+                HitBullet?.Invoke(transform.parent.GetComponent<Bullet>());
             }
             else
             {
@@ -95,6 +102,8 @@ public class HitBoxManager : MonoBehaviour
                 }
             }
             SetIsActive(false);
+
+            return;
         }
     }
 

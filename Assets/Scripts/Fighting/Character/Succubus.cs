@@ -59,7 +59,7 @@ public class Succubus : CharacterActions
     private CancellationTokenSource _ultCTS;
 
     //çsìÆêßå¿ÇÃê›íË
-    protected override bool CanEveryAction
+    public override bool CanEveryAction
     {
         get
         {
@@ -530,7 +530,7 @@ public class Succubus : CharacterActions
         bullet.HitBox.HitBullet = Sm1BulletHit;
         bullet.HitBox.GuardBullet = Sm1BulletHit;
         bullet.DestroyBullet = Sm1BulletHit;
-        WaitForActiveFrame(bullet.HitBox, 0, token).Forget();
+        bullet.HitBox.SetIsActive(true);
     }
 
     private async void Sm1BulletHit(Bullet bullet)
@@ -608,7 +608,6 @@ public class Succubus : CharacterActions
                 AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 0);
             }
         }
-
     }
 
     private async UniTask Sm2Derivation()
@@ -678,6 +677,7 @@ public class Succubus : CharacterActions
         Velocity = Vector2.zero;
 
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        _characterState.SetIsUltPerformance();
 
         try
         {
@@ -729,12 +729,11 @@ public class Succubus : CharacterActions
         ultBullet.SetIsFixed(false);
         ultBullet.Velocity = bulletVelocity;
 
-
         //íeÇÃìñÇΩÇËîªíËê›íË
         ultBullet.HitBox.InitializeHitBox(_ultimateInfo, gameObject);
         ultBullet.HitBox.HitBullet = UltBulletHit;
         ultBullet.HitBox.GuardBullet = UltBulletHit;
-        WaitForActiveFrame(ultBullet.HitBox, 0, token).Forget();
+        ultBullet.HitBox.SetIsActive(true);
     }
 
     private async void UltBulletHit(Bullet bullet)
@@ -759,24 +758,6 @@ public class Succubus : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
-    }
-
-    private async UniTask StartUpMove(int startUpFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
-    }
-
-    private async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
-    {
-        hitBox?.SetIsActive(true);
-        if (activeFrame <= 0) return;
-        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
-        hitBox?.SetIsActive(false);
-    }
-
-    private async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
     public override void CancelActionByHit()

@@ -160,7 +160,11 @@ public abstract class FightingManager : ModeManager
 
         Debug.Log("ÉXÉçÅ[ââèo");
 
-        await performance.Invoke();
+        try
+        {
+            await performance.Invoke();
+        }
+        catch{ }
 
         FightingPhysics.SetFightTimeScale(1);
         Time.timeScale = 1;

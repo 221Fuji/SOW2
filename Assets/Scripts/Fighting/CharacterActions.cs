@@ -9,10 +9,11 @@ public abstract class CharacterActions : FightingRigidBody
 {
     [Space]
     [Header("キャラクターの設定")]
-    [SerializeField] private GameObject _hurtBox;
+    [SerializeField] protected HurtBoxManager _hurtBox;
 
     //基本情報
-    private readonly float _spGainSpeed = 0.2f; // SPの自然回復量
+    private readonly float _spGainSpeed = 0.3f; // SPの自然回復量
+    private readonly float _spGainGuarding = -0.15f; // ガード中のSP減少量
 
     //コンポーネント
     protected FightingInputReceiver _inputReciever { get; private set; }
@@ -22,9 +23,10 @@ public abstract class CharacterActions : FightingRigidBody
     //その他プロパティ
     public CharacterActions EnemyCA { get; private set; }
     public int PlayerNum { get; private set; } = 0;
+    public HurtBoxManager HurtBox { get { return _hurtBox; } }
 
     //硬直等での行動制限プロパティ
-    protected virtual bool CanEveryAction
+    public virtual bool CanEveryAction
     {
         get
         {
@@ -33,26 +35,30 @@ public abstract class CharacterActions : FightingRigidBody
                 && !_characterState.IsRecoveringGuard
                 && _IsCompleteLandStun
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Bind)
-                && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
+                && !_characterState.AnormalyStates.Contains(AnormalyState.Dead)
+                && FightingPhysics.FightingTimeScale > 0;
         }
     }
-    protected virtual bool CanWalk
+    public virtual bool CanWalk
     {
         get
         {
             return CanEveryAction
-                && !_characterState.IsGuarding;
+                && !_characterState.IsGuarding
+                && OnGround
+                && !_characterState.IsRidenByEnemy;
         }
     }
-    protected virtual bool CanJump
+    public virtual bool CanJump
     {
         get
         {
             return CanEveryAction
-                && !_characterState.IsGuarding;
+                && !_characterState.IsGuarding
+                && OnGround;
         }
     }
-    protected virtual bool CanHit
+    public virtual bool CanHit
     {
         get
         {
@@ -60,7 +66,7 @@ public abstract class CharacterActions : FightingRigidBody
                 && _characterState.AcceptOperations;
         }
     }
-    protected virtual bool CanGuard
+    public virtual bool CanGuard
     {
         get
         {
@@ -87,11 +93,12 @@ public abstract class CharacterActions : FightingRigidBody
     public UnityAction<int> OnDie { get; set; }
 
     //AI学習用デリゲート
-    public UnityAction OnHurtAI { get; set; }
+    public UnityAction<AttackInfo> OnHurtAI { get; set; }
     public UnityAction OnDieAI { get; set; }
-    public UnityAction OnGuardAI { get; set; } 
+    public UnityAction<AttackInfo> OnGuardAI { get; set; }
     public UnityAction OnBreakAI { get; set; }
     public UnityAction OnComboAI { get; set; }
+    public UnityAction OnMissAI { get; set; }
 
 
     protected override void Awake()
@@ -113,6 +120,9 @@ public abstract class CharacterActions : FightingRigidBody
 
         //当たり判定の設定
         SetHitBox();
+
+        //喰らい判定の設定
+        _hurtBox.OnHurtDelegate = TakeAttack;
 
         base.Awake();
     }
@@ -137,6 +147,8 @@ public abstract class CharacterActions : FightingRigidBody
         Debug.Log($"プレイヤー番号{PlayerNum}");
 
         Velocity = Vector2.zero;
+        _hurtBox.SetActive(true);
+        _hurtBox.SetPlayerNum(PlayerNum);
 
         //パラメータ初期化
         if (_characterState == null) _characterState = GetComponent<CharacterState>();
@@ -146,7 +158,7 @@ public abstract class CharacterActions : FightingRigidBody
         GetComponent<SpriteRenderer>().color = Color.white;
 
         //向かい合わせ
-        if(playerNum == 1)
+        if (playerNum == 1)
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
             _characterState.SetIsLeft(true);
@@ -173,17 +185,7 @@ public abstract class CharacterActions : FightingRigidBody
     {
         if (_characterState == null) return;
 
-        //ガード中はSP回復なし
-        if (!_characterState.IsGuarding)
-        {
-            float spGainValue = _spGainSpeed;
-            //Break状態は二倍の速度で回復する
-            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue))
-            {
-                spGainValue *= 2;
-            }
-            _characterState.SetCurrentSP(spGainValue);
-        }
+        SPgain();
 
         //UPゲージ自然増加
         UPgain(_characterState.UPgainSpeed);
@@ -201,14 +203,14 @@ public abstract class CharacterActions : FightingRigidBody
         GuardStance(_inputReciever.IsInputingGuard);
 
         //スタミナアウト時ガードが解ける
-        if(_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)
             && _characterState.IsGuarding)
         {
             GuardRelease();
         }
 
         //ガード状態で空中にいるときはガードを解く
-        if(!OnGround && _characterState.IsGuarding)
+        if (!OnGround && _characterState.IsGuarding)
         {
             GuardRelease();
         }
@@ -216,7 +218,10 @@ public abstract class CharacterActions : FightingRigidBody
         if (EnemyCA != null)
         {
             //キャラを向かい合わせる
-            DirectionReversal();
+            if (CanWalk && OnGround)
+            {
+                DirectionReversal();
+            }             
         }
     }
 
@@ -225,13 +230,6 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     private void DirectionReversal()
     {
-        // ガード中は振り向ける
-        if(!_characterState.IsGuarding)
-        {
-            //接地中のみ反転
-            if (!CanWalk || !OnGround) return;
-        }
-
         if (GetPushBackBox().center.x > EnemyCA.GetPushBackBox().center.x)
         {
             transform.rotation = new Quaternion(0, 180, 0, 0);
@@ -250,7 +248,7 @@ public abstract class CharacterActions : FightingRigidBody
     private void ChangeAnimatorLayer()
     {
         // 空中ならAirLayerに切り替える
-        if(!OnGround)
+        if (!OnGround)
         {
             AnimatorByLayerName.SetLayerWeightByName(_animator, "WalkLayer", 0);
             AnimatorByLayerName.SetLayerWeightByName(_animator, "AirLayer", 1);
@@ -263,18 +261,41 @@ public abstract class CharacterActions : FightingRigidBody
     }
 
     /// <summary>
+    /// 毎フレームのSP消費、回復
+    /// </summary>
+    protected virtual void SPgain()
+    {
+        float spGainValue;
+        if (!_characterState.IsGuarding)
+        {
+            spGainValue = _spGainSpeed;
+            //Break状態は二倍の速度で回復する
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue))
+            {
+                spGainValue *= 2;
+            }
+        }
+        else
+        {
+            spGainValue = _spGainGuarding;
+        }
+
+        _characterState.SetCurrentSP(spGainValue);
+    }
+
+    /// <summary>
     /// 入力の方向によってキャラを移動させる
     /// </summary>
     /// <param name="inputValue">受け取った入力(1,-1,0のいずれか)</param>
     protected virtual void Walk(float inputValue)
     {
-        if (!CanWalk || !OnGround || _characterState.IsRidenByEnemy)
+        if (!CanWalk)
         {
             _animator.SetFloat("WalkFloat", 0);
             return;
         }
 
-        if(inputValue == 0)
+        if (inputValue == 0)
         {
             Velocity = new Vector2(0, Velocity.y);
             _animator.SetFloat("WalkFloat", inputValue);
@@ -319,9 +340,6 @@ public abstract class CharacterActions : FightingRigidBody
     {
         if (!CanJump) return;
 
-        //接地中のみ可能
-        if (!OnGround) return;
-
         SetGround(false);
 
         //物理挙動
@@ -347,13 +365,13 @@ public abstract class CharacterActions : FightingRigidBody
         //どちら側にいるか
         bool isleftSide = GetPushBackBox().center.x < other.GetPushBackBox().center.x;
 
-        if(isleftSide)
+        if (isleftSide)
         {
             float enemyLeftPos = other.GetPushBackBox().xMin;
             float thisRightPos = GetPushBackBox().xMax;
             overlapLength = enemyLeftPos - thisRightPos;
 
-            if(overlapLength < 0)
+            if (overlapLength < 0)
             {
                 if (-overlapLength < pushPower)
                 {
@@ -363,7 +381,7 @@ public abstract class CharacterActions : FightingRigidBody
                 other.transform.position += new Vector3(pushPower, 0, 0);
             }
         }
-        else 
+        else
         {
             float enemyRightPos = other.GetPushBackBox().xMax;
             float thisLeftPos = GetPushBackBox().xMin;
@@ -387,6 +405,7 @@ public abstract class CharacterActions : FightingRigidBody
         _IsCompleteLandStun = false;
         await FightingPhysics.DelayFrameWithTimeScale(1);
         _IsCompleteLandStun = true;
+        DirectionReversal();
         Land();
     }
 
@@ -409,7 +428,7 @@ public abstract class CharacterActions : FightingRigidBody
         CancelActionByHit();
 
         //AI学習
-        OnHurtAI?.Invoke();
+        OnHurtAI?.Invoke(attackInfo);
 
         //コンボ処理
         if (_characterState.IsRecoveringHit)
@@ -420,10 +439,10 @@ public abstract class CharacterActions : FightingRigidBody
             Debug.Log($"{_characterState.ConboCount}コンボ");
 
             //演出反映
-            if(ComboCount != null)
+            if (ComboCount != null)
             {
                 ComboCount(PlayerNum, _characterState.ConboCount).Forget();
-            }          
+            }
         }
         else
         {
@@ -464,7 +483,7 @@ public abstract class CharacterActions : FightingRigidBody
         await HitStop(attackInfo.HitStopFrame);
 
         //ヒットバック処理(Bind状態ではヒットバックしない)
-        if(!_characterState.AnormalyStates.Contains(AnormalyState.Bind))
+        if (!_characterState.AnormalyStates.Contains(AnormalyState.Bind))
         {
             Velocity = Vector2.zero;
             Vector2 hitBackVector = attackInfo.HitBackDirection;
@@ -507,7 +526,7 @@ public abstract class CharacterActions : FightingRigidBody
         await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
 
         //バインド状態ではヒット硬直から回復しない
-        await UniTask.WaitUntil(() => 
+        await UniTask.WaitUntil(() =>
         !_characterState.AnormalyStates.Contains(AnormalyState.Bind), cancellationToken: token);
 
         //着地するまでヒット硬直が続く
@@ -551,7 +570,7 @@ public abstract class CharacterActions : FightingRigidBody
         {
             AnimatorByLayerName.SetLayerWeightByName(_animator, "GuardLayer", 1);
             //発動時SP消費
-            if(!_characterState.IsGuarding)
+            if (!_characterState.IsGuarding)
             {
                 _characterState.SetCurrentSP(-10);
             }
@@ -580,7 +599,7 @@ public abstract class CharacterActions : FightingRigidBody
     public virtual async UniTask Guard(AttackInfo attackInfo)
     {
         //AI学習
-        OnGuardAI?.Invoke();
+        OnGuardAI?.Invoke(attackInfo);
 
         //ガードバック処理
         Velocity = Vector2.zero;
@@ -602,7 +621,7 @@ public abstract class CharacterActions : FightingRigidBody
         _characterState.SetCurrentSP(-attackInfo.DrainSP);
 
         //連続ガード処理
-        if(_characterState.IsRecoveringGuard)
+        if (_characterState.IsRecoveringGuard)
         {
             //前回の硬直を処理
             _characterState.CancelGuardStun();
@@ -643,6 +662,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     protected virtual void Break()
     {
+        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
         _characterState.TakeAnormalyState(AnormalyState.Fatigue);
         OnEffect?.Invoke(GetPushBackBox().center, FightingEffect.Break);
         GetComponent<SpriteRenderer>().color -= new Color(0.3f, 0.3f, 0, 0);
@@ -654,6 +674,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     protected virtual void RecoverBreak()
     {
+        if (!_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
         _characterState.RecoverAnormalyState(AnormalyState.Fatigue);
         OnEffect?.Invoke(GetPushBackBox().center, FightingEffect.RecoverBreak);
         GetComponent<SpriteRenderer>().color += new Color(0.3f, 0.3f, 0, 0);
@@ -671,7 +692,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// 死亡処理
     /// HPが0以下になると呼ばれる
     /// </summary>
-    protected virtual void Die() 
+    protected virtual void Die()
     {
         _characterState.TakeAnormalyState(AnormalyState.Dead);
         AnimatorByLayerName.SetLayerWeightByName(_animator, "DieLayer", 1);
@@ -688,7 +709,7 @@ public abstract class CharacterActions : FightingRigidBody
     {
         int direction;
 
-        if(GetPushBackBox().center.x <= EnemyCA.GetPushBackBox().center.x)
+        if (GetPushBackBox().center.x <= EnemyCA.GetPushBackBox().center.x)
         {
             direction = (int)_inputReciever.WalkValue;
         }
@@ -698,5 +719,29 @@ public abstract class CharacterActions : FightingRigidBody
         }
 
         return direction;
+    }
+
+    protected async UniTask StartUpMove(int startUpFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
+    }
+
+    protected async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
+    {
+        hitBox?.SetIsActive(true);
+        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
+        if(hitBox != null)
+        {
+            if(hitBox.IsActive)
+            {
+                OnMissAI?.Invoke();
+            }
+        }
+        hitBox?.SetIsActive(false);
+    }
+
+    protected async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
+    {
+        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 }

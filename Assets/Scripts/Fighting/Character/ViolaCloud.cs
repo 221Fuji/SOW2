@@ -39,7 +39,7 @@ public class ViolaCloud : CharacterActions
     private CancellationTokenSource _ultCTS;
 
     //行動制限の設定
-    protected override bool CanEveryAction
+    public override bool CanEveryAction
     {
         get
         {
@@ -528,6 +528,7 @@ public class ViolaCloud : CharacterActions
 
         //演出
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 45);
+        _characterState.SetIsUltPerformance();
 
         //物理挙動
         Velocity = Vector2.zero;
@@ -567,9 +568,6 @@ public class ViolaCloud : CharacterActions
             // 攻撃処理が完了した後、トークンを解放
             _ultCTS.Dispose();
             _ultCTS = null;
-
-            //物理挙動
-            SetIsFixed(false);
         }
 
         //layerを元に戻す
@@ -628,11 +626,12 @@ public class ViolaCloud : CharacterActions
 
         //演出
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        _characterState.SetIsUltPerformance();
 
         try
         {
             await StartUpMove(_ultInSideInfo.StartupFrame, token); // 発生を待つ
-                                                                   //物理挙動
+            //物理挙動
             AddForce(new Vector2(0, 20));
             DestoryAllFogInList(_fogList);
             CurrentFogResource = 100;
@@ -666,23 +665,6 @@ public class ViolaCloud : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
-    }
-
-    private async UniTask StartUpMove(int startUpFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
-    }
-
-    private async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
-    {
-        hitBox?.SetIsActive(true);
-        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
-        hitBox?.SetIsActive(false);
-    }
-
-    private async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
-    {
-        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
     }
 
     public override void CancelActionByHit()

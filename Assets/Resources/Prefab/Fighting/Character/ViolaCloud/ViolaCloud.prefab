@@ -281,7 +281,7 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.81, y: 2}
   _isFixed: 0
   _isWall: 0
-  _hurtBox: {fileID: 6417209724744269654}
+  _hurtBox: {fileID: 7534185572316184866}
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
@@ -329,8 +329,8 @@ MonoBehaviour:
     ConsumptionSP: 10
     DrainSP: 0
     IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
+    HitBackDirection: {x: 0, y: 15}
+    GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _fogPrefab: {fileID: 4315926309681932266, guid: f48997aabcef1e445966146509ac6fc3, type: 3}
   _collectEffectAnimator: {fileID: 6528662044006476091}
@@ -644,6 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5365951724644365835}
   - component: {fileID: 8133501946543057768}
+  - component: {fileID: 7534185572316184866}
   m_Layer: 7
   m_Name: HurtBox
   m_TagString: HurtBox
@@ -711,3 +712,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.325}
   m_EdgeRadius: 0
+--- !u!114 &7534185572316184866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417209724744269654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cb5a20462a3444eb8948abda752f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
