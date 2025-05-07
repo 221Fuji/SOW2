@@ -49,6 +49,10 @@ public class CharacterState : MonoBehaviour
     /// ÉKÅ[ÉhçdíºíÜÇ»ÇÁtrue
     /// </summary>
     public bool IsRecoveringGuard { get { return _guardCTS != null; } }
+    /// <summary>
+    /// UltââèoíÜÇ©
+    /// </summary>
+    public bool IsUltPerformance { get; private set; }
     public List<AnormalyState> AnormalyStates { get; private set; } = new List<AnormalyState>();
     public int ConboCount { get; private set; }
     public List<string> NameOfGivenAttack { get; private set; } = new List<string>();
@@ -82,7 +86,6 @@ public class CharacterState : MonoBehaviour
 
     public void SetAcceptOperations(bool value)
     {
-        Debug.Log($"AccceptOperation:{value}");
         AcceptOperations = value;
     }
 
@@ -104,6 +107,19 @@ public class CharacterState : MonoBehaviour
     public void SetIsGuarding(bool value)
     {
         IsGuarding = value;
+    }
+
+    public async void SetIsUltPerformance()
+    {
+        IsUltPerformance = true;
+        try
+        {
+            await FightingPhysics.DelayFrameWithTimeScale(1);
+        }
+        finally
+        {
+            IsUltPerformance = false;
+        }
     }
 
     public void TakeDamage(float damageValue)

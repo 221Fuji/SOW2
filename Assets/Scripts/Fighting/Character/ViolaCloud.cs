@@ -39,7 +39,7 @@ public class ViolaCloud : CharacterActions
     private CancellationTokenSource _ultCTS;
 
     //s“®§ŒÀ‚Ìİ’è
-    protected override bool CanEveryAction
+    public override bool CanEveryAction
     {
         get
         {
@@ -528,6 +528,7 @@ public class ViolaCloud : CharacterActions
 
         //‰‰o
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 45);
+        _characterState.SetIsUltPerformance();
 
         //•¨—‹““®
         Velocity = Vector2.zero;
@@ -625,11 +626,12 @@ public class ViolaCloud : CharacterActions
 
         //‰‰o
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        _characterState.SetIsUltPerformance();
 
         try
         {
             await StartUpMove(_ultInSideInfo.StartupFrame, token); // ”­¶‚ğ‘Ò‚Â
-                                                                   //•¨—‹““®
+            //•¨—‹““®
             AddForce(new Vector2(0, 20));
             DestoryAllFogInList(_fogList);
             CurrentFogResource = 100;

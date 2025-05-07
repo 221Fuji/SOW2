@@ -59,7 +59,7 @@ public class Succubus : CharacterActions
     private CancellationTokenSource _ultCTS;
 
     //çsìÆêßå¿ÇÃê›íË
-    protected override bool CanEveryAction
+    public override bool CanEveryAction
     {
         get
         {
@@ -677,6 +677,7 @@ public class Succubus : CharacterActions
         Velocity = Vector2.zero;
 
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        _characterState.SetIsUltPerformance();
 
         try
         {

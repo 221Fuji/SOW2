@@ -36,7 +36,7 @@ public class Lancer : CharacterActions
     private CancellationTokenSource _ultBulletCTS;
 
     //s“®§ŒÀ‚Ìİ’è
-    protected override bool CanEveryAction
+    public override bool CanEveryAction
     {
         get
         {
@@ -353,13 +353,12 @@ public class Lancer : CharacterActions
 
         //‰‰o
         PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
-
-        await StartUpMove(_ultimateInfo.StartupFrame, token); // ”­¶‚ğ‘Ò‚Â
-        //”­¶•Ûá‚ ‚è
-        CreateUltBullet();
+        _characterState.SetIsUltPerformance();
 
         try
-        {   
+        {
+            await StartUpMove(_ultimateInfo.StartupFrame, token); // ”­¶‚ğ‘Ò‚Â
+            CreateUltBullet();
             await RecoveryFrame(_ultimateInfo.RecoveryFrame, token); // d’¼‚ğ‘Ò‚Â
         }
         finally

@@ -26,7 +26,7 @@ public abstract class CharacterActions : FightingRigidBody
     public HurtBoxManager HurtBox { get { return _hurtBox; } }
 
     //硬直等での行動制限プロパティ
-    protected virtual bool CanEveryAction
+    public virtual bool CanEveryAction
     {
         get
         {
@@ -35,7 +35,8 @@ public abstract class CharacterActions : FightingRigidBody
                 && !_characterState.IsRecoveringGuard
                 && _IsCompleteLandStun
                 && !_characterState.AnormalyStates.Contains(AnormalyState.Bind)
-                && !_characterState.AnormalyStates.Contains(AnormalyState.Dead);
+                && !_characterState.AnormalyStates.Contains(AnormalyState.Dead)
+                && FightingPhysics.FightingTimeScale > 0;
         }
     }
     public virtual bool CanWalk
@@ -43,7 +44,9 @@ public abstract class CharacterActions : FightingRigidBody
         get
         {
             return CanEveryAction
-                && !_characterState.IsGuarding;
+                && !_characterState.IsGuarding
+                && OnGround
+                && !_characterState.IsRidenByEnemy;
         }
     }
     public virtual bool CanJump
@@ -215,7 +218,10 @@ public abstract class CharacterActions : FightingRigidBody
         if (EnemyCA != null)
         {
             //キャラを向かい合わせる
-            DirectionReversal();
+            if (CanWalk && OnGround)
+            {
+                DirectionReversal();
+            }             
         }
     }
 
@@ -224,13 +230,6 @@ public abstract class CharacterActions : FightingRigidBody
     /// </summary>
     private void DirectionReversal()
     {
-        // ガード中は振り向ける
-        if (!_characterState.IsGuarding)
-        {
-            //接地中のみ反転
-            if (!CanWalk || !OnGround) return;
-        }
-
         if (GetPushBackBox().center.x > EnemyCA.GetPushBackBox().center.x)
         {
             transform.rotation = new Quaternion(0, 180, 0, 0);
@@ -290,7 +289,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// <param name="inputValue">受け取った入力(1,-1,0のいずれか)</param>
     protected virtual void Walk(float inputValue)
     {
-        if (!CanWalk || !OnGround || _characterState.IsRidenByEnemy)
+        if (!CanWalk)
         {
             _animator.SetFloat("WalkFloat", 0);
             return;

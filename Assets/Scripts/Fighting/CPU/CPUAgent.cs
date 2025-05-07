@@ -2,6 +2,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 
 public abstract class CPUAgent : Agent
@@ -20,9 +21,13 @@ public abstract class CPUAgent : Agent
     private int _leftFrameSinceHit = 0; // 攻撃を当てて（ガードさせて）からの時間
     private readonly int _assertiveness = 120; // 攻撃を当てようとする積極性(小さい方が高い)
     private int _leftFrameSinceChangeVector; // 歩く向きを変えてからの時間
-    private readonly int _frequencyWalkChange = 30; // 歩く向きの切り替え頻度
+    private readonly int _frequencyWalkChange = 15; // 歩く向きの切り替え頻度
     private int _leftFrameSinceGuard = 0; // ガード中のフレーム
     private readonly int _frequencyGuardChange = 30; // ガード切り替え頻度
+    private int _leftFrameSinceGameStart = 0; //ゲームの経過時間
+
+    //位置入れ替え管理
+    private bool _preSelfIsLeftSide;
 
     public virtual void SetCAandCS()
     {
@@ -38,37 +43,46 @@ public abstract class CPUAgent : Agent
     protected virtual void OnEpisodeStart()
     {
         // デリゲートの設定
+        //自身
         SelfCA.OnHurtAI += OnHurt;
         SelfCA.OnGuardAI += OnGuard;
         SelfCA.OnComboAI += OnCombo;
         SelfCA.OnDieAI += OnDie;
         SelfCA.OnBreakAI += OnBreak;
         SelfCA.OnMissAI += OnMiss;
-
+        //相手
         EnemyCA.OnHurtAI += OnHit;
         EnemyCA.OnGuardAI += OnGuarded;
         EnemyCA.OnDieAI += OnKill;
-        EnemyCA.OnMissAI = OnAvert;
+
+        //フレームカウントリセット
+        _leftFrameSinceChangeVector = 0;
+        _leftFrameSinceGameStart = 0;
+        _leftFrameSinceGuard = 0;
+        _leftFrameSinceHit = 0;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         // 自分の基本情報を観測
-        sensor.AddObservation(SelfCA.HurtBox.transform.position);
+        sensor.AddObservation(SelfCA.GetPushBackBox().center.x / (StageParameter.StageLength / 2));
+        sensor.AddObservation(SelfCA.Velocity);
         sensor.AddObservation(SelfCS.CurrentHP / SelfCS.MaxHP);
         sensor.AddObservation(SelfCS.CurrentSP / SelfCS.MaxSP);
         sensor.AddObservation(SelfCS.CurrentUP / SelfCS.MaxUP);
-        bool isSelfBroken = SelfCS.AnormalyStates.Contains(AnormalyState.Fatigue);
-        sensor.AddObservation(isSelfBroken ? 1 : 0);
+        sensor.AddObservation(SelfCS.AnormalyStates.Contains(AnormalyState.Fatigue));
 
         // 相手の基本情報を観測
         sensor.AddObservation(EnemyCharaNum);
-        sensor.AddObservation(EnemyCA.HurtBox.transform.position);
+        sensor.AddObservation(EnemyCA.GetPushBackBox().center.x / (StageParameter.StageLength / 2));
+        sensor.AddObservation(EnemyCA.Velocity);
         sensor.AddObservation(EnemyCS.CurrentHP / EnemyCS.MaxHP);
         sensor.AddObservation(EnemyCS.CurrentSP / EnemyCS.MaxSP);
         sensor.AddObservation(EnemyCS.CurrentUP / SelfCS.MaxUP);
-        bool isEnemyBroken = EnemyCS.AnormalyStates.Contains(AnormalyState.Fatigue);
-        sensor.AddObservation(isEnemyBroken ? 1 : 0);
+        sensor.AddObservation(EnemyCS.AnormalyStates.Contains(AnormalyState.Fatigue));
+        sensor.AddObservation(EnemyCS.IsGuarding);
+        sensor.AddObservation(EnemyCA.CanEveryAction);
+        sensor.AddObservation(EnemyCS.IsUltPerformance);
 
         //相対情報
         Vector2 distance = SelfCA.GetPushBackBox().center - (Vector2)EnemyCA.HurtBox.transform.position;
@@ -88,6 +102,7 @@ public abstract class CPUAgent : Agent
             //毎フレームカウント
             _leftFrameSinceHit++;
             _leftFrameSinceChangeVector++;
+            _leftFrameSinceGameStart++;
         }       
     }
 
@@ -145,22 +160,25 @@ public abstract class CPUAgent : Agent
     /// </summary>
     private void AddRewardEveryFrame(int currentMoveNum)
     {
-        //立ち止まるの減点
-        if(currentMoveNum == 0)
-        {
-            AddReward(-0.0005f);
-        }
 
         //カクカクしないようにするため
-        bool changeFromLeft = _preMoveNum == 1 && (currentMoveNum == 0 || currentMoveNum == 2);
-        bool changeFromRight = _preMoveNum == 2 && (currentMoveNum == 0 || currentMoveNum == 1);
-        if(changeFromLeft || changeFromRight)
+        if(SelfCA.CanWalk)
         {
-            if (_leftFrameSinceChangeVector < _frequencyWalkChange)
+            bool changeFromLeft = _preMoveNum == 1 && (currentMoveNum == 0 || currentMoveNum == 2);
+            bool changeFromRight = _preMoveNum == 2 && (currentMoveNum == 0 || currentMoveNum == 1);
+            if (changeFromLeft || changeFromRight)
             {
-                AddReward(-0.01f);
+                if (_leftFrameSinceChangeVector < _frequencyWalkChange)
+                {
+                    AddReward(-0.01f);
+                }
+                _leftFrameSinceChangeVector = 0;
             }
-            _leftFrameSinceChangeVector = 0;
+            //歩きは評価する
+            if (currentMoveNum == 1 || currentMoveNum == 2)
+            {
+                AddReward(0.001f);
+            }
         }
 
         //ガード切り替え連打をしないようにするため
@@ -174,6 +192,7 @@ public abstract class CPUAgent : Agent
         if (SelfCS.IsGuarding)
         {
             _leftFrameSinceGuard++;
+            AddReward(-0.005f);
         }
         else
         {
@@ -183,10 +202,47 @@ public abstract class CPUAgent : Agent
         //積極的に攻撃するように
         if(_leftFrameSinceHit < _assertiveness)
         {
-            AddReward(-0.0005f);
+            AddReward(-0.001f);
         }
 
+        //画面端に追い詰めるように
+        AddRewardByPos();
+
         _preMoveNum = currentMoveNum;
+    }
+
+    //画面端に追い詰めた方が報酬が大きい
+    private void AddRewardByPos()
+    {
+        //立ち位置によって報酬を与える
+        float selfPosX = SelfCA.GetPushBackBox().center.x;
+        float enemyPosX = EnemyCA.GetPushBackBox().center.x;
+        float centerPosX = (selfPosX + enemyPosX) / 2;
+        float reward = centerPosX / (StageParameter.StageLength / 2);
+        if (selfPosX > enemyPosX)
+        {
+            reward *= -1;
+        }
+        reward *= 0.0025f;
+        AddReward(reward);
+
+        //入れ替わりをさせないようにする
+        bool currentSelfIsLeftSide = selfPosX < enemyPosX;
+        float additionalReward = 0;
+        if (_preSelfIsLeftSide && !currentSelfIsLeftSide)
+        {
+            additionalReward = -0.25f;
+        }
+        else if (!_preSelfIsLeftSide && currentSelfIsLeftSide)
+        {
+            additionalReward = 0.25f;
+        }
+        if (centerPosX < 0)
+        {
+            additionalReward *= -1;
+        }
+        AddReward(additionalReward);
+        _preSelfIsLeftSide = currentSelfIsLeftSide;
     }
 
     //攻撃を喰らったとき
@@ -198,22 +254,22 @@ public abstract class CPUAgent : Agent
     //攻撃がヒットしたとき
     protected virtual void OnHit(AttackInfo attackInfo)
     {
-        AddReward(CalRewardByDamage(1.25f, attackInfo.Damage));
+        AddReward(CalRewardByDamage(1f, attackInfo.Damage));
         _leftFrameSinceHit = 0;
     }
 
     //攻撃をガードしたとき
     protected virtual void OnGuard(AttackInfo attackInfo)
     {
-        AddReward(CalRewardByDrainSP(0.1f, attackInfo.DrainSP));
         //攻撃ガード成功後すぐにガードを解除してもOK
         _leftFrameSinceGuard = _frequencyGuardChange;
+        AddReward(CalRewardByDrainSP(-0.25f, attackInfo.DrainSP));
     }
 
     //攻撃をガードさせたとき
     protected virtual void OnGuarded(AttackInfo attackInfo)
     {
-        AddReward(CalRewardByDrainSP(1, attackInfo.DrainSP));
+        AddReward(CalRewardByDrainSP(0.75f, attackInfo.DrainSP));
         _leftFrameSinceHit = 0;
     }
 
@@ -221,12 +277,6 @@ public abstract class CPUAgent : Agent
     protected virtual void OnMiss()
     {
         AddReward(-0.5f);
-    }
-
-    //攻撃を避けた時
-    protected virtual void OnAvert()
-    {
-        AddReward(0.25f);
     }
 
     //コンボしたとき
@@ -244,9 +294,12 @@ public abstract class CPUAgent : Agent
     //倒したとき
     protected virtual void OnKill()
     {
-        float reward = 2f;
+        float reward = 1f;
+        //体力残せば評価
         reward += (SelfCS.CurrentHP / SelfCS.MaxHP) * 1.5f;
-        SetReward(reward);
+        //速いほど評価
+        reward += (90 / _leftFrameSinceGameStart) * 1.5f;
+        AddReward(reward);
         OnEpisodeEnd();
         EndEpisode();
     }
@@ -254,9 +307,10 @@ public abstract class CPUAgent : Agent
     //倒されたとき
     protected virtual void OnDie()
     {
-        float reward = -2f;
+        float reward = -1f;
+        //敵の体力が少なければ評価
         reward -= (EnemyCS.CurrentHP/EnemyCS.MaxHP) * 1.5f;
-        SetReward(reward);
+        AddReward(reward);
         OnEpisodeEnd();
         EndEpisode();
     }
@@ -276,11 +330,6 @@ public abstract class CPUAgent : Agent
         SelfCA.OnMissAI = null;
     }
 
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        // 開発用にテスト操作を記述
-    }
-
     protected float CalRewardByDamage(float baseReward, float damage)
     {       
         return baseReward * (damage / 20);
@@ -289,5 +338,10 @@ public abstract class CPUAgent : Agent
     protected float CalRewardByDrainSP(float baseReward, float drainSP)
     {
         return baseReward * (drainSP / 20);
+    }
+
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        //使わない
     }
 }

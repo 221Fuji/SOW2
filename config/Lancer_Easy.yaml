@@ -17,13 +17,13 @@ behaviors:
       vis_encode_type: simple
     reward_signals:
       extrinsic:
-        gamma: 0.75
+        gamma: 0.995
         strength: 1.0
     max_steps: 20_000_000
     time_horizon: 64
     summary_freq: 10000
     self_play:
       save_steps: 50000
-      team_change: 20000
+      team_change: 50000
       swap_steps: 2000
       window: 10
