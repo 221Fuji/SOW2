@@ -131,7 +131,7 @@ public class UICSMovingCtrl : UIMovingCtrl
         }
     }
 
-    public void Cancell()
+    public void Cancel()
     {
         if(CheckAvailable() && _rivalMovingCtrl.Selected) return;
         Selected = false;

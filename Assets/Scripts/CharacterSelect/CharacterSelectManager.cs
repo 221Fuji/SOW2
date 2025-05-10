@@ -49,18 +49,23 @@ public class CharacterSelectManager : ModeManager
     }
 
     //PlayerInputのデリゲート設定
-    private void SetDelegate(OtherInputReceiver oir, UIMovingCtrl movingCtrl)
+    protected void SetDelegate(OtherInputReceiver oir, UIMovingCtrl movingCtrl)
     {
-        UICSMovingCtrl uicsMoving = movingCtrl as UICSMovingCtrl;
         //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
         oir.Accept = movingCtrl.OnClick;
-        if (uicsMoving != null) oir.Cancel = uicsMoving.Cancell;
         oir.Up = movingCtrl.ForcusUp;
         oir.Down =  movingCtrl.ForcusDown;
         oir.Left = movingCtrl.ForcusLeft;
         oir.Right = movingCtrl.ForcusRight;
-        UICSReturnBack goBack = movingCtrl.OutMap[0].ReturnList()[0] as UICSReturnBack;
-        if(goBack != null) goBack.ClickedActionEvent += GoTitle;
+
+        if(movingCtrl is UICSMovingCtrl uiCSMoving)
+        {
+            oir.Cancel = uiCSMoving.Cancel;
+            if(uiCSMoving.OutMap[0].ReturnList()[0] is UICSReturnBack goBack)
+            {
+                goBack.ClickedActionEvent += GoTitle;
+            }
+        }
     }
 
     private async void GoFighting()
