@@ -84,7 +84,7 @@ public class FightingCameraManager : MonoBehaviour
 
         //ŽžŠÔ’âŽ~
         Time.timeScale = 0;
-        FightingPhysics.SetFightTimeScale(0);
+        FightingPhysics.SetFightingTimeScale(0);
         _backGroundManager.ChangeBackGroundColor(new Color(0.5f, 0.5f, 0.5f));
 
         float originalSize = _cam.orthographicSize;
@@ -120,7 +120,7 @@ public class FightingCameraManager : MonoBehaviour
     
     Canceled:
         Time.timeScale = 1;
-        FightingPhysics.SetFightTimeScale(1);
+        FightingPhysics.SetFightingTimeScale(1);
         _backGroundManager.ChangeBackGroundColor(Color.white);
         _performUltCTS = null;
 

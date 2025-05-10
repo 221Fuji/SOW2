@@ -16,7 +16,13 @@ public static class GameManager
     {
         await SceneManager.LoadSceneAsync(sceneName, mode);
 
-        Scene scene = SceneManager.GetSceneByName(sceneName);
+        // 安全にシーンが完全に読み込まれるまで待つ
+        Scene scene;
+        do
+        {
+            await UniTask.Yield();
+            scene = SceneManager.GetSceneByName(sceneName);
+        } while (!scene.IsValid() || !scene.isLoaded || scene.rootCount == 0);
 
         return GetFirstComponent<TComponent>(scene.GetRootGameObjects());
     }

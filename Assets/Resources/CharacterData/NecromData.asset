@@ -16,6 +16,7 @@ MonoBehaviour:
   _characterNameE: Necrom
   _characterNameJ: "\u30CD\u30AF\u30ED\u30E0"
   _characterPrefab: {fileID: 307861430102613367, guid: 0e86518024917c442b400900a255ea9c, type: 3}
+  _cpuEasy: {fileID: 3877879125745214146, guid: 41f0f451df69ff14ba3954dbd01062e7, type: 3}
   _versusEyeForcusImage: {fileID: 7622384381238403184, guid: cdc39e3643f0f7d4fbcc8cb2e97822b2, type: 3}
   _versusStandingImage: {fileID: 3033722100950508152, guid: 4f62810db19b96e4bacff56b60102b40, type: 3}
   _versusGrayImage: {fileID: 5414376732073549376, guid: 23dc8660f8ece4640a44df3ec7652e1a, type: 3}
@@ -27,3 +28,4 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 8158871573691524070, guid: e300cdc74bde27645a96657b542278ab, type: 3}
   _resultStandImage: {fileID: 418365536359466917, guid: 480274dfb7a8e5642ae439230a347666, type: 3}
   _myNumber: 0
+  _cmdListBoxs: []

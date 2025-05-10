@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class UICSMovingCtrl : UIMovingCtrl
 {
@@ -39,10 +40,22 @@ public class UICSMovingCtrl : UIMovingCtrl
     public UICSFigureBox FigureBox{get {return _figureBox;}}
     public UICSDotObjectField DotObjectField{get {return _dotObjectField;}}
     public UICSReadyTxt ReadyTxt{get {return _readyTxt;}}
-
-    public bool Selected {get; private set;}
     public CharacterData CharacterData{get; private set;}
+    public UnityAction<bool> OnSelected { get; set; }
+
+    private bool _selected; // キャラクターを選択したか
     private CancellationTokenSource _cts;
+
+    public bool Selected //選択状況を切り替えた時イベントを発火させる
+    {
+        get { return _selected; }
+
+        private set
+        {
+            OnSelected?.Invoke(value);
+            _selected = value;
+        }
+    }
 
     protected override void  Awake()
     {
@@ -131,7 +144,7 @@ public class UICSMovingCtrl : UIMovingCtrl
         }
     }
 
-    public void Cancell()
+    public void Cancel()
     {
         if(CheckAvailable() && _rivalMovingCtrl.Selected) return;
         Selected = false;

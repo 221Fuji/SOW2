@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NomalMove",
+                    "name": "NormalMove",
                     "type": "Button",
                     "id": "a8f9ef1c-9c37-4b5c-864f-ff7df0d10268",
                     "expectedControlType": "",
@@ -286,7 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NomalMove",
+                    "action": "NormalMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -297,7 +297,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NomalMove",
+                    "action": "NormalMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -308,7 +308,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NomalMove",
+                    "action": "NormalMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

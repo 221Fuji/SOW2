@@ -78,7 +78,7 @@ public class FightingInputReceiver : MonoBehaviour
     }
 
     // í èÌãZ
-    public void OnNomalMove()
+    public void OnNormalMove()
     {
         if (FightingPhysics.FightingFrameRate == 0 || FightingPhysics.FightingTimeScale == 0) return;
 

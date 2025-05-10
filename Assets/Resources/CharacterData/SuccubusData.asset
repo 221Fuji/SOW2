@@ -16,6 +16,7 @@ MonoBehaviour:
   _characterNameE: Succubus
   _characterNameJ: "\u30B5\u30AD\u30E5\u30D0\u30B9"
   _characterPrefab: {fileID: 5056030989154322011, guid: b46d8ba432dd97e479f52b62ce03f88c, type: 3}
+  _cpuEasy: {fileID: 3877879125745214146, guid: 41f0f451df69ff14ba3954dbd01062e7, type: 3}
   _versusEyeForcusImage: {fileID: 5022398441138178749, guid: 72b5f41f7b1874141adc0c3b5207318a, type: 3}
   _versusStandingImage: {fileID: 3293135759552213301, guid: 5e2a0432e1725f64281520b6f05f35ff, type: 3}
   _versusGrayImage: {fileID: 355144528360286030, guid: c3885e72eacc7e34daa0d87639b69064, type: 3}
@@ -27,3 +28,4 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 4610972793329298192, guid: 73b6ce50ca1e69f47b2cbca47d41ba1c, type: 3}
   _resultStandImage: {fileID: 5324826053498152182, guid: f76006fdff865a941abe33e6480ba920, type: 3}
   _myNumber: 10
+  _cmdListBoxs: []

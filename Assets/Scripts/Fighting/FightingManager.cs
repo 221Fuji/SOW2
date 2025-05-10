@@ -153,7 +153,7 @@ public abstract class FightingManager : ModeManager
 
     private async UniTask RoundSetPerformance(Func<UniTask> performance)
     {
-        FightingPhysics.SetFightTimeScale(0.5f);
+        FightingPhysics.SetFightingTimeScale(0.5f);
         Time.timeScale = 0.5f;
         _playerData1P.CharacterState.SetAcceptOperations(false);
         _playerData2P.CharacterState.SetAcceptOperations(false);
@@ -166,7 +166,7 @@ public abstract class FightingManager : ModeManager
         }
         catch{ }
 
-        FightingPhysics.SetFightTimeScale(1);
+        FightingPhysics.SetFightingTimeScale(1);
         Time.timeScale = 1;
         _playerData1P.CharacterState.SetAcceptOperations(true);
         _playerData2P.CharacterState.SetAcceptOperations(true);
