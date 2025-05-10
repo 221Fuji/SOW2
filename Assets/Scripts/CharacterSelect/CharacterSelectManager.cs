@@ -10,7 +10,7 @@ using System;
 
 public class CharacterSelectManager : ModeManager
 {
-    [SerializeField] private UICSMovingCtrl _csMovingCtrl1P;
+    [SerializeField] private UIMovingCtrl _csMovingCtrl1P;
     [SerializeField] private UICSMovingCtrl _csMovingCtrl2P;
 
     [SerializeField] private CharacterDataBase _characterDataBase;
@@ -49,33 +49,34 @@ public class CharacterSelectManager : ModeManager
     }
 
     //PlayerInputのデリゲート設定
-    private void SetDelegate(OtherInputReceiver oir, UICSMovingCtrl csMovingCtrl)
+    private void SetDelegate(OtherInputReceiver oir, UIMovingCtrl movingCtrl)
     {
+        UICSMovingCtrl uicsMoving = movingCtrl as UICSMovingCtrl;
         //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
-        oir.Accept = csMovingCtrl.OnClick;
-        oir.Cancel = csMovingCtrl.Cancell;
-        oir.Up = csMovingCtrl.ForcusUp;
-        oir.Down = csMovingCtrl.ForcusDown;
-        oir.Left = csMovingCtrl.ForcusLeft;
-        oir.Right = csMovingCtrl.ForcusRight;
-        UICSReturnBack goBack = csMovingCtrl.OutMap[0].ReturnList()[0] as UICSReturnBack;
-        goBack.ClickedActionEvent += GoTitle;
+        oir.Accept = movingCtrl.OnClick;
+        if (uicsMoving != null) oir.Cancel = uicsMoving.Cancell;
+        oir.Up = movingCtrl.ForcusUp;
+        oir.Down =  movingCtrl.ForcusDown;
+        oir.Left = movingCtrl.ForcusLeft;
+        oir.Right = movingCtrl.ForcusRight;
+        UICSReturnBack goBack = movingCtrl.OutMap[0].ReturnList()[0] as UICSReturnBack;
+        if(goBack != null) goBack.ClickedActionEvent += GoTitle;
     }
 
     private async void GoFighting()
     {
         _goFightingCTS = new CancellationTokenSource();
         CancellationToken token = _goFightingCTS.Token;
-
+        UICSMovingCtrl csCtrl1 = _csMovingCtrl1P as UICSMovingCtrl;
         try
         {
 
             await UniTask.WaitUntil(() =>
             {
-                return _csMovingCtrl1P.Selected && _csMovingCtrl2P.Selected;
+                return csCtrl1.Selected && _csMovingCtrl2P.Selected;
             }, cancellationToken: token);
 
-            CharacterData chara1P = _csMovingCtrl1P.CharacterData;
+            CharacterData chara1P = csCtrl1.CharacterData;
             CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
             await UniTask.WaitForSeconds(0.8f, cancellationToken: token);

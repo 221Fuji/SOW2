@@ -116,7 +116,7 @@ public abstract class CPUAgent : Agent
             case 1: InputReciever.SetWalkDirectionFromAI(-1f); break;
             case 2: InputReciever.SetWalkDirectionFromAI(1f); break;
             case 3: InputReciever.OnJump(); break;
-            case 4: InputReciever.OnNomalMove(); break;
+            case 4: InputReciever.OnNormalMove(); break;
             case 5: InputReciever.OnSpecialMove1(); break;
             case 6: InputReciever.OnSpecialMove2(); break;
             case 7: InputReciever.OnUltimate(); break;

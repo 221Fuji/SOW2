@@ -46,7 +46,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NomalMove"",
+                    ""name"": ""NormalMove"",
                     ""type"": ""Button"",
                     ""id"": ""a8f9ef1c-9c37-4b5c-864f-ff7df0d10268"",
                     ""expectedControlType"": """",
@@ -308,7 +308,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NomalMove"",
+                    ""action"": ""NormalMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -319,7 +319,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NomalMove"",
+                    ""action"": ""NormalMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -330,7 +330,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NomalMove"",
+                    ""action"": ""NormalMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -709,7 +709,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Fighting = asset.FindActionMap("Fighting", throwIfNotFound: true);
         m_Fighting_FourDirections = m_Fighting.FindAction("FourDirections", throwIfNotFound: true);
         m_Fighting_Jump = m_Fighting.FindAction("Jump", throwIfNotFound: true);
-        m_Fighting_NomalMove = m_Fighting.FindAction("NomalMove", throwIfNotFound: true);
+        m_Fighting_NormalMove = m_Fighting.FindAction("NormalMove", throwIfNotFound: true);
         m_Fighting_SpecialMove1 = m_Fighting.FindAction("SpecialMove1", throwIfNotFound: true);
         m_Fighting_SpecialMove2 = m_Fighting.FindAction("SpecialMove2", throwIfNotFound: true);
         m_Fighting_Guard = m_Fighting.FindAction("Guard", throwIfNotFound: true);
@@ -788,7 +788,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IFightingActions> m_FightingActionsCallbackInterfaces = new List<IFightingActions>();
     private readonly InputAction m_Fighting_FourDirections;
     private readonly InputAction m_Fighting_Jump;
-    private readonly InputAction m_Fighting_NomalMove;
+    private readonly InputAction m_Fighting_NormalMove;
     private readonly InputAction m_Fighting_SpecialMove1;
     private readonly InputAction m_Fighting_SpecialMove2;
     private readonly InputAction m_Fighting_Guard;
@@ -799,7 +799,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public FightingActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @FourDirections => m_Wrapper.m_Fighting_FourDirections;
         public InputAction @Jump => m_Wrapper.m_Fighting_Jump;
-        public InputAction @NomalMove => m_Wrapper.m_Fighting_NomalMove;
+        public InputAction @NormalMove => m_Wrapper.m_Fighting_NormalMove;
         public InputAction @SpecialMove1 => m_Wrapper.m_Fighting_SpecialMove1;
         public InputAction @SpecialMove2 => m_Wrapper.m_Fighting_SpecialMove2;
         public InputAction @Guard => m_Wrapper.m_Fighting_Guard;
@@ -819,9 +819,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @NomalMove.started += instance.OnNomalMove;
-            @NomalMove.performed += instance.OnNomalMove;
-            @NomalMove.canceled += instance.OnNomalMove;
+            @NormalMove.started += instance.OnNormalMove;
+            @NormalMove.performed += instance.OnNormalMove;
+            @NormalMove.canceled += instance.OnNormalMove;
             @SpecialMove1.started += instance.OnSpecialMove1;
             @SpecialMove1.performed += instance.OnSpecialMove1;
             @SpecialMove1.canceled += instance.OnSpecialMove1;
@@ -844,9 +844,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @NomalMove.started -= instance.OnNomalMove;
-            @NomalMove.performed -= instance.OnNomalMove;
-            @NomalMove.canceled -= instance.OnNomalMove;
+            @NormalMove.started -= instance.OnNormalMove;
+            @NormalMove.performed -= instance.OnNormalMove;
+            @NormalMove.canceled -= instance.OnNormalMove;
             @SpecialMove1.started -= instance.OnSpecialMove1;
             @SpecialMove1.performed -= instance.OnSpecialMove1;
             @SpecialMove1.canceled -= instance.OnSpecialMove1;
@@ -969,7 +969,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnFourDirections(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnNomalMove(InputAction.CallbackContext context);
+        void OnNormalMove(InputAction.CallbackContext context);
         void OnSpecialMove1(InputAction.CallbackContext context);
         void OnSpecialMove2(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);

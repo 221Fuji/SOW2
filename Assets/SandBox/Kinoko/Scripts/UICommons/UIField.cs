@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.InputSystem.HID;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem.XInput;
 
 public class UIField : MonoBehaviour
 {
@@ -47,19 +49,22 @@ public class UIField : MonoBehaviour
             }
             else
             {
-                //Debug.Log("kousii>>" + _funcType.ToString());
                 if (actionMap.name != "Fighting") continue;
             }
-            Debug.Log("kousii>>" + _funcType.ToString() + "、" + actionMap.name);
             foreach (var action in actionMap.actions)
             {
                 //なんのアクションか
-                if (action.name != _funcType.ToString()) continue;
+                if (action.name != _funcType.ToString())
+                {
+                    continue;
+                }
 
                 foreach (var binding in action.bindings)
                 {
-                    //Debug.Log($"Action{action.name}    Binding: {binding.path} ({binding.effectivePath})");
-                    if (!(binding.path).Contains(_deviceStr)) continue;
+                    if (!(binding.path).Contains(_deviceStr))
+                    {
+                        continue;
+                    }
 
                     //pathの整形,strs[1]になんのボタンかが入る
                     string[] strs = binding.path.Split("/");
@@ -108,6 +113,7 @@ public class UIField : MonoBehaviour
     {
         if (device is Keyboard) return "Keyboard";
         else if (device is Gamepad) return "Gamepad";
+        else if (device is XInputControllerWindows) return "XInputControllerWindows";
         return "";
     }
 
