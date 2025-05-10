@@ -119,6 +119,14 @@ public class CPUMatchFM : FightingManager
             await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
         cpuMatchManager.StartRound(firstRound, _playerData1P, _playerData2P);
     }
+
+    protected override async void GoResult(int winnerNum)
+    {
+        //ResultSelectScene‚ÉˆÚ“®
+        var resultManager =
+            await GameManager.LoadAsync<CPUMatchRM>("ResultScene");
+        resultManager.InitializeRM(winnerNum, _playerData1P, _playerData2P);
+    }
 }
 
 /// <summary>

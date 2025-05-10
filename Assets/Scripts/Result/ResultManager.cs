@@ -4,15 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResultManager : ModeManager
+public abstract class ResultManager : ModeManager
 {
-    [SerializeField] private UIRMovingCtrl _uirMovingCtrl1P;
-    [SerializeField] private UIRMovingCtrl _uirMovingCtrl2P;
-    [SerializeField] private ResultPerformance _resultPerformance;
-    private PlayerData _playerData1P;
-    private PlayerData _PlayerData2P;
+    [SerializeField] protected UIRMovingCtrl _uirMovingCtrl1P;
+    [SerializeField] protected UIRMovingCtrl _uirMovingCtrl2P;
+    [SerializeField] protected ResultPerformance _resultPerformance;
+    protected PlayerData _playerData1P;
+    protected PlayerData _PlayerData2P;
 
-    public async void InitializeRM(int winnerNum, PlayerData pd1, PlayerData pd2)
+    public virtual async void InitializeRM(int winnerNum, PlayerData pd1, PlayerData pd2)
     {
         _playerData1P = pd1;
         _PlayerData2P = pd2;
@@ -21,12 +21,9 @@ public class ResultManager : ModeManager
         await UniTask.WaitUntil(() => { return _resultPerformance.IsCompletedPerformance; });
 
         Initialize(GameManager.Player1Device);
-        if (GameManager.Player2Device == null) Debug.Log("こうしーランド開園");
-        InstantiatePlayer2Input(GameManager.Player2Device);
-
         SetDelegate(_player1Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl1P);
-        SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl2P);
 
+        /*
         try
         {
             Debug.Log("read");
@@ -38,10 +35,11 @@ public class ResultManager : ModeManager
             Debug.Log("error");
             Debug.Log(e);
         }
+        */
     }
 
     //PlayerInputのデリゲート設定
-    private void SetDelegate(OtherInputReceiver oir, UIRMovingCtrl rMovingCtrl)
+    protected void SetDelegate(OtherInputReceiver oir, UIRMovingCtrl rMovingCtrl)
     {
         oir.Accept = rMovingCtrl.OnClick;
         oir.Cancel = rMovingCtrl.Cancell;
@@ -70,31 +68,7 @@ public class ResultManager : ModeManager
         }
     }
 
-    private async void GoCharaSelect()
-    {
-        try
-        {
-            var characterSelectManager =
-                await GameManager.LoadAsync<CharacterSelectManager>("CharacterSelectScene");
-            characterSelectManager.Initialize(GameManager.Player1Device);
-        }
-        catch
-        {
-            return;
-        }
-    }
+    protected abstract void GoCharaSelect();
 
-    private async void GoFighting()
-    {
-        try
-        {
-            var fightingManager =
-                await GameManager.LoadAsync<FightingManager>("FightingScene");
-            fightingManager.InitializeFM(_playerData1P.CharacterData, _PlayerData2P.CharacterData);
-        }
-        catch
-        {
-            return;
-        }
-    }
+    protected abstract void GoFighting();
 }
