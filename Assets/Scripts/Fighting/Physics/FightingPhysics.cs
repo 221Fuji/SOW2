@@ -42,7 +42,7 @@ public static class FightingPhysics
     /// <summary>
     /// FightingPhysics€‹’‚Ìˆ—‘¬“x‚ğ•ÏX‚·‚é
     /// </summary>
-    public static void SetFightTimeScale(float value)
+    public static void SetFightingTimeScale(float value)
     {
         FightingTimeScale = value;
     }

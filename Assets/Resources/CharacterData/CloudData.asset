@@ -16,6 +16,7 @@ MonoBehaviour:
   _characterNameE: Cloud
   _characterNameJ: "\u30AF\u30E9\u30A6\u30C9"
   _characterPrefab: {fileID: 3157979180698024397, guid: be0eb5616dfd2cf42a594f1d74c60ad5, type: 3}
+  _cpuEasy: {fileID: 3877879125745214146, guid: 41f0f451df69ff14ba3954dbd01062e7, type: 3}
   _versusEyeForcusImage: {fileID: 6747729270971665375, guid: 52e14f992812490469f576624932fe99, type: 3}
   _versusStandingImage: {fileID: 2802262618212291688, guid: 64ebec53046764a45837a0f533c56890, type: 3}
   _versusGrayImage: {fileID: 3521021897029906315, guid: be6c5b04dd6de6d4781bfeadbf1fdbb8, type: 3}
@@ -27,3 +28,4 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 6351220725641305874, guid: 96b80028b3d8e8c4ea05e8e1f4e06f8d, type: 3}
   _resultStandImage: {fileID: 425741389602740652, guid: 03ec5365fd14ab04da22b328ff05adf3, type: 3}
   _myNumber: 100
+  _cmdListBoxs: []

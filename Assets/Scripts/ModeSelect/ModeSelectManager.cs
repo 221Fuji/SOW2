@@ -27,22 +27,22 @@ public class ModeSelectManager : ModeManager
         //入力の設定
         oir.Accept += _uimsMovigCtrl.OnClick;
         oir.Cancel += GoTitle;
-        oir.Cancel += DoNotaAcceptOperations; 
+        oir.Cancel += DoNotAcceptOperations; 
         oir.Up = _uimsMovigCtrl.ForcusUp;
         oir.Down = _uimsMovigCtrl.ForcusDown;
 
         //セレクトモードボタンの設定
         UIMSReturnBack goBack = _uimsMovigCtrl.OutMap[0].ReturnList()[0] as UIMSReturnBack;
         goBack.ClickedActionEvent += GoTitle;
-        goBack.ClickedActionEvent += DoNotaAcceptOperations;
-        UIMSButton offline = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
-        UIMSButton cpu = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
-        offline.ClickedActionEvent = GoCharacterSelect;
-        //ここがcpu遷移のデリゲート設定
-        cpu.ClickedActionEvent = GoCharacterSelect;
+        goBack.ClickedActionEvent += DoNotAcceptOperations;
+        UIMSButton cpuMatch = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
+        UIMSButton localMatch = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
+        //
+        cpuMatch.ClickedActionEvent = GoCPUMatchCS;
+        localMatch.ClickedActionEvent = GoLocalMatchCS;
     }
 
-    private void DoNotaAcceptOperations()
+    private void DoNotAcceptOperations()
     {
         _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(false);
     }
@@ -62,28 +62,57 @@ public class ModeSelectManager : ModeManager
         }
     }
 
-    private async void GoCharacterSelect()
+    private async void GoLocalMatchCS()
     {
-        DoNotaAcceptOperations();
+        DoNotAcceptOperations();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
 
             GameManager.Player2Device = null;
+
             var characterSelectManager =
-                await GameManager.LoadAsync<CharacterSelectManager>("CharacterSelectScene");
+                await GameManager.LoadAsync<LocalMatchCSM>("CharacterSelectScene");
             characterSelectManager.Initialize(GameManager.Player1Device);
+
         }
         catch
         {
-            _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            if (_player1Input)
+            {
+                _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            }
+            return;
+        }
+    }
+
+    private async void GoCPUMatchCS()
+    {
+        DoNotAcceptOperations();
+        try
+        {
+            await WaitForFade(new Color(1, 1, 1, 0), 1);
+
+            GameManager.Player2Device = null;
+
+            var characterSelectManager =
+                await GameManager.LoadAsync<CPUMatchCSM>("CharacterSelectScene");
+            characterSelectManager.Initialize(GameManager.Player1Device);
+
+        }
+        catch
+        {
+            if(_player1Input)
+            {
+                _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            }
             return;
         }
     }
 
     private async void GoTitle()
     {
-        DoNotaAcceptOperations();
+        DoNotAcceptOperations();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -91,7 +120,10 @@ public class ModeSelectManager : ModeManager
         }
         catch
         {
-            _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            if (_player1Input)
+            {
+                _player1Input.GetComponent<OtherInputReceiver>().SetAcceptOpelation(true);
+            }
             return;
         }
     }

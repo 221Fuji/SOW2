@@ -25,6 +25,31 @@ public class VersusManager : MonoBehaviour
     [SerializeField] private Transform _stand2P;
 
     private CancellationTokenSource _performanceCTS;
+    private FightingModeType _fightingModeType = FightingModeType.Local;
+
+    private CPUCharacter _cpu1P;
+    private CPUCharacter _cpu2P;
+
+    private enum FightingModeType
+    {
+        Local,
+        CPU,
+        Online
+    }
+
+    public void InitializeCPUMode(CPUCharacter cpu1P, CPUCharacter cpu2P)
+    {
+        _fightingModeType = FightingModeType.CPU;
+        _cpu1P = cpu1P;
+        _cpu2P = cpu2P;
+        VersusPerformance(cpu1P.CharacterData, cpu2P.CharacterData);
+    }
+
+    public void InitializeLocalMode(CharacterData chara1P, CharacterData chara2p)
+    {
+        _fightingModeType = FightingModeType.Local;
+        VersusPerformance(chara1P, chara2p);
+    }
 
     public async void VersusPerformance(CharacterData chara1p, CharacterData chara2p)
     {
@@ -102,15 +127,21 @@ public class VersusManager : MonoBehaviour
         _panel.color = new Color(0, 0, 0, 0);
         await _panel.DOFade(1, 0.25f).ToUniTask(cancellationToken: token);
 
-        //シーン移動
-        //書き直す
-        var fm = await GameManager.LoadAsync<CPUMatchManager>("FightingScene");
-        CPUMatchManager.CPUCharacter cpu1 = new CPUMatchManager.CPUCharacter(chara1p, CPUMatchManager.CPUCharacter.CPULevel.Player);
-        CPUMatchManager.CPUCharacter cpu2 = new CPUMatchManager.CPUCharacter(chara1p, CPUMatchManager.CPUCharacter.CPULevel.Easy);
-        fm.InitializeCPUMatch(cpu1, cpu2);
-
-        //var fm = await GameManager.LoadAsync<LocalMatchManager>("FightingScene");
-        //fm.InitializeFM(chara1p, chara2p);
+        //シーン移動 
+        switch(_fightingModeType)
+        {
+            case FightingModeType.CPU:
+                var cmm = await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
+                cmm.InitializeCPUMatch(_cpu1P, _cpu2P);
+                break;
+            case FightingModeType.Local:
+                var lmm = await GameManager.LoadAsync<LocalMatchFM>("FightingScene");
+                lmm.InitializeFM(chara1p, chara2p);
+                break;
+            case FightingModeType.Online:
+                //追加予定
+                break;
+        }
     }
 
     private async UniTask ZoomOut(Transform parent, CancellationToken token)

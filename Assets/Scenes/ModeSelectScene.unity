@@ -570,7 +570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OFFLINE
+  m_text: CPU MATCH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
   m_sharedMaterial: {fileID: -8634252361603073925, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
@@ -2632,8 +2632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modeName: OFFLINE
-  _discription: "\u4E00\u53F0\u306E\u30D1\u30BD\u30B3\u30F3\u3067\u4E8C\u4EBA\u3067\u5BFE\u6226\u3067\u304D\u307E\u3059"
+  _modeName: CPU
+  _discription: "CPU\u3092\u76F8\u624B\u306B\u4E00\u4EBA\u3067\u904A\u3079\u307E\u3059"
 --- !u!1 &1066924890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,8 +4076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modeName: CPU BATTLE
-  _discription: "CPU\u3092\u76F8\u624B\u306B\u4E00\u4EBA\u3067\u904A\u3079\u307E\u3059"
+  _modeName: LOCAL
+  _discription: "\u30AA\u30D5\u30E9\u30A4\u30F3\u3067\u5BFE\u6226\u3057\u307E\u3059"
 --- !u!1 &1886475648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,7 +4210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CPU BATTLE
+  m_text: LOCAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}
   m_sharedMaterial: {fileID: -8634252361603073925, guid: 78f66b61694e33e45bda39420b0a93ac, type: 2}

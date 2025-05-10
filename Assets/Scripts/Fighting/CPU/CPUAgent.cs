@@ -2,7 +2,6 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 
 public abstract class CPUAgent : Agent
@@ -21,7 +20,7 @@ public abstract class CPUAgent : Agent
     private int _leftFrameSinceHit = 0; // 攻撃を当てて（ガードさせて）からの時間
     private readonly int _assertiveness = 120; // 攻撃を当てようとする積極性(小さい方が高い)
     private int _leftFrameSinceChangeVector; // 歩く向きを変えてからの時間
-    private readonly int _frequencyWalkChange = 15; // 歩く向きの切り替え頻度
+    private readonly int _frequencyWalkChange = 20; // 歩く向きの切り替え頻度
     private int _leftFrameSinceGuard = 0; // ガード中のフレーム
     private readonly int _frequencyGuardChange = 30; // ガード切り替え頻度
     private int _leftFrameSinceGameStart = 0; //ゲームの経過時間
@@ -56,7 +55,7 @@ public abstract class CPUAgent : Agent
         EnemyCA.OnDieAI += OnKill;
 
         //フレームカウントリセット
-        _leftFrameSinceChangeVector = 0;
+        _leftFrameSinceChangeVector = _frequencyWalkChange;
         _leftFrameSinceGameStart = 0;
         _leftFrameSinceGuard = 0;
         _leftFrameSinceHit = 0;
@@ -67,6 +66,8 @@ public abstract class CPUAgent : Agent
         // 自分の基本情報を観測
         sensor.AddObservation(SelfCA.GetPushBackBox().center.x / (StageParameter.StageLength / 2));
         sensor.AddObservation(SelfCA.Velocity);
+        float walkChangePer = Mathf.Clamp01(_leftFrameSinceChangeVector / _frequencyWalkChange);
+        sensor.AddObservation(walkChangePer);
         sensor.AddObservation(SelfCS.CurrentHP / SelfCS.MaxHP);
         sensor.AddObservation(SelfCS.CurrentSP / SelfCS.MaxSP);
         sensor.AddObservation(SelfCS.CurrentUP / SelfCS.MaxUP);
@@ -164,9 +165,10 @@ public abstract class CPUAgent : Agent
         //カクカクしないようにするため
         if(SelfCA.CanWalk)
         {
-            bool changeFromLeft = _preMoveNum == 1 && (currentMoveNum == 0 || currentMoveNum == 2);
-            bool changeFromRight = _preMoveNum == 2 && (currentMoveNum == 0 || currentMoveNum == 1);
-            if (changeFromLeft || changeFromRight)
+            bool hasWalked = _preMoveNum <= 2;
+            bool isWalking = currentMoveNum <= 2;
+            bool changeWalk = (hasWalked && isWalking) && (_preMoveNum != currentMoveNum);
+            if (changeWalk)
             {
                 if (_leftFrameSinceChangeVector < _frequencyWalkChange)
                 {
@@ -174,10 +176,14 @@ public abstract class CPUAgent : Agent
                 }
                 _leftFrameSinceChangeVector = 0;
             }
-            //歩きは評価する
-            if (currentMoveNum == 1 || currentMoveNum == 2)
+            //前歩きは後ろより評価する
+            if (currentMoveNum == 1)
             {
-                AddReward(0.001f);
+                AddReward(0.00075f);
+            }
+            if(currentMoveNum == 2)
+            {
+                AddReward(0.0005f);
             }
         }
 
@@ -202,7 +208,7 @@ public abstract class CPUAgent : Agent
         //積極的に攻撃するように
         if(_leftFrameSinceHit < _assertiveness)
         {
-            AddReward(-0.001f);
+            AddReward(-0.0015f);
         }
 
         //画面端に追い詰めるように
@@ -242,7 +248,11 @@ public abstract class CPUAgent : Agent
             additionalReward *= -1;
         }
         AddReward(additionalReward);
-        _preSelfIsLeftSide = currentSelfIsLeftSide;
+
+        if(selfPosX != enemyPosX)
+        {
+            _preSelfIsLeftSide = currentSelfIsLeftSide;
+        }
     }
 
     //攻撃を喰らったとき

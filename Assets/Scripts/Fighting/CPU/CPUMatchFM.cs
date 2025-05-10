@@ -3,7 +3,7 @@ using Unity.MLAgents.Policies;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CPUMatchManager : FightingManager
+public class CPUMatchFM : FightingManager
 {
     public bool IsLearningMode { get; private set; }
 
@@ -98,8 +98,8 @@ public class CPUMatchManager : FightingManager
 
     protected async override void GoFighting()
     {
-        CPUMatchManager cpuMatchManager =
-            await GameManager.LoadAsync<CPUMatchManager>("FightingScene");
+        CPUMatchFM cpuMatchManager =
+            await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
         cpuMatchManager.StartRound(CurrentRoundData, _playerData1P, _playerData2P);
     }
 
@@ -115,33 +115,33 @@ public class CPUMatchManager : FightingManager
 
         //学習再開
         RoundData firstRound = new RoundData(2, 2, 1);
-        CPUMatchManager cpuMatchManager =
-            await GameManager.LoadAsync<CPUMatchManager>("FightingScene");
+        CPUMatchFM cpuMatchManager =
+            await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
         cpuMatchManager.StartRound(firstRound, _playerData1P, _playerData2P);
     }
+}
 
-    /// <summary>
-    /// CPUMatchのキャラクター情報
-    /// PlayerかCPUか判別できる
-    /// </summary>
-    public struct CPUCharacter
+/// <summary>
+/// CPUMatchのキャラクター情報
+/// PlayerかCPUか判別できる
+/// </summary>
+public struct CPUCharacter
+{
+    public CharacterData CharacterData { get; private set; }
+    public CPULevel Level { get; private set; }
+
+    public CPUCharacter(CharacterData charaData, CPULevel level)
     {
-        public CharacterData CharacterData { get; private set; }
-        public CPULevel Level { get; private set; }
+        CharacterData = charaData;
+        Level = level;
+    }
 
-        public CPUCharacter(CharacterData charaData, CPULevel level)
-        {
-            CharacterData = charaData;
-            Level = level;
-        }
-
-        public enum CPULevel 
-        {
-            Player,
-            Easy,
-            Normal,
-            Hard,
-            VeryHard
-        }
+    public enum CPULevel
+    {
+        Player,
+        Easy,
+        Normal,
+        Hard,
+        VeryHard
     }
 }

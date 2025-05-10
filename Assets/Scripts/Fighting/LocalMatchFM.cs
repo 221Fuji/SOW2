@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LocalMatchManager : FightingManager
+public class LocalMatchFM : FightingManager
 {
     [SerializeField] private RunLogs _runLogs;
 
     private BattleInfoLog _battleInfoLog;
     protected async override void GoFighting()
     {
-        LocalMatchManager localMatchManager =
-            await GameManager.LoadAsync<LocalMatchManager>("FightingScene");
+        LocalMatchFM localMatchManager =
+            await GameManager.LoadAsync<LocalMatchFM>("FightingScene");
         localMatchManager.StartRound(CurrentRoundData, _playerData1P, _playerData2P);
     }
 

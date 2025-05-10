@@ -13,7 +13,7 @@ public class CPULearningManager : MonoBehaviour
     [SerializeField] private CharacterData _characterData1P;
     [SerializeField] private GameObject _prefab2P;
     [SerializeField] private CharacterData _characterData2P;
-    [SerializeField] private CPUMatchManager _cpuMatchManager;
+    [SerializeField] private CPUMatchFM _cpuMatchManager;
 
     private static bool _startedLearning = false;
 

@@ -551,10 +551,10 @@ public abstract class CharacterActions : FightingRigidBody
     private async UniTask HitStop(int stopFrame)
     {
         Time.timeScale = 0;
-        FightingPhysics.SetFightTimeScale(0);
+        FightingPhysics.SetFightingTimeScale(0);
         await UniTask.DelayFrame(stopFrame - 1);
         Time.timeScale = 1;
-        FightingPhysics.SetFightTimeScale(1);
+        FightingPhysics.SetFightingTimeScale(1);
         await UniTask.Yield(); // 1フレーム待機して速度適用を保証
     }
 
