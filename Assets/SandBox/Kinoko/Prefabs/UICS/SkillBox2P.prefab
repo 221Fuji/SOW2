@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _funcType: 0
-  _playerNum: 0
+  _playerNum: 1
 --- !u!114 &605144607281209416
 MonoBehaviour:
   m_ObjectHideFlags: 0

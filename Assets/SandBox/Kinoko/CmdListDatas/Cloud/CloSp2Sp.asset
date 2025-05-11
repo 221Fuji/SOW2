@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
-  m_Name: NeJumpAttack
+  m_Name: CloSp2Sp
   m_EditorClassIdentifier: 
-  _skillName: "\u30B8\u30E3\u30F3\u30D7\u653B\u6483"
-  _operationGuide: "\u30B8\u30E3\u30F3\u30D7\u4E2D\u306B"
-  _skillOpEnum: 4
-  _skillVideo: {fileID: 32900000, guid: 0ed64d47c783a0945b19503e2efc4e3f, type: 3}
-  _skillDiscription: "\u3081\u304F\u308A\u5224\u5B9A\u306F\u306A\u3044"
+  _skillName: "\u5F37\u5316\u6C17\u6D41"
+  _operationGuide: 
+  _skillOpEnum: 6
+  _skillVideo: {fileID: 32900000, guid: 3600463b2de115b4aab798db1aa5c4d6, type: 3}
+  _skillDiscription: "\u8DF3\u3093\u3067\u304F\u308B\u76F8\u624B\u306B\u6709\u52B9"
