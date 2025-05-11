@@ -31,7 +31,8 @@ public class UICSCharaWindow : UIPersonalAct
     public void SetCharacterData(GameObject ob)
     {
         ob.TryGetComponent<UICSMovingCtrl>(out var movingCtrlClass);
-        List<CharacterData> characterDatas = movingCtrlClass?.DataBase.CharacterDataList;
+        List<CharacterData> characterDatas = movingCtrlClass?.CharacterDataList;
+
 
         if(_movingExceptionFlag || characterDatas.Count < _windowTurn)
         {

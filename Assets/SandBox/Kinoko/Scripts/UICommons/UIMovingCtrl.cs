@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// 入力に応じて対象のボタン等を移動させていくクラス(※これが一番上になるように設計)
@@ -14,12 +15,16 @@ public class UIMovingCtrl : MonoBehaviour
     [System.Serializable]
     public class Making
     {
-        [SerializeField] protected List<UIPersonalAct> _inMap;
+        [SerializeField] protected List<UIPersonalAct> _inMap = new List<UIPersonalAct>();
         public int ReturnLength(){
             return _inMap.Count;
         }
         public List<UIPersonalAct> ReturnList(){
             return _inMap;
+        }
+        public void SetData(UIPersonalAct uip)
+        {
+            _inMap.Add(uip);
         }
     }
     [SerializeField] protected List<Making> _outMap;
@@ -29,7 +34,7 @@ public class UIMovingCtrl : MonoBehaviour
     public UnityAction UiChanging { get; set; }
 
     public List<Making> OutMap { get { return _outMap; } }
-    public Vector2 Forcus { get; protected set; } = new Vector2(0, 0);
+    public Vector2 Forcus { get; protected set; } = new Vector2(-1, -1);
     public Vector2 Search { get; protected set; } = new Vector2(-1, -1);
     //例外処理によってスキップされた際のみ、本来フォーカスされた座標が入る
     public Vector2 Casted { get; protected set; } = new Vector2(-1, -1);
@@ -49,12 +54,11 @@ public class UIMovingCtrl : MonoBehaviour
     /// </summary>
     public virtual void DesignatedForcus(Vector2 arrayPos)
     {
-        if(Forcus.x == -1 && Forcus.y == -1)
+        if(Forcus.x != -1 && Forcus.y != -1)
         {
-            Forcus = _startPos;
+            _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
         }
 
-        _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].SeparateAction(this.transform.gameObject);
         Forcus = arrayPos;
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
     }

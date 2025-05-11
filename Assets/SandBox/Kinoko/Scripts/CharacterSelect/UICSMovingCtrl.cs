@@ -33,6 +33,7 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private GameObject _controllerGuide;
     [SerializeField] private GameObject _keyBoardGuide;
 
+    private List<CharacterData> _characterDataList;
     public int PlayerNum{get {return _playerNum;}}
     public CharacterDataBase DataBase{get {return _database;}}
     public TextMeshProUGUI CharacterNameJField{get {return _characterNameJField;}}
@@ -42,6 +43,7 @@ public class UICSMovingCtrl : UIMovingCtrl
     public UICSReadyTxt ReadyTxt{get {return _readyTxt;}}
     public CharacterData CharacterData{get; private set;}
     public UnityAction<bool> OnSelected { get; set; }
+    public List<CharacterData> CharacterDataList { get { return _characterDataList; } }
 
     private bool _selected; // キャラクターを選択したか
     private CancellationTokenSource _cts;
@@ -57,15 +59,23 @@ public class UICSMovingCtrl : UIMovingCtrl
         }
     }
 
-    protected override void  Awake()
+    /// <summary>
+    /// 対応してるキャラクターデータベースに切り替える
+    /// </summary>
+    /// <param name="mode">0:Local,1:CPU</param>
+    public void SetCharaData(int mode)
     {
-
-        base.Awake();
-
-
+        if(mode == 0)
+        {
+            _characterDataList = _database.CharacterDataList;
+        }
+        else if(mode == 1)
+        {
+            _characterDataList = _database.DevedCpuList;
+        }
 
         //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)結構良くないかも。修正？
-        if(PlayerNum != 1) return;
+        if (PlayerNum != 1) return;
         foreach (Making make in _outMap)
         {
             foreach (UIPersonalAct target in make.ReturnList())
@@ -83,9 +93,13 @@ public class UICSMovingCtrl : UIMovingCtrl
                 }
             }
         }
+    }
 
+    protected override void  Awake()
+    {
+        base.Awake();
 
-
+        if (PlayerNum != 1) return;
         _cts = new CancellationTokenSource();
         _streamTxtLarge.StreamingText(_cts.Token).Forget();
         _streamTxtMedium.StreamingText(_cts.Token).Forget();
