@@ -59,7 +59,6 @@ public class OtherInputReceiver : MonoBehaviour
         Down = null;
         Left = null;
         Right = null;
-        Debug.Log("ÉCÉxÉìÉgè¡ÇµÇΩ");
     }
 
     public void OnDestroy()

@@ -19,6 +19,7 @@ public class VersusManager : MonoBehaviour
     [SerializeField] private Transform _secondParent;
     [SerializeField] private Image _vsImage;
     [SerializeField] private TextMeshProUGUI _versusText;
+    [SerializeField] private TextMeshProUGUI _fightingModeText;
     [SerializeField] private Transform _gray1P;
     [SerializeField] private Transform _gray2P;
     [SerializeField] private Transform _stand1P;
@@ -94,6 +95,17 @@ public class VersusManager : MonoBehaviour
         _secondParent.gameObject.SetActive(true);
         _vsImage.transform.localScale = new Vector2(8, 8);
         _vsImage.color = new Color(1, 1, 1, 0);
+        string gameMode = string.Empty;
+        switch(_fightingModeType)
+        {
+            case FightingModeType.CPU:
+                gameMode = "CPUMatch";
+                break;
+            case FightingModeType.Local:
+                gameMode = "LocalMatch";
+                break;
+        }
+        _fightingModeText.text = gameMode;
 
         //óßÇøäGê∂ê¨
         Image stand1P = Instantiate(chara1p.VersusStandingImage);
