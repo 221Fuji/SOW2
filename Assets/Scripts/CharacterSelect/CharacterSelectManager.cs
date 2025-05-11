@@ -12,6 +12,8 @@ public abstract class CharacterSelectManager : ModeManager
 {
     [SerializeField] protected UICSMovingCtrl _csMovingCtrl1P;
     [SerializeField] protected UICSMovingCtrl _csMovingCtrl2P;
+    [SerializeField] protected UICSSkillListCtrl _csSkillListCtrl1P;
+    [SerializeField] protected UICSSkillListCtrl _csSkillListCtrl2P;
 
     [SerializeField] protected CharacterDataBase _characterDataBase;
 
@@ -30,14 +32,15 @@ public abstract class CharacterSelectManager : ModeManager
     protected void SetDelegate(OtherInputReceiver oir, UIMovingCtrl movingCtrl)
     {
         //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
+        oir.Accept = movingCtrl.OnClick;
         oir.Up = movingCtrl.ForcusUp;
         oir.Down =  movingCtrl.ForcusDown;
         oir.Left = movingCtrl.ForcusLeft;
         oir.Right = movingCtrl.ForcusRight;
+        oir.Interact = movingCtrl.SwitchtoOtherCtrler;
 
         if(movingCtrl is UICSMovingCtrl uiCSMoving)
         {
-            oir.Accept = uiCSMoving.SwitchtoOtherCtrler;
             oir.Cancel = uiCSMoving.Cancel;
             if(uiCSMoving.OutMap[0].ReturnList()[0] is UICSReturnBack goBack)
             {

@@ -15,12 +15,15 @@ public class LocalMatchCSM : CharacterSelectManager
         base.Initialize(device);
         _csMovingCtrl1P.SetCharaData(0);
         _csMovingCtrl1P.SwitchDelegate += SwitchDelegate;
+        _csSkillListCtrl1P.SwitchDelegate += SwitchDelegate;
+
         if (GameManager.Player2Device != null)
         {
             InstantiatePlayer2Input(GameManager.Player2Device);
             _oir2P = _player2Input.GetComponent<OtherInputReceiver>();
             SetDelegate(_oir2P, _csMovingCtrl2P);
             _csMovingCtrl2P.SwitchDelegate += SwitchDelegate;
+            _csSkillListCtrl2P.SwitchDelegate += SwitchDelegate;
         }
         InputSystem.onEvent += OnInput2P;
     }
@@ -39,6 +42,7 @@ public class LocalMatchCSM : CharacterSelectManager
         _oir2P = _player2Input.GetComponent<OtherInputReceiver>();
         SetDelegate(_oir2P, _csMovingCtrl2P);
         _csMovingCtrl2P.SwitchDelegate += SwitchDelegate;
+        _csSkillListCtrl2P.SwitchDelegate += SwitchDelegate;
     }
 
     protected override void SwitchDelegate(UIMovingCtrl movingCtrl , int playerNum)

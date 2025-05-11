@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
+  m_Name: CloNorml2
+  m_EditorClassIdentifier: 
+  _skillName: "\u3042\u3042"
+  _operationGuide: "\u304D\u308A\u306E\u4E2D\u3067\u53EF"
+  _skillOpEnum: 4
+  _skillVideo: {fileID: 32900000, guid: ff619643ed7dd714e8951a6a3f9cfff9, type: 3}
+  _skillDiscription: "\u3042\u3042\u3042"

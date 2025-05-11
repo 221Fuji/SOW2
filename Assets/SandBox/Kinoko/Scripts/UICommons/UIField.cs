@@ -14,7 +14,7 @@ public class UIField : MonoBehaviour
     [SerializeField] private PlayerNum _playerNum;
     private GameObject _uiObj = null;
     private string _deviceStr = "";
-    private string[] _otherTypes = new string[3]{ "Accept", "Cancell", "Detail" };
+    private string[] _otherTypes = new string[3]{ "Accept", "Cancell", "Interact" };
     private enum PlayerNum
     {
         OneP,
@@ -133,5 +133,5 @@ public class UIField : MonoBehaviour
 
 public enum UIActionList : byte
 {
-    Accept, Cancell, Detail, NormalMove, SpecialMove1, SpecialMove2, Ultimate,
+    Accept, Cancell, Detail,Interact, NormalMove, SpecialMove1, SpecialMove2, Ultimate,
 }

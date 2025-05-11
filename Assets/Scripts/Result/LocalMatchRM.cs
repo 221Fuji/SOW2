@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LocalMatchRM : ResultManager
 {
+    [SerializeField] protected UIRMovingCtrl _uirMovingCtrl2P;
     public override void InitializeRM(int winnerNum, PlayerData pd1, PlayerData pd2)
     {
+        _uirMovingCtrl1P.ActivateThis();
+        _uirMovingCtrl2P.ActivateThis();
         base.InitializeRM(winnerNum, pd1, pd2);
-
-        if (GameManager.Player2Device == null) Debug.Log("Ç±Ç§ÇµÅ[ÉâÉìÉhäJâÄ");
         InstantiatePlayer2Input(GameManager.Player2Device);
         SetDelegate(_player2Input.GetComponent<OtherInputReceiver>(), _uirMovingCtrl2P);
     }

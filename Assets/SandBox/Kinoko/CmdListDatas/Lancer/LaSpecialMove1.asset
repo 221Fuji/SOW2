@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillName: "\u30B9\u30DA\u30B7\u30E3\u30EB\u653B\u6483"
   _operationGuide: 
-  _skillOpEnum: 4
+  _skillOpEnum: 5
   _skillVideo: {fileID: 32900000, guid: ee7c26d491fcab74eba5c95ef60b1010, type: 3}
   _skillDiscription: "\u8D85\u30B9\u30DA\u30B7\u30E3\u30EB\u306A\u653B\u6483\u3067\u3059"

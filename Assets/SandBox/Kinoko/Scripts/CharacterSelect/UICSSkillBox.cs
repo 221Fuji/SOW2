@@ -101,11 +101,15 @@ public class UICSSkillBox : UIPersonalAct
         throw new System.Exception("world is broken");
     }
 
-    private void SeparateOnComplete()
+
+
+    public void SeparateOnComplete()
     {
         gameObject.SetActive(false);
         _cts?.Cancel();
     }
+
+
 
     /// <summary>
     /// 

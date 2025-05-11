@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
+  m_Name: NeSp1
+  m_EditorClassIdentifier: 
+  _skillName: aaa
+  _operationGuide: aa
+  _skillOpEnum: 5
+  _skillVideo: {fileID: 32900000, guid: 2121b80d34f5520449d6e4e033420895, type: 3}
+  _skillDiscription: aa

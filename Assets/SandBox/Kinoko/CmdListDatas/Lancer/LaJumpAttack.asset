@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaJumpAttack
   m_EditorClassIdentifier: 
   _skillName: "\u30B8\u30E3\u30F3\u30D7\u653B\u6483"
-  _operationGuide: "\u7A7A\u4E2D\u306B\u3044\u308B\u3068\u304D\u306B"
-  _skillOpEnum: 3
+  _operationGuide: "\u30B8\u30E3\u30F3\u30D7\u4E2D\u306B"
+  _skillOpEnum: 4
   _skillVideo: {fileID: 32900000, guid: 921e5f2f4e2007f45af0c4323fdb981c, type: 3}
   _skillDiscription: "\u306A\u306A\u3081\u4E0B\u306E\u6575\u306B\u3042\u305F\u308A\u307E\u3059\u3002\u5F37\u3044\u305E\uFF01"

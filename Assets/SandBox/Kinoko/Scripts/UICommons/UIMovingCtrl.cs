@@ -10,7 +10,7 @@ using UnityEngine.Rendering;
 /// 入力に応じて対象のボタン等を移動させていくクラス(※これが一番上になるように設計)
 /// </summary>
 
-public class UIMovingCtrl : MonoBehaviour
+ public class UIMovingCtrl : MonoBehaviour
 {
     [System.Serializable]
     public class Making
@@ -27,7 +27,7 @@ public class UIMovingCtrl : MonoBehaviour
             _inMap.Add(uip);
         }
     }
-    [SerializeField] protected List<Making> _outMap;
+    [SerializeField] protected List<Making> _outMap = new List<Making>();
     [SerializeField] protected Vector2 _startPos = new Vector2(0, 0);
     [SerializeField] protected List<UIField> _uiFields;
 
@@ -222,5 +222,10 @@ public class UIMovingCtrl : MonoBehaviour
     public virtual void OnClick()
     {
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ClickedAction(this.transform.gameObject);
+    }
+
+    public virtual void SwitchtoOtherCtrler()
+    {
+
     }
 }

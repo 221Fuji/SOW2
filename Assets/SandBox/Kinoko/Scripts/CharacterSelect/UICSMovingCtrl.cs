@@ -172,8 +172,9 @@ public class UICSMovingCtrl : UIMovingCtrl
     /// <summary>
     /// ƒLƒƒƒ‰Ú×‚ğŠJ‚­‚Ìˆ—
     /// </summary>
-    public void SwitchtoOtherCtrler()
+    public override void SwitchtoOtherCtrler()
     {
+        if (CheckAvailable()) return;
         SwitchDelegate.Invoke(_skillListCtrl,_playerNum);
         SwitchAdmin.Invoke((int)Forcus.x);
     }

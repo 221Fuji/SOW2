@@ -16,7 +16,7 @@ public class UICSSkillListCtrl : UIMovingCtrl
 
     public UnityAction<UIMovingCtrl,int> SwitchDelegate { get; set; }
 
-    private List<CmdListBox> _cmdListBoxs;
+    private List<UICSSkillBox> _cmdListBoxs = new List<UICSSkillBox>();
     protected override void Awake()
     {
         _movingCtrl.SwitchAdmin += FirstCreating;
@@ -30,14 +30,14 @@ public class UICSSkillListCtrl : UIMovingCtrl
     {
         _skillboxBack.SetActive(true);
 
+        Forcus = new Vector2(-1, -1);
         DeleteSkillBox();
         List<UICSSkillBox> sboxs = new List<UICSSkillBox>();
-        Debug.Log(_database.CharacterDataList[characterIndex].name + ">>>" + characterIndex);
         foreach(CmdListBox clb in _database.CharacterDataList[characterIndex].CmdListBoxes)
         {
-            Debug.Log("create");
             sboxs.Add(CreateSkillBox(clb));
         }
+        _cmdListBoxs = sboxs;
 
         for (int i = sboxs.Count - 1; i >= 0; i--)
         {
@@ -78,17 +78,20 @@ public class UICSSkillListCtrl : UIMovingCtrl
 
     public void DeleteSkillBox()
     {
-        foreach (CmdListBox box in _cmdListBoxs)
+        foreach (UICSSkillBox box in _cmdListBoxs)
         {
-            Destroy(box);
+            box.SeparateOnComplete();
+            Destroy(box.gameObject);
         }
+        _outMap.Clear();
         _cmdListBoxs.Clear();
     }
 
-    public void SwitchtoOtherCtrler()
+    public override void SwitchtoOtherCtrler()
     {
-
+        _skillboxBack.SetActive(false);
         SwitchDelegate.Invoke(_movingCtrl, _playerNum);
+        DeleteSkillBox();
     }
 
     public override void DesignatedForcus(Vector2 arrayPos)
@@ -105,5 +108,10 @@ public class UICSSkillListCtrl : UIMovingCtrl
     {
         base.ForcusDown();
         _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
+    }
+
+    public override void OnClick()
+    {
+        SwitchtoOtherCtrler();
     }
 }

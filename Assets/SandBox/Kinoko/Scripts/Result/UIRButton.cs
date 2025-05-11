@@ -72,6 +72,11 @@ public class UIRButton : UIPersonalAct
         if(_selectedPlayer >= 0) _selectedPlayer -= movingCtrlClass.PlayerNum;
     }
 
+    public void ChangePriority(int priority)
+    {
+        _priority = priority;
+    }
+
     private void OnDestroy()
     {
         _cts?.Cancel();

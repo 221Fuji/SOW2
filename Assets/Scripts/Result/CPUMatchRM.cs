@@ -10,14 +10,10 @@ public class CPUMatchRM : ResultManager
 
     public override void InitializeRM(int winnerNum, PlayerData pd1, PlayerData pd2)
     {
+        _uirMovingCtrl1P.ActivateThis();
         base.InitializeRM(winnerNum, pd1, pd2);
 
-        //１ｐ側の入力だけでシーン移れるようにしてほしい
-        //２ｐ側の矢印を消す等の演出面も改善可能ならお願いします
-
-        /*
-         * ここに必要であればいろいろ追加して
-         */
+        _uirMovingCtrl1P.PrioritySetForCPU();
     }
 
     /// <summary>

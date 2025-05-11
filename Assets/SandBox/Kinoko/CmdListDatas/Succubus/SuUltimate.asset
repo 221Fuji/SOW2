@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
+  m_Name: SuUltimate
+  m_EditorClassIdentifier: 
+  _skillName: "\uFF53\uFF53\uFF53"
+  _operationGuide: "\u30A6\u30EB\u30C8\u30B2\u30FC\u30B8\u304C\u3044\u3063\u3071\u3044\u306E\u6642"
+  _skillOpEnum: 7
+  _skillVideo: {fileID: 32900000, guid: e9477bf16f086a143bd97a25d1563fed, type: 3}
+  _skillDiscription: "\uFF53\uFF53\uFF53"

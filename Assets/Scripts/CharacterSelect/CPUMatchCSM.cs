@@ -13,6 +13,10 @@ public class CPUMatchCSM : CharacterSelectManager
         base.Initialize(device);
         _csMovingCtrl1P.OnSelected = On1PSelected;
         _csMovingCtrl1P.SetCharaData(1);
+        _csMovingCtrl1P.SwitchDelegate += SwitchDelegate;
+        _csMovingCtrl2P.SwitchDelegate += SwitchDelegate;
+        _csSkillListCtrl1P.SwitchDelegate += SwitchDelegate;
+        _csSkillListCtrl2P.SwitchDelegate += SwitchDelegate;
     }
 
     private void On1PSelected(bool isSelected)
