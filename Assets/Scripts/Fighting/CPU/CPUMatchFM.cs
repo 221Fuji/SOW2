@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class CPUMatchFM : FightingManager
 {
+    private CPUCharacter _cpu1P;
+    private CPUCharacter _cpu2P;
+
     public bool IsLearningMode { get; private set; }
 
     public void SetLearningMode(bool value)
@@ -14,6 +17,9 @@ public class CPUMatchFM : FightingManager
 
     public void InitializeCPUMatch(CPUCharacter chara1, CPUCharacter chara2)
     {
+        _cpu1P = chara1;
+        _cpu2P = chara2;
+
         GameObject prefab1P = InstantiateCharacterPrefab(chara1);
         GameObject prefab2P = InstantiateCharacterPrefab(chara2);
 
@@ -96,11 +102,18 @@ public class CPUMatchFM : FightingManager
         }
     }
 
+    private void SetCPUData(CPUCharacter cpu1P, CPUCharacter cpu2P)
+    {
+        _cpu1P = cpu1P;
+        _cpu2P = cpu2P;
+    }
+
     protected async override void GoFighting()
     {
         CPUMatchFM cpuMatchManager =
             await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
         cpuMatchManager.StartRound(CurrentRoundData, _playerData1P, _playerData2P);
+        cpuMatchManager.SetCPUData(_cpu1P, _cpu2P);
     }
 
     protected async override void GameSet(int winnerNum)
@@ -118,6 +131,15 @@ public class CPUMatchFM : FightingManager
         CPUMatchFM cpuMatchManager =
             await GameManager.LoadAsync<CPUMatchFM>("FightingScene");
         cpuMatchManager.StartRound(firstRound, _playerData1P, _playerData2P);
+    }
+
+    protected override async void GoResult(int winnerNum)
+    {
+        //ResultSelectScene‚ÉˆÚ“®
+        var resultManager =
+            await GameManager.LoadAsync<CPUMatchRM>("ResultScene");
+        resultManager.InitializeRM(winnerNum, _playerData1P, _playerData2P);
+        resultManager.SetCPUData(_cpu1P, _cpu2P);
     }
 }
 

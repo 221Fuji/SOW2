@@ -27,6 +27,14 @@ public class LocalMatchFM : FightingManager
         KinokoLoggerEnd();
     }
 
+    protected override async void GoResult(int winnerNum)
+    {
+        //ResultSelectSceneに移動
+        var resultManager =
+            await GameManager.LoadAsync<LocalMatchRM>("ResultScene");
+        resultManager.InitializeRM(winnerNum, _playerData1P, _playerData2P);
+    }
+
     /// <summary>
     /// きのこの行動ログ用メソッド
     /// </summary>

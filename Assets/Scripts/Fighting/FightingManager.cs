@@ -231,13 +231,7 @@ public abstract class FightingManager : ModeManager
         GoResult(winnerNum);
     }
 
-    private async void GoResult(int winnerNum)
-    {
-        //ResultSelectScene‚ÉˆÚ“®
-        ResultManager resultManager =
-            await GameManager.LoadAsync<ResultManager>("ResultScene");
-        resultManager.InitializeRM(winnerNum, _playerData1P, _playerData2P);
-    }
+    protected abstract void GoResult(int winnerNum);
 
     private void OnDestroy()
     {

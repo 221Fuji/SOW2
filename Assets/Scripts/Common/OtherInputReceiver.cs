@@ -20,6 +20,7 @@ public class OtherInputReceiver : MonoBehaviour
     //ì¸óÕÉfÉäÉQÅ[Ég
     public UnityAction Accept { get; set; }
     public UnityAction Cancel { get; set; }
+    public UnityAction Interact { get; set; }
     public UnityAction Up { get; set; }
     public UnityAction Down { get; set; }
     public UnityAction Left { get; set; }
@@ -121,6 +122,12 @@ public class OtherInputReceiver : MonoBehaviour
     {
         if (!_acceptOpelation) return;
         Cancel?.Invoke();
+    }
+
+    public void OnInteract()
+    {
+        if (!_acceptOpelation) return;
+        Interact?.Invoke();
     }
 
     private async void LookInputCrossButton(CancellationToken token)
