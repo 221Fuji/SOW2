@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: CloNorml2
   m_EditorClassIdentifier: 
-  _skillName: "\u5F37\u5316\u96F2\u5203"
-  _operationGuide: "\u7159\u9727\u306E\u4E2D\u3067"
+  _skillName: "\u5F37\u5316\u901A\u5E38\u653B\u6483"
+  _operationGuide: "\u30AD\u30EA\u306E\u4E2D\u3067"
   _skillOpEnum: 4
   _skillVideo: {fileID: 32900000, guid: ff619643ed7dd714e8951a6a3f9cfff9, type: 3}
-  _skillDiscription: "\u7159\u9727\u3092\u56DE\u53CE\u3057\u5F37\u5316\u3055\u308C\u305F\u901A\u5E38\u653B\u6483\u3092\u7E70\u308A\u51FA\u3059"
+  _skillDiscription: "\u30AD\u30EA\u3092\u56DE\u53CE\u3057\u5F37\u5316\u3055\u308C\u305F\u901A\u5E38\u653B\u6483\u3092\u7E70\u308A\u51FA\u3059"
