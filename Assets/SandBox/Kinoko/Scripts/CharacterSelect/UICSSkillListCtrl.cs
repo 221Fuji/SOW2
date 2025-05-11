@@ -13,7 +13,7 @@ public class UICSSkillListCtrl : UIMovingCtrl
 
     protected override void Awake()
     {
-        FirstCreating(0);
+        //FirstCreating(0);
     }
 
     public void FirstCreating(int characterIndex)

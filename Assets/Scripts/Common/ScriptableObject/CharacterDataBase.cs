@@ -6,9 +6,10 @@ using UnityEngine;
 public class CharacterDataBase : ScriptableObject
 {
     [SerializeField] private List<CharacterData> _characterDataList;
+    [SerializeField] private List<CharacterData> _devedCpuList;
 
     public List<CharacterData> CharacterDataList { get { return _characterDataList; } }
-
+    public List<CharacterData> DevedCpuList { get { return _devedCpuList; } }
     /// <summary>
     /// キャラクターの英語名からCharacterdataを取得する
     /// </summary>

@@ -13,6 +13,7 @@ public class LocalMatchCSM : CharacterSelectManager
     public override void Initialize(InputDevice device)
     {
         base.Initialize(device);
+        _csMovingCtrl1P.SetCharaData(0);
         if (GameManager.Player2Device != null)
         {
             InstantiatePlayer2Input(GameManager.Player2Device);
