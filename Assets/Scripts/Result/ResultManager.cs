@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class ResultManager : ModeManager
 {
     [SerializeField] protected UIRMovingCtrl _uirMovingCtrl1P;
-    [SerializeField] protected UIRMovingCtrl _uirMovingCtrl2P;
+    [SerializeField] protected UIRMovingCtrl _uirMovingCtrl2P; //CPUMatchRM‚Å—v‚ç‚È‚¢‚È‚çLocalMatchRM‚Ì•û‚¾‚¯‚Å’è‹`‚µ‚Ä‚Ù‚µ‚¢
     [SerializeField] protected ResultPerformance _resultPerformance;
     protected PlayerData _playerData1P;
     protected PlayerData _PlayerData2P;
