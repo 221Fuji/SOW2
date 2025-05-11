@@ -110,6 +110,14 @@ public class UICSSkillListCtrl : UIMovingCtrl
         _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
 
+    public override void ForcusLeft()
+    {
+    }
+
+    public override void ForcusRight()
+    {
+    }
+
     public override void OnClick()
     {
         SwitchtoOtherCtrler();
