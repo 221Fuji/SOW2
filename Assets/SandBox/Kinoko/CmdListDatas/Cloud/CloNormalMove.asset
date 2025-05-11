@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: CloNormalMove
   m_EditorClassIdentifier: 
-  _skillName: "\u3042\u3042"
+  _skillName: "\u96F2\u5203"
   _operationGuide: 
   _skillOpEnum: 4
   _skillVideo: {fileID: 32900000, guid: 5d34fa04cd9130d48b2fc5dd8d473966, type: 3}
-  _skillDiscription: "\u3042\u3042\u3042"
+  _skillDiscription: "\u7A81\u9032\u3057\u306A\u304C\u3089\u653B\u6483"

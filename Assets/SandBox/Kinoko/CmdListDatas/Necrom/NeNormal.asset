@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: NeNormal
   m_EditorClassIdentifier: 
-  _skillName: aaa
-  _operationGuide: aaa
+  _skillName: "\u901A\u5E38\u653B\u6483"
+  _operationGuide: 
   _skillOpEnum: 4
   _skillVideo: {fileID: 32900000, guid: 7594139c653d8ca46a2ce131970e6641, type: 3}
-  _skillDiscription: aaa
+  _skillDiscription: "\u98DB\u8DDD\u96E2\u306E\u77ED\u3044\u98DB\u3073\u9053\u5177\u3092\u653E\u3064"

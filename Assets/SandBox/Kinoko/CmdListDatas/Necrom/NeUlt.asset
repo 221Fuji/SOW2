@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: NeUlt
   m_EditorClassIdentifier: 
-  _skillName: aaaa
-  _operationGuide: "\u30A6\u30EB\u30C8\u6642\u306B"
+  _skillName: "\u7121\u6575\u7A81\u9032"
+  _operationGuide: "\u5FC5\u6BBA\u6280"
   _skillOpEnum: 7
   _skillVideo: {fileID: 32900000, guid: cb413a9f06e06834ba7350134d81398a, type: 3}
-  _skillDiscription: aaa
+  _skillDiscription: "\u767A\u751F\u7121\u6575\u306E\u3042\u308B\u7A81\u9032\u6280"

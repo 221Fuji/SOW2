@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: CloUlt 2
   m_EditorClassIdentifier: 
-  _skillName: "\u3042\u3042\u3042"
-  _operationGuide: "\u304D\u308A\u306E\u4E2D\u3067\u306E\u307F\u53EF"
+  _skillName: "\u96F2\u5408\u9727\u96C6"
+  _operationGuide: "\u7159\u9727\u306E\u4E2D\u3067\u5FC5\u6BBA\u6280"
   _skillOpEnum: 7
   _skillVideo: {fileID: 32900000, guid: a9a02b1d53d1df94fa8fdbd150200d13, type: 3}
-  _skillDiscription: "\u3042\u3042\u3042"
+  _skillDiscription: "\u7159\u9727\u3092\u56DE\u53CE\u3057\u3001\u4F53\u529B\u3092\u56DE\u5FA9\u3059\u308B"

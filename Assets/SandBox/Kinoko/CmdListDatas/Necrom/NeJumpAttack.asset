@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: NeJumpAttack
   m_EditorClassIdentifier: 
-  _skillName: 
-  _operationGuide: 
+  _skillName: "\u30B8\u30E3\u30F3\u30D7\u653B\u6483"
+  _operationGuide: "\u30B8\u30E3\u30F3\u30D7\u4E2D\u306B"
   _skillOpEnum: 4
   _skillVideo: {fileID: 0}
-  _skillDiscription: 
+  _skillDiscription: "\u3081\u304F\u308A\u5224\u5B9A\u306F\u306A\u3044"

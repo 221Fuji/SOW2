@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: SuUltimate
   m_EditorClassIdentifier: 
-  _skillName: "\uFF53\uFF53\uFF53"
-  _operationGuide: "\u30A6\u30EB\u30C8\u30B2\u30FC\u30B8\u304C\u3044\u3063\u3071\u3044\u306E\u6642"
+  _skillName: "\u30A2\u30EB\u30C6\u30A3\u30E1\u30C3\u30C8\u30CF\u30FC\u30C8"
+  _operationGuide: "\u5FC5\u6BBA\u6280"
   _skillOpEnum: 7
   _skillVideo: {fileID: 32900000, guid: e9477bf16f086a143bd97a25d1563fed, type: 3}
-  _skillDiscription: "\uFF53\uFF53\uFF53"
+  _skillDiscription: "\u30D0\u30A6\u30F3\u30C9\u3059\u308B\u98DB\u3073\u9053\u5177\u3092\u653E\u3064"

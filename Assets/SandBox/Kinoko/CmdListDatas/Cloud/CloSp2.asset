@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: CloSp2
   m_EditorClassIdentifier: 
-  _skillName: "\u3042\u3042\u3042"
+  _skillName: "\u4E0A\u6607\u6C17\u6D41"
   _operationGuide: 
   _skillOpEnum: 6
   _skillVideo: {fileID: 32900000, guid: 19b1e369e9ef01647bd195b63ce858ca, type: 3}
-  _skillDiscription: "\u3042\u3042\u3042"
+  _skillDiscription: "\u8DF3\u3093\u3067\u304F\u308B\u76F8\u624B\u306B\u6709\u52B9"

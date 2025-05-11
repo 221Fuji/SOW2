@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: LaSpecialMove2
   m_EditorClassIdentifier: 
-  _skillName: "\u3069\u304B\u3082\u308A\u30D1\u30D5\u30A7"
+  _skillName: "\u65AC\u308A\u4E0A\u3052"
   _operationGuide: 
   _skillOpEnum: 6
   _skillVideo: {fileID: 32900000, guid: 3ea1b8e023ac1be40b83589dd862f55c, type: 3}
-  _skillDiscription: "\u304A\u3044\u3057\u3044\u306D"
+  _skillDiscription: "\u6575\u3092\u6253\u3061\u4E0A\u3052\u308B"
