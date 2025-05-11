@@ -2632,7 +2632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71054d376574a9e4fac04c714957e83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modeName: CPU
+  _modeName: CPU MATCH
   _discription: "CPU\u3092\u76F8\u624B\u306B\u4E00\u4EBA\u3067\u904A\u3079\u307E\u3059"
 --- !u!1 &1066924890
 GameObject:

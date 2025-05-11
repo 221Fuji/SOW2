@@ -28,6 +28,7 @@ public class UICSMovingCtrl : UIMovingCtrl
     [SerializeField] private UICSStreamText _streamTxtSmall;
     [SerializeField] private UICSReadyTxt _readyTxt;
     [SerializeField] private UICSMovingCtrl _rivalMovingCtrl;
+    [SerializeField] private UICSSkillListCtrl _skillListCtrl;
     [SerializeField] private int _playerNum = 0;
 
     [SerializeField] private GameObject _controllerGuide;
@@ -43,6 +44,8 @@ public class UICSMovingCtrl : UIMovingCtrl
     public UICSReadyTxt ReadyTxt{get {return _readyTxt;}}
     public CharacterData CharacterData{get; private set;}
     public UnityAction<bool> OnSelected { get; set; }
+    public UnityAction<UIMovingCtrl,int> SwitchDelegate { get; set; }
+    public UnityAction<int> SwitchAdmin { get; set; }
     public List<CharacterData> CharacterDataList { get { return _characterDataList; } }
 
     private bool _selected; // キャラクターを選択したか
@@ -164,6 +167,15 @@ public class UICSMovingCtrl : UIMovingCtrl
         Selected = false;
         //キャラ確定後にもとに戻したい処理があったらここに書く！(※両者選択後は呼ばれない)
         _readyTxt.ResetUI();
+    }
+
+    /// <summary>
+    /// キャラ詳細を開く時の処理
+    /// </summary>
+    public void SwitchtoOtherCtrler()
+    {
+        SwitchDelegate.Invoke(_skillListCtrl,_playerNum);
+        SwitchAdmin.Invoke((int)Forcus.x);
     }
 
     public CharacterOutFrames ReturnCharacterOutFrames()

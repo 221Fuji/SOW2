@@ -31,6 +31,15 @@ public class CPUMatchCSM : CharacterSelectManager
         }
     }
 
+    /// <summary>
+    /// CPUêÌÇÕé©ìÆÇ≈player1Ç…Ç»ÇÈÅBà¯êî2ÇÕçló∂Ç≥ÇÍÇ»Ç¢ÅB
+    /// </summary>
+    protected override void SwitchDelegate(UIMovingCtrl movingCtrl, int playerNum)
+    {
+        _oir1P.RemoveDelegate();
+        SetDelegate(_oir1P, movingCtrl);
+    }
+
     protected override async void GoFighting()
     {
         _goFightingCTS = new CancellationTokenSource();

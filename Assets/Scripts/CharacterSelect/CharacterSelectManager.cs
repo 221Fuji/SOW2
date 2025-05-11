@@ -30,7 +30,6 @@ public abstract class CharacterSelectManager : ModeManager
     protected void SetDelegate(OtherInputReceiver oir, UIMovingCtrl movingCtrl)
     {
         //コントローラー側のデリゲート = (書き換えて良いほうの)開始待機状態にするメソッド(ここにある(bool)Selectedを監視)
-        oir.Accept = movingCtrl.OnClick;
         oir.Up = movingCtrl.ForcusUp;
         oir.Down =  movingCtrl.ForcusDown;
         oir.Left = movingCtrl.ForcusLeft;
@@ -38,6 +37,7 @@ public abstract class CharacterSelectManager : ModeManager
 
         if(movingCtrl is UICSMovingCtrl uiCSMoving)
         {
+            oir.Accept = uiCSMoving.SwitchtoOtherCtrler;
             oir.Cancel = uiCSMoving.Cancel;
             if(uiCSMoving.OutMap[0].ReturnList()[0] is UICSReturnBack goBack)
             {
@@ -46,6 +46,10 @@ public abstract class CharacterSelectManager : ModeManager
         }
     }
 
+    /// <summary>
+    /// スキル詳細用
+    /// </summary>
+    protected abstract void SwitchDelegate(UIMovingCtrl movingCtrl,int playerNum);
     protected abstract void GoFighting();
     private async void GoTitle()
     {

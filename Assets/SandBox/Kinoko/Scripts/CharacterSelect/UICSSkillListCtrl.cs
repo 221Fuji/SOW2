@@ -1,26 +1,41 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UICSSkillListCtrl : UIMovingCtrl
 {
+    [SerializeField] private int _playerNum;
     [SerializeField] private CharacterDataBase _database;
     [SerializeField] private GameObject _skillboxPrefab;
     [SerializeField] private GameObject _skillboxBack;
     [SerializeField] private TextMeshProUGUI _maxPages;
     [SerializeField] private TextMeshProUGUI _nowPages;
+    [SerializeField] private UICSMovingCtrl _movingCtrl;
     public GameObject SkillboxBack { get { return _skillboxBack; } }
 
+    public UnityAction<UIMovingCtrl,int> SwitchDelegate { get; set; }
+
+    private List<CmdListBox> _cmdListBoxs;
     protected override void Awake()
     {
-        //FirstCreating(0);
+        _movingCtrl.SwitchAdmin += FirstCreating;
+        foreach (UIField i in _uiFields)
+        {
+            UiChanging += i.ChangedIcon;
+        }
     }
 
     public void FirstCreating(int characterIndex)
     {
+        _skillboxBack.SetActive(true);
+
+        DeleteSkillBox();
         List<UICSSkillBox> sboxs = new List<UICSSkillBox>();
+        Debug.Log(_database.CharacterDataList[characterIndex].name + ">>>" + characterIndex);
         foreach(CmdListBox clb in _database.CharacterDataList[characterIndex].CmdListBoxes)
         {
+            Debug.Log("create");
             sboxs.Add(CreateSkillBox(clb));
         }
 
@@ -47,7 +62,7 @@ public class UICSSkillListCtrl : UIMovingCtrl
         {
             Debug.Log("");
         }
-        _maxPages.text = (ReturnArrayLength() - 1).ToString();
+        _maxPages.text = ReturnArrayLength().ToString();
         DesignatedForcus(new Vector2(0,sboxs.Count - 1));
     }
 
@@ -61,19 +76,34 @@ public class UICSSkillListCtrl : UIMovingCtrl
         return sBox;
     }
 
+    public void DeleteSkillBox()
+    {
+        foreach (CmdListBox box in _cmdListBoxs)
+        {
+            Destroy(box);
+        }
+        _cmdListBoxs.Clear();
+    }
+
+    public void SwitchtoOtherCtrler()
+    {
+
+        SwitchDelegate.Invoke(_movingCtrl, _playerNum);
+    }
+
     public override void DesignatedForcus(Vector2 arrayPos)
     {
         base.DesignatedForcus(arrayPos);
-        _nowPages.text = Forcus.y.ToString();
+        _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
     public override void ForcusUp()
     {
         base.ForcusUp();
-        _nowPages.text = Forcus.y.ToString();
+        _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
     public override void ForcusDown()
     {
         base.ForcusDown();
-        _nowPages.text = Forcus.y.ToString();
+        _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
 }

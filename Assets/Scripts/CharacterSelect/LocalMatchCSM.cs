@@ -14,11 +14,13 @@ public class LocalMatchCSM : CharacterSelectManager
     {
         base.Initialize(device);
         _csMovingCtrl1P.SetCharaData(0);
+        _csMovingCtrl1P.SwitchDelegate += SwitchDelegate;
         if (GameManager.Player2Device != null)
         {
             InstantiatePlayer2Input(GameManager.Player2Device);
             _oir2P = _player2Input.GetComponent<OtherInputReceiver>();
             SetDelegate(_oir2P, _csMovingCtrl2P);
+            _csMovingCtrl2P.SwitchDelegate += SwitchDelegate;
         }
         InputSystem.onEvent += OnInput2P;
     }
@@ -36,6 +38,21 @@ public class LocalMatchCSM : CharacterSelectManager
         _csMovingCtrl2P.UiChanging();
         _oir2P = _player2Input.GetComponent<OtherInputReceiver>();
         SetDelegate(_oir2P, _csMovingCtrl2P);
+        _csMovingCtrl2P.SwitchDelegate += SwitchDelegate;
+    }
+
+    protected override void SwitchDelegate(UIMovingCtrl movingCtrl , int playerNum)
+    {
+        if(playerNum == 1)
+        {
+            _oir1P.RemoveDelegate();
+            SetDelegate(_oir1P, movingCtrl);
+        }
+        else if (playerNum == 2)
+        {
+            _oir2P.RemoveDelegate();
+            SetDelegate(_oir2P, movingCtrl);
+        }
     }
 
     protected override async void GoFighting()
