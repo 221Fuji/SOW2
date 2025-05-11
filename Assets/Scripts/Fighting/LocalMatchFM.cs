@@ -18,13 +18,13 @@ public class LocalMatchFM : FightingManager
     protected override void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)
     {
         base.StartRound(roundData, playerData1P, playerData2P);
-        KinokoLogger();
+        //KinokoLogger();
     }
 
     protected override void GameSet(int winnerNum)
     {
         base.GameSet(winnerNum);
-        KinokoLoggerEnd();
+        //KinokoLoggerEnd();
     }
 
     protected override async void GoResult(int winnerNum)
