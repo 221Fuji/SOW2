@@ -1836,6 +1836,7 @@ MonoBehaviour:
   _secondParent: {fileID: 1715423580}
   _vsImage: {fileID: 1053235351}
   _versusText: {fileID: 838741414}
+  _fightingModeText: {fileID: 965453465}
   _gray1P: {fileID: 51831363}
   _gray2P: {fileID: 452177242}
   _stand1P: {fileID: 1716100921}
