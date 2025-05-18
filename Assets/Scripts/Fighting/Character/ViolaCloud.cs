@@ -51,6 +51,60 @@ public class ViolaCloud : CharacterActions
                 && _ultCTS == null;
         }
     }
+    public bool CanNormalMove
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+
+            return true;
+        }
+    }
+    public bool CanJumpMove
+    {
+        get
+        {
+            if (!CanNormalMove) return false;
+            if (_jumpMoveCount != 0) return false;
+            return true;
+        }
+    }
+    public bool CanSpecialMove1
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanSpecialMove2
+    {
+        get
+        {
+            if (_specialMove2CTS == null)
+            {
+                if (!CanEveryAction) return false;
+            }
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanUltimate
+    {
+        get
+        {
+            if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
 
     public override void InitializeCA(int playerNum, CharacterActions enemyCA)
     {
@@ -141,11 +195,7 @@ public class ViolaCloud : CharacterActions
     /// </summary>
     public async UniTask NormalMove()
     {
-        //UŒ‚’†‚Ìê‡
-        if (!CanEveryAction) return;
-
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
+        if (!CanNormalMove) return;
 
         //ƒWƒƒƒ“ƒv’†‚È‚çƒWƒƒƒ“ƒvUŒ‚‚Ìˆ—‚ğs‚¤
         if (!OnGround)

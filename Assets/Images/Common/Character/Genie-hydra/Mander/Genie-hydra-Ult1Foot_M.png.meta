@@ -1,0 +1,545 @@
+fileFormatVersion: 2
+guid: 0c23f4450bc543b43ba4df3ce706b496
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad7b5bd85c7519e0800000000000000
+      internalID: -1651276967282246235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_1
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 900
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a24ecc8bcb084eb0800000000000000
+      internalID: -4735522039311482202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_2
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 900
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d25f81808ae08b0800000000000000
+      internalID: -5184021368324936353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_3
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 900
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ece7614b7f2ced460800000000000000
+      internalID: 7268461217756643022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_4
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 900
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ad466fae7c92d244a259dbf7c9a0300
+      internalID: 852627900422491914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64de1b5012366644b0c5a587e41672e
+      internalID: -42704262773845225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_6
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 600
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c617fe6b5e7d4428e868831f9f7a2f
+      internalID: -475243057495512153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_7
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ee07946761086429177d13f8896226
+      internalID: -7192409800748097127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_8
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 600
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df39fcdedcfd52c4e8e4f77f19dfe2fe
+      internalID: -7376519189388445575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_9
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 600
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1fa840fbd5b074a8dea868e86e85a0
+      internalID: 3617944148764432730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68716a2ef42e38b4f88fd096363a1b75
+      internalID: -866587619087709461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_11
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 300
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f2a8744e7c2544b95e60b435a7dbc0
+      internalID: 9011662038560072617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_12
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 300
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fb75c2a37ed614e84be1d6ab8daaf4
+      internalID: 7809336109134127549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_13
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 300
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21129397ea27f9b46bfc038201bbf68a
+      internalID: -575335162072035898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_14
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 300
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21f241a1de8a7d4bbe2b761761d7909
+      internalID: -1079548690844514828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302f2bca5e0d0324da5366a4171261a3
+      internalID: 5537316981960796502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_16
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c53deb296dc8584ba546543169deb53
+      internalID: 6075843789005343422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_17
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8549bb954fc52b48994722d1be23211
+      internalID: -2173377085278834946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Genie-hydra-Ult1Foot_M_18
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 0
+        width: 750
+        height: 300
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e97729d7373e494986818bfe51aaf62
+      internalID: -6580545419333562172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Genie-hydra-Ult1Foot_M_0: -1651276967282246235
+      Genie-hydra-Ult1Foot_M_1: -4735522039311482202
+      Genie-hydra-Ult1Foot_M_10: -866587619087709461
+      Genie-hydra-Ult1Foot_M_11: 9011662038560072617
+      Genie-hydra-Ult1Foot_M_12: 7809336109134127549
+      Genie-hydra-Ult1Foot_M_13: -575335162072035898
+      Genie-hydra-Ult1Foot_M_14: -1079548690844514828
+      Genie-hydra-Ult1Foot_M_15: 5537316981960796502
+      Genie-hydra-Ult1Foot_M_16: 6075843789005343422
+      Genie-hydra-Ult1Foot_M_17: -2173377085278834946
+      Genie-hydra-Ult1Foot_M_18: -6580545419333562172
+      Genie-hydra-Ult1Foot_M_2: -5184021368324936353
+      Genie-hydra-Ult1Foot_M_3: 7268461217756643022
+      Genie-hydra-Ult1Foot_M_4: 852627900422491914
+      Genie-hydra-Ult1Foot_M_5: -42704262773845225
+      Genie-hydra-Ult1Foot_M_6: -475243057495512153
+      Genie-hydra-Ult1Foot_M_7: -7192409800748097127
+      Genie-hydra-Ult1Foot_M_8: -7376519189388445575
+      Genie-hydra-Ult1Foot_M_9: 3617944148764432730
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

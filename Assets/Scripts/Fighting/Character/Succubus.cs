@@ -74,6 +74,60 @@ public class Succubus : CharacterActions
                 && _ultCTS == null;
         }
     }
+    public bool CanNormalMove
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+
+            return true;
+        }
+    }
+    public bool CanJumpMove
+    {
+        get
+        {
+            if (!CanNormalMove) return false;
+            if (_jumpMoveCount != 0) return false;
+            return true;
+        }
+    }
+    public bool CanSpecialMove1
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanSpecialMove2
+    {
+        get
+        {
+            if(_specialMove2CTS == null)
+            {
+                if (!CanEveryAction) return false;
+            }
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanUltimate
+    {
+        get
+        {
+            if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
 
     protected override void SetActionDelegate()
     {
@@ -99,10 +153,7 @@ public class Succubus : CharacterActions
     public async UniTask NormalMove()
     {
         //UŒ‚’†‚Ìê‡
-        if (!CanEveryAction) return;
-
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
+        if (!CanNormalMove) return;
 
         //ƒWƒƒƒ“ƒv’†‚È‚çƒWƒƒƒ“ƒvUŒ‚‚Ìˆ—‚ğs‚¤
         if (!OnGround)
@@ -163,11 +214,7 @@ public class Succubus : CharacterActions
     /// </summary>
     public async UniTask JumpMove()
     {
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //ƒWƒƒƒ“ƒvUŒ‚‚Í‹ó’†‚Åˆê‰ñ‚Ì‚İ
-        if (_jumpMoveCount != 0) return;
+        if(!CanJumpMove) return;
 
         //ƒWƒƒƒ“ƒvUŒ‚‚µ‚½‚Ì‰ñ”‚ğ‹L˜^
         _jumpMoveCount++;
@@ -455,13 +502,7 @@ public class Succubus : CharacterActions
     /// </summary>
     public async UniTask SpecialMove1()
     {
-        if (!CanEveryAction) return;
-
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //‹ó’†•s‰Â
-        if (!OnGround) return;
+        if (!CanSpecialMove1) return;
 
         // V‚µ‚¢CTS‚ğ¶¬
         _specialMove1CTS = new CancellationTokenSource();
@@ -555,10 +596,7 @@ public class Succubus : CharacterActions
     public async UniTask SpecialMove2()
     {
         //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //‹ó’†•s‰Â
-        if (!OnGround) return;
+        if (!CanSpecialMove2) return;
 
         //2’i–Ú”h¶
         if (_specialMove2CTS != null)
@@ -567,8 +605,6 @@ public class Succubus : CharacterActions
             _specialMove2CTS.Cancel();
             return;
         }
-
-        if (!CanEveryAction) return;
 
         // V‚µ‚¢CTS‚ğ¶¬
         _specialMove2CTS = new CancellationTokenSource();
