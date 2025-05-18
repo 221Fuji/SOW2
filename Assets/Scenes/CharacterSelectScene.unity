@@ -8333,6 +8333,14 @@ MonoBehaviour:
     - {fileID: 46307201}
     - {fileID: 2126141008}
     - {fileID: 990615534}
+  - _inMap:
+    - {fileID: 46307201}
+    - {fileID: 1420225745}
+    - {fileID: 1515807730}
+  - _inMap:
+    - {fileID: 46307201}
+    - {fileID: 1420225745}
+    - {fileID: 609450188}
   _startPos: {x: 0, y: 1}
   _uiFields:
   - {fileID: 1906916278}
