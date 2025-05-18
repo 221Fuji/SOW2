@@ -504,6 +504,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46307199}
   m_CullTransparentMesh: 1
+--- !u!1 &63323714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63323715}
+  - component: {fileID: 63323716}
+  m_Layer: 5
+  m_Name: UIEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &63323715
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63323714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 939872293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &63323716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63323714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7b47a6d2fe0234eaed641e07154c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &77675150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,6 +1660,7 @@ MonoBehaviour:
   _windowTurn: 7
   _backPanel: {fileID: 507487003}
   _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &361739515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +2080,7 @@ MonoBehaviour:
   _windowTurn: 1
   _backPanel: {fileID: 1656193731}
   _movingExceptionFlag: 0
+  _windowFloor: 1
 --- !u!1 &467931223
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2404,10 @@ MonoBehaviour:
     - {fileID: 46307201}
     - {fileID: 1420225745}
     - {fileID: 1515807730}
+  - _inMap:
+    - {fileID: 46307201}
+    - {fileID: 63323716}
+    - {fileID: 609450188}
   _startPos: {x: 0, y: 1}
   _uiFields:
   - {fileID: 2110888410}
@@ -2682,6 +2736,7 @@ MonoBehaviour:
   _windowTurn: 11
   _backPanel: {fileID: 1589644511}
   _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &649411222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3908,7 @@ RectTransform:
   - {fileID: 1906916277}
   - {fileID: 957267679}
   - {fileID: 649411223}
+  - {fileID: 63323715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4168,6 +4224,7 @@ MonoBehaviour:
   _windowTurn: 9
   _backPanel: {fileID: 77675150}
   _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &1015844859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4259,7 +4316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windowTurn: 6
   _backPanel: {fileID: 1955917405}
-  _movingExceptionFlag: 1
+  _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &1046840636
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4410,7 @@ MonoBehaviour:
   _windowTurn: 2
   _backPanel: {fileID: 2076631333}
   _movingExceptionFlag: 0
+  _windowFloor: 1
 --- !u!1 &1062916045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,6 +5985,7 @@ MonoBehaviour:
   _windowTurn: 8
   _backPanel: {fileID: 266925851}
   _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &1420225741
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,6 +6078,7 @@ MonoBehaviour:
   _windowTurn: 5
   _backPanel: {fileID: 1606992906}
   _movingExceptionFlag: 0
+  _windowFloor: 1
 --- !u!1 &1425543701
 GameObject:
   m_ObjectHideFlags: 0
@@ -6471,6 +6532,7 @@ MonoBehaviour:
   _windowTurn: 10
   _backPanel: {fileID: 22458400}
   _movingExceptionFlag: 0
+  _windowFloor: 0
 --- !u!1 &1517277398
 GameObject:
   m_ObjectHideFlags: 0
@@ -7576,6 +7638,7 @@ MonoBehaviour:
   _windowTurn: 3
   _backPanel: {fileID: 602751476}
   _movingExceptionFlag: 0
+  _windowFloor: 1
 --- !u!1 &1772918173
 GameObject:
   m_ObjectHideFlags: 0
@@ -8333,6 +8396,10 @@ MonoBehaviour:
     - {fileID: 46307201}
     - {fileID: 1420225745}
     - {fileID: 1515807730}
+  - _inMap:
+    - {fileID: 46307201}
+    - {fileID: 63323716}
+    - {fileID: 609450188}
   _startPos: {x: 0, y: 1}
   _uiFields:
   - {fileID: 1906916278}
@@ -8909,6 +8976,7 @@ MonoBehaviour:
   _windowTurn: 4
   _backPanel: {fileID: 1884860324}
   _movingExceptionFlag: 0
+  _windowFloor: 1
 --- !u!224 &3670130954729010476 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7050312508601917534, guid: 23737763afac1f14d82b1cf1d519e531, type: 3}

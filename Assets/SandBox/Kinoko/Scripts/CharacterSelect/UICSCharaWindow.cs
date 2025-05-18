@@ -14,6 +14,8 @@ public class UICSCharaWindow : UIPersonalAct
     [SerializeField] private GameObject _backPanel;
     public CharacterData Characterdata {get; private set;}
     [SerializeField] private bool _movingExceptionFlag;
+    //ウィンドウオブジェクトが上か下か、一番下が0
+    [SerializeField] private int _windowFloor = 1;
     private int _selectedPlayer = 0;
     private GameObject _instancedLine = null;
 
@@ -92,17 +94,35 @@ public class UICSCharaWindow : UIPersonalAct
 
         GameObject instanceLine = null;
         //windowが下列にある場合に非対応、時が来たら書き足す
-        switch(_selectedPlayer)
+        if (_windowFloor == 1)
         {
-            case 1:
-                instanceLine = movingctrlClass.ReturnCharacterOutFrames()._1PFrameTop;
-                break;
-            case 2:
-                instanceLine = movingctrlClass.ReturnCharacterOutFrames()._2PFrameTop;
-                break;
-            case 3:
-                instanceLine = movingctrlClass.ReturnCharacterOutFrames()._MixFrameTop;
-                break;
+            switch(_selectedPlayer)
+            {
+                case 1:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._1PFrameTop;
+                    break;
+                case 2:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._2PFrameTop;
+                    break;
+                case 3:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._MixFrameTop;
+                    break;
+            }
+        }
+        else if (_windowFloor == 0)
+        {
+            switch (_selectedPlayer)
+            {
+                case 1:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._1PFrameFloor;
+                    break;
+                case 2:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._2PFrameFloor;
+                    break;
+                case 3:
+                    instanceLine = movingctrlClass.ReturnCharacterOutFrames()._MixFrameFloor;
+                    break;
+            }
         }
 
         Vector2 instanceLineRect = instanceLine.GetComponent<RectTransform>().anchoredPosition;
@@ -164,17 +184,35 @@ public class UICSCharaWindow : UIPersonalAct
         _instancedLine = null;
         
         GameObject instanceLine = null;
-        switch(_selectedPlayer)
+        if(_windowFloor == 1)
         {
-            case 0:
-                break;
-            case 1:
-                instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._1PFrameTop;
-                break;
-            case 2:
-                instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._2PFrameTop;
-                break;
+            switch (_selectedPlayer)
+            {
+                case 0:
+                    break;
+                case 1:
+                    instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._1PFrameTop;
+                    break;
+                case 2:
+                    instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._2PFrameTop;
+                    break;
+            }
         }
+        else if(_windowFloor == 0)
+        {
+            switch (_selectedPlayer)
+            {
+                case 0:
+                    break;
+                case 1:
+                    instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._1PFrameFloor;
+                    break;
+                case 2:
+                    instanceLine = movingCtrlClass.ReturnCharacterOutFrames()._2PFrameFloor;
+                    break;
+            }
+        }
+
         if(instanceLine)
         {
             Vector2 instanceLineRect = instanceLine.GetComponent<RectTransform>().anchoredPosition;
