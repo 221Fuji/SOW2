@@ -67,6 +67,7 @@ public class ViolaCloud : CharacterActions
         {
             if (!CanNormalMove) return false;
             if (_jumpMoveCount != 0) return false;
+
             return true;
         }
     }
@@ -77,6 +78,7 @@ public class ViolaCloud : CharacterActions
             if (!CanEveryAction) return false;
             if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
             if (!OnGround) return false;
+            if (CurrentFogResource < 25) return false;
 
             return true;
         }
@@ -85,10 +87,7 @@ public class ViolaCloud : CharacterActions
     {
         get
         {
-            if (_specialMove2CTS == null)
-            {
-                if (!CanEveryAction) return false;
-            }
+            if (!CanEveryAction) return false;
             if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
             if (!OnGround) return false;
 
@@ -329,10 +328,7 @@ public class ViolaCloud : CharacterActions
     public async UniTask JumpMove()
     {
         //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //ƒWƒƒƒ“ƒvUŒ‚‚Í‹ó’†‚Åˆê‰ñ‚Ì‚İ
-        if (_jumpMoveCount != 0) return;
+        if (!CanJumpMove) return;
 
         //ƒWƒƒƒ“ƒvUŒ‚‚µ‚½‚Ì‰ñ”‚ğ‹L˜^
         _jumpMoveCount++;
@@ -374,15 +370,7 @@ public class ViolaCloud : CharacterActions
     /// </summary>
     public async UniTask SpecialMove1()
     {
-        if (!CanEveryAction) return;
-
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //‹ó’†•s‰Â
-        if (!OnGround) return;
-
-        if (CurrentFogResource < 25) return;
+        if (!CanSpecialMove1) return;
 
         // V‚µ‚¢CTS‚ğ¶¬
         _specialMove1CTS = new CancellationTokenSource();
@@ -443,13 +431,7 @@ public class ViolaCloud : CharacterActions
     /// </summary>
     public async UniTask SpecialMove2()
     {
-        if (!CanEveryAction) return;
-
-        //”æ˜Jó‘Ô
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //‹ó’†•s‰Â
-        if (!OnGround) return;
+        if (!CanSpecialMove2) return;
 
         // V‚µ‚¢CTS‚ğ¶¬
         _specialMove2CTS = new CancellationTokenSource();
@@ -560,9 +542,7 @@ public class ViolaCloud : CharacterActions
             return;
         }
 
-        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
-
-        if(!OnGround) return;
+        if (!CanUltimate) return;
 
         //UPÁ”ï
         _characterState.SetCurrentUP(-100);
@@ -659,9 +639,7 @@ public class ViolaCloud : CharacterActions
 
     private async void UltimateInSide()
     {
-        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
-
-        if (!OnGround) return;
+        if (!CanUltimate) return;
 
         //UPÁ”ï
         _characterState.SetCurrentUP(-100);

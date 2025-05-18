@@ -87,7 +87,7 @@ public class Lancer : CharacterActions
         {
             if (!CanEveryAction) return false;
             if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
-            if (!OnGround) return false; //‹ó’†•s‰Â
+            if (!OnGround) return false;
 
             return true;
         }

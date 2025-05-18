@@ -265,7 +265,7 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: -0.15, y: 1.75}
   _isFixed: 0
   _isWall: 0
-  _hurtBox: {fileID: 0}
+  _hurtBox: {fileID: 1943036755240180433}
   _normalMoveInfo:
     Name: 
     Damage: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _normalMoveHitBox: {fileID: 0}
+  _normalMoveHitBox: {fileID: 8520426363293243221}
   _jumpMoveInfo:
     Name: 
     Damage: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _sm1Direction: {x: 0, y: 0}
-  _specialMove1HitBox: {fileID: 0}
+  _specialMove1HitBox: {fileID: 3928230181282037881}
   _specialMove2Info:
     Name: 
     Damage: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-  _specialMove2HitBox: {fileID: 0}
+  _specialMove2HitBox: {fileID: 7643125484345772945}
   _ultimateInfo:
     Name: 
     Damage: 0

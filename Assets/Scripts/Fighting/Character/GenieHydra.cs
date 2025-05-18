@@ -115,7 +115,6 @@ public class GenieHydra : CharacterActions
     protected override void SetHitBox()
     {
         _normalMoveHitBox.InitializeHitBox(_normalMoveInfo, gameObject);
-        _jumpMoveHitBox.InitializeHitBox(_jumpMoveInfo, gameObject);
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
         _specialMove1HitBox.Hit = HitSp1Move;
         _specialMove2HitBox.InitializeHitBox(_specialMove2Info, gameObject);
