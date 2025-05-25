@@ -1,4 +1,4 @@
-Bulid.zipを解凍してSOW2.exeを起動してください。
+Build.zipを解凍してSOW2.exeを起動してください。
 
 
 
