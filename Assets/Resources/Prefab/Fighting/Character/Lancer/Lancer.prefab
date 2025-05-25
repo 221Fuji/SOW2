@@ -224,7 +224,7 @@ MonoBehaviour:
     DrainSP: 30
     IsHeavy: 1
     HitBackDirection: {x: 7.5, y: 20}
-    GuardBackDirection: {x: 0, y: 0}
+    GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _sm1Direction: {x: 5, y: 25}
   _specialMove1HitBox: {fileID: 7672007186967191172}
@@ -242,7 +242,7 @@ MonoBehaviour:
     DrainSP: 10
     IsHeavy: 0
     HitBackDirection: {x: 2.5, y: 25}
-    GuardBackDirection: {x: 0, y: 0}
+    GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
   _specialMove2HitBox: {fileID: 2605942123636023682}
   _ultimateInfo:

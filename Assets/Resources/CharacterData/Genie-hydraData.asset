@@ -22,9 +22,9 @@ MonoBehaviour:
   _versusGrayImage: {fileID: 1134388031076202559, guid: 209b11a3f801ffb4fb07da18a45e0266, type: 3}
   _fightingFaceUpImage: {fileID: 1134362590062353403, guid: ee58f44ba6c671f4a8dcefae6f3431fd, type: 3}
   _fightingStandingImage: {fileID: 0}
-  _windowFace: {fileID: 2304783699924656075, guid: e2d82895a1fbc5b4ba561d1319fa7275, type: 3}
-  _csFigure: {fileID: 3577032640488198764, guid: 8676a6a29cb86db4fb69ff5dd22f2e87, type: 3}
-  _csDot: {fileID: 589926721430911856, guid: 4e3606f4ca1304e4c8d62c9e327c28e6, type: 3}
+  _windowFace: {fileID: 6152130683400433416, guid: 259e01ab3a2c776438c19ce511788112, type: 3}
+  _csFigure: {fileID: 9017576975114660996, guid: 2849cef5ba9afae4dae31daed108f739, type: 3}
+  _csDot: {fileID: 2236162910779909359, guid: dcd2b46874722cc499204a9852e09d36, type: 3}
   _resultWhiteStandImage: {fileID: 0}
   _resultStandImage: {fileID: 0}
   _myNumber: 0

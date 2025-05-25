@@ -25,7 +25,7 @@ public class GenieHydra : CharacterActions
     private HitBoxManager _ultHitBox;
 
     private int _jumpMoveCount = 0; //１回のジャンプで行ったジャンプ攻撃の回数
-    private int _sm1Count = 0; //sm1の回数
+    private bool _isMander = true; //Manderかどうか
 
     //各行動のCancellationTokenSource(CTS)
     private CancellationTokenSource _normalMoveCTS;
@@ -73,10 +73,7 @@ public class GenieHydra : CharacterActions
         {
             if (!CanEveryAction) return false;
             if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
-            if (!OnGround)
-            {
-                if (_sm1Count != 0) return false; //空中では１回のみ
-            }
+            if (!OnGround) return false;
 
             return true;
         }
@@ -100,6 +97,13 @@ public class GenieHydra : CharacterActions
 
             return true;
         }
+    }
+
+    public override void InitializeCA(int playerNum, CharacterActions enemyCA)
+    {
+        base.InitializeCA(playerNum, enemyCA);
+        _isMander = true;
+        _animator.SetBool("ManderBool", true);
     }
 
     protected override void SetActionDelegate()
@@ -224,12 +228,6 @@ public class GenieHydra : CharacterActions
     {
         if (!CanSpecialMove1) return;
 
-        //空中では１回のみ
-        if (!OnGround)
-        {
-            _sm1Count++;
-        }
-
         // 新しいCTSを生成
         _specialMove1CTS = new CancellationTokenSource();
         CancellationToken token = _specialMove1CTS.Token;
@@ -239,7 +237,7 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("SpecialMove1Trigger");
 
         //物理挙動
-        Velocity = Vector2.zero;
+        //Velocity = Vector2.zero;
 
         //SP消費
         _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
@@ -251,13 +249,9 @@ public class GenieHydra : CharacterActions
         {
             await StartUpMove(_specialMove1Info.StartupFrame, token); // 発生を待つ
 
-            //物理挙動
-            float sm1DirectionX = _sm1Direction.x * (_characterState.IsLeftSide ? 1 : -1);
-            Velocity = Vector2.zero;
+            //変身
+            Metamorphosis(!_isMander);
 
-            AddForce(new Vector2(sm1DirectionX, _sm1Direction.y));
-
-            await WaitForActiveFrame(_specialMove1HitBox, _specialMove1Info.ActiveFrame, token); // 持続を待つ
             await RecoveryFrame(_specialMove1Info.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
@@ -273,6 +267,12 @@ public class GenieHydra : CharacterActions
 
         //layerを元に戻す
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove1Layer", 0);
+    }
+
+    private void Metamorphosis(bool toMander)
+    {
+        _animator.SetBool("ManderBool", toMander);
+        _isMander = toMander;
     }
 
     //Sp1が当たったときに呼ばれる
@@ -448,7 +448,6 @@ public class GenieHydra : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
-        _sm1Count = 0;
     }
 
     public override void CancelActionByHit()

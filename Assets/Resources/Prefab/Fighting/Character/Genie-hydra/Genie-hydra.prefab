@@ -301,11 +301,11 @@ MonoBehaviour:
     GuardedBackDirection: {x: 0, y: 0}
   _jumpMoveHitBox: {fileID: 0}
   _specialMove1Info:
-    Name: 
+    Name: SpecialMove1
     Damage: 0
-    StartupFrame: 0
+    StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 0
+    RecoveryFrame: 25
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0
