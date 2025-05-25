@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,21 @@ public class TitleManager : MonoBehaviour
 
     public static bool SoloPlayDebug { get; private set; } = false;
 
-    private void Awake()
+    private async void Awake()
     {
         if(_soloPlayerDebug)
         {
             SoloPlayDebug = true;
+        }
+
+        //‘¦ˆÚ“®‚µ‚È‚¢‚æ‚¤‚É
+        try
+        {
+            await UniTask.DelayFrame(10);
+        }
+        catch
+        {
+            return;
         }
 
         Application.targetFrameRate = 60;
