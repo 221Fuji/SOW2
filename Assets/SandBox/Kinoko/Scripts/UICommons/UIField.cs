@@ -105,7 +105,7 @@ public class UIField : MonoBehaviour
 
         if(str2 == "") return null;
         GameObject obj = _uIIconPacks[str2];
-        if (obj == null) obj = (GameObject)Resources.Load("Prefab/" + "UIICONs/" + str2);
+        if (obj == null) obj = (GameObject)Resources.Load("Prefab/" +"Common/"+ "UIICONs/" + str2);
         return obj;
     }
 
