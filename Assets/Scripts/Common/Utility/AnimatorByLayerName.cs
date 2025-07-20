@@ -9,6 +9,8 @@ public static class AnimatorByLayerName
     /// </summary>
     public static void SetLayerWeightByName(Animator animator, string layerName, float weight)
     {
+        if (!animator) return;
+
         int layerIndex = animator.GetLayerIndex(layerName);
         if (layerIndex != -1)
         {
@@ -25,6 +27,8 @@ public static class AnimatorByLayerName
     /// </summary>
     public static void PlayAnimationOnLayer(Animator animator, string animationName, string layerName, float normalizedTime)
     {
+        if (!animator) return;
+
         int layerIndex = animator.GetLayerIndex(layerName);
         if (layerIndex >= 0) // ƒŒƒCƒ„[‚ª‘¶İ‚·‚éê‡‚Ì‚İÀs
         {
@@ -41,6 +45,8 @@ public static class AnimatorByLayerName
     /// </summary>
     public static float GetCurrentAnimationProgress(Animator animator, string layerName)
     {
+        if (!animator) return 0f;
+
         int layerIndex = animator.GetLayerIndex(layerName);
         if (layerIndex >= 0)
         {

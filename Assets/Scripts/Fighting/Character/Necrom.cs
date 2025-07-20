@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Necrom : CharacterActions
 {
@@ -49,6 +48,61 @@ public class Necrom : CharacterActions
                 && _ultCTS == null;
         }
     }
+    public bool CanNormalMove
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (OnGround)
+            {
+                if(_nmBullet != null) return false;
+            }
+
+            return true;
+        }
+    }
+    public bool CanJumpMove
+    {
+        get
+        {
+            if (!CanNormalMove) return false;
+            if (_jumpMoveCount != 0) return false;
+            return true;
+        }
+    }
+    public bool CanSpecialMove1
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanSpecialMove2
+    {
+        get
+        {
+            if (!CanEveryAction) return false;
+            if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
+    public bool CanUltimate
+    {
+        get
+        {
+            if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false;
+
+            return true;
+        }
+    }
 
     public override void InitializeCA(int playerNum, CharacterActions enemyCA)
     {
@@ -80,10 +134,7 @@ public class Necrom : CharacterActions
     public async UniTask NormalMove()
     {
         //攻撃中の場合
-        if (!CanEveryAction) return;
-
-        //疲労状態
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
+        if (!CanNormalMove) return;
 
         //ジャンプ中ならジャンプ攻撃の処理を行う
         if (!OnGround)
@@ -91,8 +142,6 @@ public class Necrom : CharacterActions
             JumpMove().Forget();
             return;
         }
-
-        if (_nmBullet != null) return;
 
         // 新しいCTSを生成
         _normalMoveCTS = new CancellationTokenSource();
@@ -188,10 +237,7 @@ public class Necrom : CharacterActions
     public async UniTask JumpMove()
     {
         //疲労状態
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //ジャンプ攻撃は空中で一回のみ
-        if (_jumpMoveCount != 0) return;
+        if (!CanJumpMove) return;
 
         //ジャンプ攻撃したの回数を記録
         _jumpMoveCount++;
@@ -233,13 +279,7 @@ public class Necrom : CharacterActions
     /// </summary>
     public async UniTask SpecialMove1()
     {
-        if (!CanEveryAction) return;
-
-        //疲労状態
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //空中不可
-        if (!OnGround) return;
+        if (!CanSpecialMove1) return;
 
         // 新しいCTSを生成
         _specialMove1CTS = new CancellationTokenSource();
@@ -374,12 +414,7 @@ public class Necrom : CharacterActions
     public async UniTask SpecialMove2()
     {
         //疲労状態
-        if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return;
-
-        //空中不可
-        if (!OnGround) return;
-
-        if (!CanEveryAction) return;
+        if (!CanSpecialMove2) return;
 
         // 新しいCTSを生成
         _specialMove2CTS = new CancellationTokenSource();
@@ -549,10 +584,7 @@ public class Necrom : CharacterActions
     /// </summary>
     public async UniTask Ultimate()
     {
-        if (!CanEveryAction || _characterState.CurrentUP < 100) return;
-
-        //空中不可
-        if (!OnGround) return;
+        if (!CanUltimate) return;
 
         //UP消費
         _characterState.SetCurrentUP(-100);

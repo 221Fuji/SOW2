@@ -9,6 +9,9 @@ public class Bullet : FightingRigidBody
     [SerializeField] private bool _bound;
     [SerializeField] private Vector2 _boundVelocity;
     [Space]
+    [Header("’n–Ê‚ÆÕ“ËŒãÁ–Å‚·‚é‚©")]
+    [SerializeField] private bool _isExploded;
+    [Space]
     [SerializeField] private HitBoxManager _hitBox;
 
     public HitBoxManager HitBox { get => _hitBox; }
@@ -40,6 +43,15 @@ public class Bullet : FightingRigidBody
         {
             DestroyBullet?.Invoke(this);
         }
+
+        //’n–Ê‚É’…’e‚µ‚½‚Ìˆ—
+        if (!_isExploded) return;
+        if(_hitBox.transform.position.y <= StageParameter.GroundPosY)
+        {
+            _isExploded = false;
+            DestroyBullet?.Invoke(this);
+        }
+
     }
 
     protected override void OnWall(FightingRigidBody other)
@@ -52,8 +64,11 @@ public class Bullet : FightingRigidBody
     /// </summary>
     protected override void LandGround()
     {
-        if (!_bound) return;
-        base.LandGround();
-        Velocity = _boundVelocity;
+        if (_bound)
+        {
+            base.LandGround();
+            Velocity = _boundVelocity;
+            return;
+        }
     }
 }

@@ -45,8 +45,7 @@ public abstract class CharacterActions : FightingRigidBody
         {
             return CanEveryAction
                 && !_characterState.IsGuarding
-                && OnGround
-                && !_characterState.IsRidenByEnemy;
+                && OnGround;
         }
     }
     public virtual bool CanJump
