@@ -101,12 +101,12 @@ public class UICSSkillListCtrl : UIMovingCtrl
     }
     public override void ForcusUp()
     {
-        base.ForcusUp();
+        base.ForcusDown();
         _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
     public override void ForcusDown()
     {
-        base.ForcusDown();
+        base.ForcusUp();
         _nowPages.text = (ReturnArrayLength() - Forcus.y).ToString();
     }
 

@@ -28,4 +28,14 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 1468825918452199538, guid: ee486c8f36a434f4ba65016add571d27, type: 3}
   _resultStandImage: {fileID: 1934999699842359008, guid: cb8190572a5c1b44ba3310400e7cf0f0, type: 3}
   _myNumber: 0
-  _cmdListBoxes: []
+  _cmdListBoxes:
+  - {fileID: 11400000, guid: f7beed6b436e837488e4ad036dcbedc8, type: 2}
+  - {fileID: 11400000, guid: b9bfd0fcc720f0c4082e8d869ed37d2b, type: 2}
+  - {fileID: 11400000, guid: 5dc63f2b151e3184a8fa6aab6c99a7d8, type: 2}
+  - {fileID: 11400000, guid: b96a4efcd86b8f640ae32d519dfdd264, type: 2}
+  - {fileID: 11400000, guid: f9d50b633288b4f46bbbc76bfb05f123, type: 2}
+  - {fileID: 11400000, guid: 87415eec06b7d5c44854642fa8c0c987, type: 2}
+  - {fileID: 11400000, guid: 5e81adb84e50e1f4a9b5d75094baeddc, type: 2}
+  - {fileID: 11400000, guid: 3890462b002ad904986cf85e226e8d5e, type: 2}
+  - {fileID: 11400000, guid: 3ab1bde7dde431e4c863e0ef08048b36, type: 2}
+  - {fileID: 11400000, guid: 6cbe9f63fa30934429eaa0750e8d81c5, type: 2}
