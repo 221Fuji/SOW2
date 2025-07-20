@@ -30,14 +30,6 @@ public class CharacterState : MonoBehaviour
     /// </summary>
     public bool IsLeftSide { get; private set; } = true;
     /// <summary>
-    /// •à‚«“ü—Í‚ğ‚µ‚Ä‚¢‚é‚È‚çtrue
-    /// </summary>
-    public bool IsInputtingWalk { get; private set; } = false;
-    /// <summary>
-    /// “G‚Éæ‚ç‚ê‚Ä‚¢‚é‚È‚çtrue
-    /// </summary>
-    public bool IsRidenByEnemy { get; private set; } = false;
-    /// <summary>
     /// ƒqƒbƒgd’¼’†‚È‚çtrue
     /// </summary>
     public bool IsRecoveringHit { get { return _hitCTS != null; } }
@@ -84,6 +76,12 @@ public class CharacterState : MonoBehaviour
         AnormalyStates.Clear();
     }
 
+    public void SetWalkSpeed(float frontSpeed, float backSpeed)
+    {
+        CurrentFrontSpeed = frontSpeed;
+        CurrentBackSpeed = backSpeed;
+    }
+
     public void SetAcceptOperations(bool value)
     {
         AcceptOperations = value;
@@ -92,16 +90,6 @@ public class CharacterState : MonoBehaviour
     public void SetIsLeft(bool value)
     {
         IsLeftSide = value;
-    }
-
-    public void SetIsInputtingWalk(bool value)
-    {
-        IsInputtingWalk = value;
-    }
-
-    public void SetIsRidenByEnemy(bool value)
-    {
-        IsRidenByEnemy = value;
     }
 
     public void SetIsGuarding(bool value)

@@ -2,27 +2,58 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GenieHydra : CharacterActions
 {
-    [Header("通常攻撃")]
-    [SerializeField] private AttackInfo _normalMoveInfo;
-    [SerializeField] private HitBoxManager _normalMoveHitBox;
-    [Header("ジャンプ攻撃")]
-    [SerializeField] private AttackInfo _jumpMoveInfo;
-    [SerializeField] private HitBoxManager _jumpMoveHitBox;
+    [Header("歩き速度")]
+    [SerializeField] private float _frontWalkSpeedM;
+    [SerializeField] private float _backWalkSpeedM;
+    [SerializeField] private float _frontWalkSpeedU;
+    [SerializeField] private float _backWalkSpeedU;
+    [Header("通常攻撃_M")]
+    [SerializeField] private AttackInfo _normalMoveMInfo;
+    [SerializeField] private HitBoxManager _normalMoveMHitBox;
+    [Header("通常攻撃_U")]
+    [SerializeField] private AttackInfo _normalMoveUInfo;
+    [SerializeField] private HitBoxManager _normalMoveUHitBox;
+    [SerializeField] private Bullet _nmSpikePrefab;
+    [SerializeField] private AttackInfo _nmSpikeInfo;
+    [SerializeField] private Bullet _nmBigPrefab;
+    [SerializeField] private AttackInfo _nmBigInfo;
+    [Header("ジャンプ攻撃_M")]
+    [SerializeField] private AttackInfo _jumpMoveMInfo;
+    [SerializeField] private Bullet _jmMBulletPrefab;
+    [SerializeField] private Vector2 _jmMVelocity;
+    [Header("ジャンプ攻撃_U")]
+    [SerializeField] private AttackInfo _jumpMoveUInfo;
+    [SerializeField] private Bullet _jmUBulletPrefab;
+    [SerializeField] private Vector2[] _jmUVelocity;
     [Header("必殺技１")]
     [SerializeField] private AttackInfo _specialMove1Info;
     [SerializeField] private Vector2 _sm1Direction;
     [SerializeField] private HitBoxManager _specialMove1HitBox;
-    [Header("必殺技2")]
-    [SerializeField] private AttackInfo _specialMove2Info;
-    [SerializeField] private HitBoxManager _specialMove2HitBox;
-    [Header("超必殺技")]
-    [SerializeField] private AttackInfo _ultimateInfo;
-    [SerializeField] private AttackInfo _ultBulletInfo;
-    [SerializeField] private GameObject _ultBullet;
-    private HitBoxManager _ultHitBox;
+    [Header("必殺技2_M")]
+    [SerializeField] private AttackInfo _specialMove2MInfo;
+    [SerializeField] private HitBoxManager _specialMove2MHitBox;
+    [Header("必殺技2_U")]
+    [SerializeField] private AttackInfo _specialMove2UInfo;
+    [SerializeField] private Bullet _iceWall;
+    [Header("超必殺技1_M")]
+    [SerializeField] private AttackInfo _ultimate1MInfo;
+    [SerializeField] private Bullet _ult1FootPrefab;
+    [SerializeField] private int _ult1MPerformanceFrame;
+    [Header("超必殺技1_U")]
+    [SerializeField] private AttackInfo _ultimate1UInfo;
+    [SerializeField] private Bullet _ult1FistPrefab;
+    [SerializeField] private int _ult1UPerformanceFrame;
+    [Header("超必殺技2")]
+    [SerializeField] private AttackInfo _ultimate2Info;
+    [SerializeField] private HitBoxManager _ult2HitBox;
+    [SerializeField] private Bullet _ult2Bullet;
+    [SerializeField] private int _ult2PerformanceFrame;
+    [Header("調必殺技2(最終弾)")]
+    [SerializeField] private AttackInfo _ultimate2LastInfo;
 
     private int _jumpMoveCount = 0; //１回のジャンプで行ったジャンプ攻撃の回数
     private bool _isMander = true; //Manderかどうか
@@ -33,7 +64,6 @@ public class GenieHydra : CharacterActions
     private CancellationTokenSource _specialMove1CTS;
     private CancellationTokenSource _specialMove2CTS;
     private CancellationTokenSource _ultCTS;
-    private CancellationTokenSource _ultBulletCTS;
 
     //行動制限の設定
     public override bool CanEveryAction
@@ -94,6 +124,7 @@ public class GenieHydra : CharacterActions
         get
         {
             if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false; //空中不可
 
             return true;
         }
@@ -110,31 +141,39 @@ public class GenieHydra : CharacterActions
     {
         _inputReciever.JumpDelegate = Jump;
         _inputReciever.GuardDelegate = GuardStance;
-        _inputReciever.NormalMove = NormalMove;
+        _inputReciever.NormalMove = NormalMoveM;
         _inputReciever.SpecialMove1 = SpecialMove1;
-        _inputReciever.SpecialMove2 = SpecialMove2;
-        _inputReciever.Ultimate = Ultimate;
+        _inputReciever.SpecialMove2 = SpecialMove2M;
+        _inputReciever.Ultimate = Ultimate1;
     }
 
     protected override void SetHitBox()
     {
-        _normalMoveHitBox.InitializeHitBox(_normalMoveInfo, gameObject);
+        _normalMoveMHitBox.InitializeHitBox(_normalMoveMInfo, gameObject);
+        _normalMoveUHitBox.InitializeHitBox(_normalMoveUInfo, gameObject);
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
-        _specialMove1HitBox.Hit = HitSp1Move;
-        _specialMove2HitBox.InitializeHitBox(_specialMove2Info, gameObject);
+        _specialMove2MHitBox.InitializeHitBox(_specialMove2MInfo, gameObject);
+        _ult2HitBox.InitializeHitBox(_ultimate2Info, gameObject);
+        _ult2HitBox.Guard = GuardUlt2;
     }
 
     /// <summary>
-    /// 通常攻撃
+    /// 通常攻撃M
     /// </summary>
-    public async UniTask NormalMove()
+    public async UniTask NormalMoveM()
     {
         if (!CanNormalMove) return;
+
+        if(!_isMander)
+        {
+            NormalMoveU().Forget();
+            return;
+        }
 
         //ジャンプ中ならジャンプ攻撃の処理を行う
         if (!OnGround)
         {
-            JumpMove().Forget();
+            JumpMoveM().Forget();
             return;
         }
 
@@ -147,25 +186,22 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("NormalMoveTrigger");
         _animator.SetFloat("WalkFloat", 0);
 
-        //物理挙動
-        Velocity = new Vector2(0, Velocity.y);
-
         //SP消費
-        _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_normalMoveMInfo.ConsumptionSP);
 
         //UP回収
-        UPgain(_normalMoveInfo.MeterGain);
+        UPgain(_normalMoveMInfo.MeterGain);
 
         try
         {
-            await StartUpMove(_normalMoveInfo.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_normalMoveHitBox, _normalMoveInfo.ActiveFrame, token); // 持続を待つ
-            await RecoveryFrame(_normalMoveInfo.RecoveryFrame, token); // 硬直を待つ
+            await StartUpMove(_normalMoveMInfo.StartupFrame, token); // 発生を待つ
+            await WaitForActiveFrame(_normalMoveMHitBox, _normalMoveMInfo.ActiveFrame, token); // 持続を待つ
+            await RecoveryFrame(_normalMoveMInfo.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
         {
             Debug.Log("通常攻撃をキャンセル");
-            _normalMoveHitBox.SetIsActive(false);
+            _normalMoveMHitBox.SetIsActive(false);
         }
         finally
         {
@@ -178,10 +214,145 @@ public class GenieHydra : CharacterActions
         }
     }
 
+    public async UniTask NormalMoveU()
+    {
+        //ジャンプ中ならジャンプ攻撃の処理を行う
+        if (!OnGround)
+        {
+            JumpMoveU().Forget();
+            return;
+        }
+
+        // 新しいCTSを生成
+        _normalMoveCTS = new CancellationTokenSource();
+        CancellationToken token = _normalMoveCTS.Token;
+
+        //アニメーション処理
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "NormalMoveLayer", 1);
+        _animator.SetTrigger("NormalMoveTrigger");
+        _animator.SetFloat("WalkFloat", 0);
+
+        //SP消費
+        _characterState.SetCurrentSP(-_normalMoveUInfo.ConsumptionSP);
+
+        //UP回収
+        UPgain(_normalMoveUInfo.MeterGain);
+
+        try
+        {
+
+            NmBulletSpike(token);
+            NmBulletBig(token);
+
+            await StartUpMove(_normalMoveUInfo.StartupFrame, token); // 発生を待つ
+            await WaitForActiveFrame(_normalMoveUHitBox, _normalMoveUInfo.ActiveFrame, token); // 持続を待つ
+            await RecoveryFrame(_normalMoveUInfo.RecoveryFrame, token); // 硬直を待つ
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log("通常攻撃をキャンセル");
+            _normalMoveMHitBox.SetIsActive(false);
+        }
+        finally
+        {
+            // 攻撃処理が完了した後、トークンを解放
+            _normalMoveCTS.Dispose();
+            _normalMoveCTS = null;
+
+            //layerを元に戻す
+            AnimatorByLayerName.SetLayerWeightByName(_animator, "NormalMoveLayer", 0);
+        }
+    }
+
+    private async void NmBulletSpike(CancellationToken token)
+    {
+        //弾の座標
+        Vector2 bulletPosOffset = new Vector2(3, 0);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            bulletPosOffset *= new Vector2(-1, 0);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+        Bullet bullet = Instantiate(_nmSpikePrefab, bulletPos, rotation);
+
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_normalMoveUInfo, gameObject);
+        bullet.DestroyBullet = BulletExplode;
+        bullet.HitBox.HitBullet = FalseActiveBullet;
+        bullet.HitBox.GuardBullet = FalseActiveBullet;
+
+        try
+        {
+            await StartUpMove(_nmSpikeInfo.StartupFrame, token);
+
+            //アニメーション
+            bullet.GetComponent<Animator>().SetTrigger("NmSpikeTrigger");
+
+            await WaitForActiveFrame(bullet.HitBox, _nmSpikeInfo.ActiveFrame, token);
+        }
+        finally
+        {
+            BulletExplode(bullet);
+        }
+    }
+
+    private async void NmBulletBig(CancellationToken token)
+    {
+        //弾の座標
+        Vector2 bulletPosOffset = new Vector2(6.5f, 0);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            bulletPosOffset *= new Vector2(-1, 0);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+        Bullet bullet = Instantiate(_nmBigPrefab, bulletPos, rotation);
+
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_normalMoveUInfo, gameObject);
+        bullet.DestroyBullet = BulletExplode;
+        bullet.HitBox.HitBullet = FalseActiveBullet;
+        bullet.HitBox.GuardBullet = FalseActiveBullet;
+
+        try
+        {
+            await StartUpMove(_nmBigInfo.StartupFrame, token);
+
+            //アニメーション
+            bullet.GetComponent<Animator>().SetTrigger("NmBigTrigger");
+
+            await WaitForActiveFrame(bullet.HitBox, _nmBigInfo.ActiveFrame, token);
+        }
+        finally
+        {
+            BulletExplode(bullet);
+        }
+    }
+
+    private async void BulletExplode(Bullet bullet)
+    {
+        if (bullet == null) return;
+
+        bullet.Velocity = Vector2.zero;
+
+        //アニメーション
+        bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
+
+        await FightingPhysics.DelayFrameWithTimeScale(30);
+
+        if (bullet != null)
+        {
+            Destroy(bullet.gameObject);
+        }
+    }
+
     /// <summary>
     /// ジャンプ攻撃
     /// </summary>
-    public async UniTask JumpMove()
+    public async UniTask JumpMoveM()
     {
         //ジャンプ攻撃は空中で一回のみ
         if (!CanJumpMove) return;
@@ -197,27 +368,172 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SP消費
-        _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_jumpMoveMInfo.ConsumptionSP);
 
         //UP回収
-        UPgain(_jumpMoveInfo.MeterGain);
+        UPgain(_jumpMoveMInfo.MeterGain);
+
+        //物理挙動
+        Velocity = Vector2.zero;
+        SetIsFixed(true);
 
         try
         {
-            await StartUpMove(_jumpMoveInfo.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_jumpMoveHitBox, _normalMoveInfo.ActiveFrame, token); // 持続を待つ
-            await RecoveryFrame(_jumpMoveInfo.RecoveryFrame, token); // 硬直を待つ
+            await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // 発生を待つ
+            CreateJmMBullet();
+            await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // 硬直を待つ
+            AddForce(new Vector2(0, -2.5f));
         }
         catch (OperationCanceledException)
         {
             Debug.Log("ジャンプ攻撃をキャンセル");
-            _jumpMoveHitBox.SetIsActive(false);
         }
         finally
         {
             // 攻撃処理が完了した後、トークンを解放
             _jumpMoveCTS.Dispose();
             _jumpMoveCTS = null;
+
+            //物理挙動
+            SetIsFixed(false);
+        }
+    }
+
+    private void CreateJmMBullet()
+    {
+        //弾の座標と速度設定
+        Vector2 bulletVelocity = _jmMVelocity;
+        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            bulletVelocity *= new Vector2(-1, 1);
+            bulletPosOffset *= new Vector2(-1, 1);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+        Bullet bullet = Instantiate(_jmMBulletPrefab, bulletPos, rotation);
+        bullet.Velocity = bulletVelocity;
+
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_jumpMoveMInfo, gameObject);
+        bullet.HitBox.HitBullet = BulletExplode;
+        bullet.HitBox.GuardBullet = BulletExplode;
+        bullet.DestroyBullet = BulletExplode;
+        bullet.HitBox.SetIsActive(true);
+    }
+
+    /// <summary>
+    /// ジャンプ攻撃
+    /// </summary>
+    public async UniTask JumpMoveU()
+    {
+        //ジャンプ攻撃は空中で一回のみ
+        if (!CanJumpMove) return;
+
+        //ジャンプ攻撃したの回数を記録
+        _jumpMoveCount++;
+
+        // 新しいCTSを生成
+        _jumpMoveCTS = new CancellationTokenSource();
+        CancellationToken token = _jumpMoveCTS.Token;
+
+        // アニメーション処理
+        _animator.SetTrigger("JumpMoveTrigger");
+
+        //SP消費
+        _characterState.SetCurrentSP(-_normalMoveMInfo.ConsumptionSP);
+
+        //UP回収
+        UPgain(_jumpMoveMInfo.MeterGain);
+
+        //物理挙動
+        Velocity = Vector2.zero;
+        SetIsFixed(true);
+
+        try
+        {
+            await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // 発生を待つ
+            CreateJmUBullet(token);
+            await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // 硬直を待つ
+            AddForce(new Vector2(0, -2.5f));
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log("ジャンプ攻撃をキャンセル");
+        }
+        finally
+        {
+            // 攻撃処理が完了した後、トークンを解放
+            _jumpMoveCTS.Dispose();
+            _jumpMoveCTS = null;
+
+            //物理挙動
+            SetIsFixed(false);
+        }
+    }
+
+    private async void CreateJmUBullet(CancellationToken token)
+    {
+        //弾の座標と速度設定
+        Vector2 bulletVelocity = new Vector2(1, 1);
+        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            bulletVelocity *= new Vector2(-1, 1);
+            bulletPosOffset *= new Vector2(-1, 1);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+
+        for(int i = 0; i < _jmUVelocity.Length; i++)
+        {
+            Bullet bullet = Instantiate(_jmUBulletPrefab, bulletPos, rotation);
+            bullet.Velocity = (_jmUVelocity[i] * bulletVelocity).normalized * 20;
+
+            bullet.GetComponent<Animator>().SetInteger("BulletNumInt", i);
+
+            //弾の当たり判定設定
+            bullet.HitBox.InitializeHitBox(_jumpMoveUInfo, gameObject);
+            bullet.HitBox.HitBullet = BulletJmUExplode;
+            bullet.HitBox.GuardBullet = BulletJmUExplode;
+            bullet.DestroyBullet = BulletJmUExplode;
+            bullet.HitBox.SetIsActive(true);
+
+            try
+            {
+                await FightingPhysics.DelayFrameWithTimeScale(2, token);
+            }
+            catch
+            {
+                break;
+            }
+        }
+    }
+
+    private async void BulletJmUExplode(Bullet bullet)
+    {
+        if (bullet == null) return;
+
+        //バグ補強
+        if(bullet.HitBox.IsActive)
+        {
+            bullet.HitBox.SetIsActive(false);
+        }
+
+        bullet.Velocity = Vector2.zero;
+
+        //アニメーション
+        bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
+
+        bullet.transform.position = bullet.HitBox.transform.position;
+
+        await FightingPhysics.DelayFrameWithTimeScale(30);
+
+        if (bullet != null)
+        {
+            Destroy(bullet.gameObject);
         }
     }
 
@@ -236,11 +552,8 @@ public class GenieHydra : CharacterActions
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove1Layer", 1);
         _animator.SetTrigger("SpecialMove1Trigger");
 
-        //物理挙動
-        //Velocity = Vector2.zero;
-
         //SP消費
-        _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_specialMove1Info.ConsumptionSP);
 
         //UP回収
         UPgain(_specialMove1Info.MeterGain);
@@ -273,21 +586,31 @@ public class GenieHydra : CharacterActions
     {
         _animator.SetBool("ManderBool", toMander);
         _isMander = toMander;
-    }
 
-    //Sp1が当たったときに呼ばれる
-    private void HitSp1Move()
-    {
-        AddForce(new Vector2(0, -10));
-        Debug.Log("加速落下");
+        if(toMander)
+        {
+            _characterState.SetWalkSpeed(_frontWalkSpeedM, _backWalkSpeedM);
+        }
+        else
+        {
+            _characterState.SetWalkSpeed(_frontWalkSpeedU, _backWalkSpeedU);
+        }
+        
     }
 
     /// <summary>
     /// 必殺技２
     /// </summary>
-    public async UniTask SpecialMove2()
+    public async UniTask SpecialMove2M()
     {
         if (!CanSpecialMove2) return;
+
+
+        if (!_isMander)
+        {
+            SpecialMove2U().Forget();
+            return;
+        }
 
         // 新しいCTSを生成
         _specialMove2CTS = new CancellationTokenSource();
@@ -297,24 +620,41 @@ public class GenieHydra : CharacterActions
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 1);
         _animator.SetTrigger("SpecialMove2Trigger");
 
-        //物理挙動
-        Velocity = Vector2.zero;
-
         //SP消費
-        _characterState.SetCurrentSP(-_specialMove2Info.ConsumptionSP);
+        _characterState.SetCurrentSP(-_specialMove2MInfo.ConsumptionSP);
 
         //UP回収
-        UPgain(_specialMove2Info.MeterGain);
+        UPgain(_specialMove2MInfo.MeterGain);
 
         try
         {
-            await StartUpMove(_specialMove2Info.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_specialMove2HitBox, _specialMove2Info.ActiveFrame, token); // 持続を待つ
-            await RecoveryFrame(_specialMove2Info.RecoveryFrame, token); // 硬直を待つ
+            await StartUpMove(_specialMove2MInfo.StartupFrame, token); // 発生を待つ
+
+            _specialMove2MHitBox.SetIsActive(true);
+
+            //物理挙動
+            Vector2 chargeVector = new Vector2(15, 0);
+            if(!_characterState.IsLeftSide)
+            {
+                chargeVector *= new Vector2(-1, 1);
+            }
+            for(int i = 0; i < _specialMove2MInfo.ActiveFrame; i++)
+            {
+                Velocity = chargeVector;
+                await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            }
+            _specialMove2MHitBox.SetIsActive(false);
+            if (_specialMove2MHitBox.IsActive)
+            {
+                OnMissAI?.Invoke();
+            }
+
+            await RecoveryFrame(_specialMove2MInfo.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
         {
-            _specialMove2HitBox.SetIsActive(false);
+            _specialMove2MHitBox.SetIsActive(false);
+            Velocity = Vector2.zero;
         }
         finally
         {
@@ -328,12 +668,103 @@ public class GenieHydra : CharacterActions
     }
 
     /// <summary>
+    /// 必殺技２
+    /// </summary>
+    public async UniTask SpecialMove2U()
+    {
+        // 新しいCTSを生成
+        _specialMove2CTS = new CancellationTokenSource();
+        CancellationToken token = _specialMove2CTS.Token;
+
+        // アニメーション処理
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 1);
+        _animator.SetTrigger("SpecialMove2Trigger");
+
+        //SP消費
+        _characterState.SetCurrentSP(-_specialMove2UInfo.ConsumptionSP);
+
+        //UP回収
+        UPgain(_specialMove2UInfo.MeterGain);
+
+        try
+        {
+            await StartUpMove(_specialMove2UInfo.StartupFrame, token); // 発生を待つ
+            CreateIceWall(token);
+            await RecoveryFrame(_specialMove2UInfo.RecoveryFrame, token); // 硬直を待つ
+        }
+        catch (OperationCanceledException)
+        {
+            _specialMove2MHitBox.SetIsActive(false);
+        }
+        finally
+        {
+            // 攻撃処理が完了した後、トークンを解放
+            _specialMove2CTS.Dispose();
+            _specialMove2CTS = null;
+        }
+
+        //layerを元に戻す
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 0);
+    }
+
+    private async void CreateIceWall(CancellationToken token)
+    {
+        //座標設定
+        Vector2 wallPosOffset = new Vector2(EnemyCA.GetPushBackBox().xMax + 5,
+                                StageParameter.GroundPosY);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            wallPosOffset = new Vector2(EnemyCA.GetPushBackBox().xMin -5, 
+                            StageParameter.GroundPosY);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Bullet iceWall = Instantiate(_iceWall, wallPosOffset, rotation);
+        iceWall.Velocity = Vector2.zero;
+
+        iceWall.HitBox.InitializeHitBox(_specialMove2UInfo, gameObject);
+        iceWall.HitBox.HitBullet = HitWall;
+        iceWall.HitBox.GuardBullet = HitWall;
+
+        try
+        {
+            iceWall.HitBox.SetIsActive(true);
+            await FightingPhysics.DelayFrameWithTimeScale(_specialMove2UInfo.ActiveFrame);
+        }
+        finally 
+        {
+            iceWall.HitBox.SetIsActive(false);
+            BulletExplode(iceWall);
+        }
+    }
+
+    private async void HitWall(Bullet bullet)
+    {
+        bullet.HitBox.SetIsActive(false);
+
+        try
+        {
+            await FightingPhysics.DelayFrameWithTimeScale(10);
+        }
+        finally 
+        {
+            bullet.HitBox.SetIsActive(true);
+        }
+    }
+
+    /// <summary>
     /// 超必殺技
     /// </summary>
-    public async UniTask Ultimate()
+    public async UniTask Ultimate1()
     {
 
         if (!CanUltimate) return;
+
+        if(_characterState.CurrentHP <= 30)
+        {
+            Ultimate2().Forget();
+            return;
+        }
 
         //UP消費
         _characterState.SetCurrentUP(-100);
@@ -348,98 +779,243 @@ public class GenieHydra : CharacterActions
 
         //物理挙動
         Velocity = Vector2.zero;
-        SetIsFixed(true);
 
         //演出
-        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, _ult1MPerformanceFrame);
         _characterState.SetIsUltPerformance();
+        _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        //発動保障
+        try
+        {
+            //演出解除
+            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            _animator.updateMode = AnimatorUpdateMode.Normal;
+
+            await StartUpMove(_ultimate1MInfo.StartupFrame, token); // 発生を待つ
+        }
+        finally
+        {
+            if(_isMander)
+            {
+                CreateUlt1Foot();
+            }
+            else
+            {
+                CreateUlt1Fist();
+            }          
+        }
 
         try
         {
-            await StartUpMove(_ultimateInfo.StartupFrame, token); // 発生を待つ
-            CreateUltBullet();
-            await RecoveryFrame(_ultimateInfo.RecoveryFrame, token); // 硬直を待つ
+            await RecoveryFrame(_ultimate1MInfo.RecoveryFrame, token); // 硬直を待つ
         }
         finally
         {
             // 攻撃処理が完了した後、トークンを解放
             _ultCTS.Dispose();
             _ultCTS = null;
-
-            //物理挙動
-            SetIsFixed(false);
         }
 
         //layerを元に戻す
         AnimatorByLayerName.SetLayerWeightByName(_animator, "UltLayer", 0);
     }
 
-    private void CreateUltBullet()
+    private async void CreateUlt1Foot()
     {
-        //UltBulletの生成座標
-        float generatePosOffsetX = 2;
-        float generatePosOffsetY = 1;
-        //ヒットバック等のベクトル修正
-        AttackInfo attackInfo = _ultBulletInfo;
-
-        //入力方向によって設定
-        if (WalkDirection() < 0)
+        //弾の座標と速度設定
+        Vector2 footPos = new Vector2(EnemyCA.GetPushBackBox().center.x, StageParameter.GroundPosY);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
         {
-            generatePosOffsetX *= -1;
+            rotation = new Quaternion(0, 180, 0, 0);
         }
-        else
-        {
-            attackInfo.HitBackDirection *= new Vector2(-1, 1);
-            attackInfo.GuardBackDirection *= new Vector2(-1, 1);
-        }
-        if (transform.position.x > EnemyCA.transform.position.x)
-        {
-            generatePosOffsetX *= -1;
-        }
-        float generatePosX = EnemyCA.transform.position.x + generatePosOffsetX;
-        float generatePosY = EnemyCA.transform.position.y + generatePosOffsetY;
-        Vector2 generatePos = new Vector2(generatePosX, generatePosY);
+        Bullet bullet = Instantiate(_ult1FootPrefab, footPos, rotation);
 
-        //UltBulletの向き
-        Quaternion bulletQuaternion
-            = new Quaternion(0, generatePosOffsetX > 0 ? 180 : 0, 0, 0);
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_ultimate1MInfo, gameObject);
+        bullet.HitBox.HitBullet = FalseActiveBullet;
+        bullet.HitBox.GuardBullet = FalseActiveBullet;
+        bullet.HitBox.SetIsActive(true);
 
-        //UltBulletの生成
-        GameObject bullet = Instantiate(_ultBullet, generatePos, bulletQuaternion);
-        _ultHitBox = bullet.GetComponentInChildren<HitBoxManager>();
-        _ultHitBox?.InitializeHitBox(attackInfo, gameObject);
-
-        // 新しいCTSを生成
-        _ultBulletCTS = new CancellationTokenSource();
-        CancellationToken token = _ultBulletCTS.Token;
-
-        UltBullet(bullet, token).Forget();
-    }
-
-    private async UniTask UltBullet(GameObject bullet, CancellationToken token)
-    {
         try
         {
-            await StartUpMove(_ultBulletInfo.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_ultHitBox, _ultBulletInfo.ActiveFrame, token); // 持続を待つ
-            await RecoveryFrame(_ultBulletInfo.RecoveryFrame, token); // 硬直を待つ
+            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1MInfo.ActiveFrame);
         }
-        catch (OperationCanceledException)
+        finally
         {
-            _ultHitBox.SetIsActive(false);
+            if(bullet)
+            {
+                Destroy(bullet.gameObject);
+            }
+        }
+    }
+
+    private async void CreateUlt1Fist()
+    {
+        //弾の座標と速度設定
+        Vector2 fistPos = new Vector2(EnemyCA.GetPushBackBox().center.x, StageParameter.GroundPosY);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Bullet bullet = Instantiate(_ult1FistPrefab, fistPos, rotation);
+
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_ultimate1UInfo, gameObject);
+        bullet.HitBox.HitBullet = FalseActiveBullet;
+        bullet.HitBox.GuardBullet = FalseActiveBullet;
+        bullet.HitBox.SetIsActive(true);
+
+        try
+        {
+            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1UInfo.ActiveFrame);
+        }
+        finally
+        {
+            if (bullet)
+            {
+                Destroy(bullet.gameObject);
+            }
+        }
+    }
+    private void FalseActiveBullet(Bullet bullet)
+    {
+        if (!bullet) return;
+        bullet.HitBox.SetIsActive(false);
+    }
+
+    private async UniTask Ultimate2()
+    {
+        //UP消費
+        _characterState.SetCurrentUP(-100);
+
+        // 新しいCTSを生成
+        _ultCTS = new CancellationTokenSource();
+        CancellationToken token = _ultCTS.Token;
+
+        // アニメーション処理
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "UltLayer", 1);
+        _animator.SetTrigger("Ult2Trigger");
+
+        //物理挙動
+        Velocity = Vector2.zero;
+
+        //演出
+        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, _ult2PerformanceFrame);
+        _characterState.SetIsUltPerformance();
+        _animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+
+        try
+        {
+            //演出解除
+            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            _animator.updateMode = AnimatorUpdateMode.Normal;
+
+            //最終弾以外の設定
+            _ult2HitBox.InitializeHitBox(_ultimate2Info, gameObject);
+            _ult2HitBox.Hit = HitUlt2;
+
+            await StartUpMove(_ultimate2Info.StartupFrame, token); // 発生を待つ
+
+            _ult2HitBox.SetIsActive(true);
+            await FightingPhysics.DelayFrameWithTimeScale(_ultimate2Info.ActiveFrame, token);
+            _ult2HitBox.SetIsActive(true);
+
+            //最終弾の設定
+            _ult2HitBox.InitializeHitBox(_ultimate2LastInfo, gameObject);
+            _ult2HitBox.Hit = HitUlt2Last;
+
+            await RecoveryFrame(_ultimate2Info.RecoveryFrame, token); // 硬直を待つ
         }
         finally
         {
             // 攻撃処理が完了した後、トークンを解放
-            _ultBulletCTS.Dispose();
-            _ultBulletCTS = null;
+            _ultCTS.Dispose();
+            _ultCTS = null;
+        }
 
-            //UltBullet削除
-            if (bullet != null)
+        //layerを元に戻す
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "UltLayer", 0);
+    }
+
+    //Ult2のAnimationからイベントとして呼ばれる
+    private async void CreateUlt2Bullet()
+    {
+        //弾の座標と速度設定
+        float offset = (176f / 256f) //PixelPerUnitから動かしたPixel数を計算
+                        * 15f;       //scale分を掛ける
+        Vector2 bullet2PosOffset = new Vector2(offset, 0);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            rotation = new Quaternion(0, 180, 0, 0);
+            bullet2PosOffset *= new Vector2(-1, 0);
+        }
+        Bullet bullet1 = Instantiate(_ult2Bullet, transform.position, rotation);
+        Bullet bullet2 = Instantiate(_ult2Bullet, transform.position + (Vector3)bullet2PosOffset, rotation);
+
+        try
+        {
+            await UniTask.WaitUntil(() =>
             {
-                Destroy(bullet);
-                _ultHitBox = null;
+                return _ultCTS == null;
+            });
+        }
+        finally
+        {
+            if(bullet1)
+            {
+                Destroy(bullet1.gameObject);
             }
+        }
+    }
+
+    private void HitUlt2()
+    {
+        EnemyCA.Velocity = Vector2.zero;
+
+        if(_characterState.IsLeftSide)
+        {
+            EnemyCA.transform.position += new Vector3(0.1f, 0, 0);
+        }
+        else
+        {
+            EnemyCA.transform.position += new Vector3(-0.1f, 0, 0);
+        }
+
+        GuardUlt2();
+    }
+
+    private async void GuardUlt2()
+    {
+        if (_ult2HitBox.IsActive)
+        {
+            _ult2HitBox.SetIsActive(false);
+        }
+
+        try
+        {
+            await FightingPhysics.DelayFrameWithTimeScale(2);
+        }
+        finally
+        {
+            if (!_ult2HitBox.IsActive)
+            {
+                _ult2HitBox.SetIsActive(true);
+            }
+        }
+    }
+
+    private void HitUlt2Last()
+    {
+        EnemyCA.SetGravityScale(1);
+
+        if (_ult2HitBox.IsActive)
+        {
+            _ult2HitBox.SetIsActive(false);
         }
     }
 
@@ -448,6 +1024,8 @@ public class GenieHydra : CharacterActions
     {
         _jumpMoveCTS?.Cancel();
         _jumpMoveCount = 0;
+
+        SetIsFixed(false);
     }
 
     public override void CancelActionByHit()
@@ -456,7 +1034,5 @@ public class GenieHydra : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
-        //Ult発動中の固定化解除
-        SetIsFixed(false);
     }
 }

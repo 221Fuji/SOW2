@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_0
+      name: Genie-hydra-BulletExplode_M_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +118,20 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 33bd7726749382fc0800000000000000
-      internalID: -3519500130032559309
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_1
+      name: Genie-hydra-BulletExplode_M_1
       rect:
         serializedVersion: 2
         x: 210
@@ -139,20 +139,20 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1d2a0cc629939560800000000000000
-      internalID: 7319362211318213918
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_2
+      name: Genie-hydra-BulletExplode_M_2
       rect:
         serializedVersion: 2
         x: 420
@@ -160,20 +160,20 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb38e11861c229f40800000000000000
-      internalID: 5733693750763226047
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_3
+      name: Genie-hydra-BulletExplode_M_3
       rect:
         serializedVersion: 2
         x: 0
@@ -181,20 +181,20 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 246beaaa0d2ba55e0800000000000000
-      internalID: -1920025681833576894
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_4
+      name: Genie-hydra-BulletExplode_M_4
       rect:
         serializedVersion: 2
         x: 210
@@ -202,20 +202,20 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c201f23bc69542680800000000000000
-      internalID: -8780795050068078548
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Genie-hydra-BulletExplode_5
+      name: Genie-hydra-BulletExplode_M_5
       rect:
         serializedVersion: 2
         x: 420
@@ -223,14 +223,14 @@ TextureImporter:
         width: 210
         height: 90
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2e1ecc49f8ab61f0800000000000000
-      internalID: -1050560299371979219
+      spriteID: 00000000000000000800000000000000
+      internalID: 0
       vertices: []
       indices: 
       edges: []
@@ -252,6 +252,12 @@ TextureImporter:
       Genie-hydra-BulletExplode_3: -1920025681833576894
       Genie-hydra-BulletExplode_4: -8780795050068078548
       Genie-hydra-BulletExplode_5: -1050560299371979219
+      Genie-hydra-BulletExplode_M_0: 0
+      Genie-hydra-BulletExplode_M_1: 0
+      Genie-hydra-BulletExplode_M_2: 0
+      Genie-hydra-BulletExplode_M_3: 0
+      Genie-hydra-BulletExplode_M_4: 0
+      Genie-hydra-BulletExplode_M_5: 0
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

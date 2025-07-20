@@ -194,7 +194,7 @@ public class Lancer : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SPÁ”ï
-        _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_jumpMoveInfo.ConsumptionSP);
 
         //UP‰ñû
         UPgain(_jumpMoveInfo.MeterGain);
@@ -243,7 +243,7 @@ public class Lancer : CharacterActions
         Velocity = Vector2.zero;
 
         //SPÁ”ï
-        _characterState.SetCurrentSP(-_normalMoveInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_specialMove1Info.ConsumptionSP);
 
         //UP‰ñû
         UPgain(_specialMove1Info.MeterGain);
@@ -458,6 +458,7 @@ public class Lancer : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
+        _ultBulletCTS?.Cancel();
         //Ult”­“®’†‚ÌŒÅ’è‰»‰ğœ
         SetIsFixed(false);
     }
