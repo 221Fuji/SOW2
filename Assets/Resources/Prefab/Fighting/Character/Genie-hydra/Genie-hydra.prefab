@@ -299,7 +299,7 @@ MonoBehaviour:
     GuardFrame: 15
     HitStopFrame: 15
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 30
     DrainSP: 15
     IsHeavy: 0
     HitBackDirection: {x: 10, y: 15}
@@ -360,7 +360,7 @@ MonoBehaviour:
   _jmMVelocity: {x: 8, y: -7.5}
   _jumpMoveUInfo:
     Name: JumpMoveU
-    Damage: 15
+    Damage: 10
     StartupFrame: 20
     ActiveFrame: 0
     RecoveryFrame: 50
@@ -368,7 +368,7 @@ MonoBehaviour:
     GuardFrame: 10
     HitStopFrame: 10
     MeterGain: 2.5
-    ConsumptionSP: 30
+    ConsumptionSP: 35
     DrainSP: 20
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 10}
@@ -470,7 +470,7 @@ MonoBehaviour:
   _ult1UPerformanceFrame: 30
   _ultimate2Info:
     Name: Ult2
-    Damage: 2
+    Damage: 1
     StartupFrame: 10
     ActiveFrame: 120
     RecoveryFrame: 120
