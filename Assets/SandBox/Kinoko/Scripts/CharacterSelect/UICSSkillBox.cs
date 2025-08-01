@@ -11,8 +11,9 @@ public class UICSSkillBox : UIPersonalAct
     [SerializeField] private TextMeshProUGUI _skillName;
     [SerializeField] private TextMeshProUGUI _operationGuide;
     [SerializeField] private GameObject _skillButtonField;
-    [SerializeField] private VideoPlayer _videoPlayer;
+    [SerializeField] private Image _imageField;
     [SerializeField] private TextMeshProUGUI _skillDiscription;
+    [SerializeField] private RenderTexture _renderTexture;
     private CancellationTokenSource _cts = new CancellationTokenSource();
     private float _moveSpeed = 0.2f;
     private bool _forcusDirection = false;
@@ -25,7 +26,7 @@ public class UICSSkillBox : UIPersonalAct
         UIField skillField = _skillButtonField.GetComponent<UIField>();
         skillField.ChangeActionType(listSource.SkillOpEnum);
         skillField.ChangedIcon();
-        _videoPlayer.clip = listSource.SkillVideo;
+        _imageField.sprite = listSource.SkillImage;
         _skillDiscription.text = listSource.SkillDiscription;
     }
 

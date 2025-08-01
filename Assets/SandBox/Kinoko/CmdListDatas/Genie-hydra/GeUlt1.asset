@@ -15,5 +15,5 @@ MonoBehaviour:
   _skillName: "\u30D5\u30C3\u30C8\u30B9\u30BF\u30F3\u30D7"
   _operationGuide: "\u30DE\u30F3\u30C0\u3067"
   _skillOpEnum: 7
-  _skillVideo: {fileID: 32900000, guid: acdb48ac4a9fdd34c85bdd937f423982, type: 3}
+  _skillImage: {fileID: 21300000, guid: 24bac3617c681004e85c668b9e5e232d, type: 3}
   _skillDiscription: 
