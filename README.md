@@ -1,7 +1,3 @@
-Build.zipを解凍してSOW2.exeを起動してください。
-
-
-
 【対応デバイス】
 ・キーボード
 ・ゲームパッド（確認済み：XboxController, HoriPad）
