@@ -96,7 +96,7 @@ public class ResultPerformance : MonoBehaviour
         Image standImage = Instantiate(_winnerData.CharacterData.ResultStandImage);
         standImage.transform.SetParent(_finalStandImagePos, false);
         standImage.transform.localScale = new Vector2(5, 5);
-        await standImage.transform.DOScale(new Vector2(1.25f, 1.25f), 0.5f)
+        await standImage.transform.DOScale(_winnerData.CharacterData.ResultStandImage.rectTransform.localScale, 0.5f)
             .SetEase(Ease.OutExpo).ToUniTask(cancellationToken: token);
     }
 

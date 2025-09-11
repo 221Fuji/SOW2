@@ -202,7 +202,7 @@ public class Lancer : CharacterActions
         try
         {
             await StartUpMove(_jumpMoveInfo.StartupFrame, token); // ”­¶‚ğ‘Ò‚Â
-            await WaitForActiveFrame(_jumpMoveHitBox ,_normalMoveInfo.ActiveFrame, token); // ‘±‚ğ‘Ò‚Â
+            await WaitForActiveFrame(_jumpMoveHitBox , _jumpMoveInfo.ActiveFrame, token); // ‘±‚ğ‘Ò‚Â
             await RecoveryFrame(_jumpMoveInfo.RecoveryFrame, token); // d’¼‚ğ‘Ò‚Â
         }
         catch (OperationCanceledException)

@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class FightingEffectManager : MonoBehaviour
 {
-    [SerializeField] GameObject _effectObj;
+    [SerializeField] private GameObject _effectObj;
 
     public void InitializeFEM(CharacterActions ca1, CharacterActions ca2)
     {
@@ -25,6 +25,9 @@ public class FightingEffectManager : MonoBehaviour
                 break;
             case FightingEffect.LargeHit:
                 OnLargeHitEffect(effectPos);
+                break;
+            case FightingEffect.ArmourHit:
+                OnArmourHitEffect(effectPos);
                 break;
             case FightingEffect.Guard:
                 OnGuardEffect(effectPos);
@@ -72,6 +75,16 @@ public class FightingEffectManager : MonoBehaviour
         OffEffect(effect, 10, cts.Token).Forget();
     }
 
+    private void OnArmourHitEffect(Vector2 effectPos)
+    {
+        GameObject effect = Instantiate(_effectObj, effectPos, Quaternion.identity);
+
+        effect.GetComponent<Animator>().SetTrigger("ArmourHitTrigger");
+
+        CancellationTokenSource cts = new CancellationTokenSource();
+        OffEffect(effect, 10, cts.Token).Forget();
+    }
+
     private void OnBreakEffect(Vector2 effectPos)
     {
         GameObject effect = Instantiate(_effectObj, effectPos, Quaternion.identity);
@@ -112,6 +125,7 @@ public enum FightingEffect
 {
     SmallHit,
     LargeHit,
+    ArmourHit,
     Guard,
     Break,
     RecoverBreak

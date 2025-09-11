@@ -192,6 +192,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 7.5}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
+    IsBullet: 0
   _normalMoveHitBox: {fileID: 1303358414726335869}
   _jumpMoveInfo:
     Name: JumpMove
@@ -209,6 +210,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 15}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _jumpMoveHitBox: {fileID: 928382671933760714}
   _specialMove1Info:
     Name: SpecialMove1
@@ -226,6 +228,7 @@ MonoBehaviour:
     HitBackDirection: {x: 7.5, y: 20}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _sm1Direction: {x: 5, y: 25}
   _specialMove1HitBox: {fileID: 7672007186967191172}
   _specialMove2Info:
@@ -244,6 +247,7 @@ MonoBehaviour:
     HitBackDirection: {x: 2.5, y: 25}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _specialMove2HitBox: {fileID: 2605942123636023682}
   _ultimateInfo:
     Name: Ult
@@ -261,6 +265,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _ultBulletInfo:
     Name: Ult
     Damage: 30
@@ -277,6 +282,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 7.5}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ultBullet: {fileID: 698598772434941082, guid: a9dd241dbdaaa1845b37a084c4d298a5, type: 3}
 --- !u!114 &-4932156516839373394
 MonoBehaviour:

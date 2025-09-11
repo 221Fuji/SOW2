@@ -48,29 +48,17 @@ public static class FightingPhysics
     }
 
     /// <summary>
-    /// TimeScaleの影響を受けるUniTaskのDelayFrame
+    /// FightingUpdate の呼び出し回数と完全同期する DelayFrame
     /// </summary>
     public static async UniTask DelayFrameWithTimeScale(int frames, CancellationToken cancellationToken = default)
     {
-        float elapsedTime = 0f; // 経過時間
-        int elapsedFrames = 0; // 経過フレーム
-
-        while (elapsedFrames < frames)
+        for (int i = 0; i < frames; i++)
         {
-            float timeSpeed = FightingFrameRate * FightingTimeScale; // 現在のフレームレートとタイムスケールを取得
-            if (timeSpeed > 0)
-            {
-                float frameTime = 1f / timeSpeed; // 1フレームの時間
-                elapsedTime += Time.unscaledDeltaTime; // 経過時間を加算
+            // FightingTimeScale を考慮
+            int step = Mathf.RoundToInt(FightingTimeScale);
+            i += (step - 1); // まとめて進める
 
-                while (elapsedTime >= frameTime) // 経過時間が1フレーム分以上になったらカウント
-                {
-                    elapsedTime -= frameTime;
-                    elapsedFrames++;
-                    if (elapsedFrames >= frames) break;
-                }
-            }
-            await UniTask.Yield(cancellationToken); // 1フレーム待機
+            await UniTask.Yield(cancellationToken);
         }
     }
 }

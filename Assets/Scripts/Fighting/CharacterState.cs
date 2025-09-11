@@ -23,6 +23,7 @@ public class CharacterState : MonoBehaviour
     public float MaxSP { get { return _defaultMaxSP; } }
     public float MaxUP { get { return _defaultMaxUP; } }
     public float UPgainSpeed { get { return _upGainSpeed; } }
+    public float DamageBuff { get; private set; } = 1;
 
     public bool AcceptOperations { get; private set; } = false;
     /// <summary>
@@ -232,6 +233,11 @@ public class CharacterState : MonoBehaviour
         NameOfGivenAttack.Clear();
     }
 
+    public void SetDamageBuff(float value)
+    {
+        DamageBuff = value;
+    }
+
 }
 
 /// <summary>
@@ -243,7 +249,8 @@ public enum AnormalyState
     Dead,
     Poison,
     Fatigue,
-    Bind
+    Bind,
+    SuperArmor
 }
 
 /// <summary>

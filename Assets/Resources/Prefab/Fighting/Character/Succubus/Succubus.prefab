@@ -398,6 +398,7 @@ MonoBehaviour:
     HitBackDirection: {x: 12.5, y: 7.5}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
+    IsBullet: 0
   _normalMoveHitBox: {fileID: 3442098594451931043}
   _normalMoveBehindInfo:
     Name: NormalMoveBehind
@@ -415,6 +416,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: -20, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _portalPrefab: {fileID: 2140754438850857465, guid: 3e6162d56690315408087b9c316317dc, type: 3}
   _chainPrefab: {fileID: 7910210734972709440, guid: a1ec708045728d04486b5033977bc032, type: 3}
   _jumpMoveInfo:
@@ -433,6 +435,7 @@ MonoBehaviour:
     HitBackDirection: {x: 15, y: 10}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _jumpMoveHitBox: {fileID: 8239415982692960626}
   _jmDirection: {x: 7.5, y: 15}
   _specialMove1Info:
@@ -451,6 +454,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _sm1BulletPrefab: {fileID: 621395004832537837, guid: e0059dad0cfc26d43b55abbf02e5c550, type: 3}
   _sm1BulletVelocity: 5
   _specialMove2Info:
@@ -469,6 +473,7 @@ MonoBehaviour:
     HitBackDirection: {x: 7.5, y: 12.5}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 10, y: 0}
+    IsBullet: 0
   _specialMove2HitBox: {fileID: 5276346807129386541}
   _sm2DerivationInfo:
     Name: SmDerivation
@@ -486,6 +491,7 @@ MonoBehaviour:
     HitBackDirection: {x: 15, y: 15}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 10, y: 0}
+    IsBullet: 0
   _sm2DerivationHitBox: {fileID: 2379865253179118763}
   _ultimateInfo:
     Name: Ult
@@ -503,6 +509,7 @@ MonoBehaviour:
     HitBackDirection: {x: 2.5, y: 20}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ultBulletPrefab: {fileID: 5721343256160288778, guid: f47f9e89a382a2447a664ca2d5167419, type: 3}
   _ultBulletVelocity: {x: 2.5, y: 15}
 --- !u!1 &8140592575651213041

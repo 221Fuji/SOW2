@@ -21,11 +21,12 @@ public struct AttackInfo
     public Vector2 HitBackDirection; // ヒットバックのベクトル
     public Vector2 GuardBackDirection; // カードバックのベクトル
     public Vector2 GuardedBackDirection; //ガードされたときの後退ベクトル
+    public bool IsBullet;
 
     public AttackInfo(string name, int damge, int startupFrame, int activeFrame, int recoveryFrame,
         int hitFrame, int guardFram, int hitStopFrame, float meterGain, float consumptionSP, 
         float drainSP, bool isHeavy, Vector2 hitBackDirection, 
-        Vector2 guardBackDirection, Vector2 guardedBackDirection)
+        Vector2 guardBackDirection, Vector2 guardedBackDirection, bool isBullet)
     {
         Name = name;
         Damage = damge;
@@ -42,5 +43,6 @@ public struct AttackInfo
         HitBackDirection = hitBackDirection;
         GuardBackDirection = guardBackDirection;
         GuardedBackDirection = guardedBackDirection;
+        IsBullet = isBullet;
     }
 }

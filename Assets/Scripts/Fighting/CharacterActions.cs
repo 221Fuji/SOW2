@@ -424,7 +424,10 @@ public abstract class CharacterActions : FightingRigidBody
     public virtual async UniTask TakeAttack(AttackInfo attackInfo)
     {
         //各種行動キャンセル
-        CancelActionByHit();
+        if(!_characterState.AnormalyStates.Contains(AnormalyState.SuperArmor))
+        {
+            CancelActionByHit();
+        }     
 
         //AI学習
         OnHurtAI?.Invoke(attackInfo);
@@ -448,17 +451,6 @@ public abstract class CharacterActions : FightingRigidBody
             _characterState.SetComboCount(1);
         }
 
-        //エフェクト処理
-        Vector2 hurtBoxPos = transform.TransformPoint(_hurtBox.GetComponent<BoxCollider2D>().offset);
-        if (attackInfo.IsHeavy)
-        {
-            OnEffect?.Invoke(hurtBoxPos, FightingEffect.LargeHit);
-        }
-        else
-        {
-            OnEffect?.Invoke(hurtBoxPos, FightingEffect.SmallHit);
-        }
-
         //ダメージ処理
         if (CanHit)
         {
@@ -471,12 +463,37 @@ public abstract class CharacterActions : FightingRigidBody
             }
         }
 
+        //コンボ技登録
+        _characterState.AddAttackName(attackInfo);
+
+        //エフェクト位置
+        Vector2 hurtBoxPos = transform.TransformPoint(_hurtBox.GetComponent<BoxCollider2D>().offset);
+
+        //スーパーアーマー
+        if (_characterState.AnormalyStates.Contains(AnormalyState.SuperArmor))
+        {
+            //アーマーエフェクト
+            OnEffect?.Invoke(hurtBoxPos, FightingEffect.ArmourHit);
+
+            //重めヒットストップ
+            await HitStop(attackInfo.HitStopFrame * 2);
+
+            return;
+        }
+
         //アニメーション処理
         AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 1); // AnimatorのLayerをHitLayerを最優先に変更
         _animator.SetTrigger("HurtTrigger"); // 喰らいアニメーション再生
 
-        //コンボ技登録
-        _characterState.AddAttackName(attackInfo);
+        //エフェクト処理
+        if (attackInfo.IsHeavy)
+        {
+            OnEffect?.Invoke(hurtBoxPos, FightingEffect.LargeHit);
+        }
+        else
+        {
+            OnEffect?.Invoke(hurtBoxPos, FightingEffect.SmallHit);
+        }
 
         //ヒットストップ処理
         await HitStop(attackInfo.HitStopFrame);

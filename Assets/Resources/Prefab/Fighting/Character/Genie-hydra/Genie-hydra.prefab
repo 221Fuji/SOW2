@@ -288,6 +288,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 15}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
+    IsBullet: 0
   _normalMoveMHitBox: {fileID: 8520426363293243221}
   _normalMoveUInfo:
     Name: NormalMoveU
@@ -305,6 +306,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 15}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _normalMoveUHitBox: {fileID: 2907341074838811757}
   _nmSpikePrefab: {fileID: 3957926808199408896, guid: 589df68b4fe2cc84b94c587675f38469, type: 3}
   _nmSpikeInfo:
@@ -323,6 +325,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 5}
     GuardBackDirection: {x: 2.5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _nmBigPrefab: {fileID: 3957926808199408896, guid: 589df68b4fe2cc84b94c587675f38469, type: 3}
   _nmBigInfo:
     Name: NmBig
@@ -340,6 +343,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 10}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _jumpMoveMInfo:
     Name: JumpMoveM
     Damage: 15
@@ -356,6 +360,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _jmMBulletPrefab: {fileID: 908931025058630461, guid: 0529f2935d98e6f43a67488fe93ace4f, type: 3}
   _jmMVelocity: {x: 8, y: -7.5}
   _jumpMoveUInfo:
@@ -374,6 +379,7 @@ MonoBehaviour:
     HitBackDirection: {x: 7.5, y: 10}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _jmUBulletPrefab: {fileID: 3694982944655745889, guid: 209cd1e9fa68bc143b69dd04129e0490, type: 3}
   _jmUVelocity:
   - {x: 0, y: -10}
@@ -396,6 +402,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _sm1Direction: {x: 0, y: 0}
   _specialMove1HitBox: {fileID: 3928230181282037881}
   _specialMove2MInfo:
@@ -414,6 +421,7 @@ MonoBehaviour:
     HitBackDirection: {x: 15, y: 20}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _specialMove2MHitBox: {fileID: 7643125484345772945}
   _specialMove2UInfo:
     Name: SpecialMove2U
@@ -431,6 +439,7 @@ MonoBehaviour:
     HitBackDirection: {x: -5, y: 15}
     GuardBackDirection: {x: -10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _iceWall: {fileID: 7720264176591775062, guid: c8d9e3c986571794ea50fe65c09db5ed, type: 3}
   _ultimate1MInfo:
     Name: Ult1M
@@ -448,6 +457,7 @@ MonoBehaviour:
     HitBackDirection: {x: 20, y: 10}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ult1FootPrefab: {fileID: 2697608284928258189, guid: 2cc8da2d978e9ba4aba2ee6b0435efc6, type: 3}
   _ult1MPerformanceFrame: 30
   _ultimate1UInfo:
@@ -466,6 +476,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ult1FistPrefab: {fileID: 7989436744993360970, guid: 984623bec8f33304a9739cd50be497d4, type: 3}
   _ult1UPerformanceFrame: 30
   _ultimate2Info:
@@ -484,6 +495,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ult2HitBox: {fileID: 7104903962689080525}
   _ult2Bullet: {fileID: 4578157289498318255, guid: 0242c055b90b6524ba27451a48cb8583, type: 3}
   _ult2PerformanceFrame: 90
@@ -503,6 +515,7 @@ MonoBehaviour:
     HitBackDirection: {x: 20, y: 20}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
 --- !u!114 &6724563923807406956
 MonoBehaviour:
   m_ObjectHideFlags: 0

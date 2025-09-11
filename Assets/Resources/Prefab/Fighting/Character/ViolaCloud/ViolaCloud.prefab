@@ -298,6 +298,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 10, y: 0}
+    IsBullet: 0
   _normalMoveHitBox: {fileID: 2438957818604872961}
   _jumpMoveInfo:
     Name: JumpMove
@@ -315,6 +316,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _jumpMoveHitBox: {fileID: 5317712556509025971}
   _specialMove1Info:
     Name: SpecialMove1
@@ -332,6 +334,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 15}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _fogPrefab: {fileID: 4315926309681932266, guid: f48997aabcef1e445966146509ac6fc3, type: 3}
   _collectEffectAnimator: {fileID: 6528662044006476091}
   _gainValue: 0.3
@@ -351,6 +354,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 22.5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 5, y: 0}
+    IsBullet: 1
   _sm2BulletPrefab: {fileID: 3516300217080383402, guid: b591e10d1234ac344a6bd31afa288cc6, type: 3}
   _ultOutSideInfo:
     Name: UltOutSide
@@ -368,6 +372,7 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ultBullet: {fileID: 6141347537850126186, guid: 66b87fee1895955419644a1d0645b17e, type: 3}
   _ultInSideInfo:
     Name: UltInSide
@@ -385,6 +390,7 @@ MonoBehaviour:
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _healValue: 40
 --- !u!114 &3738147699315124744
 MonoBehaviour:

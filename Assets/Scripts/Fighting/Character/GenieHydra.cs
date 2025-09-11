@@ -158,6 +158,18 @@ public class GenieHydra : CharacterActions
     }
 
     /// <summary>
+    /// Undi‚È‚ç”íƒ_ƒ‘‰Á
+    /// </summary>
+    public override async UniTask TakeAttack(AttackInfo attackInfo)
+    {
+        if (!_isMander)
+        {
+            attackInfo.Damage *= 1.25f;
+        }
+        await base.TakeAttack(attackInfo);
+    }
+
+    /// <summary>
     /// ’ÊíUŒ‚M
     /// </summary>
     public async UniTask NormalMoveM()

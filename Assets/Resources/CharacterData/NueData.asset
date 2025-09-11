@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: NueData
+  m_EditorClassIdentifier: 
+  _characterNum: 5
+  _characterNameE: Nue
+  _characterNameJ: "\u30CC\u30A8"
+  _characterPrefab: {fileID: 2901379674402138257, guid: 9c09d8017c278694894ce2b3642a45a4, type: 3}
+  _cpuEasy: {fileID: 0}
+  _versusEyeForcusImage: {fileID: 2268976225878168031, guid: 0476c8b9ac644de4fa512194c44d7ef3, type: 3}
+  _versusStandingImage: {fileID: 6261411454785127521, guid: d43390f102cbd0d47a0a2a6b57e8e338, type: 3}
+  _versusGrayImage: {fileID: 6261411454785127521, guid: d43390f102cbd0d47a0a2a6b57e8e338, type: 3}
+  _fightingFaceUpImage: {fileID: 8290649326008368657, guid: 21eccdb992d21b54293b1c2630d81da1, type: 3}
+  _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 4463415414560305148, guid: 78e0d7bab608b83488bb7f7835a4634d, type: 3}
+  _csFigure: {fileID: 6391900696673937486, guid: 0a7ac467083ec174f96539368c80309a, type: 3}
+  _csDot: {fileID: 533647815616204430, guid: 2004f2d3c94f5e849a6472e5b6eee8f3, type: 3}
+  _resultWhiteStandImage: {fileID: 4171475392260829997, guid: d8bea89167534194384eb612346809be, type: 3}
+  _resultStandImage: {fileID: 1996825911055046131, guid: 5c22c9e39d4285e4990be25a762520b2, type: 3}
+  _myNumber: 10000
+  _cmdListBoxes: []

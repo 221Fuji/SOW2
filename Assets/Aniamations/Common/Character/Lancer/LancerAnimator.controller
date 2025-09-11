@@ -820,7 +820,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NomalMove
+  m_Name: NormalMove
   m_Speed: 0.125
   m_CycleOffset: 0
   m_Transitions:

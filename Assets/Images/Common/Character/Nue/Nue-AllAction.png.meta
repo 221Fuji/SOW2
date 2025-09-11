@@ -1,0 +1,2899 @@
+fileFormatVersion: 2
+guid: 251bad0ac8de59542a79f791d4f2fe2e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nue-AllAction_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbf4187dc57f1b090800000000000000
+      internalID: -8020357483245514820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8702193ee50886e80800000000000000
+      internalID: -8185151177712656264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 771f7dd8def2072c0800000000000000
+      internalID: -4435992935626444425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8887a1a27b0a81b10800000000000000
+      internalID: 1952487147010947208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167a07325d88c6250800000000000000
+      internalID: 5939272457598838625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_5
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f568ae3c8d2ec10800000000000000
+      internalID: 2081464313763487558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff885eb73d047910800000000000000
+      internalID: 1834105481314471930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_7
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c95527d271fb1f0800000000000000
+      internalID: -1027076706058003355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_8
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64a0b81b688d27130800000000000000
+      internalID: 3563148328219380294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_9
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837c67b620e7485f0800000000000000
+      internalID: -755340288633419976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_10
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b3b72d18271be30800000000000000
+      internalID: 4517517803136957329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_11
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 900
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a37af56d2c680f70800000000000000
+      internalID: 9153685184870773671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270c66ab944321d60800000000000000
+      internalID: 7859401790979489906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_13
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27ebe8c32cac0a940800000000000000
+      internalID: 5305463296630898290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_14
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adcdfe93a129ed3d0800000000000000
+      internalID: -3179943645538165542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_15
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb70c10adbba820b0800000000000000
+      internalID: -5753159693042448452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_16
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d41ea780065e96f20800000000000000
+      internalID: 3416513992959123789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_17
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5df07f053e9c330800000000000000
+      internalID: 3731763703135065575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_18
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1dd8d7314211a00800000000000000
+      internalID: 725400681112785350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_19
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e89bd048dfbf86b0800000000000000
+      internalID: -5291800101615068956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_20
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226f3c16415269a30800000000000000
+      internalID: 4221602470176224802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_21
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 148ca8e076f443b80800000000000000
+      internalID: -8416014499604412351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_22
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8078b0a296c31ccf0800000000000000
+      internalID: -233839283271923960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_23
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 810
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d951c3668ccd6710800000000000000
+      internalID: 1688230312905103829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e43ef5856687e70800000000000000
+      internalID: 9113146375736086168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_25
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d33cb8d9956b840800000000000000
+      internalID: 5239473749681716542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_26
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fb4ddcbf3309afd0800000000000000
+      internalID: -2330327759901078540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_27
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3803a6e94fc4390b0800000000000000
+      internalID: -5723146087944277885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_28
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e0c3e7eeb1bf860800000000000000
+      internalID: 7564670710232911481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_29
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d95f377394aba9070800000000000000
+      internalID: 8114002502287095197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_30
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4386bf7a289f608f0800000000000000
+      internalID: -574497562883823564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_31
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b64d58279bfa7f0800000000000000
+      internalID: -599056323894285514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_32
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6073be9a2db82650800000000000000
+      internalID: 6208420077079064686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_33
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38f460d76aab6bff0800000000000000
+      internalID: -20623924051685501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_34
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bb2f6be8fa430330800000000000000
+      internalID: 3675864153826732985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_35
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 720
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535ecf4c39443b2e0800000000000000
+      internalID: -2111268398850841291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc866e60722dc7e50800000000000000
+      internalID: 6808547801738668235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_37
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b0f02c7824ab60c0800000000000000
+      internalID: -4581387702131167051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_38
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faf7fd4766226bd10800000000000000
+      internalID: 2140936496304062383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_39
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b35ec13071388440800000000000000
+      internalID: 4938251349353452465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_40
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42fbb597e56ff4190800000000000000
+      internalID: -7975885529426444508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_41
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d96727562a285090800000000000000
+      internalID: -8045634390138066471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_42
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2105e32a4a68e4b0800000000000000
+      internalID: -5410958085623316177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_43
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80a6a0bed7d66ac0800000000000000
+      internalID: -3862162278977199986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_44
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2943686451265e2e0800000000000000
+      internalID: -2097162207954062190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_45
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 474c9f2025ec466e0800000000000000
+      internalID: -1845123095682497420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_46
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a2ea88d429a8490800000000000000
+      internalID: -7743215747606893997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_47
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 630
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e6e6f6a7d80db340800000000000000
+      internalID: 4881067293451675361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0d5ac9fc822bbeb0800000000000000
+      internalID: -4703127396976796406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_49
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a22171b4d9dc580800000000000000
+      internalID: -8805208750604277191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_50
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 366353e89f25aafe0800000000000000
+      internalID: -1177037120817777053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_51
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664a998a320174df0800000000000000
+      internalID: -196170313428786074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_52
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 893b12da333ed8130800000000000000
+      internalID: 3570759890662175640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_53
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09283e3883e35aae0800000000000000
+      internalID: -1538755285225340272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_54
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a5563a6190f92e60800000000000000
+      internalID: 7938140325560079785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_55
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66180f90887ef2150800000000000000
+      internalID: 5850149012445888870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_56
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7aa633bfbe99c370800000000000000
+      internalID: 8343374330863200894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_57
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fad33578b2e478b0800000000000000
+      internalID: -5155246391564182794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_58
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e71369764aecae90800000000000000
+      internalID: -7012972931317557276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_59
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 540
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b68ece8e2adbaf0800000000000000
+      internalID: -378967672338486428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0d696e386cb3070800000000000000
+      internalID: 8087275825685516513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_61
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b0eb013f4332280800000000000000
+      internalID: -9069347006031459516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_62
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d8a94597162af00800000000000000
+      internalID: 1126570030534397231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_63
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed871243dea215a30800000000000000
+      internalID: 4202187125583608030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_64
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca7a585cc9fb86690800000000000000
+      internalID: -7608620890392778836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_65
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f21483b1b3f5f40800000000000000
+      internalID: 5719355039877771016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_66
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be09051e9ef5f8b0800000000000000
+      internalID: -5118905446525497677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_67
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17601212b039e8750800000000000000
+      internalID: 6309141804002379377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_68
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e12bad1b8df96d670800000000000000
+      internalID: 8563207494537228830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_69
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0e061ca31746780800000000000000
+      internalID: -8690696883751821126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_70
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55fcfbe758d7a780800000000000000
+      internalID: -8671724685345622689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_71
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 450
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31262c8625b505a80800000000000000
+      internalID: -8480177688835628525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7bbed9f170c19840a22daa92b612af3
+      internalID: -596077248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_73
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcaad49a1d164f43ae4b9b84fc740a9
+      internalID: -1363461097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_74
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4b0fce00b91f84f826cfbeb7fb7e00
+      internalID: 1551539439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_75
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4562d6ab7c5c145bb588b937c429db
+      internalID: -1808507670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_76
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4435c0bd590834b48b6fbf77eb7d9880
+      internalID: 583225967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_77
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e87148497a2d64da532f8cd1962316
+      internalID: 1609712522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_78
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272a235f10cb5ac42ae36a94dcabf503
+      internalID: -1210208828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_79
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a2ae388e4f4819498ba8410676d4c3f
+      internalID: 2001236456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_80
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e89d68c3add094880211f6f7c2324a
+      internalID: -1800288440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_81
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0227d7cbd4ceb4cab7c52735667dbd
+      internalID: -1515698929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_82
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5752738615de6f749a01ad5c071f9ef0
+      internalID: 101391493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_83
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 360
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146c9b4b323f7ce4f984bcfde9ec1f41
+      internalID: 986602731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d176d5f8ee268ba48842c5e2d6f27901
+      internalID: 1262115114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_85
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18f27e2185508e4a90d994fc4ed2753
+      internalID: 693034364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_86
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d1fbaa7ebf70f409af5406476c5b53
+      internalID: 24378091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_87
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcfbfcb4c2702eb488904b7ac2524cc4
+      internalID: 1297779183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_88
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ff435c9ee839e4da9d07507c75d456
+      internalID: 19795064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_89
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6a49217f4e19e4abf3e0bb9cc58661
+      internalID: 502377385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_90
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2af993f70e8c84596d3b742f262c9b
+      internalID: -1577476595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_91
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba884c9e4c4b0446ad87de5d53a2ae0
+      internalID: -1704210689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_92
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 631d61d88b6f60f4998117b6afc635e9
+      internalID: 1728003217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_93
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c807b8e76329dd4c86af2c1aa624aaf
+      internalID: 813867702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_94
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf8624060d57aa409849db0e61621dc
+      internalID: 1043700447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_95
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 270
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d056a5dd1aa484f99d2609c36e009f
+      internalID: -629947370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70364051333dd9b42bade13315e62451
+      internalID: 347992675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_97
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac45689bb13cbcb4ba7cc259d8b20670
+      internalID: -1934544037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_98
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f495899411d4745bef8fb38960003f
+      internalID: 1567541501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_99
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db69ef91553b084db1f463f6490b05b
+      internalID: 13228508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_100
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d9eda8972ab9241be4ec5bd60a8eff
+      internalID: -1136783369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_101
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f2aba6db799b9e4fb2fc721114e027a
+      internalID: -956483295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_102
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f714a7317069af468bcf694d4749913
+      internalID: 1509546755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_103
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b985594fdabb14a8e0abc2a3e0e95e
+      internalID: -1435042872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_104
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f215c21acbce1f6439ffee48cc0b821f
+      internalID: -568785908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_105
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0e659e41e7e864da42f5bd8922dbba
+      internalID: -310788373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_106
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7593a0dfc8fa64cb4609ae55a130a4
+      internalID: 2023770500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_107
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 180
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd9f8895a0f6124e8047374b4d455fd
+      internalID: 1271304319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0054f5c9f49a8f24fbe183ad98f9829f
+      internalID: -864921979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_109
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be3b61be3b522944b0b840be5779ccd
+      internalID: -840279595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_110
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31561fd74f6b7f34db17a192284db0a0
+      internalID: 143105104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_111
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1943389bbcdd93f4fbf3d8007989ad58
+      internalID: -807229126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_112
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f1a0df2d7647fe40b545d2f5cafe7c2
+      internalID: 774836271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_113
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 936871e1001dccb4b9b925008a9ed755
+      internalID: -219640742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_114
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a946a8e5398ead4b989e47e580d139a
+      internalID: -1733782479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_115
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611fc141a7040e04a84d22a0d8177386
+      internalID: 851826315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_116
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3348f39db453f6048a10885f39e06828
+      internalID: -1285721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_117
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928c89ad60d0f434fb7c11fa9cd0fefa
+      internalID: 1532888161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_118
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 641724d4e8a46f24b8ca469d3ce22c4a
+      internalID: 1528244300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_119
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 90
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed58a21b6c2fd734cbd3c0b8b2d2dd24
+      internalID: 1737779239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e300a9025079e44ab52e93a05ee2f13
+      internalID: -1338214226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_121
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48fbd90ce70c4f4f812c169b2933b77
+      internalID: -1088903037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_122
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96262e4c3b53c7498d7542c7ba49fa9
+      internalID: 1059666212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_123
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc3ad974d1dfe341a06575c1a05b28d
+      internalID: 440156514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_124
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3f3cc872845df4da7bc2f13bd7693b
+      internalID: -1098550961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nue-AllAction_125
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 210
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae0ced9085d33842ba5b41d7446c22d
+      internalID: 668573459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Nue-AllAction_0: -8020357483245514820
+      Nue-AllAction_1: -8185151177712656264
+      Nue-AllAction_10: 4517517803136957329
+      Nue-AllAction_100: -1136783369
+      Nue-AllAction_101: -956483295
+      Nue-AllAction_102: 1509546755
+      Nue-AllAction_103: -1435042872
+      Nue-AllAction_104: -568785908
+      Nue-AllAction_105: -310788373
+      Nue-AllAction_106: 2023770500
+      Nue-AllAction_107: 1271304319
+      Nue-AllAction_108: -864921979
+      Nue-AllAction_109: -840279595
+      Nue-AllAction_11: 9153685184870773671
+      Nue-AllAction_110: 143105104
+      Nue-AllAction_111: -807229126
+      Nue-AllAction_112: 774836271
+      Nue-AllAction_113: -219640742
+      Nue-AllAction_114: -1733782479
+      Nue-AllAction_115: 851826315
+      Nue-AllAction_116: -1285721
+      Nue-AllAction_117: 1532888161
+      Nue-AllAction_118: 1528244300
+      Nue-AllAction_119: 1737779239
+      Nue-AllAction_12: 7859401790979489906
+      Nue-AllAction_120: -1338214226
+      Nue-AllAction_121: -1088903037
+      Nue-AllAction_122: 1059666212
+      Nue-AllAction_123: 440156514
+      Nue-AllAction_124: -1098550961
+      Nue-AllAction_125: 668573459
+      Nue-AllAction_13: 5305463296630898290
+      Nue-AllAction_14: -3179943645538165542
+      Nue-AllAction_15: -5753159693042448452
+      Nue-AllAction_16: 3416513992959123789
+      Nue-AllAction_17: 3731763703135065575
+      Nue-AllAction_18: 725400681112785350
+      Nue-AllAction_19: -5291800101615068956
+      Nue-AllAction_2: -4435992935626444425
+      Nue-AllAction_20: 4221602470176224802
+      Nue-AllAction_21: -8416014499604412351
+      Nue-AllAction_22: -233839283271923960
+      Nue-AllAction_23: 1688230312905103829
+      Nue-AllAction_24: 9113146375736086168
+      Nue-AllAction_25: 5239473749681716542
+      Nue-AllAction_26: -2330327759901078540
+      Nue-AllAction_27: -5723146087944277885
+      Nue-AllAction_28: 7564670710232911481
+      Nue-AllAction_29: 8114002502287095197
+      Nue-AllAction_3: 1952487147010947208
+      Nue-AllAction_30: -574497562883823564
+      Nue-AllAction_31: -599056323894285514
+      Nue-AllAction_32: 6208420077079064686
+      Nue-AllAction_33: -20623924051685501
+      Nue-AllAction_34: 3675864153826732985
+      Nue-AllAction_35: -2111268398850841291
+      Nue-AllAction_36: 6808547801738668235
+      Nue-AllAction_37: -4581387702131167051
+      Nue-AllAction_38: 2140936496304062383
+      Nue-AllAction_39: 4938251349353452465
+      Nue-AllAction_4: 5939272457598838625
+      Nue-AllAction_40: -7975885529426444508
+      Nue-AllAction_41: -8045634390138066471
+      Nue-AllAction_42: -5410958085623316177
+      Nue-AllAction_43: -3862162278977199986
+      Nue-AllAction_44: -2097162207954062190
+      Nue-AllAction_45: -1845123095682497420
+      Nue-AllAction_46: -7743215747606893997
+      Nue-AllAction_47: 4881067293451675361
+      Nue-AllAction_48: -4703127396976796406
+      Nue-AllAction_49: -8805208750604277191
+      Nue-AllAction_5: 2081464313763487558
+      Nue-AllAction_50: -1177037120817777053
+      Nue-AllAction_51: -196170313428786074
+      Nue-AllAction_52: 3570759890662175640
+      Nue-AllAction_53: -1538755285225340272
+      Nue-AllAction_54: 7938140325560079785
+      Nue-AllAction_55: 5850149012445888870
+      Nue-AllAction_56: 8343374330863200894
+      Nue-AllAction_57: -5155246391564182794
+      Nue-AllAction_58: -7012972931317557276
+      Nue-AllAction_59: -378967672338486428
+      Nue-AllAction_6: 1834105481314471930
+      Nue-AllAction_60: 8087275825685516513
+      Nue-AllAction_61: -9069347006031459516
+      Nue-AllAction_62: 1126570030534397231
+      Nue-AllAction_63: 4202187125583608030
+      Nue-AllAction_64: -7608620890392778836
+      Nue-AllAction_65: 5719355039877771016
+      Nue-AllAction_66: -5118905446525497677
+      Nue-AllAction_67: 6309141804002379377
+      Nue-AllAction_68: 8563207494537228830
+      Nue-AllAction_69: -8690696883751821126
+      Nue-AllAction_7: -1027076706058003355
+      Nue-AllAction_70: -8671724685345622689
+      Nue-AllAction_71: -8480177688835628525
+      Nue-AllAction_72: -596077248
+      Nue-AllAction_73: -1363461097
+      Nue-AllAction_74: 1551539439
+      Nue-AllAction_75: -1808507670
+      Nue-AllAction_76: 583225967
+      Nue-AllAction_77: 1609712522
+      Nue-AllAction_78: -1210208828
+      Nue-AllAction_79: 2001236456
+      Nue-AllAction_8: 3563148328219380294
+      Nue-AllAction_80: -1800288440
+      Nue-AllAction_81: -1515698929
+      Nue-AllAction_82: 101391493
+      Nue-AllAction_83: 986602731
+      Nue-AllAction_84: 1262115114
+      Nue-AllAction_85: 693034364
+      Nue-AllAction_86: 24378091
+      Nue-AllAction_87: 1297779183
+      Nue-AllAction_88: 19795064
+      Nue-AllAction_89: 502377385
+      Nue-AllAction_9: -755340288633419976
+      Nue-AllAction_90: -1577476595
+      Nue-AllAction_91: -1704210689
+      Nue-AllAction_92: 1728003217
+      Nue-AllAction_93: 813867702
+      Nue-AllAction_94: 1043700447
+      Nue-AllAction_95: -629947370
+      Nue-AllAction_96: 347992675
+      Nue-AllAction_97: -1934544037
+      Nue-AllAction_98: 1567541501
+      Nue-AllAction_99: 13228508
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

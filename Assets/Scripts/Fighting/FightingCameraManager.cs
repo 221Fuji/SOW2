@@ -83,7 +83,7 @@ public class FightingCameraManager : MonoBehaviour
         if (_cam == null) return;
 
         //ŽžŠÔ’âŽ~
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
         FightingPhysics.SetFightingTimeScale(0);
         _backGroundManager.ChangeBackGroundColor(new Color(0.5f, 0.5f, 0.5f));
 
@@ -119,7 +119,7 @@ public class FightingCameraManager : MonoBehaviour
         }
     
     Canceled:
-        Time.timeScale = 1;
+        Time.timeScale = 1.0f;
         FightingPhysics.SetFightingTimeScale(1);
         _backGroundManager.ChangeBackGroundColor(Color.white);
         _performUltCTS = null;

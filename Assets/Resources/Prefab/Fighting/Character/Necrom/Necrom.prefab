@@ -363,7 +363,7 @@ MonoBehaviour:
   _hurtBox: {fileID: 1156001438082662969}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 15
+    Damage: 10
     StartupFrame: 17
     ActiveFrame: 30
     RecoveryFrame: 20
@@ -377,6 +377,7 @@ MonoBehaviour:
     HitBackDirection: {x: 10, y: 10}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _nmBulletPrefab: {fileID: 4800561461241285632, guid: a877e5e2e17f2c6438eaa555eddc6914, type: 3}
   _nmBulletVelocity: 10
   _jumpMoveInfo:
@@ -395,6 +396,7 @@ MonoBehaviour:
     HitBackDirection: {x: 7.5, y: 20}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _jumpMoveHitBox: {fileID: 1624036690247701418}
   _specialMove1Info:
     Name: SpecialMove1
@@ -412,10 +414,11 @@ MonoBehaviour:
     HitBackDirection: {x: -5, y: 20}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _trapPrefab: {fileID: 690384246872513028, guid: f632cfa2eb2ddd84cb07860c06d57e81, type: 3}
   _specialMove2Info:
     Name: SpecialMove2
-    Damage: 20
+    Damage: 15
     StartupFrame: 10
     ActiveFrame: 5
     RecoveryFrame: 20
@@ -429,6 +432,7 @@ MonoBehaviour:
     HitBackDirection: {x: -5, y: 20}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 1
   _ultimateInfo:
     Name: Ultmate
     Damage: 35
@@ -445,6 +449,7 @@ MonoBehaviour:
     HitBackDirection: {x: 20, y: 15}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
+    IsBullet: 0
   _ultimateHitBox: {fileID: 83872494939933173}
 --- !u!114 &5376387103110518897
 MonoBehaviour:
