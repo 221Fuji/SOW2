@@ -50,7 +50,7 @@ public class GenieHydra : CharacterActions
     [Header("’´•KŽE‹Z2")]
     [SerializeField] private AttackInfo _ultimate2Info;
     [SerializeField] private HitBoxManager _ult2HitBox;
-    [SerializeField] private Bullet _ult2Bullet;
+    [SerializeField] private Bullet _ult2BulletPrefab;
     [SerializeField] private int _ult2PerformanceFrame;
     [Header("’²•KŽE‹Z2(ÅI’e)")]
     [SerializeField] private AttackInfo _ultimate2LastInfo;
@@ -64,6 +64,7 @@ public class GenieHydra : CharacterActions
     private CancellationTokenSource _specialMove1CTS;
     private CancellationTokenSource _specialMove2CTS;
     private CancellationTokenSource _ultCTS;
+    private CancellationTokenSource _ultBulletCTS;
 
     //s“®§ŒÀ‚ÌÝ’è
     public override bool CanEveryAction
@@ -454,10 +455,10 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SPÁ”ï
-        _characterState.SetCurrentSP(-_normalMoveMInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_normalMoveUInfo.ConsumptionSP);
 
         //UP‰ñŽû
-        UPgain(_jumpMoveMInfo.MeterGain);
+        UPgain(_jumpMoveUInfo.MeterGain);
 
         //•¨—‹““®
         Velocity = Vector2.zero;
@@ -465,9 +466,9 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // ”­¶‚ð‘Ò‚Â
+            await StartUpMove(_jumpMoveUInfo.StartupFrame, token); // ”­¶‚ð‘Ò‚Â
             CreateJmUBullet(token);
-            await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // d’¼‚ð‘Ò‚Â
+            await RecoveryFrame(_jumpMoveUInfo.RecoveryFrame, token); // d’¼‚ð‘Ò‚Â
             AddForce(new Vector2(0, -2.5f));
         }
         catch (OperationCanceledException)
@@ -966,21 +967,30 @@ public class GenieHydra : CharacterActions
             rotation = new Quaternion(0, 180, 0, 0);
             bullet2PosOffset *= new Vector2(-1, 0);
         }
-        Bullet bullet1 = Instantiate(_ult2Bullet, transform.position, rotation);
-        Bullet bullet2 = Instantiate(_ult2Bullet, transform.position + (Vector3)bullet2PosOffset, rotation);
+        Bullet bullet1 = Instantiate(_ult2BulletPrefab, transform.position, rotation);
+        Bullet bullet2 = Instantiate(_ult2BulletPrefab, transform.position + (Vector3)bullet2PosOffset, rotation);
+
+        // V‚µ‚¢CTS‚ð¶¬
+        _ultBulletCTS = new CancellationTokenSource();
+        CancellationToken token = _ultBulletCTS.Token;
 
         try
         {
             await UniTask.WaitUntil(() =>
             {
                 return _ultCTS == null;
-            });
+            }, cancellationToken :token);
         }
         finally
         {
             if(bullet1)
             {
                 Destroy(bullet1.gameObject);
+            }
+
+            if(bullet2)
+            {
+                Destroy(bullet2.gameObject);
             }
         }
     }
@@ -1046,5 +1056,7 @@ public class GenieHydra : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
+        _ultCTS?.Cancel();
+        _ultBulletCTS?.Cancel();
     }
 }

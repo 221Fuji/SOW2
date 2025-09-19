@@ -98,7 +98,6 @@ public class FightingRigidBody : MonoBehaviour
 
     protected virtual void Update()
     {
-
         if (_isWall) return;
 
         if (!OnGround && !_isFixed)

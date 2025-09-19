@@ -149,7 +149,7 @@ public class Nue : CharacterActions
         {
             value = -100f / _ultimateInfo.ActiveFrame;
             _characterState.SetCurrentUP(value);
-            Debug.Log(_ultimateInfo.ActiveFrame);
+            Debug.Log("koushi"+_ultimateInfo.ActiveFrame);
         }
         else
         {
@@ -666,15 +666,12 @@ public class Nue : CharacterActions
 
             if (enemyCS == null) return;
 
-            Debug.Log("koushi");
             if (enemyCS.CurrentHP - _blackFireDamage > 1)
             {
-                Debug.Log("koushi2");
                 enemyCS.TakeDamage(_blackFireDamage);
             }
             else if (enemyCS.CurrentHP - _blackFireDamage > 0)
             {
-                Debug.Log("koushi3");
                 enemyCS.TakeDamage(enemyCS.CurrentHP - 2);
             }
         }

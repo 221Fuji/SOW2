@@ -371,12 +371,12 @@ public class FightingUI : MonoBehaviour
 
     public async UniTask KO()
     {
+        if (_gameSet == null) return;
+
         _gameSet.SetTrigger("KOTrigger");
 
         _gameSetCTS = new CancellationTokenSource();
         CancellationToken token = _gameSetCTS.Token;
-
-        if (_gameSet == null) return;
 
         await UniTask.WaitUntil(() =>
         {

@@ -31,6 +31,12 @@ public abstract class FightingManager : ModeManager
     private void Awake()
     {
         Application.targetFrameRate = 60; // デバッグ用
+        FightingPhysics.FightingUpdate().Forget(); //対戦用のフレームレート
+    }
+
+    private void OnDisable()
+    {
+        FightingPhysics.CancelUpdate();
     }
 
     public void InitializeFM(CharacterData characterData1P, CharacterData characterData2P)
@@ -239,6 +245,11 @@ public abstract class FightingManager : ModeManager
         {
             _timeLimitCTS.Cancel();
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }
 

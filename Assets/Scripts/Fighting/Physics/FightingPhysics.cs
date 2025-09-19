@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 /// <summary>
 /// 対戦中の独自の物理挙動
@@ -47,18 +45,81 @@ public static class FightingPhysics
         FightingTimeScale = value;
     }
 
+    public delegate void FightingUpdateCallBack();
     /// <summary>
-    /// FightingUpdate の呼び出し回数と完全同期する DelayFrame
+    /// 対戦中毎フレーム呼ばれるコールバック
+    /// </summary>
+    public static FightingUpdateCallBack OnFightingUpdate { get; set; }
+    public static CancellationTokenSource FightingUpdateCTS { get; private set; }
+
+    /// <summary>
+    /// FightingUpdate の呼び出し回数と同期する DelayFrame
+    /// 1フレーム = 1/60秒 を FightingTimeScale 倍して待機
     /// </summary>
     public static async UniTask DelayFrameWithTimeScale(int frames, CancellationToken cancellationToken = default)
     {
-        for (int i = 0; i < frames; i++)
+        try
         {
-            // FightingTimeScale を考慮
-            int step = Mathf.RoundToInt(FightingTimeScale);
-            i += (step - 1); // まとめて進める
+            // 1フレームの秒数（60fps基準）
+            float baseFrameTime = 1f / FightingFrameRate;
 
-            await UniTask.Yield(cancellationToken);
+            for (int i = 0; i < frames; i++)
+            {
+                // FightingTimeScale を考慮した実際の時間
+                float scaledFrameTime = baseFrameTime * FightingTimeScale;
+
+                // UniTask.Delay はミリ秒指定なので変換
+                int delayMs = Mathf.Max(1, Mathf.RoundToInt(scaledFrameTime * 1000f));
+
+                await UniTask.Delay(delayMs, cancellationToken: cancellationToken);
+            }
+        }
+        catch
+        {
+            // キャンセル時やエラー時は無視して終了
         }
     }
+
+    private static float _lastTime;
+    /// <summary>
+    /// 対戦中毎フレーム更新される
+    /// </summary>
+    public static async UniTask FightingUpdate()
+    {
+        FightingUpdateCTS?.Cancel();
+        FightingUpdateCTS = new CancellationTokenSource();
+        CancellationToken token = FightingUpdateCTS.Token;
+        _lastTime = Time.realtimeSinceStartup;
+
+        while (!token.IsCancellationRequested)
+        {
+
+            float now = Time.realtimeSinceStartup;
+            float elapsed = now - _lastTime;
+            _lastTime = now;
+
+            Debug.Log($"疑似フレーム経過時間: {elapsed * 1000f:F2} ms");
+            OnFightingUpdate?.Invoke();
+            try
+            {
+                await DelayFrameWithTimeScale(1, token);
+            }
+            catch
+            {
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// FightingUpdateを中断する
+    /// </summary>
+    public static void CancelUpdate()
+    {
+        FightingUpdateCTS?.Cancel();
+        FightingUpdateCTS?.Dispose();
+        FightingUpdateCTS = null;
+    }
+
+
 }
