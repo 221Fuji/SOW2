@@ -354,7 +354,7 @@ public class GenieHydra : CharacterActions
         //アニメーション
         bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -516,7 +516,7 @@ public class GenieHydra : CharacterActions
 
             try
             {
-                await FightingPhysics.DelayFrameWithTimeScale(2, token);
+                await FrameManager.DeleyFightingFrame(2, token);
             }
             catch
             {
@@ -542,7 +542,7 @@ public class GenieHydra : CharacterActions
 
         bullet.transform.position = bullet.HitBox.transform.position;
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -654,7 +654,7 @@ public class GenieHydra : CharacterActions
             for(int i = 0; i < _specialMove2MInfo.ActiveFrame; i++)
             {
                 Velocity = chargeVector;
-                await FightingPhysics.DelayFrameWithTimeScale(1, token);
+                await FrameManager.DeleyFightingFrame(1, token);
             }
             _specialMove2MHitBox.SetIsActive(false);
             if (_specialMove2MHitBox.IsActive)
@@ -742,7 +742,7 @@ public class GenieHydra : CharacterActions
         try
         {
             iceWall.HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_specialMove2UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_specialMove2UInfo.ActiveFrame);
         }
         finally 
         {
@@ -757,7 +757,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         finally 
         {
@@ -802,7 +802,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //演出解除
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             await StartUpMove(_ultimate1MInfo.StartupFrame, token); // 発生を待つ
@@ -853,7 +853,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1MInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1MInfo.ActiveFrame);
         }
         finally
         {
@@ -883,7 +883,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1UInfo.ActiveFrame);
         }
         finally
         {
@@ -924,7 +924,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //演出解除
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             //最終弾以外の設定
@@ -934,7 +934,7 @@ public class GenieHydra : CharacterActions
             await StartUpMove(_ultimate2Info.StartupFrame, token); // 発生を待つ
 
             _ult2HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate2Info.ActiveFrame, token);
+            await FrameManager.DeleyFightingFrame(_ultimate2Info.ActiveFrame, token);
             _ult2HitBox.SetIsActive(true);
 
             //最終弾の設定
@@ -1020,7 +1020,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(2);
+            await FrameManager.DeleyFightingFrame(2);
         }
         finally
         {

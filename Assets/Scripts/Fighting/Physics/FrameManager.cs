@@ -12,20 +12,24 @@ public class FrameManager : MonoBehaviour
     /// <summary>
     /// フレーム更新のコールバック
     /// </summary>
-    public FightingUpdateEvent OnfightingUpdate { get; private set; }
+    public FightingUpdateEvent OnfightingUpdate { get; set; }
 
     // フレームのカウント
     private static int _stepCounter = 0;
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
     private void Update()
     {
-        _accumulator += Time.deltaTime;
+        if (FightingPhysics.FightingTimeScale <= 0) return;
+        _accumulator += Time.unscaledDeltaTime;
+        if (FightingPhysics.FightingFrameRate <= 0) return;
+
         float frameTime = 1f / (FightingPhysics.FightingFrameRate * FightingPhysics.FightingTimeScale);
         while (_accumulator >= frameTime)
         {
@@ -47,5 +51,10 @@ public class FrameManager : MonoBehaviour
         }
         catch
         { }
+    }
+
+    public void OnDestroy()
+    {
+        OnfightingUpdate = null;
     }
 }

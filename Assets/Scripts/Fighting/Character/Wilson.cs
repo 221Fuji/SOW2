@@ -2,7 +2,6 @@ using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using Unity.VisualScripting.Antlr3.Runtime;
 
 public class Wilson : CharacterActions
 {
@@ -397,7 +396,7 @@ public class Wilson : CharacterActions
         CancellationToken token = _ultSlashCTS.Token;
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
         }
         finally
         {
@@ -453,7 +452,7 @@ public class Wilson : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         finally
         {

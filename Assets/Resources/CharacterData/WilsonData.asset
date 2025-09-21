@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: WilsonData
+  m_EditorClassIdentifier: 
+  _characterNum: 6
+  _characterNameE: Wilson
+  _characterNameJ: "\u30A6\u30A3\u30EB\u30BD\u30F3"
+  _characterPrefab: {fileID: -1097923648107288940, guid: 1dc2b8ddab322904f9b59026a37faf30, type: 3}
+  _cpuEasy: {fileID: 0}
+  _versusEyeForcusImage: {fileID: 2330976698168467897, guid: c7290783ee1cbba428ca3856688c6eef, type: 3}
+  _versusStandingImage: {fileID: 5580158101377991115, guid: e94a39569c5618147bbdb1a6aa7f55be, type: 3}
+  _versusGrayImage: {fileID: 9152546479232325047, guid: fdd380d6b89a15f4eb7169aaab1ac09e, type: 3}
+  _fightingFaceUpImage: {fileID: 4861317124237501819, guid: a16b7e4141888504eb37eaa9a6e3e52c, type: 3}
+  _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 8896572912180848141, guid: cee8ec06d69074d4dbe7ebae2b65d1b5, type: 3}
+  _csFigure: {fileID: 4199925819457361857, guid: 9d8307da608da1d488e5238b6ad63d0c, type: 3}
+  _csDot: {fileID: 6728957238287151238, guid: 94fccec80c83bdd43b2248cbd0806917, type: 3}
+  _resultWhiteStandImage: {fileID: 7086265842565832754, guid: 88d0ba88c7094644ebfd7c7b51d24838, type: 3}
+  _resultStandImage: {fileID: 1462808023146176589, guid: 8c17ba3d0b2ab904ba9cf2d253e68b56, type: 3}
+  _myNumber: 0
+  _cmdListBoxes: []
