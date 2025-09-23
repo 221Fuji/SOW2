@@ -368,13 +368,13 @@ MonoBehaviour:
     Damage: 10
     StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 50
+    RecoveryFrame: 30
     HitFrame: 25
     GuardFrame: 10
     HitStopFrame: 10
     MeterGain: 2.5
-    ConsumptionSP: 35
-    DrainSP: 20
+    ConsumptionSP: 40
+    DrainSP: 15
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 10}
     GuardBackDirection: {x: 5, y: 0}
@@ -497,7 +497,7 @@ MonoBehaviour:
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _ult2HitBox: {fileID: 7104903962689080525}
-  _ult2Bullet: {fileID: 4578157289498318255, guid: 0242c055b90b6524ba27451a48cb8583, type: 3}
+  _ult2BulletPrefab: {fileID: 4578157289498318255, guid: 0242c055b90b6524ba27451a48cb8583, type: 3}
   _ult2PerformanceFrame: 90
   _ultimate2LastInfo:
     Name: Ult2Last

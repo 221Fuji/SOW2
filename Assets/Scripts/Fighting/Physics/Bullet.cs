@@ -34,10 +34,8 @@ public class Bullet : FightingRigidBody
         base.Awake();
     }
 
-    protected override void Update()
+    protected override void FightingUpdate()
     {
-        base.Update();
-        
         if(transform.position.x > 5 + StageParameter.StageLength / 2
             || transform.position.x < -5 - StageParameter.StageLength / 2)
         {

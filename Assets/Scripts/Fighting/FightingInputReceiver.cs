@@ -32,7 +32,6 @@ public class FightingInputReceiver : MonoBehaviour
 
     public void OnFourDirections(InputValue value)
     {
-
         Vector2 direction = value.Get<Vector2>();
         if (direction.x > 0)
         {

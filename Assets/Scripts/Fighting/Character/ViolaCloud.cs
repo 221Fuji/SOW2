@@ -523,7 +523,7 @@ public class ViolaCloud : CharacterActions
         }
         catch { }      
 
-        await FightingPhysics.DelayFrameWithTimeScale(60);
+        await FrameManager.DeleyFightingFrame(60);
         if(bullet != null)
         {
             Destroy(bullet);
@@ -565,7 +565,7 @@ public class ViolaCloud : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
 
             float speed = 15;
             if (!_characterState.IsLeftSide)
@@ -580,7 +580,7 @@ public class ViolaCloud : CharacterActions
             for (int i = 0; i < 3 ;i++)
             {
                 CreateUltBullet();
-                await FightingPhysics.DelayFrameWithTimeScale(15, token);
+                await FrameManager.DeleyFightingFrame(15, token);
             }
 
             Velocity = Vector2.zero;

@@ -108,7 +108,7 @@ public class FightingEffectManager : MonoBehaviour
     {
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
+            await FrameManager.DeleyFightingFrame(activeFrame, token);
         }
         catch(OperationCanceledException)
         {

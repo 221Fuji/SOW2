@@ -178,6 +178,12 @@ public abstract class CharacterActions : FightingRigidBody
         RuntimeAnimatorController controller = _animator.runtimeAnimatorController;
         _animator.runtimeAnimatorController = null;
         _animator.runtimeAnimatorController = controller;
+
+        //フレーム更新イベント登録
+        if(FrameManager.Instance != null)
+        {
+            FrameManager.Instance.OnfightingUpdate += FightingUpdate;
+        }
     }
 
     protected override void FightingUpdate()
@@ -402,7 +408,7 @@ public abstract class CharacterActions : FightingRigidBody
     {
         Velocity = Vector2.zero;
         _IsCompleteLandStun = false;
-        await FightingPhysics.DelayFrameWithTimeScale(1);
+        await FrameManager.DeleyFightingFrame(1);
         _IsCompleteLandStun = true;
         DirectionReversal();
         Land();
@@ -539,7 +545,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// <param name="recoveryFrame">硬直時間(フレーム)</param>
     private async UniTask HitStun(int recoveryFrame, CancellationToken token)
     {
-        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
+        await FrameManager.DeleyFightingFrame(recoveryFrame, token);
 
         //バインド状態ではヒット硬直から回復しない
         await UniTask.WaitUntil(() =>
@@ -567,10 +573,17 @@ public abstract class CharacterActions : FightingRigidBody
     private async UniTask HitStop(int stopFrame)
     {
         Time.timeScale = 0;
+        float currentTimeScale = FightingPhysics.FightingTimeScale;
         FightingPhysics.SetFightingTimeScale(0);
+
         await UniTask.DelayFrame(stopFrame - 1);
-        Time.timeScale = 1;
-        FightingPhysics.SetFightingTimeScale(1);
+
+        if(FightingPhysics.FightingTimeScale == 0)
+        {
+            Time.timeScale = currentTimeScale;
+            FightingPhysics.SetFightingTimeScale(currentTimeScale);
+        }
+
         await UniTask.Yield(); // 1フレーム待機して速度適用を保証
     }
 
@@ -648,7 +661,7 @@ public abstract class CharacterActions : FightingRigidBody
 
     private async UniTask GuardStun(int guardFrame, CancellationToken token)
     {
-        await FightingPhysics.DelayFrameWithTimeScale(guardFrame, cancellationToken: token);
+        await FrameManager.DeleyFightingFrame(guardFrame, token);
 
         if (token.IsCancellationRequested)
         {
@@ -739,13 +752,13 @@ public abstract class CharacterActions : FightingRigidBody
 
     protected async UniTask StartUpMove(int startUpFrame, CancellationToken token)
     {
-        await FightingPhysics.DelayFrameWithTimeScale(startUpFrame, cancellationToken: token);
+        await FrameManager.DeleyFightingFrame(startUpFrame, token);
     }
 
     protected async UniTask WaitForActiveFrame(HitBoxManager hitBox, int activeFrame, CancellationToken token)
     {
         hitBox?.SetIsActive(true);
-        await FightingPhysics.DelayFrameWithTimeScale(activeFrame, cancellationToken: token);
+        await FrameManager.DeleyFightingFrame(activeFrame, token);
         if(hitBox != null)
         {
             if(hitBox.IsActive)
@@ -758,6 +771,6 @@ public abstract class CharacterActions : FightingRigidBody
 
     protected async UniTask RecoveryFrame(int recoveryFrame, CancellationToken token)
     {
-        await FightingPhysics.DelayFrameWithTimeScale(recoveryFrame, cancellationToken: token);
+        await FrameManager.DeleyFightingFrame(recoveryFrame, token);
     }
 }

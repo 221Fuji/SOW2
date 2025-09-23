@@ -50,7 +50,7 @@ public class GenieHydra : CharacterActions
     [Header("í¥ïKéEãZ2")]
     [SerializeField] private AttackInfo _ultimate2Info;
     [SerializeField] private HitBoxManager _ult2HitBox;
-    [SerializeField] private Bullet _ult2Bullet;
+    [SerializeField] private Bullet _ult2BulletPrefab;
     [SerializeField] private int _ult2PerformanceFrame;
     [Header("í≤ïKéEãZ2(ç≈èIíe)")]
     [SerializeField] private AttackInfo _ultimate2LastInfo;
@@ -64,6 +64,7 @@ public class GenieHydra : CharacterActions
     private CancellationTokenSource _specialMove1CTS;
     private CancellationTokenSource _specialMove2CTS;
     private CancellationTokenSource _ultCTS;
+    private CancellationTokenSource _ultBulletCTS;
 
     //çsìÆêßå¿ÇÃê›íË
     public override bool CanEveryAction
@@ -353,7 +354,7 @@ public class GenieHydra : CharacterActions
         //ÉAÉjÉÅÅ[ÉVÉáÉì
         bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -454,10 +455,10 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SPè¡îÔ
-        _characterState.SetCurrentSP(-_normalMoveMInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_normalMoveUInfo.ConsumptionSP);
 
         //UPâÒé˚
-        UPgain(_jumpMoveMInfo.MeterGain);
+        UPgain(_jumpMoveUInfo.MeterGain);
 
         //ï®óùãììÆ
         Velocity = Vector2.zero;
@@ -465,9 +466,9 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // î≠ê∂Çë“Ç¬
+            await StartUpMove(_jumpMoveUInfo.StartupFrame, token); // î≠ê∂Çë“Ç¬
             CreateJmUBullet(token);
-            await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // çdíºÇë“Ç¬
+            await RecoveryFrame(_jumpMoveUInfo.RecoveryFrame, token); // çdíºÇë“Ç¬
             AddForce(new Vector2(0, -2.5f));
         }
         catch (OperationCanceledException)
@@ -515,7 +516,7 @@ public class GenieHydra : CharacterActions
 
             try
             {
-                await FightingPhysics.DelayFrameWithTimeScale(2, token);
+                await FrameManager.DeleyFightingFrame(2, token);
             }
             catch
             {
@@ -541,7 +542,7 @@ public class GenieHydra : CharacterActions
 
         bullet.transform.position = bullet.HitBox.transform.position;
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -653,7 +654,7 @@ public class GenieHydra : CharacterActions
             for(int i = 0; i < _specialMove2MInfo.ActiveFrame; i++)
             {
                 Velocity = chargeVector;
-                await FightingPhysics.DelayFrameWithTimeScale(1, token);
+                await FrameManager.DeleyFightingFrame(1, token);
             }
             _specialMove2MHitBox.SetIsActive(false);
             if (_specialMove2MHitBox.IsActive)
@@ -741,7 +742,7 @@ public class GenieHydra : CharacterActions
         try
         {
             iceWall.HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_specialMove2UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_specialMove2UInfo.ActiveFrame);
         }
         finally 
         {
@@ -756,7 +757,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         finally 
         {
@@ -801,7 +802,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //ââèoâèú
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             await StartUpMove(_ultimate1MInfo.StartupFrame, token); // î≠ê∂Çë“Ç¬
@@ -852,7 +853,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1MInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1MInfo.ActiveFrame);
         }
         finally
         {
@@ -882,7 +883,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1UInfo.ActiveFrame);
         }
         finally
         {
@@ -923,7 +924,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //ââèoâèú
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             //ç≈èIíeà»äOÇÃê›íË
@@ -933,7 +934,7 @@ public class GenieHydra : CharacterActions
             await StartUpMove(_ultimate2Info.StartupFrame, token); // î≠ê∂Çë“Ç¬
 
             _ult2HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate2Info.ActiveFrame, token);
+            await FrameManager.DeleyFightingFrame(_ultimate2Info.ActiveFrame, token);
             _ult2HitBox.SetIsActive(true);
 
             //ç≈èIíeÇÃê›íË
@@ -966,21 +967,30 @@ public class GenieHydra : CharacterActions
             rotation = new Quaternion(0, 180, 0, 0);
             bullet2PosOffset *= new Vector2(-1, 0);
         }
-        Bullet bullet1 = Instantiate(_ult2Bullet, transform.position, rotation);
-        Bullet bullet2 = Instantiate(_ult2Bullet, transform.position + (Vector3)bullet2PosOffset, rotation);
+        Bullet bullet1 = Instantiate(_ult2BulletPrefab, transform.position, rotation);
+        Bullet bullet2 = Instantiate(_ult2BulletPrefab, transform.position + (Vector3)bullet2PosOffset, rotation);
+
+        // êVÇµÇ¢CTSÇê∂ê¨
+        _ultBulletCTS = new CancellationTokenSource();
+        CancellationToken token = _ultBulletCTS.Token;
 
         try
         {
             await UniTask.WaitUntil(() =>
             {
                 return _ultCTS == null;
-            });
+            }, cancellationToken :token);
         }
         finally
         {
             if(bullet1)
             {
                 Destroy(bullet1.gameObject);
+            }
+
+            if(bullet2)
+            {
+                Destroy(bullet2.gameObject);
             }
         }
     }
@@ -1010,7 +1020,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(2);
+            await FrameManager.DeleyFightingFrame(2);
         }
         finally
         {
@@ -1046,5 +1056,7 @@ public class GenieHydra : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
+        _ultCTS?.Cancel();
+        _ultBulletCTS?.Cancel();
     }
 }

@@ -103,7 +103,7 @@ public class CharacterState : MonoBehaviour
         IsUltPerformance = true;
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(1);
+            await FrameManager.DeleyFightingFrame(1);
         }
         finally
         {

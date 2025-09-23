@@ -83,6 +83,7 @@ public class FightingCameraManager : MonoBehaviour
         if (_cam == null) return;
 
         //ŽžŠÔ’âŽ~
+        float currentTimeScale = FightingPhysics.FightingTimeScale;
         Time.timeScale = 0f;
         FightingPhysics.SetFightingTimeScale(0);
         _backGroundManager.ChangeBackGroundColor(new Color(0.5f, 0.5f, 0.5f));
@@ -118,9 +119,12 @@ public class FightingCameraManager : MonoBehaviour
             await UniTask.DelayFrame(1);
         }
     
-    Canceled:
-        Time.timeScale = 1.0f;
-        FightingPhysics.SetFightingTimeScale(1);
+        Canceled:
+        if (FightingPhysics.FightingTimeScale == 0)
+        {
+            Time.timeScale = currentTimeScale;
+            FightingPhysics.SetFightingTimeScale(currentTimeScale);
+        }
         _backGroundManager.ChangeBackGroundColor(Color.white);
         _performUltCTS = null;
 

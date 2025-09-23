@@ -1,7 +1,5 @@
 using Cysharp.Threading.Tasks;
-using NUnit.Framework;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -122,12 +120,16 @@ public abstract class FightingManager : ModeManager
             {
                 _fightingUI.SetTimeLimitText(time.ToString("D2")); // 2桁表示
 
-                await FightingPhysics.DelayFrameWithTimeScale(
+                await FrameManager.DeleyFightingFrame(
                     FightingPhysics.FightingFrameRate,
-                    cancellationToken: token
+                    token
                     );
 
                 time--;
+                if(token.IsCancellationRequested)
+                {
+                    return;
+                }
             }
 
             await RoundSetPerformance(_fightingUI.TimeOver);
@@ -157,8 +159,6 @@ public abstract class FightingManager : ModeManager
         Time.timeScale = 0.5f;
         _playerData1P.CharacterState.SetAcceptOperations(false);
         _playerData2P.CharacterState.SetAcceptOperations(false);
-
-        Debug.Log("スロー演出");
 
         try
         {

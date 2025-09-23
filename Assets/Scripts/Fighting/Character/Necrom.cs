@@ -222,7 +222,7 @@ public class Necrom : CharacterActions
         bullet.Velocity = Vector2.zero;
         bullet.GetComponent<Animator>().SetTrigger("NmHitTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -357,7 +357,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         catch (OperationCanceledException)
         {
@@ -375,7 +375,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(30);
+            await FrameManager.DeleyFightingFrame(30);
         }
         catch (OperationCanceledException)
         {
@@ -395,7 +395,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(30);
+            await FrameManager.DeleyFightingFrame(30);
         }
         catch
         {
@@ -497,7 +497,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         catch (OperationCanceledException)
         {
@@ -516,7 +516,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(30);
+            await FrameManager.DeleyFightingFrame(30);
         }
         catch (OperationCanceledException)
         {
@@ -539,7 +539,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(30);
+            await FrameManager.DeleyFightingFrame(30);
         }
         catch
         {
@@ -566,7 +566,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(30);
+            await FrameManager.DeleyFightingFrame(30);
         }
         catch
         {
@@ -607,7 +607,7 @@ public class Necrom : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
 
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
