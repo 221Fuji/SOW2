@@ -25,6 +25,9 @@ public abstract class FightingManager : ModeManager
 
     public RoundData CurrentRoundData { get => _currentRoundData; }
 
+    //デバッグ用
+    [SerializeField] private StageData _stageData;
+
 
     private void Awake()
     {
@@ -81,7 +84,7 @@ public abstract class FightingManager : ModeManager
         ca1P.OnDie = KO;
         ca2P.OnDie = KO;
         //カメラ設定
-        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform);
+        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _stageData);
         //UI設定
         _fightingUI.SetPlayer(playerData1P, playerData2P);
         _fightingUI.HeartLost(_currentRoundData);

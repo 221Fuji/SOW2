@@ -21,7 +21,7 @@ public class FightingCameraManager : MonoBehaviour
 
     private CancellationTokenSource _performUltCTS;
 
-    public void InitializeCamera(Transform player1, Transform player2)
+    public void InitializeCamera(Transform player1, Transform player2, StageData stageData)
     {
         _cam = GetComponent<Camera>();
         _player1Pos = player1;
@@ -29,7 +29,7 @@ public class FightingCameraManager : MonoBehaviour
 
         float maxBackGroundPos = _stageBoundsMax.x - _maxCameraSize * _cam.aspect;
         float minBackGroundPos = _stageBoundsMin.x + _maxCameraSize * _cam.aspect;
-        _backGroundManager.InitializeBackGround(transform, minBackGroundPos, maxBackGroundPos);
+        _backGroundManager.InitializeBackGround(transform, minBackGroundPos, maxBackGroundPos, stageData);
 
         _player1Pos.GetComponent<CharacterActions>().PerformUltimate = OnPerformUltimateEffect;
         _player2Pos.GetComponent<CharacterActions>().PerformUltimate = OnPerformUltimateEffect;
