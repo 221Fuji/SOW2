@@ -1,6 +1,6 @@
 【対応デバイス】
 ・キーボード
-・ゲームパッド（確認済み：XboxController, HoriPad）
+・ゲームパッド（確認済み：XboxController, HoriPad, その他）
 
 
 
@@ -19,7 +19,7 @@ UI操作
 キャンセル：K
 詳細：L
 
-・ゲームパッド（XboxController）
+・ゲームパッド（XboxController準拠）
 移動：十字キー
 決定：A
 キャンセル：B
@@ -32,7 +32,7 @@ UI操作
 ジャンプ：W, Space
 ガード：shift
 
-・ゲームパッド（XboxController）
+・ゲームパッド（XboxController準拠）
 移動：十字キー、左スティック
 ジャンプ：上入力
 ガード：LT
