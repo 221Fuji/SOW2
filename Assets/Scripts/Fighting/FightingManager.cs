@@ -137,11 +137,14 @@ public abstract class FightingManager : ModeManager
 
             await RoundSetPerformance(_fightingUI.TimeOver);
 
-            if (_playerData1P.CharacterState.CurrentHP > _playerData2P.CharacterState.CurrentHP)
+            float hpPer1p = _playerData1P.CharacterState.CurrentHP / _playerData1P.CharacterState.MaxHP;
+            float hpPer2p = _playerData2P.CharacterState.CurrentHP / _playerData2P.CharacterState.MaxHP;
+
+            if (hpPer1p > hpPer2p)
             {
                 GoNextRound(2);
             }
-            else if (_playerData1P.CharacterState.CurrentHP < _playerData2P.CharacterState.CurrentHP)
+            else if (hpPer1p < hpPer2p)
             {
                 GoNextRound(1);
             }
