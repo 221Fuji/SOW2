@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fa4cb8d372e004cbcdad277812e725, type: 3}
+  m_Name: HamCastleData
+  m_EditorClassIdentifier: 
+  _stage: {fileID: 8964714354635542384, guid: c16ee28b42e2168459929c919d947ee5, type: 3}
+  _backgroundGround: {fileID: 8142986622373668038, guid: 17dbb24bf6c84db4c93bb70e8a60dee7, type: 3}

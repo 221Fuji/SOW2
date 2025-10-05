@@ -8,7 +8,7 @@ public class BackGroundManager : MonoBehaviour
     // 追従対象となるオブジェクト
     private Transform _target;
 
-    [SerializeField] private ParallaxBackground[] _pbg;
+    private ParallaxBackground[] _pbgPrefabs;
 
     // x座標の制限範囲
     private float _minX;
@@ -16,7 +16,7 @@ public class BackGroundManager : MonoBehaviour
 
     private float _fixedY;
 
-    public void InitializeBackGround(Transform target, float minBackGroundPos, float maxBackGroundPos)
+    public void InitializeBackGround(Transform target, float minBackGroundPos, float maxBackGroundPos, StageData stageData)
     {
         _target = target;
         _fixedY = transform.position.y;
@@ -24,7 +24,10 @@ public class BackGroundManager : MonoBehaviour
         _minX = minBackGroundPos;
         _maxX = maxBackGroundPos;
         
-        foreach (ParallaxBackground backGround in _pbg)
+        // 背景の生成
+        stageData.GenerateBGG();
+        _pbgPrefabs = stageData.GeneratePBG(transform);
+        foreach (var backGround in _pbgPrefabs)
         {
             backGround.InitializeParallax(transform);
         }
@@ -50,7 +53,7 @@ public class BackGroundManager : MonoBehaviour
 
     public void ChangeBackGroundColor(Color color)
     {
-        foreach(ParallaxBackground backGround in _pbg)
+        foreach(ParallaxBackground backGround in _pbgPrefabs)
         {
             backGround.GetComponent<SpriteRenderer>().color = color;
         }
