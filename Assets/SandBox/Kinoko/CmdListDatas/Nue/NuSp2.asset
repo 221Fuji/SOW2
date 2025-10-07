@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
   m_Name: NuSp2
   m_EditorClassIdentifier: 
-  _skillName: 
+  _skillName: "\u9ED2\u708E\u3068\u3070\u3057"
   _operationGuide: 
-  _skillOpEnum: 0
-  _skillImage: {fileID: 0}
-  _skillDiscription: 
+  _skillOpEnum: 6
+  _skillImage: {fileID: 21300000, guid: 57306f0079ede3d4e8d21af48e293569, type: 3}
+  _skillDiscription: "\u5F3E\u901F\u306E\u901F\u3044\u98DB\u3073\u9053\u5177"

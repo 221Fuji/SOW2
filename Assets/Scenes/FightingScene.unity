@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputPrefab: {fileID: 2184219165006310515, guid: 872fbbc74f62a6a49a9c934ed00850a2, type: 3}
-  _timeLimit: 15
+  _timeLimit: 90
   _startPosX1P: -4
   _startPosX2P: 4
   _camera: {fileID: 519420028}

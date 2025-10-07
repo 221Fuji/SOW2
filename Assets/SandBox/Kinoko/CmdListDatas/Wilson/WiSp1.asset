@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
+  m_Name: WiSp1
+  m_EditorClassIdentifier: 
+  _skillName: "\u632F\u308A\u4E0B\u308D\u3057"
+  _operationGuide: 
+  _skillOpEnum: 5
+  _skillImage: {fileID: 21300000, guid: 73ce475d4e4676544bd86e0a451f9395, type: 3}
+  _skillDiscription: "\u30B7\u30D3\u30A2\u3060\u304C\u5BFE\u7A7A\u306B\u3082\u4F7F\u3048\u308B"
