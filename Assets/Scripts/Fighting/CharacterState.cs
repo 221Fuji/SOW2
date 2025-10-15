@@ -83,6 +83,11 @@ public class CharacterState : MonoBehaviour
         CurrentBackSpeed = backSpeed;
     }
 
+    public void SetJumpPower(float jumpPower)
+    {
+        CurrentJumpPower = jumpPower;
+    }
+
     public void SetAcceptOperations(bool value)
     {
         AcceptOperations = value;

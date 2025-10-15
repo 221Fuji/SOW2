@@ -11,6 +11,9 @@ public class GenieHydra : CharacterActions
     [SerializeField] private float _backWalkSpeedM;
     [SerializeField] private float _frontWalkSpeedU;
     [SerializeField] private float _backWalkSpeedU;
+    [Header("ƒWƒƒƒ“ƒv‚Ì‚‚³")]
+    [SerializeField] private float _jumpPowerM;
+    [SerializeField] private float _jumpPowerU;
     [Header("’ÊíUŒ‚_M")]
     [SerializeField] private AttackInfo _normalMoveMInfo;
     [SerializeField] private HitBoxManager _normalMoveMHitBox;
@@ -23,15 +26,13 @@ public class GenieHydra : CharacterActions
     [SerializeField] private AttackInfo _nmBigInfo;
     [Header("ƒWƒƒƒ“ƒvUŒ‚_M")]
     [SerializeField] private AttackInfo _jumpMoveMInfo;
-    [SerializeField] private Bullet _jmMBulletPrefab;
-    [SerializeField] private Vector2 _jmMVelocity;
+    [SerializeField] private HitBoxManager _jumpMoveMHitBox;
     [Header("ƒWƒƒƒ“ƒvUŒ‚_U")]
     [SerializeField] private AttackInfo _jumpMoveUInfo;
     [SerializeField] private Bullet _jmUBulletPrefab;
     [SerializeField] private Vector2[] _jmUVelocity;
     [Header("•KE‹Z‚P")]
     [SerializeField] private AttackInfo _specialMove1Info;
-    [SerializeField] private Vector2 _sm1Direction;
     [SerializeField] private HitBoxManager _specialMove1HitBox;
     [Header("•KE‹Z2_M")]
     [SerializeField] private AttackInfo _specialMove2MInfo;
@@ -52,7 +53,7 @@ public class GenieHydra : CharacterActions
     [SerializeField] private HitBoxManager _ult2HitBox;
     [SerializeField] private Bullet _ult2BulletPrefab;
     [SerializeField] private int _ult2PerformanceFrame;
-    [Header("’²•KE‹Z2(ÅI’e)")]
+    [Header("’´•KE‹Z2(ÅI’e)")]
     [SerializeField] private AttackInfo _ultimate2LastInfo;
 
     private int _jumpMoveCount = 0; //‚P‰ñ‚ÌƒWƒƒƒ“ƒv‚Ås‚Á‚½ƒWƒƒƒ“ƒvUŒ‚‚Ì‰ñ”
@@ -152,6 +153,7 @@ public class GenieHydra : CharacterActions
     {
         _normalMoveMHitBox.InitializeHitBox(_normalMoveMInfo, gameObject);
         _normalMoveUHitBox.InitializeHitBox(_normalMoveUInfo, gameObject);
+        _jumpMoveMHitBox.InitializeHitBox(_jumpMoveMInfo, gameObject);
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
         _specialMove2MHitBox.InitializeHitBox(_specialMove2MInfo, gameObject);
         _ult2HitBox.InitializeHitBox(_ultimate2Info, gameObject);
@@ -386,16 +388,11 @@ public class GenieHydra : CharacterActions
         //UP‰ñû
         UPgain(_jumpMoveMInfo.MeterGain);
 
-        //•¨—‹““®
-        Velocity = Vector2.zero;
-        SetIsFixed(true);
-
         try
         {
             await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // ”­¶‚ğ‘Ò‚Â
-            CreateJmMBullet();
             await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // d’¼‚ğ‘Ò‚Â
-            AddForce(new Vector2(0, -2.5f));
+            await WaitForActiveFrame(_jumpMoveMHitBox, _jumpMoveMInfo.ActiveFrame, token); // ‘±‚ğ‘Ò‚Â
         }
         catch (OperationCanceledException)
         {
@@ -406,34 +403,7 @@ public class GenieHydra : CharacterActions
             // UŒ‚ˆ—‚ªŠ®—¹‚µ‚½ŒãAƒg[ƒNƒ“‚ğ‰ğ•ú
             _jumpMoveCTS.Dispose();
             _jumpMoveCTS = null;
-
-            //•¨—‹““®
-            SetIsFixed(false);
         }
-    }
-
-    private void CreateJmMBullet()
-    {
-        //’e‚ÌÀ•W‚Æ‘¬“xİ’è
-        Vector2 bulletVelocity = _jmMVelocity;
-        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
-        Quaternion rotation = new Quaternion(0, 0, 0, 0);
-        if (!_characterState.IsLeftSide)
-        {
-            bulletVelocity *= new Vector2(-1, 1);
-            bulletPosOffset *= new Vector2(-1, 1);
-            rotation = new Quaternion(0, 180, 0, 0);
-        }
-        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
-        Bullet bullet = Instantiate(_jmMBulletPrefab, bulletPos, rotation);
-        bullet.Velocity = bulletVelocity;
-
-        //’e‚Ì“–‚½‚è”»’èİ’è
-        bullet.HitBox.InitializeHitBox(_jumpMoveMInfo, gameObject);
-        bullet.HitBox.HitBullet = BulletExplode;
-        bullet.HitBox.GuardBullet = BulletExplode;
-        bullet.DestroyBullet = BulletExplode;
-        bullet.HitBox.SetIsActive(true);
     }
 
     /// <summary>
@@ -603,10 +573,12 @@ public class GenieHydra : CharacterActions
         if(toMander)
         {
             _characterState.SetWalkSpeed(_frontWalkSpeedM, _backWalkSpeedM);
+            _characterState.SetJumpPower(_jumpPowerM);
         }
         else
         {
             _characterState.SetWalkSpeed(_frontWalkSpeedU, _backWalkSpeedU);
+            _characterState.SetJumpPower(_jumpPowerU);
         }
         
     }
@@ -617,7 +589,6 @@ public class GenieHydra : CharacterActions
     public async UniTask SpecialMove2M()
     {
         if (!CanSpecialMove2) return;
-
 
         if (!_isMander)
         {
@@ -638,6 +609,8 @@ public class GenieHydra : CharacterActions
 
         //UP‰ñû
         UPgain(_specialMove2MInfo.MeterGain);
+
+        _characterState.TakeAnormalyState(AnormalyState.SuperArmor);
 
         try
         {
@@ -661,6 +634,7 @@ public class GenieHydra : CharacterActions
             {
                 OnMissAI?.Invoke();
             }
+            _characterState.RecoverAnormalyState(AnormalyState.SuperArmor);
 
             await RecoveryFrame(_specialMove2MInfo.RecoveryFrame, token); // d’¼‚ğ‘Ò‚Â
         }

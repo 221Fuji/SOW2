@@ -27,6 +27,7 @@ MonoBehaviour:
   _csDot: {fileID: 6728957238287151238, guid: 94fccec80c83bdd43b2248cbd0806917, type: 3}
   _resultWhiteStandImage: {fileID: 6918718593919952772, guid: 0703786a64504ad4ba9c95ec6e7ffae0, type: 3}
   _resultStandImage: {fileID: 4059209344182142448, guid: ef6234295ff328946bae3e94924e2aa2, type: 3}
+  _stageData: {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
   _myNumber: 0
   _cmdListBoxes:
   - {fileID: 11400000, guid: ba20cd4474c7f8948a72e2909e014223, type: 2}

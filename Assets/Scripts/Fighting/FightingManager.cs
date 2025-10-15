@@ -84,7 +84,7 @@ public abstract class FightingManager : ModeManager
         ca1P.OnDie = KO;
         ca2P.OnDie = KO;
         //ƒJƒƒ‰İ’è
-        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _stageData);
+        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _playerData1P.CharacterData.StageData);
         //UIİ’è
         _fightingUI.SetPlayer(playerData1P, playerData2P);
         _fightingUI.HeartLost(_currentRoundData);

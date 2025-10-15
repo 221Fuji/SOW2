@@ -29,6 +29,8 @@ public class CharacterData : ScriptableObject
     [Header("ResultSceneでのImage")]
     [SerializeField] private Image _resultWhiteStandImage;
     [SerializeField] private Image _resultStandImage;
+    [Header("ステージ")]
+    [SerializeField] private StageData _stageData;
     [Header("ログ取る用の個体値")]
     [SerializeField] private int _myNumber;
     [Header("コマンドリスト用の要素リスト(1つの技につき1つ,0から表示)")]
@@ -50,6 +52,7 @@ public class CharacterData : ScriptableObject
     public GameObject CSDot{get {return _csDot;}}
     public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
     public Image ResultStandImage { get { return _resultStandImage; } }
+    public StageData StageData { get { return _stageData;} }
     public int MyNumber { get { return _myNumber; } }
     public List<CmdListBox> CmdListBoxes { get { return _cmdListBoxes; } }
 }

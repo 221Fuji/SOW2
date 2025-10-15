@@ -47,7 +47,7 @@ MonoBehaviour:
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _sceneCheckMode: 0
+  _sceneCheckMode: 1
 --- !u!1 &430997429303589336
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   _upGainSpeed: 0.05
   _defaultFrontSpeed: 10
   _defaultBackSpeed: 6
-  _defaultJumpPower: 25
+  _defaultJumpPower: 22.5
 --- !u!114 &6658933430545523452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +272,8 @@ MonoBehaviour:
   _backWalkSpeedM: 6
   _frontWalkSpeedU: 7
   _backWalkSpeedU: 4.2
+  _jumpPowerM: 22.5
+  _jumpPowerU: 25
   _normalMoveMInfo:
     Name: NormalMoveM
     Damage: 20
@@ -346,23 +348,22 @@ MonoBehaviour:
     IsBullet: 1
   _jumpMoveMInfo:
     Name: JumpMoveM
-    Damage: 15
-    StartupFrame: 20
-    ActiveFrame: 0
+    Damage: 20
+    StartupFrame: 1
+    ActiveFrame: 15
     RecoveryFrame: 10
     HitFrame: 25
     GuardFrame: 10
     HitStopFrame: 10
     MeterGain: 2.5
-    ConsumptionSP: 30
-    DrainSP: 20
-    IsHeavy: 0
+    ConsumptionSP: 20
+    DrainSP: 25
+    IsHeavy: 1
     HitBackDirection: {x: 10, y: 5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
-  _jmMBulletPrefab: {fileID: 908931025058630461, guid: 0529f2935d98e6f43a67488fe93ace4f, type: 3}
-  _jmMVelocity: {x: 8, y: -7.5}
+  _jumpMoveMHitBox: {fileID: 8350641735971093731}
   _jumpMoveUInfo:
     Name: JumpMoveU
     Damage: 10
@@ -403,7 +404,6 @@ MonoBehaviour:
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 0
-  _sm1Direction: {x: 0, y: 0}
   _specialMove1HitBox: {fileID: 3928230181282037881}
   _specialMove2MInfo:
     Name: SpecialMove2M
@@ -788,7 +788,7 @@ MonoBehaviour:
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _sceneCheckMode: 1
+  _sceneCheckMode: 0
 --- !u!1 &8387728139326063029
 GameObject:
   m_ObjectHideFlags: 0

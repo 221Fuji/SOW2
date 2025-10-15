@@ -19,7 +19,7 @@ public class ModeSelectManager : ModeManager
 
         OtherInputReceiver oir = _player1Input.gameObject.GetComponent<OtherInputReceiver>();
         SetDelegate(oir);
-        WaitForFade(Color.white, 0).Forget();
+        WaitForFade(Color.black, 0).Forget();
     }
 
     private void SetDelegate(OtherInputReceiver oir)
@@ -54,7 +54,7 @@ public class ModeSelectManager : ModeManager
 
         try
         {
-            await _panel.DOFade(endValue, 0.5f).ToUniTask(cancellationToken: _fadeCTS.Token);
+            await _panel.DOFade(endValue, 0.25f).ToUniTask(cancellationToken: _fadeCTS.Token);
         }
         catch(OperationCanceledException)
         {

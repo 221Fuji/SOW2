@@ -1242,7 +1242,7 @@ MonoBehaviour:
   _camera: {fileID: 519420028}
   _fightingUI: {fileID: 522004978}
   _effectManager: {fileID: 1113974581}
-  _stageData: {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
+  _stageData: {fileID: 11400000, guid: c8c00283bd9d20749b5c1306aa71e57b, type: 2}
   _runLogs: {fileID: 0}
 --- !u!4 &611920460
 Transform:
