@@ -105,7 +105,7 @@ public class FightingRigidBody : MonoBehaviour
         //疑似フレームで毎フレーム実行する処理
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_isWall) return;
 

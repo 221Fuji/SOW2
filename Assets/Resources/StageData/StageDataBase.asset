@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _backgroundCanvas:
   - {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
-  - {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
   - {fileID: 11400000, guid: c8c00283bd9d20749b5c1306aa71e57b, type: 2}
+  - {fileID: 11400000, guid: 16545a9ca00beae449eff7365a4947e9, type: 2}

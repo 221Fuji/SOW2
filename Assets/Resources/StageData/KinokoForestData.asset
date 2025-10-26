@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: KinokoForestData
   m_EditorClassIdentifier: 
   _stage: {fileID: 3386840118237560916, guid: 6a04387555983e648aad73eacf0cb405, type: 3}
-  _backgroundGround: {fileID: 8142986622373668038, guid: 17dbb24bf6c84db4c93bb70e8a60dee7, type: 3}
+  _backgroundGround: {fileID: 3476737474039681239, guid: 544f7d1445e83fb4d9855b44cb22d17d, type: 3}

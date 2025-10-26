@@ -341,9 +341,9 @@ public abstract class CharacterActions : FightingRigidBody
     /// <summary>
     /// ジャンプさせる
     /// </summary>
-    protected virtual void Jump()
+    protected virtual bool Jump()
     {
-        if (!CanJump) return;
+        if (!CanJump) return false;
 
         SetGround(false);
 
@@ -354,6 +354,8 @@ public abstract class CharacterActions : FightingRigidBody
 
         //アニメーション
         _animator.SetTrigger("JumpTrigger");
+
+        return true;
     }
 
     /// <summary>
@@ -487,9 +489,7 @@ public abstract class CharacterActions : FightingRigidBody
             return;
         }
 
-        //アニメーション処理
-        AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 1); // AnimatorのLayerをHitLayerを最優先に変更
-        _animator.SetTrigger("HurtTrigger"); // 喰らいアニメーション再生
+        PlayHurtAnimation();
 
         //エフェクト処理
         if (attackInfo.IsHeavy)
@@ -532,6 +532,13 @@ public abstract class CharacterActions : FightingRigidBody
         await HitStun(attackInfo.HitFrame, _characterState.CreateHitCT());
 
         AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 0); // AnimatorのLayerをHitLayerを最優度を元に戻す
+    }
+
+    protected virtual void PlayHurtAnimation()
+    {
+        //アニメーション処理
+        AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 1); // AnimatorのLayerをHitLayerを最優先に変更
+        _animator.SetTrigger("HurtTrigger"); // 喰らいアニメーション再生
     }
 
     /// <summary>

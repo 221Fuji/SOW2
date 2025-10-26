@@ -395,7 +395,7 @@ public class ViolaCloud : CharacterActions
             Fog fog = Instantiate(_fogPrefab);
             _fogList.Add(fog);
             fog.transform.position = transform.position;
-            fog.InitializeFog(_characterState.IsLeftSide, gameObject);
+            fog.Initialize(_characterState.IsLeftSide, this);
             fog.SetIsActive(true);
             await RecoveryFrame(_specialMove1Info.RecoveryFrame, token); // çdíºÇë“Ç¬
         }
