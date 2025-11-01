@@ -523,7 +523,6 @@ public abstract class CharacterActions : FightingRigidBody
 
                 //y•ûŒü‚É•‚‚«‚É‚­‚­‚È‚Á‚Ä‚¢‚­
                 hitBackVector *= new Vector2(1, correction);
-                Debug.Log(hitBackVector);
             }
             AddForce(hitBackVector);
         }

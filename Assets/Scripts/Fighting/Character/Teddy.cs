@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class Teddy : CharacterActions
@@ -11,26 +10,28 @@ public class Teddy : CharacterActions
     [Header("通常攻撃")]
     [SerializeField] private AttackInfo _normalMoveInfo;
     [SerializeField] private HitBoxManager _normalMoveHitBox;
+    [SerializeField] private float _gainUramiMeter;
     [Header("ジャンプ攻撃")]
     [SerializeField] private AttackInfo _jumpMoveInfo;
     [SerializeField] private Bullet _jmBulletPrefab;
     [Header("必殺技１")]
     [SerializeField] private AttackInfo _specialMove1Info;
-    [SerializeField] private Vector2 _sm1Direction;
     [SerializeField] private HitBoxManager _specialMove1HitBox;
+    [SerializeField] private GroundFire _groundFire;
     [Header("必殺技2")]
     [SerializeField] private AttackInfo _specialMove2Info;
-    [SerializeField] private HitBoxManager _specialMove2HitBox;
+    [SerializeField] private Bullet _sm2BulletPrefab;
+    [SerializeField] private Vector2 _sm2BulletDirection;
     [Header("超必殺技")]
     [SerializeField] private AttackInfo _ultimateInfo;
-    [SerializeField] private AttackInfo _ultBulletInfo;
-    [SerializeField] private GameObject _ultBullet;
-    private HitBoxManager _ultHitBox;
+    [SerializeField] private Bullet _ultBulletPrefab;
+    [SerializeField] private int _ultPerformanceFrame;
 
     private int _jumpMoveCount = 0; //１回のジャンプで行ったジャンプ攻撃の回数
     private bool _isKageInGround = false;
     private Bullet _jmBullet;
-    public float UramiMaxResource { get; } = 100;
+    private Bullet _sm2Bullet = null;
+    public float UramiMaxResource { get; } = 50;
     public float CurrentUramiResource { get; private set; }
 
     //各行動のCancellationTokenSource(CTS)
@@ -93,6 +94,7 @@ public class Teddy : CharacterActions
             if (!CanEveryAction) return false;
             if (_characterState.AnormalyStates.Contains(AnormalyState.Fatigue)) return false;
             if (!OnGround) return false;
+            if (_sm2Bullet) return false;
 
             return true;
         }
@@ -131,8 +133,15 @@ public class Teddy : CharacterActions
     protected override void SetHitBox()
     {
         _normalMoveHitBox.InitializeHitBox(_normalMoveInfo, gameObject);
+        _normalMoveHitBox.Hit = NormalMoveHit;
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
-        _specialMove2HitBox.InitializeHitBox(_specialMove2Info, gameObject);
+    }
+
+    public override void InitializeCA(int playerNum, CharacterActions enemyCA)
+    {
+        base.InitializeCA(playerNum, enemyCA);
+        _sm2Bullet = null;
+        AddUramiResource(-UramiMaxResource);
     }
 
     protected override void Update()
@@ -143,19 +152,6 @@ public class Teddy : CharacterActions
         {
             _airKage.transform.position = new Vector2(transform.position.x, StageParameter.GroundPosY);
         }
-    }
-
-    protected override bool Jump()
-    {
-        bool isJumping = base.Jump();
-        if (isJumping)
-        {
-            _airKage.gameObject.SetActive(true);
-            _kage.gameObject.SetActive(false);
-            _airKage.SetTrigger("InGroundTrigger");
-            _isKageInGround = true;
-        }
-        return isJumping;
     }
 
     protected override void PlayHurtAnimation()
@@ -169,6 +165,27 @@ public class Teddy : CharacterActions
             AnimatorByLayerName.SetLayerWeightByName(_animator, "HurtLayer", 1);
             _animator.SetTrigger("HurtAirTrigger");
         }  
+    }
+
+    private void AddUramiResource(float value)
+    {
+        CurrentUramiResource += value;
+        CurrentUramiResource = Mathf.Clamp(CurrentUramiResource, 0, UramiMaxResource);
+
+        if(CurrentUramiResource > 0)
+        {
+            _characterState.TakeAnormalyState(AnormalyState.SuperArmor);
+        }
+        if(CurrentUramiResource <= 0)
+        {
+            _characterState.RecoverAnormalyState(AnormalyState.SuperArmor);
+        }
+    }
+
+    public override async UniTask TakeAttack(AttackInfo attackInfo)
+    {
+        await base.TakeAttack(attackInfo);
+        AddUramiResource(-attackInfo.Damage);
     }
 
     /// <summary>
@@ -223,6 +240,11 @@ public class Teddy : CharacterActions
             //layerを元に戻す
             AnimatorByLayerName.SetLayerWeightByName(_animator, "NormalMoveLayer", 0);
         }
+    }
+
+    private void NormalMoveHit()
+    {
+        AddUramiResource(_gainUramiMeter);
     }
 
     /// <summary>
@@ -307,6 +329,7 @@ public class Teddy : CharacterActions
         {
             await StartUpMove(_specialMove1Info.StartupFrame, token); // 発生を待つ
             await WaitForActiveFrame(_specialMove1HitBox, _specialMove1Info.ActiveFrame, token); // 持続を待つ
+            CreateGroundFire();
             await RecoveryFrame(_specialMove1Info.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
@@ -322,6 +345,19 @@ public class Teddy : CharacterActions
 
         //layerを元に戻す
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove1Layer", 0);
+    }
+
+    private void CreateGroundFire()
+    {
+        GroundFire groundFire = Instantiate(_groundFire);
+        groundFire.Initialize(_characterState.IsLeftSide, this);
+        groundFire.SetIsActive(true);
+        Vector2 posOffset = new Vector2(4.75f, StageParameter.GroundPosY);
+        if (!_characterState.IsLeftSide)
+        {
+            posOffset *= new Vector2(-1, 1);
+        }
+        groundFire.transform.position = transform.position + (Vector3)posOffset;
     }
 
     /// <summary>
@@ -351,12 +387,12 @@ public class Teddy : CharacterActions
         try
         {
             await StartUpMove(_specialMove2Info.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_specialMove2HitBox, _specialMove2Info.ActiveFrame, token); // 持続を待つ
+            CreateSm2Bullet(token);
             await RecoveryFrame(_specialMove2Info.RecoveryFrame, token); // 硬直を待つ
         }
         catch (OperationCanceledException)
         {
-            _specialMove2HitBox.SetIsActive(false);
+            //追加
         }
         finally
         {
@@ -367,6 +403,55 @@ public class Teddy : CharacterActions
 
         //layerを元に戻す
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove2Layer", 0);
+    }
+
+    private async void CreateSm2Bullet(CancellationToken token)
+    {
+        //弾の座標と速度設定
+        Vector2 bulletVelocity = _sm2BulletDirection;
+        Vector2 bulletPosOffset = new Vector2(3.5f, 0.45f);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
+        {
+            bulletVelocity *= new Vector2(-1, 1);
+            bulletPosOffset *= new Vector2(-1, 1);
+            rotation = new Quaternion(0, 180, 0, 0);
+        }
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+        _sm2Bullet = Instantiate(_sm2BulletPrefab, bulletPos, rotation);
+        _sm2Bullet.Velocity = bulletVelocity;
+
+        //弾の当たり判定設定
+        _sm2Bullet.HitBox.InitializeHitBox(_specialMove2Info, gameObject);
+        _sm2Bullet.HitBox.HitBullet = Sm2BulletHit;
+        _sm2Bullet.HitBox.GuardBullet = Sm2BulletHit;
+        _sm2Bullet.DestroyBullet = Sm2BulletHit;
+
+        try
+        {
+            await WaitForActiveFrame(_sm2Bullet.HitBox, _specialMove2Info.ActiveFrame, token);
+        }
+        finally
+        {
+            Sm2BulletHit(_sm2Bullet);
+        }
+    }
+
+    private async void Sm2BulletHit(Bullet bullet)
+    {
+        if (bullet == null) return;
+
+        bullet.Velocity = Vector2.zero;
+        bullet.SetGravityScale(0);
+        bullet.GetComponent<Animator>().SetTrigger("HitTrigger");
+
+        await FrameManager.DeleyFightingFrame(30);
+
+        if (bullet != null)
+        {
+            Destroy(bullet.gameObject);
+            _sm2Bullet = null;
+        }
     }
 
     /// <summary>
@@ -390,102 +475,61 @@ public class Teddy : CharacterActions
 
         //物理挙動
         Velocity = Vector2.zero;
-        SetIsFixed(true);
 
         //演出
-        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, 30);
+        PerformUltimate?.Invoke(GetPushBackBox().center, 3.5f, _ultPerformanceFrame);
         _characterState.SetIsUltPerformance();
+
+        AddUramiResource(UramiMaxResource);
 
         try
         {
             await StartUpMove(_ultimateInfo.StartupFrame, token); // 発生を待つ
-            CreateUltBullet();
-            await RecoveryFrame(_ultimateInfo.RecoveryFrame, token); // 硬直を待つ
+            await CreateUltBullet(token);
         }
         finally
         {
             // 攻撃処理が完了した後、トークンを解放
             _ultCTS.Dispose();
             _ultCTS = null;
-
-            //物理挙動
-            SetIsFixed(false);
+            _hurtBox.SetActive(true);
         }
 
         //layerを元に戻す
         AnimatorByLayerName.SetLayerWeightByName(_animator, "UltLayer", 0);
     }
 
-    private void CreateUltBullet()
+    private async UniTask CreateUltBullet(CancellationToken token)
     {
-        //UltBulletの生成座標
-        float generatePosOffsetX = 2;
-        float generatePosOffsetY = 1;
-        //ヒットバック等のベクトル修正
-        AttackInfo attackInfo = _ultBulletInfo;
-
-        //入力方向によって設定
-        if (WalkDirection() < 0)
+        //弾の座標
+        Vector2 bulletPosOffset = new Vector2(6f, 0);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        if (!_characterState.IsLeftSide)
         {
-            generatePosOffsetX *= -1;
+            bulletPosOffset *= new Vector2(-1, 1);
+            rotation = new Quaternion(0, 180, 0, 0);
         }
-        else
-        {
-            attackInfo.HitBackDirection *= new Vector2(-1, 1);
-            attackInfo.GuardBackDirection *= new Vector2(-1, 1);
-        }
-        if (transform.position.x > EnemyCA.transform.position.x)
-        {
-            generatePosOffsetX *= -1;
-        }
-        float generatePosX = EnemyCA.transform.position.x + generatePosOffsetX;
-        float generatePosY = EnemyCA.transform.position.y + generatePosOffsetY;
-        Vector2 generatePos = new Vector2(generatePosX, generatePosY);
+        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
+        Bullet bullet = Instantiate(_ultBulletPrefab, bulletPos, rotation);
+        bullet.Velocity = Vector2.zero;
 
-        //UltBulletの向き
-        Quaternion bulletQuaternion
-            = new Quaternion(0, generatePosOffsetX > 0 ? 180 : 0, 0, 0);
+        //弾の当たり判定設定
+        bullet.HitBox.InitializeHitBox(_ultimateInfo, gameObject);
 
-        //UltBulletの生成
-        GameObject bullet = Instantiate(_ultBullet, generatePos, bulletQuaternion);
-        _ultHitBox = bullet.GetComponentInChildren<HitBoxManager>();
-        _ultHitBox?.InitializeHitBox(attackInfo, gameObject);
-
-        // 新しいCTSを生成
-        _ultBulletCTS = new CancellationTokenSource();
-        CancellationToken token = _ultBulletCTS.Token;
-
-        UltBullet(bullet, token).Forget();
-    }
-
-    private async UniTask UltBullet(GameObject bullet, CancellationToken token)
-    {
         try
         {
-            await StartUpMove(_ultBulletInfo.StartupFrame, token); // 発生を待つ
-            await WaitForActiveFrame(_ultHitBox, _ultBulletInfo.ActiveFrame, token); // 持続を待つ
-            await RecoveryFrame(_ultBulletInfo.RecoveryFrame, token); // 硬直を待つ
-        }
-        catch (OperationCanceledException)
-        {
-            _ultHitBox.SetIsActive(false);
+            await WaitForActiveFrame(bullet.HitBox, _ultimateInfo.ActiveFrame, token);
+            await RecoveryFrame(_ultimateInfo.RecoveryFrame, token);
         }
         finally
         {
-            // 攻撃処理が完了した後、トークンを解放
-            _ultBulletCTS.Dispose();
-            _ultBulletCTS = null;
-
-            //UltBullet削除
-            if (bullet != null)
+            if(bullet)
             {
-                Destroy(bullet);
-                _ultHitBox = null;
+                Destroy(bullet.gameObject);
             }
         }
     }
 
-    //着地時にジャンプ攻撃をキャンセル
     protected async override void Land()
     {
         _jumpMoveCount = 0;
@@ -505,9 +549,17 @@ public class Teddy : CharacterActions
             return;
         }
         
-        _kage.gameObject.SetActive(true);
-        _airKage.gameObject.SetActive(false);
+        _kage?.gameObject?.SetActive(true);
+        _airKage?.gameObject?.SetActive(false);
         _isKageInGround = false;
+    }
+
+    protected override void LeaveGround()
+    {
+        _airKage.gameObject.SetActive(true);
+        _kage.gameObject.SetActive(false);
+        _airKage.SetTrigger("InGroundTrigger");
+        _isKageInGround = true;
     }
 
     public override void CancelActionByHit()

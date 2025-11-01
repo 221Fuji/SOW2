@@ -445,10 +445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d18675f7b8dadb4e9ef2a59f7631d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultMaxHP: 100
+  _defaultMaxHP: 125
   _defaultMaxSP: 100
   _defaultMaxUP: 100
-  _upGainSpeed: 0.05
+  _upGainSpeed: 1
   _defaultFrontSpeed: 8
   _defaultBackSpeed: 4
   _defaultJumpPower: 25
@@ -466,33 +466,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 1
   _pushBackBoxSize: {x: 1, y: 2.75}
-  _pushBackBoxOffset: {x: 0, y: 1.44}
+  _pushBackBoxOffset: {x: 0, y: 1.375}
   _isFixed: 0
   _isWall: 0
   _hurtBox: {fileID: 2781326414960439439}
   _kage: {fileID: 8711677416011913862}
   _airKage: {fileID: 1886131147462860419}
   _normalMoveInfo:
-    Name: 
-    Damage: 0
+    Name: NormalMove
+    Damage: 25
     StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
     HitFrame: 20
     GuardFrame: 20
     HitStopFrame: 10
-    MeterGain: 0
-    ConsumptionSP: 0
-    DrainSP: 0
+    MeterGain: 5
+    ConsumptionSP: 10
+    DrainSP: 25
     IsHeavy: 0
     HitBackDirection: {x: 15, y: 10}
     GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 10, y: 0}
     IsBullet: 0
   _normalMoveHitBox: {fileID: 4396965088137991459}
+  _gainUramiMeter: 25
   _jumpMoveInfo:
     Name: JumpMove
-    Damage: 0
+    Damage: 20
     StartupFrame: 5
     ActiveFrame: 30
     RecoveryFrame: 10
@@ -509,77 +510,62 @@ MonoBehaviour:
     IsBullet: 1
   _jmBulletPrefab: {fileID: 7069242099171701158, guid: 5dff2eca2ee44fc4ca439ca98016e255, type: 3}
   _specialMove1Info:
-    Name: 
-    Damage: 0
-    StartupFrame: 15
+    Name: SpecialMove1
+    Damage: 30
+    StartupFrame: 25
     ActiveFrame: 30
     RecoveryFrame: 20
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
-    MeterGain: 0
-    ConsumptionSP: 0
-    DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
+    HitFrame: 30
+    GuardFrame: 45
+    HitStopFrame: 20
+    MeterGain: 10
+    ConsumptionSP: 25
+    DrainSP: 35
+    IsHeavy: 1
+    HitBackDirection: {x: 15, y: 10}
+    GuardBackDirection: {x: 12.5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 0
-  _sm1Direction: {x: 0, y: 0}
   _specialMove1HitBox: {fileID: 3291845313395013417}
+  _groundFire: {fileID: 3236081178072884663, guid: 0811dfb05a722b64a8ae2c45ef2265a3, type: 3}
   _specialMove2Info:
-    Name: 
-    Damage: 0
-    StartupFrame: 0
-    ActiveFrame: 0
-    RecoveryFrame: 0
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
-    MeterGain: 0
-    ConsumptionSP: 0
-    DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
+    Name: SpecialMove2
+    Damage: 15
+    StartupFrame: 13
+    ActiveFrame: 25
+    RecoveryFrame: 20
+    HitFrame: 10
+    GuardFrame: 25
+    HitStopFrame: 10
+    MeterGain: 5
+    ConsumptionSP: 20
+    DrainSP: 25
+    IsHeavy: 1
+    HitBackDirection: {x: 7.5, y: 7.5}
+    GuardBackDirection: {x: 17.5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-    IsBullet: 0
-  _specialMove2HitBox: {fileID: 2999604849497566848}
+    IsBullet: 1
+  _sm2BulletPrefab: {fileID: 4562610450041397270, guid: e4a297383da049241abde41248bca7b8, type: 3}
+  _sm2BulletDirection: {x: 12.5, y: 12.5}
   _ultimateInfo:
-    Name: 
-    Damage: 0
-    StartupFrame: 0
-    ActiveFrame: 0
-    RecoveryFrame: 0
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
+    Name: Ultimate
+    Damage: 80
+    StartupFrame: 10
+    ActiveFrame: 80
+    RecoveryFrame: 30
+    HitFrame: 30
+    GuardFrame: 30
+    HitStopFrame: 20
     MeterGain: 0
     ConsumptionSP: 0
-    DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
+    DrainSP: 40
+    IsHeavy: 1
+    HitBackDirection: {x: 20, y: 10}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-    IsBullet: 0
-  _ultBulletInfo:
-    Name: 
-    Damage: 0
-    StartupFrame: 0
-    ActiveFrame: 0
-    RecoveryFrame: 0
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
-    MeterGain: 0
-    ConsumptionSP: 0
-    DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
-    GuardedBackDirection: {x: 0, y: 0}
-    IsBullet: 0
-  _ultBullet: {fileID: 0}
+    IsBullet: 1
+  _ultBulletPrefab: {fileID: 6024670167045774074, guid: 8d7a82fbfe718fe48a78f9fad6d8951c, type: 3}
+  _ultPerformanceFrame: 30
 --- !u!114 &9101376122524232033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8836754271564881744
 Transform:
   m_ObjectHideFlags: 0

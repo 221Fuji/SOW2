@@ -178,12 +178,6 @@ public class FightingRigidBody : MonoBehaviour
             OnLand();
         }
 
-        //—£—¤
-        if(OnGround && !onGround)
-        {
-            LeaveGround();
-        }
-
         SetGround(onGround);
     }
 
@@ -318,6 +312,11 @@ public class FightingRigidBody : MonoBehaviour
 
     public void SetGround(bool value)
     {
+        if(OnGround && !value)
+        {
+            LeaveGround();
+        }
+
         OnGround = value;
     }
 

@@ -323,7 +323,7 @@ MonoBehaviour:
     Damage: 0
     StartupFrame: 15
     ActiveFrame: 0
-    RecoveryFrame: 25
+    RecoveryFrame: 15
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
-  _fogPrefab: {fileID: 4315926309681932266, guid: f48997aabcef1e445966146509ac6fc3, type: 3}
+  _fogPrefab: {fileID: 4702723710168132339, guid: f48997aabcef1e445966146509ac6fc3, type: 3}
   _collectEffectAnimator: {fileID: 6528662044006476091}
   _gainValue: 0.3
   _specialMove2Info:
@@ -434,7 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &302402873178975275
 Animator:
   serializedVersion: 5

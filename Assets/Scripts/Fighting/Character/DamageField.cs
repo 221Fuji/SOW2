@@ -20,12 +20,15 @@ public class DamageField<TCharacterActions> : FightingRigidBody where TCharacter
     public bool IsActive { get; private set; }
     public int PlayerNum 
     {
-        get { return _self.GetComponent<CharacterActions>().PlayerNum; }
+        get { return _self.PlayerNum; }
     }
+
+    private CharacterState _enemyCS;
 
     public void Initialize(bool isLeftSide, TCharacterActions self)
     {
         _self = self;
+        _enemyCS = self.EnemyCA.GetComponent<CharacterState>();
 
         float velocityX = _speed;
         if(!isLeftSide)
@@ -39,6 +42,7 @@ public class DamageField<TCharacterActions> : FightingRigidBody where TCharacter
     public void SetIsActive(bool value)
     {
         IsActive = value;
+        Debug.Log("aaa" + value);
     }
 
     protected override void OnWall(FightingRigidBody other)
@@ -57,32 +61,20 @@ public class DamageField<TCharacterActions> : FightingRigidBody where TCharacter
     {
         //当たり判定に面積がない場合無効にする
         if (_fieldBox.x == 0 || _fieldBox.y == 0) return;
-
         Collider2D[] colliders = Physics2D.OverlapBoxAll
             ((Vector2)transform.position + _boxOffset, _fieldBox, transform.rotation.z, _hurtBoxLayer);
 
         foreach (Collider2D collider in colliders)
         {
-            //自身には当たらない
-            if (collider.transform.parent == _self.transform) continue;
-
-            HurtBoxManager hurtBox = collider.GetComponent<HurtBoxManager>();
-            //自身のオブジェクトには当たらない
-            if (hurtBox.PlayerNum == PlayerNum) continue;
-
             // 攻撃が当たった情報を敵に送る
-            GameObject enemy = collider.transform.parent.gameObject;
-            CharacterState enemyCS = enemy.GetComponent<CharacterState>();
-
-            if(enemyCS == null) continue;
-
-            if (enemyCS.CurrentHP - _damage > LOWEST_HP)
+            if(_enemyCS.gameObject != collider.transform.parent.gameObject) continue;
+            if (_enemyCS.CurrentHP - _damage > LOWEST_HP)
             {
-                enemyCS.TakeDamage(_damage);
+                _enemyCS.TakeDamage(_damage);
             }
-            else if (enemyCS.CurrentHP - _damage > LOWEST_HP)
+            else if (_enemyCS.CurrentHP - _damage > LOWEST_HP)
             {
-                enemyCS.TakeDamage(enemyCS.CurrentHP - LOWEST_HP);
+                _enemyCS.TakeDamage(_enemyCS.CurrentHP - LOWEST_HP);
             }
         }
     }

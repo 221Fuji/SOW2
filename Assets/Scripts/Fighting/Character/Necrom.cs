@@ -608,7 +608,6 @@ public class Necrom : CharacterActions
         try
         {
             await FrameManager.DeleyFightingFrame(1, token);
-
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             _hurtBox.SetActive(false);

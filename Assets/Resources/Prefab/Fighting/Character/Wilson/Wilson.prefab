@@ -390,7 +390,7 @@ MonoBehaviour:
     Name: UltStance
     Damage: 10
     StartupFrame: 60
-    ActiveFrame: 60
+    ActiveFrame: 120
     RecoveryFrame: 40
     HitFrame: 30
     GuardFrame: 30
@@ -463,7 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &1496985378351745944
 Animator:
   serializedVersion: 5
