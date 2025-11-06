@@ -160,17 +160,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b2e34a3b-ad73-45a6-9a12-575539ed1a97"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";GamepadScheme"",
-                    ""action"": ""FourDirections"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1fb4583b-8b96-4d2c-84bc-af48c2b13bbe"",
                     ""path"": ""<HID::HORI CO.,LTD. HORIPAD 4 >/hat"",
                     ""interactions"": """",
@@ -217,17 +206,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""6ba72158-d196-425b-a478-34f8d7fbcdf3"",
                     ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";GamepadScheme"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ba1b6a63-cdf7-4d53-b41b-c16b272dbd86"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";GamepadScheme"",
@@ -433,39 +411,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""d35ab960-da06-4a30-8f84-3345047ba47e"",
-                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD 4 >/hat"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";HoriPadScheme"",
-                    ""action"": ""FourDirections"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7b9f6c7a-86fa-4c55-819e-663e094081db"",
-                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD 4 >/stick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";HoriPadScheme"",
-                    ""action"": ""FourDirections"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4404fed3-fc7b-4fd8-be12-f2abf22776b3"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";GamepadScheme"",
-                    ""action"": ""FourDirections"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""39b356a5-8f93-49d9-9956-d2a5488d73c4"",

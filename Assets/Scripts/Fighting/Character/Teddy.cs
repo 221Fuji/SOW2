@@ -104,6 +104,7 @@ public class Teddy : CharacterActions
         get
         {
             if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false;
 
             return true;
         }
