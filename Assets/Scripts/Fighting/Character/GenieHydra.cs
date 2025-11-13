@@ -425,7 +425,7 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SP消費
-        _characterState.SetCurrentSP(-_normalMoveUInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_jumpMoveUInfo.ConsumptionSP);
 
         //UP回収
         UPgain(_jumpMoveUInfo.MeterGain);
@@ -460,7 +460,7 @@ public class GenieHydra : CharacterActions
     {
         //弾の座標と速度設定
         Vector2 bulletVelocity = new Vector2(1, 1);
-        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
+        Vector2 bulletPosOffset = new Vector2(2.5f, 3);
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
         if (!_characterState.IsLeftSide)
         {
@@ -509,9 +509,6 @@ public class GenieHydra : CharacterActions
 
         //アニメーション
         bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
-
-        bullet.transform.position = bullet.HitBox.transform.position;
-
         await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
@@ -535,8 +532,8 @@ public class GenieHydra : CharacterActions
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove1Layer", 1);
         _animator.SetTrigger("SpecialMove1Trigger");
 
-        //SP消費
-        _characterState.SetCurrentSP(-_specialMove1Info.ConsumptionSP);
+        //SP回復
+        _characterState.SetCurrentSP(_specialMove1Info.ConsumptionSP);
 
         //UP回収
         UPgain(_specialMove1Info.MeterGain);

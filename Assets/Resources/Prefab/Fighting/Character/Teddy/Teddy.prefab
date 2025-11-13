@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d18675f7b8dadb4e9ef2a59f7631d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultMaxHP: 125
+  _defaultMaxHP: 100
   _defaultMaxSP: 100
   _defaultMaxUP: 100
   _upGainSpeed: 0.05
@@ -474,7 +474,7 @@ MonoBehaviour:
   _airKage: {fileID: 1886131147462860419}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 25
+    Damage: 20
     StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -482,7 +482,7 @@ MonoBehaviour:
     GuardFrame: 20
     HitStopFrame: 10
     MeterGain: 5
-    ConsumptionSP: 10
+    ConsumptionSP: 20
     DrainSP: 25
     IsHeavy: 0
     HitBackDirection: {x: 15, y: 10}
@@ -531,27 +531,27 @@ MonoBehaviour:
   _specialMove2Info:
     Name: SpecialMove2
     Damage: 15
-    StartupFrame: 13
+    StartupFrame: 19
     ActiveFrame: 25
-    RecoveryFrame: 20
+    RecoveryFrame: 25
     HitFrame: 10
     GuardFrame: 25
     HitStopFrame: 10
     MeterGain: 5
-    ConsumptionSP: 20
-    DrainSP: 25
+    ConsumptionSP: 25
+    DrainSP: 20
     IsHeavy: 1
     HitBackDirection: {x: 7.5, y: 7.5}
-    GuardBackDirection: {x: 17.5, y: 0}
+    GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _sm2BulletPrefab: {fileID: 4562610450041397270, guid: e4a297383da049241abde41248bca7b8, type: 3}
   _sm2BulletDirection: {x: 12.5, y: 12.5}
   _ultimateInfo:
     Name: Ultimate
-    Damage: 80
+    Damage: 50
     StartupFrame: 10
-    ActiveFrame: 80
+    ActiveFrame: 50
     RecoveryFrame: 30
     HitFrame: 30
     GuardFrame: 30

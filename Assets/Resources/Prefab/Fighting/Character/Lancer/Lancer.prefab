@@ -179,7 +179,7 @@ MonoBehaviour:
   _normalMoveInfo:
     Name: NormalMove
     Damage: 20
-    StartupFrame: 14
+    StartupFrame: 13
     ActiveFrame: 3
     RecoveryFrame: 22
     HitFrame: 27
@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &9079692273766830
 Animator:
   serializedVersion: 5

@@ -410,7 +410,7 @@ public class Teddy : CharacterActions
     {
         //íeÇÃç¿ïWÇ∆ë¨ìxê›íË
         Vector2 bulletVelocity = _sm2BulletDirection;
-        Vector2 bulletPosOffset = new Vector2(3.5f, 0.45f);
+        Vector2 bulletPosOffset = new Vector2(3.5f, 0.75f);
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
         if (!_characterState.IsLeftSide)
         {
@@ -566,6 +566,10 @@ public class Teddy : CharacterActions
     public override void CancelActionByHit()
     {
         _normalMoveCTS?.Cancel();
+        if(_jmBullet != null)
+        {
+            _jmBullet.HitBox.SetIsActive(false);
+        }
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _ultBulletCTS?.Cancel();

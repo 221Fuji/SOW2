@@ -363,7 +363,7 @@ MonoBehaviour:
   _hurtBox: {fileID: 1156001438082662969}
   _normalMoveInfo:
     Name: NormalMove
-    Damage: 10
+    Damage: 20
     StartupFrame: 17
     ActiveFrame: 30
     RecoveryFrame: 20
@@ -379,10 +379,10 @@ MonoBehaviour:
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _nmBulletPrefab: {fileID: 4800561461241285632, guid: a877e5e2e17f2c6438eaa555eddc6914, type: 3}
-  _nmBulletVelocity: 10
+  _nmBulletVelocity: 12
   _jumpMoveInfo:
     Name: JumpMove
-    Damage: 15
+    Damage: 20
     StartupFrame: 15
     ActiveFrame: 10
     RecoveryFrame: 20
@@ -400,7 +400,7 @@ MonoBehaviour:
   _jumpMoveHitBox: {fileID: 1624036690247701418}
   _specialMove1Info:
     Name: SpecialMove1
-    Damage: 15
+    Damage: 20
     StartupFrame: 5
     ActiveFrame: 5
     RecoveryFrame: 20
@@ -418,7 +418,7 @@ MonoBehaviour:
   _trapPrefab: {fileID: 690384246872513028, guid: f632cfa2eb2ddd84cb07860c06d57e81, type: 3}
   _specialMove2Info:
     Name: SpecialMove2
-    Damage: 15
+    Damage: 20
     StartupFrame: 10
     ActiveFrame: 5
     RecoveryFrame: 20
@@ -435,7 +435,7 @@ MonoBehaviour:
     IsBullet: 1
   _ultimateInfo:
     Name: Ultmate
-    Damage: 35
+    Damage: 40
     StartupFrame: 7
     ActiveFrame: 35
     RecoveryFrame: 20
@@ -493,7 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &7963188388217788244
 Animator:
   serializedVersion: 5

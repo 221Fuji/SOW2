@@ -281,10 +281,10 @@ MonoBehaviour:
     ActiveFrame: 30
     RecoveryFrame: 10
     HitFrame: 40
-    GuardFrame: 40
+    GuardFrame: 35
     HitStopFrame: 15
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 25
     DrainSP: 25
     IsHeavy: 1
     HitBackDirection: {x: 5, y: 15}
@@ -349,17 +349,17 @@ MonoBehaviour:
   _jumpMoveMInfo:
     Name: JumpMoveM
     Damage: 20
-    StartupFrame: 1
-    ActiveFrame: 15
-    RecoveryFrame: 10
+    StartupFrame: 2
+    ActiveFrame: 20
+    RecoveryFrame: 5
     HitFrame: 25
-    GuardFrame: 10
-    HitStopFrame: 10
+    GuardFrame: 20
+    HitStopFrame: 25
     MeterGain: 2.5
-    ConsumptionSP: 20
+    ConsumptionSP: 25
     DrainSP: 25
     IsHeavy: 1
-    HitBackDirection: {x: 10, y: 5}
+    HitBackDirection: {x: 5, y: 12.5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
@@ -369,16 +369,16 @@ MonoBehaviour:
     Damage: 10
     StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 30
+    RecoveryFrame: 25
     HitFrame: 25
     GuardFrame: 10
     HitStopFrame: 10
     MeterGain: 2.5
-    ConsumptionSP: 40
+    ConsumptionSP: 35
     DrainSP: 15
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 10}
-    GuardBackDirection: {x: 5, y: 0}
+    GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _jmUBulletPrefab: {fileID: 3694982944655745889, guid: 209cd1e9fa68bc143b69dd04129e0490, type: 3}
@@ -386,18 +386,18 @@ MonoBehaviour:
   - {x: 0, y: -10}
   - {x: 2, y: -10}
   - {x: 5, y: -10}
-  - {x: 9.9, y: -10}
+  - {x: 10, y: -10}
   _specialMove1Info:
     Name: SpecialMove1
     Damage: 0
     StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 25
+    RecoveryFrame: 20
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0
     MeterGain: 0
-    ConsumptionSP: 0
+    ConsumptionSP: 50
     DrainSP: 0
     IsHeavy: 0
     HitBackDirection: {x: 0, y: 0}
@@ -412,10 +412,10 @@ MonoBehaviour:
     ActiveFrame: 20
     RecoveryFrame: 20
     HitFrame: 40
-    GuardFrame: 40
+    GuardFrame: 25
     HitStopFrame: 17
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 30
     DrainSP: 25
     IsHeavy: 1
     HitBackDirection: {x: 15, y: 20}
@@ -426,9 +426,9 @@ MonoBehaviour:
   _specialMove2UInfo:
     Name: SpecialMove2U
     Damage: 5
-    StartupFrame: 20
+    StartupFrame: 15
     ActiveFrame: 180
-    RecoveryFrame: 25
+    RecoveryFrame: 10
     HitFrame: 20
     GuardFrame: 10
     HitStopFrame: 17
@@ -558,7 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &4632463942774397927
 Animator:
   serializedVersion: 5
