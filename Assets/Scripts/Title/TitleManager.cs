@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField] private InputAction _inputAction;
+    [SerializeField] private Animator _opening;
     private bool _join = false;
 
     [SerializeField] private bool _soloPlayerDebug;
@@ -46,10 +47,17 @@ public class TitleManager : MonoBehaviour
         if (_join) return;
 
         _join = true;
-
         GameManager.Player1Device = context.control.device;
 
-        if(!_soloPlayerDebug)
+        //オープニング演出
+        _opening.SetTrigger("OpeningTrigger");
+        await UniTask.WaitUntil(() =>
+        {
+            var startStateInfo = _opening.GetCurrentAnimatorStateInfo(0);
+            return startStateInfo.IsName("Opening") && startStateInfo.normalizedTime >= 1f;
+        });
+
+        if (!_soloPlayerDebug)
         {
             // ModeSelectSceneに移動
             ModeSelectManager modeSelectmanager =

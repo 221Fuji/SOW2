@@ -1,6 +1,4 @@
-using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class FightingRigidBody : MonoBehaviour
@@ -22,8 +20,6 @@ public class FightingRigidBody : MonoBehaviour
     private Vector2 _currentPosition;
     private Vector2 _previousPosition;
 
-    private CancellationTokenSource _fightingUpdateCTS;
-
     /// <summary>
     /// 押し合い判定
     /// </summary>
@@ -44,12 +40,12 @@ public class FightingRigidBody : MonoBehaviour
     {
         get 
         { 
-            if(Time.deltaTime == 0)
+            if(Time.unscaledDeltaTime == 0 || FightingPhysics.FightingTimeScale <= 0)
             {
                 return PreviousVelocity;
             }
 
-            Vector2 velocity = (_currentPosition - _previousPosition) / Time.deltaTime;
+            Vector2 velocity = (_currentPosition - _previousPosition) / (Time.unscaledDeltaTime * FightingPhysics.FightingTimeScale);
             PreviousVelocity = velocity; //速度を保存
             return velocity; 
         }
@@ -86,32 +82,44 @@ public class FightingRigidBody : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _fightingUpdateCTS = new CancellationTokenSource();
-        StartFrameLoop(_fightingUpdateCTS.Token).Forget();
-
         if (FightingRigidBodies == null)
         {
             FightingRigidBodies = new List<FightingRigidBody>();
         }
-        FightingRigidBodies.Add(this);
+        FightingRigidBodies.Add(this);       
+    }
+
+    private void Start()
+    {
+        if(FrameManager.Instance != null && !(this is CharacterActions))
+        {
+            FrameManager.Instance.OnfightingUpdate += FightingUpdate;
+        } 
+    }
+
+    /// <summary>
+    /// 対戦用の疑似フレーム
+    /// </summary>
+    protected virtual void FightingUpdate()
+    {
+        //疑似フレームで毎フレーム実行する処理
     }
 
     protected virtual void Update()
     {
-
         if (_isWall) return;
 
         if (!OnGround && !_isFixed)
         {
             //重力
-            _velocity += new Vector2(0, -FightingPhysics.GravityAcceleration * _gravityScale * Time.deltaTime);
+            _velocity += new Vector2(0, -FightingPhysics.GravityAcceleration * _gravityScale * Time.unscaledDeltaTime * FightingPhysics.FightingTimeScale);
         }
 
         //移動前の座標を記録
         _previousPosition = transform.position;
 
         //速度に応じて座標を更新
-        Vector2 nextPos = transform.position + (Vector3)_velocity * Time.deltaTime * FightingPhysics.FightingTimeScale;
+        Vector2 nextPos = transform.position + (Vector3)_velocity * Time.unscaledDeltaTime * FightingPhysics.FightingTimeScale;
         transform.position = nextPos;
 
         //押し合い判定を確認
@@ -131,22 +139,6 @@ public class FightingRigidBody : MonoBehaviour
         {
             transform.position = _previousPosition;
         }
-    }
-
-    private async UniTaskVoid StartFrameLoop(CancellationToken token)
-    {
-        if (_isWall) return;
-
-        while (!token.IsCancellationRequested)
-        {
-            FightingUpdate();
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
-        }
-    }
-
-    protected virtual void FightingUpdate()
-    {
-        //処理を記述
     }
 
     /// <summary>
@@ -184,12 +176,6 @@ public class FightingRigidBody : MonoBehaviour
         if(!OnGround && onGround)
         {
             OnLand();
-        }
-
-        //離陸
-        if(OnGround && !onGround)
-        {
-            LeaveGround();
         }
 
         SetGround(onGround);
@@ -304,13 +290,13 @@ public class FightingRigidBody : MonoBehaviour
     {
         if (!OnGround || Velocity.x == 0 || _gravityScale <= 0) return;
 
-        if(Mathf.Abs(Velocity.x) <= FightingPhysics.FrictionCoefficient)
+        float frictionPower = FightingPhysics.FrictionCoefficient * Time.unscaledDeltaTime * FightingPhysics.FightingTimeScale;
+        if (Mathf.Abs(Velocity.x) <= frictionPower)
         {
             _velocity = Vector2.zero;
         }
         else
-        {
-            float frictionPower = FightingPhysics.FrictionCoefficient;
+        {         
             if (_velocity.x > 0)
             {
                 frictionPower *= -1; 
@@ -326,6 +312,11 @@ public class FightingRigidBody : MonoBehaviour
 
     public void SetGround(bool value)
     {
+        if(OnGround && !value)
+        {
+            LeaveGround();
+        }
+
         OnGround = value;
     }
 
@@ -350,9 +341,6 @@ public class FightingRigidBody : MonoBehaviour
             }
         }
 
-        if (_fightingUpdateCTS != null)
-        {
-            _fightingUpdateCTS.Cancel();
-        }
+        FrameManager.Instance.OnfightingUpdate -= FightingUpdate;
     }
 }

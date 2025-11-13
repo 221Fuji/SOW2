@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class FightingUI : MonoBehaviour
 {
@@ -52,8 +53,8 @@ public class FightingUI : MonoBehaviour
     [Header("固有リソース")]
     [SerializeField] private Transform _hudCanvas;
     [SerializeField] private Slider _fogMeter;
-    private Slider _fogMeterPos1P = null;
-    private Slider _fogMeterPos2P = null;
+    [SerializeField] private Slider _uramiMeter;
+    private List<UniqueResourceUI> _urUIList = new();
 
     private CharacterState _cs1P;
     private CharacterState _cs2P;
@@ -118,10 +119,18 @@ public class FightingUI : MonoBehaviour
     /// </summary>
     public void InitializeUniqueResource(CharacterActions ca)
     {
-        //クラウドの固有リソース設定
-        if(ca is ViolaCloud)
+        //Cloudの固有リソース設定
+        if(ca is ViolaCloud cloud)
         {
-            InstantiateFogMeter(ca.PlayerNum);
+            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _fogMeter);
+            _urUIList.Add(new FogMeter(cloud, slider));
+        }
+
+        //Teddyの固有リソース設定
+        if (ca is Teddy teddy)
+        {
+            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _uramiMeter);
+            _urUIList.Add(new UramiMeter(teddy, slider));
         }
     }
 
@@ -130,7 +139,10 @@ public class FightingUI : MonoBehaviour
         ApplyBar();
         SPcolorChange();
         UltElectricity();
-        UpDateUniqueResource();
+        foreach(var urUI in _urUIList) 
+        {
+            urUI.UpdateUniueResourceUI();
+        }
     }
 
     /// <summary>
@@ -266,38 +278,24 @@ public class FightingUI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 固有リソースのUI更新
-    /// </summary>
-    private void UpDateUniqueResource()
-    {
-        if(_ca1P is ViolaCloud cloud1P)
-        {
-            _fogMeterPos1P.value = cloud1P.CurrentFogResource / cloud1P.FogMaxResource;
-        }
-        if(_ca2P is ViolaCloud cloud2P)
-        {
-            _fogMeterPos2P.value = cloud2P.CurrentFogResource / cloud2P.FogMaxResource;
-        }
-
-        //追加の固有リソースUI処理
-    }
-
-    private void InstantiateFogMeter(int playerNum)
+    private Slider InstantiateUniqueMeter(int playerNum, Slider uniqueMeter)
     {
         if (playerNum == 1)
         {
-            _fogMeterPos1P = Instantiate(_fogMeter);
-            _fogMeterPos1P.transform.SetParent(_hudCanvas, false);
-            _fogMeterPos1P.value = 1;
+            Slider _uniqueMeter1P = Instantiate(uniqueMeter);
+            _uniqueMeter1P.transform.SetParent(_hudCanvas, false);
+            _uniqueMeter1P.value = 1;
+            return _uniqueMeter1P;
+            
         }
         else
         {
-            _fogMeterPos2P = Instantiate(_fogMeter);
-            _fogMeterPos2P.transform.SetParent(_hudCanvas, false);
-            _fogMeterPos2P.GetComponent<RectTransform>().anchoredPosition *= new Vector2(-1, 1);
-            _fogMeterPos2P.transform.localScale *= new Vector2(-1, 1);
-            _fogMeterPos2P.value = 1;
+            Slider uniqueMeter2P = Instantiate(uniqueMeter);
+            uniqueMeter2P.transform.SetParent(_hudCanvas, false);
+            uniqueMeter2P.GetComponent<RectTransform>().anchoredPosition *= new Vector2(-1, 1);
+            uniqueMeter2P.transform.localScale *= new Vector2(-1, 1);
+            uniqueMeter2P.value = 1;
+            return uniqueMeter2P;
         }
     }
 
@@ -371,12 +369,12 @@ public class FightingUI : MonoBehaviour
 
     public async UniTask KO()
     {
+        if (_gameSet == null) return;
+
         _gameSet.SetTrigger("KOTrigger");
 
         _gameSetCTS = new CancellationTokenSource();
         CancellationToken token = _gameSetCTS.Token;
-
-        if (_gameSet == null) return;
 
         await UniTask.WaitUntil(() =>
         {

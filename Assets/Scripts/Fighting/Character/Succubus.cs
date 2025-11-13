@@ -331,7 +331,7 @@ public class Succubus : CharacterActions
             _endPortal = Instantiate(_portalPrefab, endPortalPos, Quaternion.identity);
         }
 
-        await FightingPhysics.DelayFrameWithTimeScale(5, token);
+        await FrameManager.DeleyFightingFrame(5, token);
         await CreateChain(endPortalPos, token);
     }
 
@@ -412,7 +412,7 @@ public class Succubus : CharacterActions
             Vector3 offset = EnemyCA.transform.position - (Vector3)EnemyCA.GetPushBackBox().center;
             EnemyCA.transform.position = _normalMoveBehindHitBox.transform.position + offset;
 
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
         }
 
         FishingEnemy();
@@ -581,7 +581,7 @@ public class Succubus : CharacterActions
         bullet.Velocity = Vector2.zero;
         bullet.GetComponent<Animator>().SetTrigger("Sm1HitTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         _sm1Bullet.Remove(bullet);
         if (bullet != null)
@@ -779,7 +779,7 @@ public class Succubus : CharacterActions
         bullet.SetIsFixed(true);
         bullet.GetComponent<Animator>().SetTrigger("UltHitTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         _ultBullet.Remove(bullet);
 

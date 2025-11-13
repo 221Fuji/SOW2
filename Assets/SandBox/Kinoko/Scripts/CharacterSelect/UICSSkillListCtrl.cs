@@ -14,7 +14,7 @@ public class UICSSkillListCtrl : UIMovingCtrl
     [SerializeField] private UICSMovingCtrl _movingCtrl;
     public GameObject SkillboxBack { get { return _skillboxBack; } }
 
-    public UnityAction<UIMovingCtrl,int> SwitchDelegate { get; set; }
+    public UnityAction<UIMovingCtrl, int> SwitchDelegate { get; set; }
 
     private List<UICSSkillBox> _cmdListBoxs = new List<UICSSkillBox>();
     protected override void Awake()
@@ -33,7 +33,7 @@ public class UICSSkillListCtrl : UIMovingCtrl
         Forcus = new Vector2(-1, -1);
         DeleteSkillBox();
         List<UICSSkillBox> sboxs = new List<UICSSkillBox>();
-        foreach(CmdListBox clb in _database.CharacterDataList[characterIndex].CmdListBoxes)
+        foreach (CmdListBox clb in _database.CharacterDataList[characterIndex].CmdListBoxes)
         {
             sboxs.Add(CreateSkillBox(clb));
         }
@@ -54,16 +54,8 @@ public class UICSSkillListCtrl : UIMovingCtrl
                 making.SetData(sbox);
             }
         }
-        try 
-        {
-
-        }
-        catch
-        {
-            Debug.Log("");
-        }
         _maxPages.text = ReturnArrayLength().ToString();
-        DesignatedForcus(new Vector2(0,sboxs.Count - 1));
+        DesignatedForcus(new Vector2(0, sboxs.Count - 1));
     }
 
     public UICSSkillBox CreateSkillBox(CmdListBox source)

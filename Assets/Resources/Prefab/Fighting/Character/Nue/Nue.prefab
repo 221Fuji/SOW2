@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d18675f7b8dadb4e9ef2a59f7631d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultMaxHP: 100
+  _defaultMaxHP: 75
   _defaultMaxSP: 100
   _defaultMaxUP: 100
   _upGainSpeed: 0.05
@@ -420,7 +420,7 @@ MonoBehaviour:
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 0
   _ultPerformanceFrame: 60
-  _rageFire: {fileID: 2944665025660516044, guid: ad5d0bbf95ee66e4c8139867b6a5b83e, type: 3}
+  _rageFirePrefab: {fileID: 2944665025660516044, guid: ad5d0bbf95ee66e4c8139867b6a5b83e, type: 3}
   _blackFireDamage: 5
 --- !u!212 &6485844681404692076
 SpriteRenderer:

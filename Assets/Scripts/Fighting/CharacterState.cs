@@ -83,6 +83,11 @@ public class CharacterState : MonoBehaviour
         CurrentBackSpeed = backSpeed;
     }
 
+    public void SetJumpPower(float jumpPower)
+    {
+        CurrentJumpPower = jumpPower;
+    }
+
     public void SetAcceptOperations(bool value)
     {
         AcceptOperations = value;
@@ -103,7 +108,7 @@ public class CharacterState : MonoBehaviour
         IsUltPerformance = true;
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(1);
+            await FrameManager.DeleyFightingFrame(1);
         }
         finally
         {

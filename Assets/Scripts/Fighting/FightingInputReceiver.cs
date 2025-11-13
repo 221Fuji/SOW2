@@ -12,10 +12,10 @@ public class FightingInputReceiver : MonoBehaviour
     // 受けた入力のプロパティ
     public float WalkValue { get; set; } = 0;
     public bool IsInputingGuard { get; private set; }
-    public bool join = false;
+
 
     // 各種行動のデリゲート
-    public UnityAction JumpDelegate { get; set; }
+    public Func<bool> JumpDelegate { get; set; }
     public UnityAction<bool> GuardDelegate { get; set; }
     public Func<UniTask> NormalMove { get; set; }
     public Func<UniTask> SpecialMove1 { get; set; }
@@ -32,7 +32,6 @@ public class FightingInputReceiver : MonoBehaviour
 
     public void OnFourDirections(InputValue value)
     {
-
         Vector2 direction = value.Get<Vector2>();
         if (direction.x > 0)
         {

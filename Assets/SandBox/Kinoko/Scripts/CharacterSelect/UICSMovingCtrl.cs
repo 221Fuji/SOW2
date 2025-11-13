@@ -176,7 +176,13 @@ public class UICSMovingCtrl : UIMovingCtrl
     {
         if (CheckAvailable()) return;
         SwitchDelegate.Invoke(_skillListCtrl,_playerNum);
-        SwitchAdmin.Invoke((int)Forcus.x);
+        //上段・下段で詳細を出すキャラクターの番号を計算
+        int charaNum = (int)Forcus.x;
+        if ((int)Forcus.y > 1)
+        {
+            charaNum += 5;
+        }
+        SwitchAdmin.Invoke(charaNum);
     }
 
     public CharacterOutFrames ReturnCharacterOutFrames()

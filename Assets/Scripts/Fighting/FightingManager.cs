@@ -1,7 +1,5 @@
 using Cysharp.Threading.Tasks;
-using NUnit.Framework;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +24,9 @@ public abstract class FightingManager : ModeManager
     private CancellationTokenSource _timeLimitCTS;
 
     public RoundData CurrentRoundData { get => _currentRoundData; }
+
+    //デバッグ用
+    [SerializeField] private StageData _stageData;
 
 
     private void Awake()
@@ -83,7 +84,7 @@ public abstract class FightingManager : ModeManager
         ca1P.OnDie = KO;
         ca2P.OnDie = KO;
         //カメラ設定
-        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform);
+        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _playerData1P.CharacterData.StageData);
         //UI設定
         _fightingUI.SetPlayer(playerData1P, playerData2P);
         _fightingUI.HeartLost(_currentRoundData);
@@ -122,21 +123,28 @@ public abstract class FightingManager : ModeManager
             {
                 _fightingUI.SetTimeLimitText(time.ToString("D2")); // 2桁表示
 
-                await FightingPhysics.DelayFrameWithTimeScale(
+                await FrameManager.DeleyFightingFrame(
                     FightingPhysics.FightingFrameRate,
-                    cancellationToken: token
+                    token
                     );
 
                 time--;
+                if(token.IsCancellationRequested)
+                {
+                    return;
+                }
             }
 
             await RoundSetPerformance(_fightingUI.TimeOver);
 
-            if (_playerData1P.CharacterState.CurrentHP > _playerData2P.CharacterState.CurrentHP)
+            float hpPer1p = _playerData1P.CharacterState.CurrentHP / _playerData1P.CharacterState.MaxHP;
+            float hpPer2p = _playerData2P.CharacterState.CurrentHP / _playerData2P.CharacterState.MaxHP;
+
+            if (hpPer1p > hpPer2p)
             {
                 GoNextRound(2);
             }
-            else if (_playerData1P.CharacterState.CurrentHP < _playerData2P.CharacterState.CurrentHP)
+            else if (hpPer1p < hpPer2p)
             {
                 GoNextRound(1);
             }
@@ -157,8 +165,6 @@ public abstract class FightingManager : ModeManager
         Time.timeScale = 0.5f;
         _playerData1P.CharacterState.SetAcceptOperations(false);
         _playerData2P.CharacterState.SetAcceptOperations(false);
-
-        Debug.Log("スロー演出");
 
         try
         {

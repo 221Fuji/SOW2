@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9790b1d7355be3469709564bf17e419, type: 3}
+  m_Name: NuUlt
+  m_EditorClassIdentifier: 
+  _skillName: "\u6012\u308A"
+  _operationGuide: 
+  _skillOpEnum: 7
+  _skillImage: {fileID: 21300000, guid: 59a8231efb192b64a8aaef41b9b3b0a7, type: 3}
+  _skillDiscription: "\u4E00\u5B9A\u6642\u9593\u653B\u6483\u529B\u304C\u4E0A\u304C\u308B"

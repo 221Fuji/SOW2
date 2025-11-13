@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: WilsonData
+  m_EditorClassIdentifier: 
+  _characterNum: 6
+  _characterNameE: Wilson
+  _characterNameJ: "\u30A6\u30A3\u30EB\u30BD\u30F3"
+  _characterPrefab: {fileID: -1097923648107288940, guid: 1dc2b8ddab322904f9b59026a37faf30, type: 3}
+  _cpuEasy: {fileID: 0}
+  _versusEyeForcusImage: {fileID: 2330976698168467897, guid: c7290783ee1cbba428ca3856688c6eef, type: 3}
+  _versusStandingImage: {fileID: 5580158101377991115, guid: e94a39569c5618147bbdb1a6aa7f55be, type: 3}
+  _versusGrayImage: {fileID: 9152546479232325047, guid: fdd380d6b89a15f4eb7169aaab1ac09e, type: 3}
+  _fightingFaceUpImage: {fileID: 4861317124237501819, guid: a16b7e4141888504eb37eaa9a6e3e52c, type: 3}
+  _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 8896572912180848141, guid: cee8ec06d69074d4dbe7ebae2b65d1b5, type: 3}
+  _csFigure: {fileID: 4199925819457361857, guid: 9d8307da608da1d488e5238b6ad63d0c, type: 3}
+  _csDot: {fileID: 6728957238287151238, guid: 94fccec80c83bdd43b2248cbd0806917, type: 3}
+  _resultWhiteStandImage: {fileID: 6918718593919952772, guid: 0703786a64504ad4ba9c95ec6e7ffae0, type: 3}
+  _resultStandImage: {fileID: 4059209344182142448, guid: ef6234295ff328946bae3e94924e2aa2, type: 3}
+  _stageData: {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
+  _myNumber: 0
+  _cmdListBoxes:
+  - {fileID: 11400000, guid: ba20cd4474c7f8948a72e2909e014223, type: 2}
+  - {fileID: 11400000, guid: d2f087f89bd3fd74ead78ce7ed756821, type: 2}
+  - {fileID: 11400000, guid: c25135f5a279f134f94da154944c457a, type: 2}
+  - {fileID: 11400000, guid: 6ee9c810fd609eb4ea3e48303b6012f9, type: 2}
+  - {fileID: 11400000, guid: d74b197c8a2198743b32a28f39556a15, type: 2}

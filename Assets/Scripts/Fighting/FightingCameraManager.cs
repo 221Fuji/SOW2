@@ -21,7 +21,7 @@ public class FightingCameraManager : MonoBehaviour
 
     private CancellationTokenSource _performUltCTS;
 
-    public void InitializeCamera(Transform player1, Transform player2)
+    public void InitializeCamera(Transform player1, Transform player2, StageData stageData)
     {
         _cam = GetComponent<Camera>();
         _player1Pos = player1;
@@ -29,7 +29,7 @@ public class FightingCameraManager : MonoBehaviour
 
         float maxBackGroundPos = _stageBoundsMax.x - _maxCameraSize * _cam.aspect;
         float minBackGroundPos = _stageBoundsMin.x + _maxCameraSize * _cam.aspect;
-        _backGroundManager.InitializeBackGround(transform, minBackGroundPos, maxBackGroundPos);
+        _backGroundManager.InitializeBackGround(transform, minBackGroundPos, maxBackGroundPos, stageData);
 
         _player1Pos.GetComponent<CharacterActions>().PerformUltimate = OnPerformUltimateEffect;
         _player2Pos.GetComponent<CharacterActions>().PerformUltimate = OnPerformUltimateEffect;
@@ -83,6 +83,7 @@ public class FightingCameraManager : MonoBehaviour
         if (_cam == null) return;
 
         //ŽžŠÔ’âŽ~
+        float currentTimeScale = FightingPhysics.FightingTimeScale;
         Time.timeScale = 0f;
         FightingPhysics.SetFightingTimeScale(0);
         _backGroundManager.ChangeBackGroundColor(new Color(0.5f, 0.5f, 0.5f));
@@ -118,9 +119,12 @@ public class FightingCameraManager : MonoBehaviour
             await UniTask.DelayFrame(1);
         }
     
-    Canceled:
-        Time.timeScale = 1.0f;
-        FightingPhysics.SetFightingTimeScale(1);
+        Canceled:
+        if (FightingPhysics.FightingTimeScale == 0)
+        {
+            Time.timeScale = currentTimeScale;
+            FightingPhysics.SetFightingTimeScale(currentTimeScale);
+        }
         _backGroundManager.ChangeBackGroundColor(Color.white);
         _performUltCTS = null;
 

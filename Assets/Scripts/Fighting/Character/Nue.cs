@@ -31,7 +31,7 @@ public class Nue : CharacterActions
     [Header("í¥ïKéEãZ")]
     [SerializeField] private AttackInfo _ultimateInfo;
     [SerializeField] private int _ultPerformanceFrame;
-    [SerializeField] private GameObject _rageFire;
+    [SerializeField] private GameObject _rageFirePrefab;
     [Header("çïâåìZÇ¢")]
     [SerializeField] private float _blackFireDamage;
 
@@ -39,6 +39,7 @@ public class Nue : CharacterActions
     private int _normalMoveCount = 0; //nmÇÃíiêî
     private Bullet _sm2Bullet;
     private bool _isRage; //ì{ÇËèÛë‘Ç©
+    private GameObject _rageFire;
 
     //äeçsìÆÇÃCancellationTokenSource(CTS)
     private CancellationTokenSource _normalMove1CTS;
@@ -119,6 +120,7 @@ public class Nue : CharacterActions
         get
         {
             if (!CanEveryAction || _characterState.CurrentUP < 100) return false;
+            if (!OnGround) return false;
 
             return true;
         }
@@ -143,13 +145,28 @@ public class Nue : CharacterActions
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
     }
 
+    public override void InitializeCA(int playerNum, CharacterActions enemyCA)
+    {
+        base.InitializeCA(playerNum, enemyCA);
+
+        if(_isRage)
+        {
+            _characterState.SetCurrentUP(-100);
+        }
+        if(_rageFire)
+        {
+            Destroy(_rageFire);
+            _rageFire = null;
+        }
+        _ultCTS?.Cancel();
+    }
+
     public override void UPgain(float value)
     {
         if (_isRage)
         {
             value = -100f / _ultimateInfo.ActiveFrame;
             _characterState.SetCurrentUP(value);
-            Debug.Log(_ultimateInfo.ActiveFrame);
         }
         else
         {
@@ -548,7 +565,7 @@ public class Nue : CharacterActions
         bullet.Velocity = Vector2.zero;
         bullet.GetComponent<Animator>().SetTrigger("Sm2HitTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -585,7 +602,7 @@ public class Nue : CharacterActions
         _characterState.SetIsUltPerformance();
 
         //ââèoâèú
-        await FightingPhysics.DelayFrameWithTimeScale(1, token);
+        await FrameManager.DeleyFightingFrame(1, token);
         _animator.updateMode = AnimatorUpdateMode.Normal;
         RageMode(_ultimateInfo.ActiveFrame, token).Forget();
 
@@ -607,21 +624,22 @@ public class Nue : CharacterActions
 
     private async UniTask RageMode(int rageModeFrame, CancellationToken token)
     {
-        GameObject rageFire = Instantiate(_rageFire, transform);
-        rageFire.transform.localScale = Vector3.one;
+        _rageFire = Instantiate(_rageFirePrefab, transform);
+        _rageFire.transform.localScale = Vector3.one;
         try
         {
             _isRage = true;
-            await FightingPhysics.DelayFrameWithTimeScale(rageModeFrame, token);
+            await FrameManager.DeleyFightingFrame(rageModeFrame, token);
         }
         finally
         {
             _isRage = false;
-            if(rageFire)
+            if(_rageFire)
             {
-                rageFire.GetComponent<Animator>().SetTrigger("DestoryRageFireTrigger");
-                await FightingPhysics.DelayFrameWithTimeScale(30);
-                Destroy(rageFire);
+                _rageFire.GetComponent<Animator>().SetTrigger("DestoryRageFireTrigger");
+                await FrameManager.DeleyFightingFrame(30);
+                Destroy(_rageFire);
+                _rageFire = null;
             }
             _ultCTS.Dispose();
             _ultCTS = null;
@@ -648,7 +666,7 @@ public class Nue : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(cancelFrame, cancellationToken: token);
+            await FrameManager.DeleyFightingFrame(cancelFrame, token);
         }
         finally
         {
@@ -666,15 +684,12 @@ public class Nue : CharacterActions
 
             if (enemyCS == null) return;
 
-            Debug.Log("koushi");
             if (enemyCS.CurrentHP - _blackFireDamage > 1)
             {
-                Debug.Log("koushi2");
                 enemyCS.TakeDamage(_blackFireDamage);
             }
             else if (enemyCS.CurrentHP - _blackFireDamage > 0)
             {
-                Debug.Log("koushi3");
                 enemyCS.TakeDamage(enemyCS.CurrentHP - 2);
             }
         }

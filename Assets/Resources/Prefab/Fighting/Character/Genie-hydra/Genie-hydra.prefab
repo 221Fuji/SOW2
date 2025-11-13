@@ -47,7 +47,7 @@ MonoBehaviour:
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _sceneCheckMode: 0
+  _sceneCheckMode: 1
 --- !u!1 &430997429303589336
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   _upGainSpeed: 0.05
   _defaultFrontSpeed: 10
   _defaultBackSpeed: 6
-  _defaultJumpPower: 25
+  _defaultJumpPower: 22.5
 --- !u!114 &6658933430545523452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +272,8 @@ MonoBehaviour:
   _backWalkSpeedM: 6
   _frontWalkSpeedU: 7
   _backWalkSpeedU: 4.2
+  _jumpPowerM: 22.5
+  _jumpPowerU: 25
   _normalMoveMInfo:
     Name: NormalMoveM
     Damage: 20
@@ -279,10 +281,10 @@ MonoBehaviour:
     ActiveFrame: 30
     RecoveryFrame: 10
     HitFrame: 40
-    GuardFrame: 40
+    GuardFrame: 35
     HitStopFrame: 15
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 25
     DrainSP: 25
     IsHeavy: 1
     HitBackDirection: {x: 5, y: 15}
@@ -346,38 +348,37 @@ MonoBehaviour:
     IsBullet: 1
   _jumpMoveMInfo:
     Name: JumpMoveM
-    Damage: 15
-    StartupFrame: 20
-    ActiveFrame: 0
-    RecoveryFrame: 10
+    Damage: 20
+    StartupFrame: 2
+    ActiveFrame: 20
+    RecoveryFrame: 5
     HitFrame: 25
-    GuardFrame: 10
-    HitStopFrame: 10
+    GuardFrame: 20
+    HitStopFrame: 25
     MeterGain: 2.5
-    ConsumptionSP: 30
-    DrainSP: 20
-    IsHeavy: 0
-    HitBackDirection: {x: 10, y: 5}
+    ConsumptionSP: 25
+    DrainSP: 25
+    IsHeavy: 1
+    HitBackDirection: {x: 5, y: 12.5}
     GuardBackDirection: {x: 5, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
-  _jmMBulletPrefab: {fileID: 908931025058630461, guid: 0529f2935d98e6f43a67488fe93ace4f, type: 3}
-  _jmMVelocity: {x: 8, y: -7.5}
+  _jumpMoveMHitBox: {fileID: 8350641735971093731}
   _jumpMoveUInfo:
     Name: JumpMoveU
     Damage: 10
     StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 50
+    RecoveryFrame: 25
     HitFrame: 25
     GuardFrame: 10
     HitStopFrame: 10
     MeterGain: 2.5
     ConsumptionSP: 35
-    DrainSP: 20
+    DrainSP: 15
     IsHeavy: 0
     HitBackDirection: {x: 7.5, y: 10}
-    GuardBackDirection: {x: 5, y: 0}
+    GuardBackDirection: {x: 10, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _jmUBulletPrefab: {fileID: 3694982944655745889, guid: 209cd1e9fa68bc143b69dd04129e0490, type: 3}
@@ -385,25 +386,24 @@ MonoBehaviour:
   - {x: 0, y: -10}
   - {x: 2, y: -10}
   - {x: 5, y: -10}
-  - {x: 9.9, y: -10}
+  - {x: 10, y: -10}
   _specialMove1Info:
     Name: SpecialMove1
     Damage: 0
     StartupFrame: 20
     ActiveFrame: 0
-    RecoveryFrame: 25
+    RecoveryFrame: 20
     HitFrame: 0
     GuardFrame: 0
     HitStopFrame: 0
     MeterGain: 0
-    ConsumptionSP: 0
+    ConsumptionSP: 50
     DrainSP: 0
     IsHeavy: 0
     HitBackDirection: {x: 0, y: 0}
     GuardBackDirection: {x: 0, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 0
-  _sm1Direction: {x: 0, y: 0}
   _specialMove1HitBox: {fileID: 3928230181282037881}
   _specialMove2MInfo:
     Name: SpecialMove2M
@@ -412,10 +412,10 @@ MonoBehaviour:
     ActiveFrame: 20
     RecoveryFrame: 20
     HitFrame: 40
-    GuardFrame: 40
+    GuardFrame: 25
     HitStopFrame: 17
     MeterGain: 5
-    ConsumptionSP: 20
+    ConsumptionSP: 30
     DrainSP: 25
     IsHeavy: 1
     HitBackDirection: {x: 15, y: 20}
@@ -426,9 +426,9 @@ MonoBehaviour:
   _specialMove2UInfo:
     Name: SpecialMove2U
     Damage: 5
-    StartupFrame: 20
+    StartupFrame: 15
     ActiveFrame: 180
-    RecoveryFrame: 25
+    RecoveryFrame: 10
     HitFrame: 20
     GuardFrame: 10
     HitStopFrame: 17
@@ -497,7 +497,7 @@ MonoBehaviour:
     GuardedBackDirection: {x: 0, y: 0}
     IsBullet: 1
   _ult2HitBox: {fileID: 7104903962689080525}
-  _ult2Bullet: {fileID: 4578157289498318255, guid: 0242c055b90b6524ba27451a48cb8583, type: 3}
+  _ult2BulletPrefab: {fileID: 4578157289498318255, guid: 0242c055b90b6524ba27451a48cb8583, type: 3}
   _ult2PerformanceFrame: 90
   _ultimate2LastInfo:
     Name: Ult2Last
@@ -558,7 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf32982a11e1f5e4580b7cdc829abddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  join: 0
 --- !u!95 &4632463942774397927
 Animator:
   serializedVersion: 5
@@ -788,7 +787,7 @@ MonoBehaviour:
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _sceneCheckMode: 1
+  _sceneCheckMode: 0
 --- !u!1 &8387728139326063029
 GameObject:
   m_ObjectHideFlags: 0

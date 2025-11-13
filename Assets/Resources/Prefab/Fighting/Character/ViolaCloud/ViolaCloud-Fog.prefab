@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7097972209864062413}
   - component: {fileID: 1100866605179062489}
   - component: {fileID: 3818765551869182662}
-  - component: {fileID: 4315926309681932266}
+  - component: {fileID: 4702723710168132339}
   m_Layer: 0
   m_Name: ViolaCloud-Fog
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4315926309681932266
+--- !u!114 &4702723710168132339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309392357591126755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde081ebf29e48e40ab5c6e61a9bf511, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f4ad9baec2a32949a485d320149740c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityScale: 0
@@ -125,14 +125,14 @@ MonoBehaviour:
   _pushBackBoxOffset: {x: 0, y: 0}
   _isFixed: 0
   _isWall: 0
-  _speed: 0.75
-  _consumptionValue: 0.25
-  _damage: 0.1
+  _speed: 0.3
+  _damage: 0.25
   _hurtBoxLayer:
     serializedVersion: 2
     m_Bits: 128
-  _fogBox: {x: 12.25, y: 5}
-  _boxOffset: {x: 0, y: 2.44}
+  _fieldBox: {x: 12.24, y: 4.73}
+  _boxOffset: {x: 0, y: 2.68}
+  _consumptionValue: 0.2
 --- !u!1 &2927939533860363642
 GameObject:
   m_ObjectHideFlags: 0

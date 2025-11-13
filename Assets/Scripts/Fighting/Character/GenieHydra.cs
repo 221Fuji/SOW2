@@ -11,6 +11,9 @@ public class GenieHydra : CharacterActions
     [SerializeField] private float _backWalkSpeedM;
     [SerializeField] private float _frontWalkSpeedU;
     [SerializeField] private float _backWalkSpeedU;
+    [Header("ジャンプの高さ")]
+    [SerializeField] private float _jumpPowerM;
+    [SerializeField] private float _jumpPowerU;
     [Header("通常攻撃_M")]
     [SerializeField] private AttackInfo _normalMoveMInfo;
     [SerializeField] private HitBoxManager _normalMoveMHitBox;
@@ -23,15 +26,13 @@ public class GenieHydra : CharacterActions
     [SerializeField] private AttackInfo _nmBigInfo;
     [Header("ジャンプ攻撃_M")]
     [SerializeField] private AttackInfo _jumpMoveMInfo;
-    [SerializeField] private Bullet _jmMBulletPrefab;
-    [SerializeField] private Vector2 _jmMVelocity;
+    [SerializeField] private HitBoxManager _jumpMoveMHitBox;
     [Header("ジャンプ攻撃_U")]
     [SerializeField] private AttackInfo _jumpMoveUInfo;
     [SerializeField] private Bullet _jmUBulletPrefab;
     [SerializeField] private Vector2[] _jmUVelocity;
     [Header("必殺技１")]
     [SerializeField] private AttackInfo _specialMove1Info;
-    [SerializeField] private Vector2 _sm1Direction;
     [SerializeField] private HitBoxManager _specialMove1HitBox;
     [Header("必殺技2_M")]
     [SerializeField] private AttackInfo _specialMove2MInfo;
@@ -50,9 +51,9 @@ public class GenieHydra : CharacterActions
     [Header("超必殺技2")]
     [SerializeField] private AttackInfo _ultimate2Info;
     [SerializeField] private HitBoxManager _ult2HitBox;
-    [SerializeField] private Bullet _ult2Bullet;
+    [SerializeField] private Bullet _ult2BulletPrefab;
     [SerializeField] private int _ult2PerformanceFrame;
-    [Header("調必殺技2(最終弾)")]
+    [Header("超必殺技2(最終弾)")]
     [SerializeField] private AttackInfo _ultimate2LastInfo;
 
     private int _jumpMoveCount = 0; //１回のジャンプで行ったジャンプ攻撃の回数
@@ -64,6 +65,7 @@ public class GenieHydra : CharacterActions
     private CancellationTokenSource _specialMove1CTS;
     private CancellationTokenSource _specialMove2CTS;
     private CancellationTokenSource _ultCTS;
+    private CancellationTokenSource _ultBulletCTS;
 
     //行動制限の設定
     public override bool CanEveryAction
@@ -151,6 +153,7 @@ public class GenieHydra : CharacterActions
     {
         _normalMoveMHitBox.InitializeHitBox(_normalMoveMInfo, gameObject);
         _normalMoveUHitBox.InitializeHitBox(_normalMoveUInfo, gameObject);
+        _jumpMoveMHitBox.InitializeHitBox(_jumpMoveMInfo, gameObject);
         _specialMove1HitBox.InitializeHitBox(_specialMove1Info, gameObject);
         _specialMove2MHitBox.InitializeHitBox(_specialMove2MInfo, gameObject);
         _ult2HitBox.InitializeHitBox(_ultimate2Info, gameObject);
@@ -353,7 +356,7 @@ public class GenieHydra : CharacterActions
         //アニメーション
         bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
 
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -385,16 +388,11 @@ public class GenieHydra : CharacterActions
         //UP回収
         UPgain(_jumpMoveMInfo.MeterGain);
 
-        //物理挙動
-        Velocity = Vector2.zero;
-        SetIsFixed(true);
-
         try
         {
             await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // 発生を待つ
-            CreateJmMBullet();
             await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // 硬直を待つ
-            AddForce(new Vector2(0, -2.5f));
+            await WaitForActiveFrame(_jumpMoveMHitBox, _jumpMoveMInfo.ActiveFrame, token); // 持続を待つ
         }
         catch (OperationCanceledException)
         {
@@ -405,34 +403,7 @@ public class GenieHydra : CharacterActions
             // 攻撃処理が完了した後、トークンを解放
             _jumpMoveCTS.Dispose();
             _jumpMoveCTS = null;
-
-            //物理挙動
-            SetIsFixed(false);
         }
-    }
-
-    private void CreateJmMBullet()
-    {
-        //弾の座標と速度設定
-        Vector2 bulletVelocity = _jmMVelocity;
-        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
-        Quaternion rotation = new Quaternion(0, 0, 0, 0);
-        if (!_characterState.IsLeftSide)
-        {
-            bulletVelocity *= new Vector2(-1, 1);
-            bulletPosOffset *= new Vector2(-1, 1);
-            rotation = new Quaternion(0, 180, 0, 0);
-        }
-        Vector2 bulletPos = (Vector2)transform.position + bulletPosOffset;
-        Bullet bullet = Instantiate(_jmMBulletPrefab, bulletPos, rotation);
-        bullet.Velocity = bulletVelocity;
-
-        //弾の当たり判定設定
-        bullet.HitBox.InitializeHitBox(_jumpMoveMInfo, gameObject);
-        bullet.HitBox.HitBullet = BulletExplode;
-        bullet.HitBox.GuardBullet = BulletExplode;
-        bullet.DestroyBullet = BulletExplode;
-        bullet.HitBox.SetIsActive(true);
     }
 
     /// <summary>
@@ -454,10 +425,10 @@ public class GenieHydra : CharacterActions
         _animator.SetTrigger("JumpMoveTrigger");
 
         //SP消費
-        _characterState.SetCurrentSP(-_normalMoveMInfo.ConsumptionSP);
+        _characterState.SetCurrentSP(-_jumpMoveUInfo.ConsumptionSP);
 
         //UP回収
-        UPgain(_jumpMoveMInfo.MeterGain);
+        UPgain(_jumpMoveUInfo.MeterGain);
 
         //物理挙動
         Velocity = Vector2.zero;
@@ -465,9 +436,9 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await StartUpMove(_jumpMoveMInfo.StartupFrame, token); // 発生を待つ
+            await StartUpMove(_jumpMoveUInfo.StartupFrame, token); // 発生を待つ
             CreateJmUBullet(token);
-            await RecoveryFrame(_jumpMoveMInfo.RecoveryFrame, token); // 硬直を待つ
+            await RecoveryFrame(_jumpMoveUInfo.RecoveryFrame, token); // 硬直を待つ
             AddForce(new Vector2(0, -2.5f));
         }
         catch (OperationCanceledException)
@@ -489,7 +460,7 @@ public class GenieHydra : CharacterActions
     {
         //弾の座標と速度設定
         Vector2 bulletVelocity = new Vector2(1, 1);
-        Vector2 bulletPosOffset = new Vector2(0.5f, 1);
+        Vector2 bulletPosOffset = new Vector2(2.5f, 3);
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
         if (!_characterState.IsLeftSide)
         {
@@ -515,7 +486,7 @@ public class GenieHydra : CharacterActions
 
             try
             {
-                await FightingPhysics.DelayFrameWithTimeScale(2, token);
+                await FrameManager.DeleyFightingFrame(2, token);
             }
             catch
             {
@@ -538,10 +509,7 @@ public class GenieHydra : CharacterActions
 
         //アニメーション
         bullet.GetComponent<Animator>().SetTrigger("ExplodeTrigger");
-
-        bullet.transform.position = bullet.HitBox.transform.position;
-
-        await FightingPhysics.DelayFrameWithTimeScale(30);
+        await FrameManager.DeleyFightingFrame(30);
 
         if (bullet != null)
         {
@@ -564,8 +532,8 @@ public class GenieHydra : CharacterActions
         AnimatorByLayerName.SetLayerWeightByName(_animator, "SpecialMove1Layer", 1);
         _animator.SetTrigger("SpecialMove1Trigger");
 
-        //SP消費
-        _characterState.SetCurrentSP(-_specialMove1Info.ConsumptionSP);
+        //SP回復
+        _characterState.SetCurrentSP(_specialMove1Info.ConsumptionSP);
 
         //UP回収
         UPgain(_specialMove1Info.MeterGain);
@@ -602,10 +570,12 @@ public class GenieHydra : CharacterActions
         if(toMander)
         {
             _characterState.SetWalkSpeed(_frontWalkSpeedM, _backWalkSpeedM);
+            _characterState.SetJumpPower(_jumpPowerM);
         }
         else
         {
             _characterState.SetWalkSpeed(_frontWalkSpeedU, _backWalkSpeedU);
+            _characterState.SetJumpPower(_jumpPowerU);
         }
         
     }
@@ -616,7 +586,6 @@ public class GenieHydra : CharacterActions
     public async UniTask SpecialMove2M()
     {
         if (!CanSpecialMove2) return;
-
 
         if (!_isMander)
         {
@@ -638,6 +607,8 @@ public class GenieHydra : CharacterActions
         //UP回収
         UPgain(_specialMove2MInfo.MeterGain);
 
+        _characterState.TakeAnormalyState(AnormalyState.SuperArmor);
+
         try
         {
             await StartUpMove(_specialMove2MInfo.StartupFrame, token); // 発生を待つ
@@ -653,13 +624,14 @@ public class GenieHydra : CharacterActions
             for(int i = 0; i < _specialMove2MInfo.ActiveFrame; i++)
             {
                 Velocity = chargeVector;
-                await FightingPhysics.DelayFrameWithTimeScale(1, token);
+                await FrameManager.DeleyFightingFrame(1, token);
             }
             _specialMove2MHitBox.SetIsActive(false);
             if (_specialMove2MHitBox.IsActive)
             {
                 OnMissAI?.Invoke();
             }
+            _characterState.RecoverAnormalyState(AnormalyState.SuperArmor);
 
             await RecoveryFrame(_specialMove2MInfo.RecoveryFrame, token); // 硬直を待つ
         }
@@ -741,7 +713,7 @@ public class GenieHydra : CharacterActions
         try
         {
             iceWall.HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_specialMove2UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_specialMove2UInfo.ActiveFrame);
         }
         finally 
         {
@@ -756,7 +728,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(10);
+            await FrameManager.DeleyFightingFrame(10);
         }
         finally 
         {
@@ -801,7 +773,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //演出解除
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             await StartUpMove(_ultimate1MInfo.StartupFrame, token); // 発生を待つ
@@ -852,7 +824,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1MInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1MInfo.ActiveFrame);
         }
         finally
         {
@@ -882,7 +854,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate1UInfo.ActiveFrame);
+            await FrameManager.DeleyFightingFrame(_ultimate1UInfo.ActiveFrame);
         }
         finally
         {
@@ -923,7 +895,7 @@ public class GenieHydra : CharacterActions
         try
         {
             //演出解除
-            await FightingPhysics.DelayFrameWithTimeScale(1, token);
+            await FrameManager.DeleyFightingFrame(1, token);
             _animator.updateMode = AnimatorUpdateMode.Normal;
 
             //最終弾以外の設定
@@ -933,7 +905,7 @@ public class GenieHydra : CharacterActions
             await StartUpMove(_ultimate2Info.StartupFrame, token); // 発生を待つ
 
             _ult2HitBox.SetIsActive(true);
-            await FightingPhysics.DelayFrameWithTimeScale(_ultimate2Info.ActiveFrame, token);
+            await FrameManager.DeleyFightingFrame(_ultimate2Info.ActiveFrame, token);
             _ult2HitBox.SetIsActive(true);
 
             //最終弾の設定
@@ -966,21 +938,30 @@ public class GenieHydra : CharacterActions
             rotation = new Quaternion(0, 180, 0, 0);
             bullet2PosOffset *= new Vector2(-1, 0);
         }
-        Bullet bullet1 = Instantiate(_ult2Bullet, transform.position, rotation);
-        Bullet bullet2 = Instantiate(_ult2Bullet, transform.position + (Vector3)bullet2PosOffset, rotation);
+        Bullet bullet1 = Instantiate(_ult2BulletPrefab, transform.position, rotation);
+        Bullet bullet2 = Instantiate(_ult2BulletPrefab, transform.position + (Vector3)bullet2PosOffset, rotation);
+
+        // 新しいCTSを生成
+        _ultBulletCTS = new CancellationTokenSource();
+        CancellationToken token = _ultBulletCTS.Token;
 
         try
         {
             await UniTask.WaitUntil(() =>
             {
                 return _ultCTS == null;
-            });
+            }, cancellationToken :token);
         }
         finally
         {
             if(bullet1)
             {
                 Destroy(bullet1.gameObject);
+            }
+
+            if(bullet2)
+            {
+                Destroy(bullet2.gameObject);
             }
         }
     }
@@ -1010,7 +991,7 @@ public class GenieHydra : CharacterActions
 
         try
         {
-            await FightingPhysics.DelayFrameWithTimeScale(2);
+            await FrameManager.DeleyFightingFrame(2);
         }
         finally
         {
@@ -1046,5 +1027,7 @@ public class GenieHydra : CharacterActions
         _specialMove1CTS?.Cancel();
         _specialMove2CTS?.Cancel();
         _jumpMoveCTS?.Cancel();
+        _ultCTS?.Cancel();
+        _ultBulletCTS?.Cancel();
     }
 }
