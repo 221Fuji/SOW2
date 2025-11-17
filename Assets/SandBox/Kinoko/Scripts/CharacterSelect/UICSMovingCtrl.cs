@@ -148,7 +148,15 @@ public class UICSMovingCtrl : UIMovingCtrl
         if(CheckAvailable()) return;
 
         base.OnClick();
-        SoundManager.I?.SystemSEPlayer.PlaySE(5);
+
+        /*
+         * 
+         * ここでキャラ選択音(5)を出しているがモードセレクト画面に戻るボタンを押したときもこの音がなるので
+         * モードセレクト画面に戻るボタンを押したときは決定音(4)を鳴るようにしたい
+         * 
+         */
+        SoundManager.I?.SystemSEPlayer.PlaySE(5); //問題の処理
+
         if (_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
         {
 
