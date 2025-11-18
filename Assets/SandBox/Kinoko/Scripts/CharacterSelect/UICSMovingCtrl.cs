@@ -77,7 +77,7 @@ public class UICSMovingCtrl : UIMovingCtrl
             _characterDataList = _database.DevedCpuList;
         }
 
-        //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)結構良くないかも。修正？
+        //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)
         if (PlayerNum != 1) return;
         foreach (Making make in _outMap)
         {
@@ -155,7 +155,7 @@ public class UICSMovingCtrl : UIMovingCtrl
          * モードセレクト画面に戻るボタンを押したときは決定音(4)を鳴るようにしたい
          * 
          */
-        SoundManager.I?.SystemSEPlayer.PlaySE(5); //問題の処理
+        SoundManager.I?.SystemSEPlayer.PlaySE(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ReturnSoundType());
 
         if (_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
         {
