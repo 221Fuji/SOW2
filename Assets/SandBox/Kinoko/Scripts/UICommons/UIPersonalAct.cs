@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class UIPersonalAct : MonoBehaviour
 {
+    [SerializeField] protected int _soundType = 4;
+
     /// <summary>
     /// UI移動において例外的な動きをさせたい際のオプション(侵入方向を左からに限定など)
     /// </summary>
@@ -36,6 +38,10 @@ public class UIPersonalAct : MonoBehaviour
 
     }
 
+    public int ReturnSoundType()
+    {
+        return _soundType;
+    }
 
 }
 

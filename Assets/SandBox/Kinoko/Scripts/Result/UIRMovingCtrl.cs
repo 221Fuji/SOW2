@@ -74,6 +74,8 @@ public class UIRMovingCtrl : UIMovingCtrl
         if (!isActive) return;
         if (Selected) return;
         Selected = true;
+
+        SoundManager.I?.SystemSEPlayer.PlaySE(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ReturnSoundType());
         try
         {
             base.OnClick();
@@ -101,7 +103,8 @@ public class UIRMovingCtrl : UIMovingCtrl
     {
         if (!isActive) return;
         if (RivalSelected && Selected) return;
-        if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UIRButton button) button.CancelledAction(gameObject);
+        SoundManager.I?.SystemSEPlayer.PlaySE(3);
+        if (_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UIRButton button) button.CancelledAction(gameObject);
         Selected = false;
     }
 }

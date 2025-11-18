@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392279613c399314f985616d3581aad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 3
   _flame: {fileID: 843797687}
 --- !u!114 &46307202
 MonoBehaviour:
@@ -552,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7b47a6d2fe0234eaed641e07154c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
 --- !u!1 &77675150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0a31da42b15ab45a94060a979af655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
   ReadyFlame: {fileID: 1517277398}
 --- !u!1 &154117092
 GameObject:
@@ -1657,6 +1660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 7
   _backPanel: {fileID: 507487003}
   _movingExceptionFlag: 0
@@ -2077,6 +2081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 1
   _backPanel: {fileID: 1656193731}
   _movingExceptionFlag: 0
@@ -2733,6 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 11
   _backPanel: {fileID: 1589644511}
   _movingExceptionFlag: 0
@@ -3484,6 +3490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0a31da42b15ab45a94060a979af655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
   ReadyFlame: {fileID: 2122025248}
 --- !u!1 &907498815
 GameObject:
@@ -4221,6 +4228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 9
   _backPanel: {fileID: 77675150}
   _movingExceptionFlag: 0
@@ -4314,6 +4322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 6
   _backPanel: {fileID: 1955917405}
   _movingExceptionFlag: 0
@@ -4407,6 +4416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 2
   _backPanel: {fileID: 2076631333}
   _movingExceptionFlag: 0
@@ -5308,6 +5318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482393cfae166054592f9e19163e6a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
 --- !u!1 &1281524065
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,6 +5367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482393cfae166054592f9e19163e6a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
 --- !u!1 &1341698051
 GameObject:
   m_ObjectHideFlags: 0
@@ -5982,6 +5994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 8
   _backPanel: {fileID: 266925851}
   _movingExceptionFlag: 0
@@ -6075,6 +6088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 5
   _backPanel: {fileID: 1606992906}
   _movingExceptionFlag: 0
@@ -6529,6 +6543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 10
   _backPanel: {fileID: 22458400}
   _movingExceptionFlag: 0
@@ -7635,6 +7650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 3
   _backPanel: {fileID: 602751476}
   _movingExceptionFlag: 0
@@ -7915,6 +7931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d462001439b44404b83ac35ce1bc60ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
   playerNum: 2
 --- !u!1 &1884860324
 GameObject:
@@ -8489,6 +8506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d462001439b44404b83ac35ce1bc60ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 4
   playerNum: 1
 --- !u!1 &2061025891
 GameObject:
@@ -8973,6 +8991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5989453fdc458c547aaa16cdf6f85a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundType: 5
   _windowTurn: 4
   _backPanel: {fileID: 1884860324}
   _movingExceptionFlag: 0

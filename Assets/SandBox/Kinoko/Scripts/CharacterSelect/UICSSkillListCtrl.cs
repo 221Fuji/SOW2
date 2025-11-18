@@ -79,11 +79,15 @@ public class UICSSkillListCtrl : UIMovingCtrl
         _cmdListBoxs.Clear();
     }
 
+    /// <summary>
+    /// ƒXƒLƒ‹Ú×‚ğ•Â‚¶‚éˆ—
+    /// </summary>
     public override void SwitchtoOtherCtrler()
     {
         _skillboxBack.SetActive(false);
         SwitchDelegate.Invoke(_movingCtrl, _playerNum);
         DeleteSkillBox();
+        SoundManager.I.SystemSEPlayer.PlaySE(3);
     }
 
     public override void DesignatedForcus(Vector2 arrayPos)
