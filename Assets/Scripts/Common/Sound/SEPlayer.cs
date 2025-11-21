@@ -6,9 +6,9 @@ using FMODUnity;
 
 public class SEPlayer 
 {
-    private SEResources _seResources;
+    protected SEResources _seResources;
 
-    private EventInstance[] _instList;
+    protected EventInstance[] _instList;
 
     public SEPlayer(SEResources seResources)
     {

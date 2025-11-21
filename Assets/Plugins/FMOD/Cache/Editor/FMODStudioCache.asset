@@ -27,6 +27,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-6678265019297714084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Guard/Action
+  m_EditorClassIdentifier: 
+  Name: Action
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3127974641
+    data2: 318656735
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4934526659085313945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +98,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-3121978695762704615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Combo/Combo
+  m_EditorClassIdentifier: 
+  Name: Combo
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 628071460
+    data2: 2388785809
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2916061883056062982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,13 +167,16 @@ MonoBehaviour:
   - {fileID: 4291392198869640918}
   - {fileID: 3400297763121056309}
   - {fileID: 478986266682563826}
+  - {fileID: 8486463755544860990}
+  - {fileID: 1542298487359740924}
+  - {fileID: 8841149036166354777}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6947192289327406694}
   StringsBanks:
   - {fileID: 5288248646356751028}
   cacheVersion: 131849
-  cacheTime: 638989562678839975
+  cacheTime: 638992987288043441
   SerializableEventsDict:
   - key: event:/Assets/SE/System/BreakGlass
     index: 0
@@ -145,6 +196,12 @@ MonoBehaviour:
     index: 7
   - key: event:/Assets/SE/System/Cancel
     index: 8
+  - key: event:/Assets/SE/Fighting/General/Hurt
+    index: 9
+  - key: event:/Assets/SE/Fighting/General/Guard
+    index: 10
+  - key: event:/Assets/SE/Fighting/General/Combo
+    index: 11
 --- !u!114 &28253893377292857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +280,34 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1542298487359740924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/Fighting/General/Guard
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/Fighting/General/Guard
+  Guid:
+    Data1: -2119654778
+    Data2: 1116651936
+    Data3: 524124330
+    Data4: -1565255326
+  Banks:
+  - {fileID: 6947192289327406694}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -6678265019297714084}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -403,10 +488,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638989562678839975
+  lastModified: 638992987288043441
   FileSizes:
   - Name: 
-    Value: 1334
+    Value: 1566
   Exists: 1
 --- !u!114 &6387990335590520392
 MonoBehaviour:
@@ -450,7 +535,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638989562678825561
+  lastModified: 638992987288023329
   FileSizes: []
   Exists: 1
 --- !u!114 &7392084566749684800
@@ -480,3 +565,83 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7885830945823897267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Hurt/Intensity
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1293967265
+    data2: 2072786868
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8486463755544860990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/Fighting/General/Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/Fighting/General/Hurt
+  Guid:
+    Data1: -693359057
+    Data2: 1076397500
+    Data3: 336299919
+    Data4: -1420164078
+  Banks:
+  - {fileID: 6947192289327406694}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7885830945823897267}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8841149036166354777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/Fighting/General/Combo
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/Fighting/General/Combo
+  Guid:
+    Data1: -1251452306
+    Data2: 1077619217
+    Data3: 1436674196
+    Data4: -1731615134
+  Banks:
+  - {fileID: 6947192289327406694}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -3121978695762704615}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 840

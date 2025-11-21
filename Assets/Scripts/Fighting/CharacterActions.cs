@@ -445,6 +445,9 @@ public abstract class CharacterActions : FightingRigidBody
         {
             _characterState.CancelHitStun();
             _characterState.SetComboCount(_characterState.ConboCount + 1);
+            //効果音
+            SoundManager.I?.FGSEPlayer.PlayComboSE(_characterState.ConboCount);
+
             OnComboAI?.Invoke();
             Debug.Log($"{_characterState.ConboCount}コンボ");
 
@@ -500,6 +503,9 @@ public abstract class CharacterActions : FightingRigidBody
         {
             OnEffect?.Invoke(hurtBoxPos, FightingEffect.SmallHit);
         }
+
+        //効果音
+        SoundManager.I?.FGSEPlayer.PlayHurtSE(attackInfo.Damage);
 
         //ヒットストップ処理
         await HitStop(attackInfo.HitStopFrame);
@@ -654,6 +660,9 @@ public abstract class CharacterActions : FightingRigidBody
 
         //SP削り
         _characterState.SetCurrentSP(-attackInfo.DrainSP);
+
+        //効果音
+        SoundManager.I?.FGSEPlayer.PlayGuardSE(attackInfo.IsHeavy);
 
         //連続ガード処理
         if (_characterState.IsRecoveringGuard)

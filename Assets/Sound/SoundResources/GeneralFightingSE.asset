@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6b38a98d440341940dd9333db4654, type: 3}
+  m_Name: GeneralFightingSE
+  m_EditorClassIdentifier: 
+  _seList:
+  - _clip:
+      Guid:
+        Data1: -693359057
+        Data2: 1076397500
+        Data3: 336299919
+        Data4: -1420164078
+      Path: event:/Assets/SE/Fighting/General/Hurt
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: -2119654778
+        Data2: 1116651936
+        Data3: 524124330
+        Data4: -1565255326
+      Path: event:/Assets/SE/Fighting/General/Guard
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: -1251452306
+        Data2: 1077619217
+        Data3: 1436674196
+        Data4: -1731615134
+      Path: event:/Assets/SE/Fighting/General/Combo
+    _volume: 1

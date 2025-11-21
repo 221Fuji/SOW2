@@ -437,7 +437,7 @@ Transform:
   m_GameObject: {fileID: 937064739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 302.3945, y: 191.02512, z: -2.699432}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,6 +851,7 @@ MonoBehaviour:
   _bgmVolume: 1
   _seVolume: 1
   _systemSE: {fileID: 11400000, guid: 687e848fe1b77994bb1e46de84c3ec97, type: 2}
+  _fightingGeneralSE: {fileID: 11400000, guid: f7f912562aee03049814d5042645df48, type: 2}
 --- !u!4 &1774275917
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ Transform:
   m_GameObject: {fileID: 1774275915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 270.9369, y: 56.591263, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
