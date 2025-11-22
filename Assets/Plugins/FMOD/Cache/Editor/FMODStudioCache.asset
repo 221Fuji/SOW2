@@ -88,7 +88,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2125435118839807210}
   cacheVersion: 131857
-  cacheTime: 638993888183987699
+  cacheTime: 638994525269574591
   SerializableEventsDict:
   - key: event:/Assets/SE/System/BreakGlass
     index: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638993888183972671
+  lastModified: 638994525269433139
   FileSizes: []
   Exists: 1
 --- !u!114 &1052766997558375489
@@ -202,7 +202,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638993888183987699
+  lastModified: 638994525269574591
   FileSizes:
   - Name: 
     Value: 1566
