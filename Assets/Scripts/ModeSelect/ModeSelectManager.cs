@@ -37,7 +37,7 @@ public class ModeSelectManager : ModeManager
         goBack.ClickedActionEvent += DoNotAcceptOperations;
         UIMSButton cpuMatch = _uimsMovigCtrl.OutMap[0].ReturnList()[1] as UIMSButton;
         UIMSButton localMatch = _uimsMovigCtrl.OutMap[0].ReturnList()[2] as UIMSButton;
-        //
+
         cpuMatch.ClickedActionEvent = GoCPUMatchCS;
         localMatch.ClickedActionEvent = GoLocalMatchCS;
     }

@@ -77,7 +77,7 @@ public class UICSMovingCtrl : UIMovingCtrl
             _characterDataList = _database.DevedCpuList;
         }
 
-        //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)結構良くないかも。修正？
+        //このplayerが1じゃなかったらっていう処理(1Pをホストとして位置づけ)
         if (PlayerNum != 1) return;
         foreach (Making make in _outMap)
         {
@@ -148,7 +148,16 @@ public class UICSMovingCtrl : UIMovingCtrl
         if(CheckAvailable()) return;
 
         base.OnClick();
-        if(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
+
+        /*
+         * 
+         * ここでキャラ選択音(5)を出しているがモードセレクト画面に戻るボタンを押したときもこの音がなるので
+         * モードセレクト画面に戻るボタンを押したときは決定音(4)を鳴るようにしたい
+         * 
+         */
+        SoundManager.I?.SystemSEPlayer.PlaySE(_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].ReturnSoundType());
+
+        if (_outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y] is UICSCharaWindow window)
         {
 
             CharacterData = window.Characterdata;
@@ -166,6 +175,7 @@ public class UICSMovingCtrl : UIMovingCtrl
         if(CheckAvailable() && _rivalMovingCtrl.Selected) return;
         Selected = false;
         //キャラ確定後にもとに戻したい処理があったらここに書く！(※両者選択後は呼ばれない)
+        SoundManager.I.SystemSEPlayer.PlaySE(3);
         _readyTxt.ResetUI();
     }
 
@@ -183,6 +193,7 @@ public class UICSMovingCtrl : UIMovingCtrl
             charaNum += 5;
         }
         SwitchAdmin.Invoke(charaNum);
+        SoundManager.I.SystemSEPlayer.PlaySE(6);
     }
 
     public CharacterOutFrames ReturnCharacterOutFrames()

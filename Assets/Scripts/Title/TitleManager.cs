@@ -50,6 +50,7 @@ public class TitleManager : MonoBehaviour
         GameManager.Player1Device = context.control.device;
 
         //オープニング演出
+        SoundManager.I.SystemSEPlayer.PlaySE(0);
         _opening.SetTrigger("OpeningTrigger");
         await UniTask.WaitUntil(() =>
         {

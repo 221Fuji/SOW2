@@ -104,6 +104,7 @@ using UnityEngine.Rendering;
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
+        SoundManager.I?.SystemSEPlayer.PlaySE(0);
     }
 
     /// <summary>
@@ -140,6 +141,7 @@ using UnityEngine.Rendering;
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
+        SoundManager.I?.SystemSEPlayer.PlaySE(0);
     }
 
     /// <summary>
@@ -177,6 +179,7 @@ using UnityEngine.Rendering;
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
+        SoundManager.I?.SystemSEPlayer.PlaySE(0);
     }
 
     /// <summary>
@@ -214,6 +217,7 @@ using UnityEngine.Rendering;
         //最終目的の選択後のアニメーション等、移動後の処理
         Vector2 _target = new Vector2(0,0);
         _outMap[(int)Forcus.x].ReturnList()[(int)Forcus.y].FocusedAction(this.transform.gameObject);
+        SoundManager.I?.SystemSEPlayer.PlaySE(0);
     }
 
     /// <summary>

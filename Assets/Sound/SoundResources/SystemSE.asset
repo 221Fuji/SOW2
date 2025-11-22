@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6b38a98d440341940dd9333db4654, type: 3}
+  m_Name: SystemSE
+  m_EditorClassIdentifier: 
+  _seList:
+  - _clip:
+      Guid:
+        Data1: -1909128347
+        Data2: 1331742875
+        Data3: 33385657
+        Data4: -1412958517
+      Path: event:/Assets/SE/System/Cursor
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 1223961825
+        Data2: 1127767302
+        Data3: 1680086702
+        Data4: 1006985002
+      Path: event:/Assets/SE/System/TitleSE
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 1245413402
+        Data2: 1287727274
+        Data3: 1704363677
+        Data4: 1406557129
+      Path: event:/Assets/SE/System/BreakGlass
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 1098899179
+        Data2: 1098198579
+        Data3: 204442031
+        Data4: -336859798
+      Path: event:/Assets/SE/System/Cancel
+    _volume: 0.5
+  - _clip:
+      Guid:
+        Data1: -92628109
+        Data2: 1273419837
+        Data3: 217482115
+        Data4: -1584673841
+      Path: event:/Assets/SE/System/ModeSelectSE
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 765358415
+        Data2: 1273543685
+        Data3: -507465574
+        Data4: 1805441140
+      Path: event:/Assets/SE/System/CharaSelect
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: -1481112007
+        Data2: 1235246640
+        Data3: 1900230554
+        Data4: -98813235
+      Path: event:/Assets/SE/System/CharaGuid
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 1794992815
+        Data2: 1336917755
+        Data3: 1648100487
+        Data4: -490030224
+      Path: event:/Assets/SE/System/GotoVersusSE
+    _volume: 1

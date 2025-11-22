@@ -152,6 +152,8 @@ public abstract class CharacterActions : FightingRigidBody
         //パラメータ初期化
         if (_characterState == null) _characterState = GetComponent<CharacterState>();
         _characterState.ResetState();
+        _characterState.ClearNameOfGivenAttack();
+        _characterState.SetComboCount(1);
 
         //色を元に戻す
         GetComponent<SpriteRenderer>().color = Color.white;
@@ -431,6 +433,8 @@ public abstract class CharacterActions : FightingRigidBody
     /// /// <param name="attackInfo">受けた攻撃の情報</param>
     public virtual async UniTask TakeAttack(AttackInfo attackInfo)
     {
+        if (!CanHit) return;
+
         //各種行動キャンセル
         if(!_characterState.AnormalyStates.Contains(AnormalyState.SuperArmor))
         {
@@ -445,6 +449,9 @@ public abstract class CharacterActions : FightingRigidBody
         {
             _characterState.CancelHitStun();
             _characterState.SetComboCount(_characterState.ConboCount + 1);
+            //効果音
+            SoundManager.I?.FGSEPlayer.PlayComboSE(_characterState.ConboCount);
+
             OnComboAI?.Invoke();
             Debug.Log($"{_characterState.ConboCount}コンボ");
 
@@ -459,16 +466,16 @@ public abstract class CharacterActions : FightingRigidBody
             _characterState.SetComboCount(1);
         }
 
+        //効果音
+        SoundManager.I?.FGSEPlayer.PlayHurtSE(attackInfo.Damage);
+
         //ダメージ処理
-        if (CanHit)
+        _characterState.TakeDamage(attackInfo.Damage);
+        Debug.Log($"Player{PlayerNum}は{attackInfo.Damage}ダメージ受けた");
+        if (_characterState.CurrentHP <= 0)
         {
-            _characterState.TakeDamage(attackInfo.Damage);
-            Debug.Log($"Player{PlayerNum}は{attackInfo.Damage}ダメージ受けた");
-            if (_characterState.CurrentHP <= 0)
-            {
-                Die();
-                return;
-            }
+            Die();
+            return;
         }
 
         //コンボ技登録
@@ -654,6 +661,9 @@ public abstract class CharacterActions : FightingRigidBody
 
         //SP削り
         _characterState.SetCurrentSP(-attackInfo.DrainSP);
+
+        //効果音
+        SoundManager.I?.FGSEPlayer.PlayGuardSE(attackInfo.IsHeavy);
 
         //連続ガード処理
         if (_characterState.IsRecoveringGuard)

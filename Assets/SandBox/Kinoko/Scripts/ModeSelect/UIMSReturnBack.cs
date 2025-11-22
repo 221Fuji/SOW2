@@ -39,6 +39,7 @@ public class UIMSReturnBack : UIPersonalAct
     
     public override void ClickedAction(GameObject ob)
     {
+        SoundManager.I?.SystemSEPlayer.PlaySE(3);
         ClickedActionEvent?.Invoke();
     }
 }

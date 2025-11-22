@@ -105,6 +105,7 @@ public class UIMSButton : UIPersonalAct
         var kettei = movingCtrlClass?.ReturnKettei();
         kettei.StartAnim();
         ClickedActionEvent?.Invoke();
+        SoundManager.I?.SystemSEPlayer.PlaySE(4);
     }
     void OnDestroy()
     {

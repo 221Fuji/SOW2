@@ -531,7 +531,7 @@ MonoBehaviour:
   _specialMove2Info:
     Name: SpecialMove2
     Damage: 15
-    StartupFrame: 19
+    StartupFrame: 26
     ActiveFrame: 25
     RecoveryFrame: 25
     HitFrame: 10
