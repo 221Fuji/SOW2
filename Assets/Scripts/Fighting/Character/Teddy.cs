@@ -542,7 +542,7 @@ public class Teddy : CharacterActions
             {
                 if (_airKage == null) return true;
                 var startStateInfo = _airKage.GetCurrentAnimatorStateInfo(0);
-                return startStateInfo.IsName("OutGround") && startStateInfo.normalizedTime >= 1f;
+                return startStateInfo.IsName("OutGround") && startStateInfo.normalizedTime >= 0.9f;
             });
         }
         catch

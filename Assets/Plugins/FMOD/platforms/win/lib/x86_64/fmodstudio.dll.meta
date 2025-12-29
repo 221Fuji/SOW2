@@ -16,65 +16,12 @@ PluginImporter:
     second:
       enabled: 0
       settings:
-<<<<<<< Updated upstream
-        Exclude Editor: 0
-        Exclude Linux64: 0
-        Exclude OSXUniversal: 0
-        Exclude WebGL: 0
-        Exclude Win: 0
-        Exclude Win64: 0
-=======
         Exclude Editor: 1
         Exclude Linux64: 1
         Exclude OSXUniversal: 1
-        Exclude WebGL: 0
+        Exclude WebGL: 1
         Exclude Win: 1
         Exclude Win64: 1
->>>>>>> Stashed changes
-  - first:
-      : Linux
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      : LinuxUniversal
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      : OSXIntel
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      : OSXIntel64
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      : SamsungTV
-    second:
-      enabled: 0
-      settings:
-        STV_MODEL: STANDARD_13
-  - first:
-      : WP8
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-        DontProcess: False
-        PlaceholderPath: 
-  - first:
-      Android: Android
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
   - first:
       Any: 
     second:
@@ -83,56 +30,35 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
-        OS: Windows
+        OS: AnyOS
   - first:
       Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      Standalone: OSXUniversal
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      Standalone: Win
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      Standalone: Win64
-    second:
-      enabled: 1
-      settings:
-        CPU: None
-  - first:
-      WebGL: WebGL
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      Windows Store Apps: WindowsStoreApps
     second:
       enabled: 0
       settings:
         CPU: AnyCPU
-        DontProcess: False
-        PlaceholderPath: 
-        SDK: AnySDK
   - first:
-      iPhone: iOS
+      Standalone: OSXUniversal
     second:
       enabled: 0
       settings:
-        CompileFlags: 
-        FrameworkDependencies: 
+        CPU: AnyCPU
+  - first:
+      Standalone: Win
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+  - first:
+      Standalone: Win64
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 
