@@ -356,6 +356,7 @@ public class FightingUI : MonoBehaviour
 
             //FightŠJŽn
             _round.SetTrigger("FightTrigger");
+            SoundManager.I.SystemSEPlayer.PlaySE(10);
 
             await UniTask.WaitUntil(() =>
             {
@@ -372,6 +373,8 @@ public class FightingUI : MonoBehaviour
         if (_gameSet == null) return;
 
         _gameSet.SetTrigger("KOTrigger");
+
+        SoundManager.I.SystemSEPlayer.PlaySE(11);
 
         _gameSetCTS = new CancellationTokenSource();
         CancellationToken token = _gameSetCTS.Token;

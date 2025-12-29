@@ -12,6 +12,7 @@ public class SingletonMonoBihaviour<T> : MonoBehaviour where T : MonoBehaviour
     /// </summary>
     protected virtual void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if(I == null)
         {
             I = this as T;

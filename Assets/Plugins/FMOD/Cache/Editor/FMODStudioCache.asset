@@ -1,5 +1,113 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7040494269795300624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Lancer_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Lancer_bgm
+  Guid:
+    Data1: -1264109931
+    Data2: 1251632249
+    Data3: 566511235
+    Data4: -311964788
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 195264
+--- !u!114 &-6437042595492687768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/System/FightSE
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/System/FightSE
+  Guid:
+    Data1: -693894377
+    Data2: 1300342503
+    Data3: 1269419658
+    Data4: -1185851538
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6320228921559590311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Genie_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Genie_bgm
+  Guid:
+    Data1: 684984478
+    Data2: 1305743037
+    Data3: -1946361196
+    Data4: 1877839246
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 199040
+--- !u!114 &-5190562506916577293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/System/VersusSE2
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/System/VersusSE2
+  Guid:
+    Data1: 244894561
+    Data2: 1187626419
+    Data3: 1223192199
+    Data4: 1419532738
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4630042996611794611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,6 +126,60 @@ MonoBehaviour:
     Data2: 1212242370
     Data3: 196916149
     Data4: 212416130
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4069134367477803982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Cloud_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Cloud_bgm
+  Guid:
+    Data1: -1665054912
+    Data2: 1144684584
+    Data3: -1414894697
+    Data4: -1652475387
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 210337
+--- !u!114 &-2073922367842599334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/System/VersusSE1
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/System/VersusSE1
+  Guid:
+    Data1: 176305424
+    Data2: 1184520963
+    Data3: 894569873
+    Data4: -2046140564
   Banks:
   - {fileID: 652621873916905670}
   IsStream: 0
@@ -82,13 +244,26 @@ MonoBehaviour:
   - {fileID: 2229778919144834385}
   - {fileID: -896313707062504630}
   - {fileID: 1052766997558375489}
+  - {fileID: 2031434971396691806}
+  - {fileID: -7040494269795300624}
+  - {fileID: -4069134367477803982}
+  - {fileID: -6320228921559590311}
+  - {fileID: -2073922367842599334}
+  - {fileID: 4795542778246454658}
+  - {fileID: -5190562506916577293}
+  - {fileID: -6437042595492687768}
+  - {fileID: 4325512434675959728}
   EditorParameters: []
   MasterBanks:
   - {fileID: 652621873916905670}
   StringsBanks:
   - {fileID: 2125435118839807210}
   cacheVersion: 131857
+<<<<<<< Updated upstream
   cacheTime: 638994555753476005
+=======
+  cacheTime: 639019367857383471
+>>>>>>> Stashed changes
   SerializableEventsDict:
   - key: event:/Assets/SE/System/BreakGlass
     index: 0
@@ -114,6 +289,24 @@ MonoBehaviour:
     index: 10
   - key: event:/Assets/SE/System/Cancel
     index: 11
+  - key: event:/Assets/BGM/Chara/Nue_bgm
+    index: 12
+  - key: event:/Assets/BGM/Chara/Lancer_bgm
+    index: 13
+  - key: event:/Assets/BGM/Chara/Cloud_bgm
+    index: 14
+  - key: event:/Assets/BGM/Chara/Genie_bgm
+    index: 15
+  - key: event:/Assets/SE/System/VersusSE1
+    index: 16
+  - key: event:/Assets/BGM/Chara/Wilson_bgm
+    index: 17
+  - key: event:/Assets/SE/System/VersusSE2
+    index: 18
+  - key: event:/Assets/SE/System/FightSE
+    index: 19
+  - key: event:/Assets/SE/System/KO
+    index: 20
 --- !u!114 &652621873916905670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +322,11 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
+<<<<<<< Updated upstream
   lastModified: 638994555753460986
+=======
+  lastModified: 639019367857360661
+>>>>>>> Stashed changes
   FileSizes: []
   Exists: 1
 --- !u!114 &1052766997558375489
@@ -187,6 +384,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2031434971396691806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Nue_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Nue_bgm
+  Guid:
+    Data1: -116986275
+    Data2: 1258275841
+    Data3: -315737696
+    Data4: -410417944
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 202179
 --- !u!114 &2125435118839807210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,10 +426,14 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< Updated upstream
   lastModified: 638994555753476005
+=======
+  lastModified: 639019367857383471
+>>>>>>> Stashed changes
   FileSizes:
   - Name: 
-    Value: 1566
+    Value: 1956
   Exists: 1
 --- !u!114 &2229778919144834385
 MonoBehaviour:
@@ -316,6 +544,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &4325512434675959728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/SE/System/KO
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/SE/System/KO
+  Guid:
+    Data1: -253162507
+    Data2: 1199026862
+    Data3: -1119099244
+    Data4: 335769475
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4795542778246454658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Wilson_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Wilson_bgm
+  Guid:
+    Data1: 1739472232
+    Data2: 1105285999
+    Data3: 471854994
+    Data4: -1335087169
+  Banks:
+  - {fileID: 652621873916905670}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 209005
 --- !u!114 &5096389207545844724
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System.Linq;
 
 
-public abstract class CharacterActions : FightingRigidBody
+public abstract class CharacterActions : FightingRigidBody 
 {
     [Space]
     [Header("キャラクターの設定")]

@@ -62,6 +62,9 @@ public abstract class FightingManager : ModeManager
             2
             );
         StartRound(firstRound, playerData1P, playerData2P);
+
+        //2PキャラのBGM
+        SoundManager.I.CreateCharaBGMPlayer(characterData2P);
     }
 
     protected virtual void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)
@@ -83,8 +86,8 @@ public abstract class FightingManager : ModeManager
         //死亡デリゲート
         ca1P.OnDie = KO;
         ca2P.OnDie = KO;
-        //カメラ設定
-        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _playerData1P.CharacterData.StageData);
+        //カメラ設定(2Pのステージ)
+        _camera.GetComponent<FightingCameraManager>().InitializeCamera(ca1P.transform,  ca2P.transform, _playerData2P.CharacterData.StageData);
         //UI設定
         _fightingUI.SetPlayer(playerData1P, playerData2P);
         _fightingUI.HeartLost(_currentRoundData);
@@ -215,14 +218,12 @@ public abstract class FightingManager : ModeManager
 
     protected abstract void GoFighting();
 
-    protected virtual async void GameSet(int winnerNum)
+    protected virtual void GameSet(int winnerNum)
     {
         _fightingUI.HeartLost(_currentRoundData);
 
         _playerData1P.CharacterState.SetAcceptOperations(false);
         _playerData2P.CharacterState.SetAcceptOperations(false);
-
-        await _fightingUI.KO();
 
         if(_playerData1P.CharacterActions.gameObject != null)
         {

@@ -58,6 +58,9 @@ public class VersusManager : MonoBehaviour
         _firstParent.gameObject.SetActive(true);
         _secondParent.gameObject.SetActive(false);
 
+        //効果音
+        SoundManager.I.SystemSEPlayer.PlaySE(8);
+
         //eyeForcusImage生成
         Image eyeForcus1P = Instantiate(chara1p.VersusEyeForcusImage);
         eyeForcus1P.transform.SetParent(_eyeForcusMask1P, false);
@@ -118,6 +121,9 @@ public class VersusManager : MonoBehaviour
         gray1P.transform.SetParent(_gray1P, false);
         Image gray2P = Instantiate(chara2p.VersusGrayImage);
         gray2P.transform.SetParent(_gray2P, false);
+
+        //効果音
+        SoundManager.I.SystemSEPlayer.PlaySE(9);
 
         //ズームアウト
         await ZoomOut(_secondParent, token);

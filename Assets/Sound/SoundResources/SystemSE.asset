@@ -77,3 +77,35 @@ MonoBehaviour:
         Data4: -490030224
       Path: event:/Assets/SE/System/GotoVersusSE
     _volume: 1
+  - _clip:
+      Guid:
+        Data1: 176305424
+        Data2: 1184520963
+        Data3: 894569873
+        Data4: -2046140564
+      Path: event:/Assets/SE/System/VersusSE1
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 244894561
+        Data2: 1187626419
+        Data3: 1223192199
+        Data4: 1419532738
+      Path: event:/Assets/SE/System/VersusSE2
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: -693894377
+        Data2: 1300342503
+        Data3: 1269419658
+        Data4: -1185851538
+      Path: event:/Assets/SE/System/FightSE
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: -253162507
+        Data2: 1199026862
+        Data3: -1119099244
+        Data4: 335769475
+      Path: event:/Assets/SE/System/KO
+    _volume: 1

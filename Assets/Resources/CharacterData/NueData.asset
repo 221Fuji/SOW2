@@ -28,6 +28,7 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 4171475392260829997, guid: d8bea89167534194384eb612346809be, type: 3}
   _resultStandImage: {fileID: 1996825911055046131, guid: 5c22c9e39d4285e4990be25a762520b2, type: 3}
   _stageData: {fileID: 11400000, guid: c8c00283bd9d20749b5c1306aa71e57b, type: 2}
+  _cbgmPlayer: {fileID: 8875605089382630207, guid: 55dd12a8fb4b29944a4be979462c1529, type: 3}
   _myNumber: 10000
   _cmdListBoxes:
   - {fileID: 11400000, guid: a105ee68ef408c34996560d0c4fb8f72, type: 2}

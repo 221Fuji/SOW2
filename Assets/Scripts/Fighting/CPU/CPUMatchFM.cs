@@ -1,5 +1,3 @@
-using System;
-using Unity.MLAgents.Policies;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,6 +36,9 @@ public class CPUMatchFM : FightingManager
             2
             );
         StartRound(firstRound, playerData1P, playerData2P);
+
+        //2PƒLƒƒƒ‰‚ÌBGM
+        SoundManager.I.CreateCharaBGMPlayer(chara2.CharacterData);
     }
 
     private GameObject InstantiateCharacterPrefab(CPUCharacter chara)
