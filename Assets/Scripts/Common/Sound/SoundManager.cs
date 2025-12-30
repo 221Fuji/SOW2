@@ -28,6 +28,7 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
     public SEPlayer SystemSEPlayer => _systemSEPlayer;
     public FightingGeneralSEPlayer FGSEPlayer => _fgSEPlayer;
     public BGMPlayer FightingBGMPlayer => _fightingBGMPlayer;
+    public BGMPlayer OutGameBGMPlayer => _outGameBGMPlayer;
 
     protected override void Awake()
     {

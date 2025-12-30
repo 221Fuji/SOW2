@@ -37,6 +37,7 @@ public class ResultPerformance : MonoBehaviour
         _winnerData = winnerData;
         CancellationToken token = _resultPerformanceCTS.Token;
 
+        SoundManager.I.OutGameBGMPlayer.PlayBGM(4);
         try
         {
             await FirstPerformance(token);
