@@ -15,7 +15,7 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
     [SerializeField] private float _seVolume;
     [SerializeField] private SEResources _systemSE;
     [SerializeField] private SEResources _fightingGeneralSE;
-    [SerializeField] private BGMResources _outGameBGM;
+    [SerializeField] private BGMPlayer _outGameBGMPrefab;
     private SEPlayer _systemSEPlayer;
     private FightingGeneralSEPlayer _fgSEPlayer;
     private BGMPlayer _outGameBGMPlayer;
@@ -35,25 +35,7 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
         base.Awake();
         _systemSEPlayer = new SEPlayer(_systemSE);
         _fgSEPlayer = new FightingGeneralSEPlayer(_fightingGeneralSE);
-    }
-
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if(scene.name == "ResultScene")
-        {
-            _fightingBGMPlayer?.DestoryBGMPlayer();
-            _fightingBGMPlayer = null;
-        }
+        _outGameBGMPlayer = Instantiate(_outGameBGMPrefab);
     }
 
     public void CreateCharaBGMPlayer(CharacterData characterData)

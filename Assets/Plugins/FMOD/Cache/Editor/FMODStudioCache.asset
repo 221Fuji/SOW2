@@ -201,7 +201,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639026570700659224
+  lastModified: 639027384986347691
   FileSizes: []
   Exists: 1
 --- !u!114 &-1250432990292822699
@@ -303,7 +303,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 9054088423051938215}
   cacheVersion: 131857
-  cacheTime: 639026570700669346
+  cacheTime: 639027384986386033
   SerializableEventsDict:
   - key: event:/Assets/SE/System/VersusSE1
     index: 0
@@ -453,10 +453,11 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 6465492301619485046}
   MinDistance: 1
   MaxDistance: 20
-  Length: 202782
+  Length: 29091
 --- !u!114 &1062133173333707893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +673,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &6465492301619485046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Result_bgm/Action
+  m_EditorClassIdentifier: 
+  Name: Action
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3127974641
+    data2: 318656735
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6658883552694678935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +817,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639026570700669346
+  lastModified: 639027384986386033
   FileSizes:
   - Name: 
     Value: 2016

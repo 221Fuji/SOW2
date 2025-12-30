@@ -18,8 +18,7 @@ public class BGMPlayer : MonoBehaviour
             _instList[i] = RuntimeManager.CreateInstance(_bgmResources.BGMList[i].Clip);
             _instList[i].setVolume(_bgmResources.BGMList[i].Volume);
         }
-
-        PlayBGM(0);
+        DontDestroyOnLoad(gameObject);
     }
 
     public virtual void PlayBGM(int index)
