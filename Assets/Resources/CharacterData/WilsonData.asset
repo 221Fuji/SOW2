@@ -15,7 +15,7 @@ MonoBehaviour:
   _characterNum: 6
   _characterNameE: Wilson
   _characterNameJ: "\u30A6\u30A3\u30EB\u30BD\u30F3"
-  _characterPrefab: {fileID: -1097923648107288940, guid: 1dc2b8ddab322904f9b59026a37faf30, type: 3}
+  _characterPrefab: {fileID: 6564595411459095683, guid: 98b2fb2519ed99a4dbbebebbe97c7342, type: 3}
   _cpuEasy: {fileID: 0}
   _versusEyeForcusImage: {fileID: 2330976698168467897, guid: c7290783ee1cbba428ca3856688c6eef, type: 3}
   _versusStandingImage: {fileID: 5580158101377991115, guid: e94a39569c5618147bbdb1a6aa7f55be, type: 3}

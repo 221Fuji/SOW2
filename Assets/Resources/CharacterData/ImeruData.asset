@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
+  m_Name: ImeruData
+  m_EditorClassIdentifier: 
+  _characterNum: 0
+  _characterNameE: 
+  _characterNameJ: 
+  _characterPrefab: {fileID: 0}
+  _cpuEasy: {fileID: 0}
+  _versusEyeForcusImage: {fileID: 0}
+  _versusStandingImage: {fileID: 0}
+  _versusGrayImage: {fileID: 0}
+  _fightingFaceUpImage: {fileID: 0}
+  _fightingStandingImage: {fileID: 0}
+  _windowFace: {fileID: 0}
+  _csFigure: {fileID: 0}
+  _csDot: {fileID: 0}
+  _resultWhiteStandImage: {fileID: 0}
+  _resultStandImage: {fileID: 0}
+  _stageData: {fileID: 0}
+  _cbgmPlayer: {fileID: 0}
+  _myNumber: 0
+  _cmdListBoxes: []

@@ -843,7 +843,7 @@ MonoBehaviour:
   _seVolume: 1
   _systemSE: {fileID: 11400000, guid: 687e848fe1b77994bb1e46de84c3ec97, type: 2}
   _fightingGeneralSE: {fileID: 11400000, guid: f7f912562aee03049814d5042645df48, type: 2}
-  _outGameBGM: {fileID: 11400000, guid: 81cd20b4644b4e14c8685461ddf58e1f, type: 2}
+  _outGameBGM: {fileID: 0}
 --- !u!4 &1774275917
 Transform:
   m_ObjectHideFlags: 0
