@@ -21,3 +21,27 @@ MonoBehaviour:
         Data4: 707533454
       Path: event:/Assets/BGM/OutGame/Result_bgm
     _volume: 1
+  - _clip:
+      Guid:
+        Data1: 723728173
+        Data2: 1076379124
+        Data3: 1523344291
+        Data4: 707533454
+      Path: event:/Assets/BGM/OutGame/Result_bgm
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 723728173
+        Data2: 1076379124
+        Data3: 1523344291
+        Data4: 707533454
+      Path: event:/Assets/BGM/OutGame/Result_bgm
+    _volume: 1
+  - _clip:
+      Guid:
+        Data1: 723728173
+        Data2: 1076379124
+        Data3: 1523344291
+        Data4: 707533454
+      Path: event:/Assets/BGM/OutGame/Result_bgm
+    _volume: 1
