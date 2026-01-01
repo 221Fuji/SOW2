@@ -21,5 +21,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: caa5ae37ce5c04f419b4abd89e4d2063, type: 2}
   - {fileID: 11400000, guid: d3375ee3bc1ec13498d714032b4a5547, type: 2}
   - {fileID: 11400000, guid: 36be4fd673c05c142831df7d7156828b, type: 2}
+  - {fileID: 11400000, guid: 05de478e758bd484ea315f67a166b151, type: 2}
   _devedCpuList:
   - {fileID: 11400000, guid: ef8a944741b45714598b02ce6d77c204, type: 2}

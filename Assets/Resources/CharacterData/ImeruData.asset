@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1076a51215727e458f88dddb755a985, type: 3}
   m_Name: ImeruData
   m_EditorClassIdentifier: 
-  _characterNum: 0
-  _characterNameE: 
-  _characterNameJ: 
-  _characterPrefab: {fileID: 0}
+  _characterNum: 8
+  _characterNameE: Imeru
+  _characterNameJ: "\u30A4\u30E1\u30EB"
+  _characterPrefab: {fileID: 6564595411459095683, guid: 98b2fb2519ed99a4dbbebebbe97c7342, type: 3}
   _cpuEasy: {fileID: 0}
-  _versusEyeForcusImage: {fileID: 0}
-  _versusStandingImage: {fileID: 0}
-  _versusGrayImage: {fileID: 0}
-  _fightingFaceUpImage: {fileID: 0}
+  _versusEyeForcusImage: {fileID: 8179356856675297868, guid: b4b40f63c6e032947950531daeaef040, type: 3}
+  _versusStandingImage: {fileID: 6741456351315828916, guid: 57a26df5196e2ea47897587f1262a065, type: 3}
+  _versusGrayImage: {fileID: 5710257436213421750, guid: d98e2a27f7dbf264fa3d1aa84130cf4f, type: 3}
+  _fightingFaceUpImage: {fileID: 9137668675876056631, guid: f822e79f1cfee964998fddad0bc5130a, type: 3}
   _fightingStandingImage: {fileID: 0}
-  _windowFace: {fileID: 0}
-  _csFigure: {fileID: 0}
-  _csDot: {fileID: 0}
-  _resultWhiteStandImage: {fileID: 0}
-  _resultStandImage: {fileID: 0}
-  _stageData: {fileID: 0}
-  _cbgmPlayer: {fileID: 0}
+  _windowFace: {fileID: 2393100032681376977, guid: e1ed4efeb464962489c3f11e1f9925fd, type: 3}
+  _csFigure: {fileID: 8642612512848828257, guid: 6d0492c1ac93ba044b211d993e6d024f, type: 3}
+  _csDot: {fileID: 8591149192381129314, guid: 1d244fd6d198ebb4eb4866db768ad62f, type: 3}
+  _resultWhiteStandImage: {fileID: 2117988510002339916, guid: 716911a985ade704d8daf36a60beaf47, type: 3}
+  _resultStandImage: {fileID: 1096995774089480424, guid: 5811e2cd438c8c5498e980571240e29a, type: 3}
+  _stageData: {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
+  _cbgmPlayer: {fileID: 4859909491930294006, guid: 1d702db8ff5c7014180338b7f046ce1e, type: 3}
   _myNumber: 0
   _cmdListBoxes: []
