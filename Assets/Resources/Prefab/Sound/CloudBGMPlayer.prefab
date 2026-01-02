@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 748560934245652626}
-  - component: {fileID: 7247124055713376056}
+  - component: {fileID: 5463907392511633366}
   m_Layer: 0
   m_Name: CloudBGMPlayer
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7247124055713376056
+--- !u!114 &5463907392511633366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8779747943325638097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a006c8488568c164b9ce94e6cecf30c8, type: 3}
+  m_Script: {fileID: 11500000, guid: a5c35463e1562aa48b4dee71b8b1ac96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bgmResources: {fileID: 11400000, guid: f04f76793d1746548a86422959b02fdb, type: 2}

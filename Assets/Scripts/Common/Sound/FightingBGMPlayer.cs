@@ -6,7 +6,7 @@ using FMODUnity;
 using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine.SceneManagement;
 
-public class CharacterBGMPlayer : BGMPlayer
+public class FightingBGMPlayer : BGMPlayer
 {
     protected CharacterActions _ca;
 
@@ -33,9 +33,9 @@ public class CharacterBGMPlayer : BGMPlayer
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "ResultScene")
+        if (scene.name != "FightingScene")
         {
-            DestoryBGMPlayer();
+            SoundManager.I.DestroyFightingBGMPlayer();
         }
     }
 }

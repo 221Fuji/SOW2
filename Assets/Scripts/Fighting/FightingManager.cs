@@ -64,7 +64,7 @@ public abstract class FightingManager : ModeManager
         StartRound(firstRound, playerData1P, playerData2P);
 
         //2PƒLƒƒƒ‰‚ÌBGM
-        SoundManager.I.CreateCharaBGMPlayer(characterData2P);
+        SoundManager.I.CreateFightingBGMPlayer(characterData2P.CharacterBGMPlayer);
     }
 
     protected virtual void StartRound(RoundData roundData, PlayerData playerData1P, PlayerData playerData2P)

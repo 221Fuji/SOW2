@@ -16,6 +16,7 @@ public class LocalMatchRM : ResultManager
 
     protected override async void GoCharaSelect()
     {
+        StopBGMWithSceneChange();
         try
         {
             var characterSelectManager =
@@ -30,6 +31,7 @@ public class LocalMatchRM : ResultManager
 
     protected override async void GoFighting()
     {
+        StopBGMWithSceneChange();
         try
         {
             var fightingManager =

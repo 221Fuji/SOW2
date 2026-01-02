@@ -57,6 +57,7 @@ public abstract class ResultManager : ModeManager
 
     private async void GoTitle()
     {
+        StopBGMWithSceneChange();
         try
         {
             await GameManager.LoadAsync<TitleManager>("TitleScene");
