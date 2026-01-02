@@ -15,10 +15,10 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
     [SerializeField] private float _seVolume;
     [SerializeField] private SEResources _systemSE;
     [SerializeField] private SEResources _fightingGeneralSE;
-    [SerializeField] private BGMPlayer _outGameBGMPrefab;
+    [SerializeField] private OutGameBGMPlayer _outGameBGMPrefab;
     private SEPlayer _systemSEPlayer;
     private FightingGeneralSEPlayer _fgSEPlayer;
-    private BGMPlayer _outGameBGMPlayer;
+    private OutGameBGMPlayer _outGameBGMPlayer;
     private BGMPlayer _fightingBGMPlayer;
 
     public float MasterVolume => _masterVolume;
@@ -28,7 +28,7 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
     public SEPlayer SystemSEPlayer => _systemSEPlayer;
     public FightingGeneralSEPlayer FGSEPlayer => _fgSEPlayer;
     public BGMPlayer FightingBGMPlayer => _fightingBGMPlayer;
-    public BGMPlayer OutGameBGMPlayer => _outGameBGMPlayer;
+    public OutGameBGMPlayer OutGameBGMPlayer => _outGameBGMPlayer;
 
     protected override void Awake()
     {
@@ -38,10 +38,16 @@ public class SoundManager : SingletonMonoBihaviour<SoundManager>
         _outGameBGMPlayer = Instantiate(_outGameBGMPrefab);
     }
 
-    public void CreateCharaBGMPlayer(CharacterData characterData)
+    public void CreateFightingBGMPlayer(FightingBGMPlayer fightinBGMPlayer)
+    {
+        _fightingBGMPlayer = null;
+        _fightingBGMPlayer = Instantiate(fightinBGMPlayer);
+    }
+
+    public void DestroyFightingBGMPlayer()
     {
         _fightingBGMPlayer?.DestoryBGMPlayer();
-        _fightingBGMPlayer = Instantiate(characterData.CharacterBGMPlayer);
+        _fightingBGMPlayer = null;
     }
 
     public void SetMaterVolume(float volume)

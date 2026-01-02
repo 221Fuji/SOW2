@@ -42,6 +42,12 @@ public class ModeManager : MonoBehaviour
         GameManager.Player2Device = device;
     }
 
+    protected virtual void StopBGMWithSceneChange() 
+    {
+        SoundManager.I.OutGameBGMPlayer.OutGameBGMState = OutGameBGMPlayer.EOutGameBGMState.ChangeScene;
+        SoundManager.I.OutGameBGMPlayer.StopAll();
+    }
+
     private void OnDestroy()
     {
         if (_player1Input == null) return;

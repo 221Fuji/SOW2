@@ -25,11 +25,27 @@ public class BGMPlayer : MonoBehaviour
     {
         if (IsPlaying(_instList[index]))
         {
-            _instList[index].stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            _instList[index].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         _instList[index].getVolume(out float volume);
         _instList[index].setVolume(volume * SoundManager.I.SEVolume);
         _instList[index].start();
+    }
+
+    public virtual void StopBGM(int index)
+    {
+        _instList[index].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public virtual void StopAll()
+    {
+        foreach (var inst in _instList)
+        {
+            if (IsPlaying(inst))
+            {
+                inst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            }
+        }
     }
 
     public virtual void DestoryBGMPlayer()

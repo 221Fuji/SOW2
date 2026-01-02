@@ -35,7 +35,7 @@ public class CharacterData : ScriptableObject
     [Header("ステージ")]
     [SerializeField] private StageData _stageData;
     [Header("BGM")]
-    [SerializeField] private CharacterBGMPlayer _cbgmPlayer;
+    [SerializeField] private FightingBGMPlayer _cbgmPlayer;
     [Header("ログ取る用の個体値")]
     [SerializeField] private int _myNumber;
     [Header("コマンドリスト用の要素リスト(1つの技につき1つ,0から表示)")]
@@ -58,7 +58,7 @@ public class CharacterData : ScriptableObject
     public Image ResultWhiteStandImage { get { return _resultWhiteStandImage; } }
     public Image ResultStandImage { get { return _resultStandImage; } }
     public StageData StageData { get { return _stageData;} }
-    public CharacterBGMPlayer CharacterBGMPlayer { get { return _cbgmPlayer; } }
+    public FightingBGMPlayer CharacterBGMPlayer { get { return _cbgmPlayer; } }
     public int MyNumber { get { return _myNumber; } }
     public List<CmdListBox> CmdListBoxes { get { return _cmdListBoxes; } }
 }

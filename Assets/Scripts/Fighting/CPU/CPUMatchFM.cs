@@ -38,7 +38,7 @@ public class CPUMatchFM : FightingManager
         StartRound(firstRound, playerData1P, playerData2P);
 
         //2PƒLƒƒƒ‰‚ÌBGM
-        SoundManager.I.CreateCharaBGMPlayer(chara2.CharacterData);
+        SoundManager.I.CreateFightingBGMPlayer(chara2.CharacterData.CharacterBGMPlayer);
     }
 
     private GameObject InstantiateCharacterPrefab(CPUCharacter chara)
