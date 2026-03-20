@@ -240,6 +240,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 37200
+--- !u!114 &-2879081380315121068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Succubus_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Succubus_bgm
+  Guid:
+    Data1: 1700483357
+    Data2: 1089328207
+    Data3: 2054547384
+    Data4: 945082725
+  Banks:
+  - {fileID: -2310650900504277150}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 206250
 --- !u!114 &-2495115739551526986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +309,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639096029613813772
+  lastModified: 639096263914098075
   FileSizes: []
   Exists: 1
 --- !u!114 &-1250432990292822699
@@ -379,13 +406,14 @@ MonoBehaviour:
   - {fileID: 986725880113769403}
   - {fileID: -3310999946587441558}
   - {fileID: -5618202467188758068}
+  - {fileID: -2879081380315121068}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2310650900504277150}
   StringsBanks:
   - {fileID: 9054088423051938215}
   cacheVersion: 131857
-  cacheTime: 639096029614406610
+  cacheTime: 639096263914781701
   SerializableEventsDict:
   - key: event:/Assets/SE/System/VersusSE1
     index: 0
@@ -433,6 +461,8 @@ MonoBehaviour:
     index: 21
   - key: event:/Assets/BGM/Chara/Imeru_bgm
     index: 22
+  - key: event:/Assets/BGM/Chara/Succubus_bgm
+    index: 23
 --- !u!114 &265995364154961120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,8 +906,8 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639096029614406610
+  lastModified: 639096263914781701
   FileSizes:
   - Name: 
-    Value: 1972
+    Value: 2014
   Exists: 1
