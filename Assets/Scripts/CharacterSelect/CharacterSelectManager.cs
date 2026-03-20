@@ -44,7 +44,7 @@ public abstract class CharacterSelectManager : ModeManager
             oir.Cancel = uiCSMoving.Cancel;
             if(uiCSMoving.OutMap[0].ReturnList()[0] is UICSReturnBack goBack)
             {
-                goBack.ClickedActionEvent += GoTitle;
+                goBack.ClickedActionEvent = GoModeSelect;
             }
         }
     }
@@ -54,11 +54,17 @@ public abstract class CharacterSelectManager : ModeManager
     /// </summary>
     protected abstract void SwitchDelegate(UIMovingCtrl movingCtrl,int playerNum);
     protected abstract void GoFighting();
-    private async void GoTitle()
+    private async void GoModeSelect()
     {
         _goFightingCTS?.Cancel();
-        var modeSelectManager = await GameManager.LoadAsync<ModeSelectManager>("ModeSelectScene");
-        modeSelectManager.Initialize(GameManager.Player1Device);
+
+        try
+        {
+            var modeSelectManager = await GameManager.LoadAsync<ModeSelectManager>("ModeSelectScene");
+            modeSelectManager.Initialize(GameManager.Player1Device);
+        }
+        catch{ return; }
+        
         //デバイスの管理追加処理書く
         GameManager.Player2Device = null;
     }

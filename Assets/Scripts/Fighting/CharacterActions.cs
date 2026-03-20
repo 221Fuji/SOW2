@@ -154,6 +154,7 @@ public abstract class CharacterActions : FightingRigidBody
         _characterState.ResetState();
         _characterState.ClearNameOfGivenAttack();
         _characterState.SetComboCount(1);
+        _characterState.SetIsGuarding(false);
 
         //F‚ğŒ³‚É–ß‚·
         GetComponent<SpriteRenderer>().color = Color.white;
@@ -220,6 +221,7 @@ public abstract class CharacterActions : FightingRigidBody
         if (!OnGround && _characterState.IsGuarding)
         {
             GuardRelease();
+            Debug.Log("‰ğœ");
         }
 
         if (EnemyCA != null)
@@ -235,7 +237,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// <summary>
     /// ƒLƒƒƒ‰“¯m‚ğŒü‚©‚¢‡‚í‚¹‚é
     /// </summary>
-    private void DirectionReversal()
+    protected void DirectionReversal()
     {
         if (GetPushBackBox().center.x > EnemyCA.GetPushBackBox().center.x)
         {

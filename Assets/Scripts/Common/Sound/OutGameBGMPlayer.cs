@@ -25,10 +25,7 @@ public class OutGameBGMPlayer : BGMPlayer
     {
         foreach (var inst in _instList)
         {
-            if (IsPlaying(inst))
-            {
-                inst.setParameterByNameWithLabel("OutGameState", state.ToString());
-            }
+            inst.setParameterByNameWithLabel("OutGameState", state.ToString());
         }
     }
 
@@ -44,7 +41,10 @@ public class OutGameBGMPlayer : BGMPlayer
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SoundManager.I.OutGameBGMPlayer.OutGameBGMState = EOutGameBGMState.Default;
+        if(mode == LoadSceneMode.Single)
+        {
+            OutGameBGMState = EOutGameBGMState.Default;
+        }
     }
 
     public enum EOutGameBGMState

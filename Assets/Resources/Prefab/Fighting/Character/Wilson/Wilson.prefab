@@ -402,24 +402,24 @@ MonoBehaviour:
     HitBackDirection: {x: 5, y: 20}
     GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-    IsBullet: 1
+    IsBullet: 0
   _ultBulletInfo:
-    Name: 
-    Damage: 0
+    Name: UltBullet
+    Damage: 10
     StartupFrame: 0
-    ActiveFrame: 0
-    RecoveryFrame: 0
-    HitFrame: 0
-    GuardFrame: 0
-    HitStopFrame: 0
+    ActiveFrame: 60
+    RecoveryFrame: 30
+    HitFrame: 30
+    GuardFrame: 30
+    HitStopFrame: 5
     MeterGain: 0
     ConsumptionSP: 0
     DrainSP: 0
-    IsHeavy: 0
-    HitBackDirection: {x: 0, y: 0}
-    GuardBackDirection: {x: 0, y: 0}
+    IsHeavy: 1
+    HitBackDirection: {x: 5, y: 20}
+    GuardBackDirection: {x: 15, y: 0}
     GuardedBackDirection: {x: 0, y: 0}
-    IsBullet: 0
+    IsBullet: 1
   _ultSlashPrefab: {fileID: -7719039043490571406, guid: 851cba1802f65084b81054360227a8cc, type: 3}
 --- !u!114 &3969603782715614688
 MonoBehaviour:

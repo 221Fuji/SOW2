@@ -322,7 +322,6 @@ public class Wilson : CharacterActions
     /// </summary>
     public async UniTask Ultimate()
     {
-
         if (!CanUltimate) return;
 
         //UPè¡îÔ
@@ -406,7 +405,7 @@ public class Wilson : CharacterActions
 
         // UltéaåÇê∂ê¨
         Bullet ultSlash = Instantiate(_ultSlashPrefab);
-        ultSlash.HitBox.InitializeHitBox(_ultimateInfo, gameObject);
+        ultSlash.HitBox.InitializeHitBox(_ultBulletInfo, gameObject);
         ultSlash.HitBox.HitBullet = HitUltSlash;
         ultSlash.HitBox.GuardBullet = HitUltSlash;
         if (_characterState.IsLeftSide)
@@ -421,7 +420,7 @@ public class Wilson : CharacterActions
 
         try
         {
-            await WaitForActiveFrame(ultSlash.HitBox, _ultimateInfo.ActiveFrame, token); // éùë±Çë“Ç¬
+            await WaitForActiveFrame(ultSlash.HitBox, _ultBulletInfo.ActiveFrame, token); // éùë±Çë“Ç¬
 
             ultSlash.HitBox.Hit = null;
             if (ultSlash != null)
@@ -429,7 +428,7 @@ public class Wilson : CharacterActions
                 Destroy(ultSlash.gameObject);
             }
             _animator.SetTrigger("UltFinishTrigger");
-            await RecoveryFrame(_ultimateInfo.RecoveryFrame, token); // çdíºÇë“Ç¬
+            await RecoveryFrame(_ultBulletInfo.RecoveryFrame, token); // çdíºÇë“Ç¬
         }
         finally
         {

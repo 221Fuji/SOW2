@@ -15,7 +15,7 @@ MonoBehaviour:
   _characterNum: 8
   _characterNameE: Imeru
   _characterNameJ: "\u30A4\u30E1\u30EB"
-  _characterPrefab: {fileID: 6564595411459095683, guid: 98b2fb2519ed99a4dbbebebbe97c7342, type: 3}
+  _characterPrefab: {fileID: -7370158497598226197, guid: 98b2fb2519ed99a4dbbebebbe97c7342, type: 3}
   _cpuEasy: {fileID: 0}
   _versusEyeForcusImage: {fileID: 8179356856675297868, guid: b4b40f63c6e032947950531daeaef040, type: 3}
   _versusStandingImage: {fileID: 6741456351315828916, guid: 57a26df5196e2ea47897587f1262a065, type: 3}
@@ -28,6 +28,6 @@ MonoBehaviour:
   _resultWhiteStandImage: {fileID: 2117988510002339916, guid: 716911a985ade704d8daf36a60beaf47, type: 3}
   _resultStandImage: {fileID: 1096995774089480424, guid: 5811e2cd438c8c5498e980571240e29a, type: 3}
   _stageData: {fileID: 11400000, guid: 05aeb81025f034647b9f7836c200aa99, type: 2}
-  _cbgmPlayer: {fileID: 4859909491930294006, guid: 1d702db8ff5c7014180338b7f046ce1e, type: 3}
+  _cbgmPlayer: {fileID: 3428764762544226001, guid: 7468042dd3c273b4daf55ef684615a61, type: 3}
   _myNumber: 0
   _cmdListBoxes: []

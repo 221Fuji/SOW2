@@ -20,6 +20,7 @@ public class ModeSelectManager : ModeManager
         OtherInputReceiver oir = _player1Input.gameObject.GetComponent<OtherInputReceiver>();
         SetDelegate(oir);
         WaitForFade(Color.black, 0).Forget();
+        SoundManager.I.OutGameBGMPlayer.PlayBGM(0);
     }
 
     private void SetDelegate(OtherInputReceiver oir)
@@ -65,6 +66,7 @@ public class ModeSelectManager : ModeManager
     private async void GoLocalMatchCS()
     {
         DoNotAcceptOperations();
+        StopBGMWithSceneChange();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -89,6 +91,7 @@ public class ModeSelectManager : ModeManager
     private async void GoCPUMatchCS()
     {
         DoNotAcceptOperations();
+        StopBGMWithSceneChange();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);
@@ -113,6 +116,7 @@ public class ModeSelectManager : ModeManager
     private async void GoTitle()
     {
         DoNotAcceptOperations();
+        StopBGMWithSceneChange();
         try
         {
             await WaitForFade(new Color(1, 1, 1, 0), 1);

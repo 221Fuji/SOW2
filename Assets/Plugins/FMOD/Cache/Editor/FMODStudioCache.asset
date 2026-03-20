@@ -105,6 +105,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5618202467188758068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Imeru_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Imeru_bgm
+  Guid:
+    Data1: 158431580
+    Data2: 1337185287
+    Data3: -1854870126
+    Data4: -1922154058
+  Banks:
+  - {fileID: -2310650900504277150}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 199500
 --- !u!114 &-5239273726575502939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +212,34 @@ MonoBehaviour:
   - Default
   - ChangeScene
   Exists: 1
+--- !u!114 &-3310999946587441558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/OutGame/ModeSelect_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/OutGame/ModeSelect_bgm
+  Guid:
+    Data1: 652358160
+    Data2: 1091857520
+    Data3: -2062570867
+    Data4: 1415807663
+  Banks:
+  - {fileID: -2310650900504277150}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 3265617171097112285}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 37200
 --- !u!114 &-2495115739551526986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +282,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639029874252899692
+  lastModified: 639096029613813772
   FileSizes: []
   Exists: 1
 --- !u!114 &-1250432990292822699
@@ -308,7 +363,6 @@ MonoBehaviour:
   - {fileID: 1062133173333707893}
   - {fileID: 5989713565580112169}
   - {fileID: 8280110010957168146}
-  - {fileID: 6658883552694678935}
   - {fileID: -6224640398594752574}
   - {fileID: -5786165083642962739}
   - {fileID: 280599188920851456}
@@ -323,13 +377,15 @@ MonoBehaviour:
   - {fileID: 265995364154961120}
   - {fileID: -4607405612008838248}
   - {fileID: 986725880113769403}
+  - {fileID: -3310999946587441558}
+  - {fileID: -5618202467188758068}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2310650900504277150}
   StringsBanks:
   - {fileID: 9054088423051938215}
   cacheVersion: 131857
-  cacheTime: 639029874252921397
+  cacheTime: 639096029614406610
   SerializableEventsDict:
   - key: event:/Assets/SE/System/VersusSE1
     index: 0
@@ -345,36 +401,38 @@ MonoBehaviour:
     index: 5
   - key: event:/Assets/SE/System/CharaSelect
     index: 6
-  - key: event:/Assets/Sound/{b6b7ed78-c633-4d20-b213-acb5a6f7ec3e}.xml/bgm
-    index: 7
   - key: event:/Assets/BGM/Chara/Nue_bgm
-    index: 8
+    index: 7
   - key: event:/Assets/SE/System/VersusSE2
-    index: 9
+    index: 8
   - key: event:/Assets/SE/System/Cursor
-    index: 10
+    index: 9
   - key: event:/Assets/BGM/Chara/Wilson_bgm
-    index: 11
+    index: 10
   - key: event:/Assets/SE/Fighting/General/Combo
-    index: 12
+    index: 11
   - key: event:/Assets/SE/System/ModeSelectSE
-    index: 13
+    index: 12
   - key: event:/Assets/SE/Fighting/General/Guard
-    index: 14
+    index: 13
   - key: event:/Assets/BGM/Chara/Lancer_bgm
-    index: 15
+    index: 14
   - key: event:/Assets/BGM/Chara/Genie_bgm
-    index: 16
+    index: 15
   - key: event:/Assets/SE/System/GotoVersusSE
-    index: 17
+    index: 16
   - key: event:/Assets/SE/System/TitleSE
-    index: 18
+    index: 17
   - key: event:/Assets/SE/System/Cancel
-    index: 19
+    index: 18
   - key: event:/Assets/SE/System/KO
-    index: 20
+    index: 19
   - key: event:/Assets/BGM/OutGame/Result_bgm
+    index: 20
+  - key: event:/Assets/BGM/OutGame/ModeSelect_bgm
     index: 21
+  - key: event:/Assets/BGM/Chara/Imeru_bgm
+    index: 22
 --- !u!114 &265995364154961120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +509,7 @@ MonoBehaviour:
   - {fileID: -2310650900504277150}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -566,6 +624,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &3265617171097112285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ModeSelect_bgm/OutGameState
+  m_EditorClassIdentifier: 
+  Name: OutGameState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1679695278
+    data2: 782026464
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Default
+  - ChangeScene
+  Exists: 1
 --- !u!114 &3674667016813795362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +754,7 @@ MonoBehaviour:
   - {fileID: -2310650900504277150}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -699,33 +783,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &6658883552694678935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Assets/Sound/{b6b7ed78-c633-4d20-b213-acb5a6f7ec3e}.xml/bgm
-  m_EditorClassIdentifier: 
-  Path: event:/Assets/Sound/{b6b7ed78-c633-4d20-b213-acb5a6f7ec3e}.xml/bgm
-  Guid:
-    Data1: 2089171803
-    Data2: 1212242370
-    Data3: 196916149
-    Data4: 212416130
-  Banks:
-  - {fileID: -2310650900504277150}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &7452305605429621274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,8 +876,8 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639029874252921397
+  lastModified: 639096029614406610
   FileSizes:
   - Name: 
-    Value: 2060
+    Value: 1972
   Exists: 1

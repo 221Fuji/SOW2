@@ -117,8 +117,8 @@ TextureImporter:
         y: 232
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,8 +138,8 @@ TextureImporter:
         y: 232
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,8 +159,8 @@ TextureImporter:
         y: 232
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,8 +180,8 @@ TextureImporter:
         y: 232
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,8 +201,8 @@ TextureImporter:
         y: 116
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,8 +222,8 @@ TextureImporter:
         y: 116
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,8 +243,8 @@ TextureImporter:
         y: 116
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,8 +264,8 @@ TextureImporter:
         y: 116
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,8 +285,8 @@ TextureImporter:
         y: 0
         width: 210
         height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,69 +294,6 @@ TextureImporter:
       bones: []
       spriteID: e9a1d2ab34f474450800000000000000
       internalID: 6072909774837324446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Imeru-UltBullet_9
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 0
-        width: 210
-        height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 48e02fc0b79b23950800000000000000
-      internalID: 6427403556360425092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Imeru-UltBullet_10
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 0
-        width: 210
-        height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c5a7ca9400683d30800000000000000
-      internalID: 4411381407902311872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Imeru-UltBullet_11
-      rect:
-        serializedVersion: 2
-        x: 630
-        y: 0
-        width: 210
-        height: 116
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 155f52c4d2734f0d0800000000000000
-      internalID: -3390023951812528815
       vertices: []
       indices: 
       edges: []
@@ -374,8 +311,6 @@ TextureImporter:
     nameFileIdTable:
       Imeru-UltBullet_0: -4029003312124450585
       Imeru-UltBullet_1: -8985370314642708093
-      Imeru-UltBullet_10: 4411381407902311872
-      Imeru-UltBullet_11: -3390023951812528815
       Imeru-UltBullet_2: 3232413726560952798
       Imeru-UltBullet_3: -8342129752243866041
       Imeru-UltBullet_4: -4187874643016676000
@@ -383,7 +318,6 @@ TextureImporter:
       Imeru-UltBullet_6: 1702520800334713046
       Imeru-UltBullet_7: -7840993409717271115
       Imeru-UltBullet_8: 6072909774837324446
-      Imeru-UltBullet_9: 6427403556360425092
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
