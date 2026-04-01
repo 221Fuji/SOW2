@@ -54,6 +54,7 @@ public class FightingUI : MonoBehaviour
     [SerializeField] private Transform _hudCanvas;
     [SerializeField] private Slider _fogMeter;
     [SerializeField] private Slider _uramiMeter;
+    [SerializeField] private GameObject _rabiriGage;
     private List<UniqueResourceUI> _urUIList = new();
 
     private CharacterState _cs1P;
@@ -122,15 +123,22 @@ public class FightingUI : MonoBehaviour
         //Cloudの固有リソース設定
         if(ca is ViolaCloud cloud)
         {
-            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _fogMeter);
+            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _fogMeter.gameObject).GetComponent<Slider>();
             _urUIList.Add(new FogMeter(cloud, slider));
         }
 
         //Teddyの固有リソース設定
         if (ca is Teddy teddy)
         {
-            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _uramiMeter);
+            Slider slider = InstantiateUniqueMeter(ca.PlayerNum, _uramiMeter.gameObject).GetComponent<Slider>();
             _urUIList.Add(new UramiMeter(teddy, slider));
+        }
+
+        //Rabiriの固有リソース設定
+        if (ca is Rabiri rabiri)
+        {
+            GameObject gage = InstantiateUniqueMeter(ca.PlayerNum, _rabiriGage);
+            _urUIList.Add(new RabiriGage(rabiri, gage));
         }
     }
 
@@ -278,23 +286,21 @@ public class FightingUI : MonoBehaviour
         }
     }
 
-    private Slider InstantiateUniqueMeter(int playerNum, Slider uniqueMeter)
+    private GameObject InstantiateUniqueMeter(int playerNum, GameObject urUI)
     {
         if (playerNum == 1)
         {
-            Slider _uniqueMeter1P = Instantiate(uniqueMeter);
+            GameObject _uniqueMeter1P = Instantiate(urUI);
             _uniqueMeter1P.transform.SetParent(_hudCanvas, false);
-            _uniqueMeter1P.value = 1;
             return _uniqueMeter1P;
             
         }
         else
         {
-            Slider uniqueMeter2P = Instantiate(uniqueMeter);
+            GameObject uniqueMeter2P = Instantiate(urUI);
             uniqueMeter2P.transform.SetParent(_hudCanvas, false);
             uniqueMeter2P.GetComponent<RectTransform>().anchoredPosition *= new Vector2(-1, 1);
             uniqueMeter2P.transform.localScale *= new Vector2(-1, 1);
-            uniqueMeter2P.value = 1;
             return uniqueMeter2P;
         }
     }

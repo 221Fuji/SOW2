@@ -1064,6 +1064,7 @@ MonoBehaviour:
   _hudCanvas: {fileID: 1343087756}
   _fogMeter: {fileID: 1710756794890774279, guid: 0c90581cb1a254c42a1e8a2c1e86ad7d, type: 3}
   _uramiMeter: {fileID: 1170032722411560104, guid: 83b2974455999a943b32e1953c138d3f, type: 3}
+  _rabiriGage: {fileID: 142713975372983825, guid: d923d12f38ff68545875bba419e0b9ff, type: 3}
 --- !u!4 &522004979
 Transform:
   m_ObjectHideFlags: 0

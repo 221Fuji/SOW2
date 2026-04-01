@@ -357,7 +357,7 @@ public abstract class CharacterActions : FightingRigidBody
         AddForce(jumpVector);
 
         //アニメーション
-        _animator.SetTrigger("JumpTrigger");
+        _animator.SetBool("OnGroundBool", false);
 
         return true;
     }
@@ -630,7 +630,7 @@ public abstract class CharacterActions : FightingRigidBody
     /// <summary>
     /// ガード解除
     /// </summary>
-    private void GuardRelease()
+    protected void GuardRelease()
     {
         AnimatorByLayerName.SetLayerWeightByName(_animator, "GuardLayer", 0);
         _characterState.SetIsGuarding(false);
