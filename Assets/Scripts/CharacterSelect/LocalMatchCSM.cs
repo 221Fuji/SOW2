@@ -73,6 +73,7 @@ public class LocalMatchCSM : CharacterSelectManager
 
             CharacterData chara1P = _csMovingCtrl1P.CharacterData;
             CharacterData chara2P = _csMovingCtrl2P.CharacterData;
+            StopBGMWithSceneChange();
 
             await UniTask.WaitForSeconds(0.8f, cancellationToken: token);
 

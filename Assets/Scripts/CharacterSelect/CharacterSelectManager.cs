@@ -25,6 +25,7 @@ public abstract class CharacterSelectManager : ModeManager
         base.Initialize(device);
         _oir1P = _player1Input.GetComponent<OtherInputReceiver>();
         SetDelegate(_oir1P, _csMovingCtrl1P);
+        SoundManager.I.OutGameBGMPlayer.PlayBGM(1);
         GoFighting();
     }
 
@@ -57,6 +58,7 @@ public abstract class CharacterSelectManager : ModeManager
     private async void GoModeSelect()
     {
         _goFightingCTS?.Cancel();
+        StopBGMWithSceneChange();
 
         try
         {

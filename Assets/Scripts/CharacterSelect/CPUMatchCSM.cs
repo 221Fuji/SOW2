@@ -60,6 +60,7 @@ public class CPUMatchCSM : CharacterSelectManager
             CharacterData chara2P = _csMovingCtrl2P.CharacterData;
 
             await UniTask.WaitForSeconds(0.8f, cancellationToken: token);
+            StopBGMWithSceneChange();
             //FightingScene�Ɉڍs
             var vm = await GameManager.LoadAsync<VersusManager>("VersusScene");
 

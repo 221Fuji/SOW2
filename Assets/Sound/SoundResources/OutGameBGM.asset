@@ -23,19 +23,11 @@ MonoBehaviour:
     _volume: 0.5
   - _clip:
       Guid:
-        Data1: 723728173
-        Data2: 1076379124
-        Data3: 1523344291
-        Data4: 707533454
-      Path: event:/Assets/BGM/OutGame/Result_bgm
-    _volume: 1
-  - _clip:
-      Guid:
-        Data1: 723728173
-        Data2: 1076379124
-        Data3: 1523344291
-        Data4: 707533454
-      Path: event:/Assets/BGM/OutGame/Result_bgm
+        Data1: 1971275529
+        Data2: 1211191331
+        Data3: -760791619
+        Data4: 1952142113
+      Path: event:/Assets/BGM/OutGame/CharaSelect_bgm
     _volume: 1
   - _clip:
       Guid:

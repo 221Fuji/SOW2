@@ -105,6 +105,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5668095929816399248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/Chara/Rabiri_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/Chara/Rabiri_bgm
+  Guid:
+    Data1: -1207293467
+    Data2: 1291454582
+    Data3: -166665825
+    Data4: 1007521157
+  Banks:
+  - {fileID: -2310650900504277150}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 102432
 --- !u!114 &-5618202467188758068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +336,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639096263914098075
+  lastModified: 639108613220796035
   FileSizes: []
   Exists: 1
 --- !u!114 &-1250432990292822699
@@ -407,13 +434,15 @@ MonoBehaviour:
   - {fileID: -3310999946587441558}
   - {fileID: -5618202467188758068}
   - {fileID: -2879081380315121068}
+  - {fileID: 4017389455344777595}
+  - {fileID: -5668095929816399248}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2310650900504277150}
   StringsBanks:
   - {fileID: 9054088423051938215}
   cacheVersion: 131857
-  cacheTime: 639096263914781701
+  cacheTime: 639108613221555090
   SerializableEventsDict:
   - key: event:/Assets/SE/System/VersusSE1
     index: 0
@@ -463,6 +492,10 @@ MonoBehaviour:
     index: 22
   - key: event:/Assets/BGM/Chara/Succubus_bgm
     index: 23
+  - key: event:/Assets/BGM/OutGame/CharaSelect_bgm
+    index: 24
+  - key: event:/Assets/BGM/Chara/Rabiri_bgm
+    index: 25
 --- !u!114 &265995364154961120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +740,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &4017389455344777595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Assets/BGM/OutGame/CharaSelect_bgm
+  m_EditorClassIdentifier: 
+  Path: event:/Assets/BGM/OutGame/CharaSelect_bgm
+  Guid:
+    Data1: 1971275529
+    Data2: 1211191331
+    Data3: -760791619
+    Data4: 1952142113
+  Banks:
+  - {fileID: -2310650900504277150}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4086291235564161790}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 79560
+--- !u!114 &4086291235564161790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/CharaSelect_bgm/OutGameState
+  m_EditorClassIdentifier: 
+  Name: OutGameState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1679695278
+    data2: 782026464
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Default
+  - ChangeScene
+  Exists: 1
 --- !u!114 &4943890321274573532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,8 +993,8 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639096263914781701
+  lastModified: 639108613221555090
   FileSizes:
   - Name: 
-    Value: 2014
+    Value: 2102
   Exists: 1

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43823986313d67141a2f901075601002, type: 3}
+  m_Name: RabiriBGM
+  m_EditorClassIdentifier: 
+  _bgmList:
+  - _clip:
+      Guid:
+        Data1: -1207293467
+        Data2: 1291454582
+        Data3: -166665825
+        Data4: 1007521157
+      Path: event:/Assets/BGM/Chara/Rabiri_bgm
+    _volume: 1
