@@ -52,6 +52,7 @@ public class RabiriGage : UniqueResourceUI
         Vector2 lampPos = new Vector2(index * _threePixelValue, 0);
         RectTransform lamp = _rabiri.InstantiateLamp(lampPrefabIndex);
         lamp.SetParent(_rabiriGage.transform, false);
+        lamp.rotation = new Quaternion(0, 180, 0, 0);
         if(_rabiri.PlayerNum == 1)
         {
             lamp.anchoredPosition += lampPos;

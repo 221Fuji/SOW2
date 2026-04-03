@@ -143,12 +143,10 @@ public class Rabiri : CharacterActions
     }
     public RectTransform InstantiateLamp(int moveIndex)
     {
-        Debug.Log("ƒ‰ƒ“ƒv");
         return Instantiate(LampPrefabList[moveIndex]).GetComponent<RectTransform>();
     }
     public void DestroyLamp(GameObject lamp)
     {
-        Debug.Log("aaa");
         if (lamp == null) return;
         Destroy(lamp);
     }
